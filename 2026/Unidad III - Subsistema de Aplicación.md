@@ -3,9 +3,8 @@ title: "Unidad III - Subsistema de Aplicación"
 subtitle: "Administración de Sistemas de Información"
 author: n1krov, Juani, Pollo y Chipancho
 date: \today
-lang: es
 documentclass: scrartcl
-fontsize: 11pt
+classoption: numbers=enddot
 geometry: margin=2.5cm
 linestretch: 1.15
 mainfont: Libertinus Serif
@@ -14,24 +13,13 @@ monofont: JetBrains Mono
 toc: true
 toc-depth: 5
 numbersections: true
-colorlinks: true
-linkcolor: NavyBlue
-urlcolor: NavyBlue
-toccolor: NavyBlue
-classoption: numbers=enddot
-highlight-style: tango
 ancho-imagenes: 100%
-header-includes: |
-  \usepackage{float}
-  \let\origfigure\figure
-  \let\endorigfigure\endfigure
-  \renewenvironment{figure}[1][2] {
-      \expandafter\origfigure\expandafter[H]
-  } {
-      \endorigfigure
-  }
-  \usepackage{fvextra}
-  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+header-includes:
+  - |
+    ```{=latex}
+    \usepackage{float}
+    \floatplacement{figure}{H}
+    ```
 ---
 
 \newpage

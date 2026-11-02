@@ -3,9 +3,8 @@ title: "Unidad VI - Seguridad y Auditoría de Sistemas de Información"
 subtitle: "Administración de Sistemas de Información"
 author: n1krov, Juani, Pollo y Chipancho
 date: \today
-lang: es
 documentclass: scrartcl
-fontsize: 11pt
+classoption: numbers=enddot
 geometry: margin=2.5cm
 linestretch: 1.15
 mainfont: Libertinus Serif
@@ -14,23 +13,11 @@ monofont: JetBrains Mono
 toc: true
 toc-depth: 5
 numbersections: true
-colorlinks: true
-linkcolor: NavyBlue
-urlcolor: NavyBlue
-toccolor: NavyBlue
-classoption: numbers=enddot
-highlight-style: tango
 header-includes:
   - |
     ```{=latex}
     \usepackage{float}
     \floatplacement{figure}{H}
-    \usepackage{fvextra}
-    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
-    \usepackage{newunicodechar}
-    \newfontfamily\symfont{DejaVu Sans}
-    \newunicodechar{►}{{\symfont ►}}
-    \newunicodechar{✓}{{\symfont ✓}}
     ```
 ---
 
@@ -1169,7 +1156,9 @@ Para conocer la configuración del sistema es necesario documentar los detalles 
 
 ### Comparación entre el control interno, auditoría interna informática y auditoría externa informática
 
-> **Pendiente:** agregar la foto del cuadro comparativo que pasa la profesora Soria.
+> **Nota.**
+>
+> *Ver el cuadro de la sección 4.14.*
 
 Auditoría externa informática:
 
@@ -1180,22 +1169,35 @@ Auditoría externa informática:
 
 #### Cómo se hace el plan de auditoría
 
-1. **Identificar el alcance y los objetivos de auditoría CON RESPECTO AL objeto**: no se puede empezar sin hacer esto. Se define, de manera general, qué se audita (alcance) y para qué (objetivo), y, si es externa, quién la encarga.
-    1. El **alcance** es hasta dónde llega la evaluación: qué entra y qué queda afuera. Debe quedar claro.
-    2. Los **objetivos** indican para qué se hará la auditoría. Se describen todos los objetos de audito. **Objeto de audito y sujeto son sinónimos.**
-2. **Realizar el estudio inicial del entorno que se auditará**: arquitectura, distribución, quiénes son las fuentes de evidencia, interlocutores, si existe un área de control interno.
-3. **EJECUCIÓN DEL PROGRAMA DE REVISIÓN**: se sigue la metodología que corresponda y se desglosan el alcance y el objetivo en partes. Programa de revisión:
-    1. **Qué es el programa de revisión** (*aquí va la imagen que nos mandó*): un conjunto de instrucciones que guía a quienes llevan a cabo la auditoría. Una vez que se tiene el plan general, estos programas son flexibles: se puede agregar, quitar o posponer. Se detallan el alcance, los objetivos y el objeto de audito para esa parte del todo. ¿Cuántos programas? Dos, porque hay dos áreas.
-    2. **Fuentes de evidencia**: aquello en lo que uno se basa para obtener hallazgos. Si se audita la organización del área informática, una fuente de evidencia puede ser el organigrama, las políticas o el manual del área.
-    3. **Equipo de auditoría**: perfiles informáticos que forman parte del grupo. ¿Cuál es el perfil de un auditor informático? Debe tener título y habilidades técnicas en seguridad informática, redes, inteligencia artificial, infraestructura, ciberestructura y derecho informático. Conocer los perfiles sirve para saber cómo conformar el equipo.
-    4. **Puntos a controlar**: para cada objetivo hay una serie de puntos a controlar: responsable, fecha de inicio, puntos de control y condición inicial (por ejemplo, tener agendada una reunión). El programa de ejemplo es lo más parecido al lugar donde se plasman los procedimientos.
-    5. **Procedimientos**: garantizan que el trabajo esté bien hecho. Tipos de pruebas: de cumplimiento (documentación; verificar si están los reglamentos; pruebas de detalle y de indagación y observación) y sustantivas (tratamiento de la información: se va a los sistemas y se observa cómo operan la información).
-4. **Cierre de la revisión**: estudio de las evidencias recolectadas.
-5. **Realizar el informe final**: es una opinión que puede ser favorable (razonablemente), con salvedades (hay que corregir cosas) o de no conformidades. No hay auditoría sin informe final, y este requiere firma. ¿Cuáles son las etapas genéricas de la ISACA?
-    1. **Planeación**: se relaciona con los dos primeros puntos, porque a partir de la revisión inicial se planifica.
-    2. **Trabajo de campo y documentación**: se sale a aplicar la planificación; en cuanto a la documentación, hay que documentar las fuentes de evidencia (algo que se está separando de la norma).
-    3. **Reporte y seguimiento**: el reporte es el cierre de la revisión y la elaboración del informe. El informe de auditoría expone en forma sintética todo lo que se hizo y apunta directamente a los hallazgos: primero va la opinión, en la que los auditores se pronuncian sobre el funcionamiento del sistema («razonablemente bien» o «totalmente apartado», con no conformidades), y luego las recomendaciones, que deben ayudar a mejorar.
-6. **Seguimiento**: se verifica si se llevaron adelante las recomendaciones, si fueron efectivas y si corrigieron las observaciones realizadas. Lo hace el auditor, y uno de sus insumos son todos los reportes de auditoría anteriores. Si la organización no tiene impacto social (en los bancos sí o sí lo tiene), se realizan auditorías internas y se deben aplicar las recomendaciones. Con dos dictámenes seguidos con disconformidades, no se certifica.
+1. **Identificar el alcance y los objetivos de auditoría CON RESPECTO AL objeto:** no se puede empezar sin hacer esto. Se define, de manera general, qué se audita (alcance) y para qué (objetivo), y, si es externa, quién la encarga.
+   1. El **alcance** es hasta dónde llega la evaluación: qué entra y qué queda afuera. Debe quedar claro.
+   2. Los **objetivos** indican para qué se hará la auditoría. Se describen todos los objetos de audito. **Objeto de audito y sujeto son sinónimos.**
+
+2. **Realizar el estudio inicial del entorno que se auditará:** arquitectura, distribución, quiénes son las fuentes de evidencia, interlocutores, y verificar si existe un área de control interno.
+
+3. **Ejecución del programa de revisión:** se sigue la metodología que corresponda y se desglosan el alcance y el objetivo en partes.
+   1. **Qué es el programa de revisión:** un conjunto de instrucciones que guía a quienes llevan a cabo la auditoría. Una vez que se tiene el plan general, estos programas son flexibles: se puede agregar, quitar o posponer. Se detallan el alcance, los objetivos y el objeto de audito para esa parte del todo. Se elabora un programa por cada área que se auditará (por ejemplo, si en el plan hay dos áreas, se hacen dos programas).
+
+      > Es literalmente el documento operativo (la «receta paso a paso» u hoja de ruta con una planilla de control) para auditar una sección o área específica. Dice exactamente: qué vamos a mirar en esa área, para qué, qué documentos o sistemas vamos a pedir, quiénes lo van a hacer y qué pruebas concretas va a ejecutar cada uno. 
+
+   2. **Fuentes de evidencia:** aquello en lo que uno se basa para obtener hallazgos. Si se audita la organización del área informática, una fuente de evidencia puede ser el organigrama, las políticas o el manual del área.
+   3. **Equipo de auditoría:** perfiles informáticos que forman parte del grupo. ¿Cuál es el perfil de un auditor informático? Debe tener título y habilidades técnicas en seguridad informática, redes, inteligencia artificial, infraestructura, ciberestructura y derecho informático. Conocer los perfiles sirve para saber cómo conformar el equipo.
+   4. **Puntos a controlar:** para cada objetivo hay una serie de puntos a controlar: responsable, fecha de inicio, puntos de control y condición inicial (por ejemplo, tener agendada una reunión). El programa de ejemplo es lo más parecido al lugar donde se plasman los procedimientos.
+   5. **Procedimientos:** garantizan que el trabajo esté bien hecho. Tipos de pruebas: de cumplimiento (documentación; verificar si están los reglamentos; pruebas de detalle y de indagación y observación) y sustantivas (tratamiento de la información: se va a los sistemas y se observa cómo operan la información).
+
+4. **Cierre de la revisión:** estudio de las evidencias recolectadas.
+
+5. **Realizar el informe final:** no hay auditoría sin informe final, y este requiere firma. El informe de auditoría expone en forma sintética todo lo que se hizo y apunta directamente a los hallazgos:
+   * Primero va la **opinión**, en la que los auditores se pronuncian sobre el funcionamiento del sistema: puede ser favorable («razonablemente bien»), con salvedades (hay que corregir cosas) o adversa / de no conformidades («totalmente apartado»).
+   * Luego van las **recomendaciones**, que deben ayudar a mejorar.
+
+6. **Seguimiento:** se verifica si se llevaron adelante las recomendaciones, si fueron efectivas y si corrigieron las observaciones realizadas. Lo hace el auditor, y uno de sus insumos son todos los reportes de auditoría anteriores. Si la organización no tiene impacto social (en los bancos sí o sí lo tiene), se realizan auditorías internas y se deben aplicar las recomendaciones. Con dos dictámenes seguidos con disconformidades, no se certifica.
+
+**¿Cómo se relacionan estos pasos con las etapas genéricas de la ISACA?**
+
+1. **Planeación:** se relaciona con los **dos primeros pasos** (identificar alcance/objetivos y estudio inicial), porque a partir de la revisión inicial se planifica.
+2. **Trabajo de campo y documentación:** corresponde al **paso 3** (ejecución del programa de revisión), donde se sale a aplicar la planificación y se documentan las fuentes de evidencia (algo que se está separando de la norma).
+3. **Reporte y seguimiento:** abarca los **pasos 4, 5 y 6**, ya que el reporte comprende el cierre de la revisión y la elaboración del informe final, seguido de la verificación posterior de las recomendaciones.
 
 ![[Pasted image 20261024192225.png]]
 
@@ -1235,6 +1237,14 @@ Según Lardent:
     - Otra definición: es el peligro que se corre cuando el procedimiento es inadecuado; implica responsabilidad profesional y se relaciona con la materialidad. Según cuán rápido ocurra el riesgo, puede tener un costo económico.
 
 El concepto de riesgo está relacionado con el de materialidad, que se refiere a la magnitud del error en términos de su impacto potencial para el conjunto de la organización. En general, esa materialidad se expresa en términos monetarios.
+
+#### Cuadro comparativo para distinguirlos rápido
+
+| Tipo de Riesgo | ¿Dónde nace el problema? | ¿Quién es el responsable? | ¿Cómo actúa el auditor frente a él? | Ejemplo práctico |
+| :---------- | :----------------- | :---------------- | :------------------------- | :----------------------------- |
+| **1. Inherente** | En la **naturaleza misma del negocio**, la tecnología o la actividad auditada. | Nadie en particular (es intrínseco a la actividad de la empresa). | No puede eliminarlo. Lo reduce haciendo un buen **estudio inicial del entorno** y sumando especialistas al equipo. | Auditar una empresa de desarrollo de software sin conocer cómo funciona el ciclo de desarrollo, o auditar transacciones bancarias en línea de alta complejidad. |
+| **2. De Control** | En las **deficiencias o huecos del Control Interno** de la empresa. | La Dirección / el área de Control Interno de la empresa. | No puede eliminarlo por sí mismo, pero **lo detecta como hallazgo y emite recomendaciones** para corregirlo. | La empresa no tiene controles de validación en la entrada de datos ni alarmas ante accesos no autorizados, por lo que entran datos corruptos sin que nadie se entere. |
+| **3. De Detección** | En un **procedimiento de prueba mal elegido o mal aplicado** durante la auditoría. | **Exclusivamente el auditor** (afecta su responsabilidad profesional). | Lo controla y reduce directamente usando **buenos procedimientos, muestras amplias y pruebas rigurosas**. | Hay datos corruptos en la base de datos, pero el auditor revisa una muestra minúscula o usa un script mal programado, no ve el error y firma que el sistema funciona bien. |
 
 ### Deontología
 
