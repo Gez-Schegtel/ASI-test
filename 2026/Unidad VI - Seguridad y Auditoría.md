@@ -110,6 +110,7 @@ Se trata de encontrar los puntos débiles, es decir, todo aquello a lo que está
 3. Las fuentes de **amenazas** potenciales.
 
 > **Nota...**
+>
 > **Esto se puede expresar en una oración:** tengo este ***activo*** con esta ***vulnerabilidad***, que, como consecuencia, puede sufrir esta ***amenaza***.
 
 #### Definiciones
@@ -253,6 +254,7 @@ Constituyen un proceso valioso, pero solo como un medio para alcanzar un fin. El
 > Por cada riesgo se debe pensar una sola estrategia; las estrategias indican en qué se pondrá más foco al invertir en seguridad.
 
 > **Nota...**
+>
 > La transferencia del riesgo, por lo general mediante la contratación de un seguro, resulta apropiada para las amenazas de **alto costo y baja probabilidad**, en las que la recuperación es casi imposible.
 
 Identificar un *portfolio* de management del riesgo significa seleccionar un conjunto heterogéneo de estrategias de manejo del riesgo que dependen de la aplicación sistemática de la identificación y el análisis del riesgo.
@@ -280,7 +282,9 @@ Existen fundamentalmente dos tipos de control:
 - Las **contramedidas generales** ***(se introducen ante la ocurrencia de la amenaza)***, que se introducen para reducir la amenaza sobre todas las actividades de los SI dentro de una organización. Un punto débil en los controles generales podría provocar una pérdida de seguridad en cualquier sistema; por eso, el costo de estas medidas debería considerarse «compartido» por todas las áreas protegidas.
 - Los **controles de aplicación**, diseñados para proteger de amenazas un área específica. Hasta cierto punto, para la mayoría de las empresas, los controles de aplicación son un conjunto de controles generales.
 
-> **Nota de clase…** Mientras que en el texto de Robson los términos «control» y «contramedida» se usan como sinónimos, algunos autores y apuntes de cátedra hacen una distinción según el momento en que actúan: llaman **controles** a las medidas implementadas *antes* de un incidente para prevenirlo o detectarlo tempranamente (1.ª y 2.ª línea de defensa), y **contramedidas** a las medidas tomadas *después* de ocurrido un incidente para mitigar los daños y recuperar la normalidad (3.ª línea de defensa). Las líneas de defensa las veremos más adelante.
+> **Nota de clase…** 
+>
+> Mientras que en el texto de Robson los términos «control» y «contramedida» se usan como sinónimos, algunos autores y apuntes de cátedra hacen una distinción según el momento en que actúan: llaman **controles** a las medidas implementadas *antes* de un incidente para prevenirlo o detectarlo tempranamente (1.ª y 2.ª línea de defensa), y **contramedidas** a las medidas tomadas *después* de ocurrido un incidente para mitigar los daños y recuperar la normalidad (3.ª línea de defensa). Las líneas de defensa las veremos más adelante.
 
 **Controles**: **prevención y detección**. Son medidas implementadas antes de un incidente para reducir la probabilidad de que ocurra o para detectarlo tempranamente.
 
@@ -539,6 +543,7 @@ Se trata de una actividad que consiste en:
 - **Finalidad**: determinar si esa información presenta adecuadamente la realidad o si responde a las expectativas (objetivos de funcionamiento, de rendimiento) que se le atribuyen, es decir, su fiabilidad.
 
 > **Nota...**
+>
 > **Definición general**: es la emisión de una opinión **profesional** y **fundamentada** (en procedimientos preestablecidos) sobre una información concreta recogida en un determinado soporte, plasmada en un **informe** cuyo fin es determinar si dicha información **presenta adecuadamente la realidad** o si responde a las expectativas (objetivos de funcionamiento, rendimiento, fiabilidad) que se le atribuyen.
 
 Por ejemplo: un auditor contable opina que el sistema contable auditado tiene un comportamiento aceptable, o inaceptable, de acuerdo con determinados criterios (normas, estándares, leyes, etc.).
@@ -657,6 +662,7 @@ La creación de un sistema de control informático es una responsabilidad de la 
 - Al igual que la auditoría, y de forma opcional, puede ser el soporte informático del control interno no informático.
 
 > **Nota...**
+>
 > El Control Interno vive en el «día a día», monitorizando y ajustando los controles.
 >
 > La Auditoría Informática llega después, toma muestras y emite un dictamen sobre si todo funcionó según lo planificado.
@@ -888,6 +894,7 @@ También es una cuestión previa decidir si el informe será largo o corto, adem
 5. **Anexos: su propósito es presentar información muy detallada a la que el lector podrá recurrir o no según sus intereses. Se trata de detalles que pueden ser importantes, pero cuya inclusión en el texto principal podría desviar la atención del lector del tema básico hacia aspectos secundarios. Cuando el informe incluye anexos, debe hacerse referencia en el texto a la información ampliatoria o aclaratoria.**
 
 > **Nota...**
+>
 > Según Soria, primero debería ir la opinión y después los hallazgos.
 
 ### Tipos de informes (Lardent)
@@ -982,6 +989,7 @@ Propone usar la metodología ISACA para evaluar los riesgos definiendo objetivos
     - Posinstalación (mantenimiento).
 
 > **Nota...**
+>
 > **IMPORTANTE: no hay que confundir auditoría con certificación de calidad. La certificación utiliza la auditoría, pero también se puede hacer una auditoría solo para saber si se están haciendo bien las cosas.**
 
 ## Auditoría de Sistemas de Aplicación Instalados
@@ -1462,3 +1470,71 @@ El enfoque de Mario Piattini sobre la **auditoría del desarrollo** de software 
 - **Adaptación a la organización y al proyecto**: los objetivos y los niveles de cumplimiento no se consideran un modelo cerrado; el auditor debe adaptarlos a las particularidades de cada organización y proyecto.
 
 En resumen, el enfoque de Piattini combina la perspectiva técnica y la organizativa, y destaca la necesidad de controles de calidad y de gestión de riesgos durante todo el ciclo de vida del desarrollo.
+
+#### Cuadro comparativo: Auditoría del Desarrollo de Sistemas (Lardent vs. Piattini & Del Peso)
+
+| Criterio de comparación | Enfoque de Alberto R. Lardent | Enfoque de Mario Piattini y Emilio del Peso |
+| --- | --- | --- |
+| **Objetivo principal** | Identificar, analizar y evaluar los requerimientos del usuario, los riesgos, las exposiciones a riesgos y los **puntos de control** que deben incorporarse a los sistemas de aplicación durante las fases de desarrollo para asegurar que cumplan con los requisitos del negocio.
+
+ | Comprobar la existencia de **procedimientos de control interno** y verificar su correcta definición y aplicación según principios sólidos de **Ingeniería de Software**, determinando las deficiencias de control existentes y los riesgos asociados.
+
+ |
+| **Nivel de estructuración y flexibilidad** | **Más flexible y general:** Plantea un conjunto de acciones y propuestas generales sin imponer el «cómo» estricto; el auditor decide dónde poner el foco. Por eso se adapta más fácilmente tanto a metodologías clásicas como a marcos ágiles.
+
+ | **Muy estructurado, técnico y detallado:** Define procedimientos y guías claras paso a paso (asociado a metodologías tradicionales en cascada derivadas de normas ISO, como *Métrica v3*), apoyándose en herramientas y listas de verificación para cada etapa.
+
+ |
+| **Mirada y foco principal** | Se enfoca más en el **marco institucional, administrativo y organizacional** del desarrollo, con la mirada puesta en la productividad, la relación costo-beneficio (justificación económica), el planeamiento estratégico y los aspectos normativos.
+
+ | Combina una **perspectiva técnica de ingeniería de software y de gestión organizativa** («Doble foco»), centrada en la calidad del software para evitar los altos costos de mantenimiento y el fracaso de proyectos (*crisis del software*).
+
+ |
+| **Metodología de auditoría utilizada** | Se basa en la determinación de **puntos de control** clave insertos en el cuerpo del sistema y a lo largo de las fases del proyecto, junto con la incorporación de **módulos y pistas de auditoría** para facilitar futuras revisiones de rutina.
+
+ | Aplica formalmente la **metodología de evaluación de riesgos de ISACA**: parte de los riesgos potenciales de la actividad y sigue el esquema jerárquico: **$N$ Objetivos de Control $\rightarrow$ Técnicas de Control (`C-X-m`) $\rightarrow$ Pruebas de Cumplimiento**.
+
+ |
+| **Cobertura y división del alcance** | **Abordaje amplio en 4 niveles** (incluye etapas previas y posteriores a la construcción):
+
+<br>
+
+<br>1. **Revisión del ciclo de vida:** Parte del *Plan Maestro de SI/TI*, el *Estudio de Factibilidad* y recorre las fases desde análisis de requerimientos hasta la **Posinstalación (mantenimiento)**.
+
+<br>
+
+<br>2. **Auditoría de la documentación de sistemas:** Documentos exigidos por etapa.
+
+<br>
+
+<br>3. **Auditoría de adquisición de software:** Solvencia del proveedor, contratos, recupero/propiedad del código fuente y soporte.
+
+<br>
+
+<br>4. **Auditoría de modificación de programas:** Autorización, trazabilidad del cambio y concordancia entre código fuente y objeto.
+
+ | **Abordaje dividido en 2 grandes bloques (Doble foco)**, acotado al ciclo de desarrollo puro (abarca análisis, diseño, construcción e implantación, pero **excluye** explotación, mantenimiento y retiro, que se tratan en capítulos aparte):
+
+<br>
+
+<br>1. **Auditoría de la organización y gestión del área de desarrollo:** Cómo se administra y trabaja el personal (propone 8 objetivos de control divididos en niveles de la A a la G).
+
+<br>
+
+<br>2. **Auditoría de proyectos de desarrollo de SI:** Aprobación, planificación, gestión y calidad de cada proyecto específico según sus riesgos, complejidad y recursos.
+
+ |
+| **Rol del auditor e independencia** | Cumple un **papel activo de consultoría/asesoría** trabajando a la par del equipo durante las fases del ciclo de vida para definir los puntos de control y rastros de auditoría. Para no perder objetividad ni independencia, **la persona que luego audite el sistema en posinstalación/producción debe ser distinta de la que ayudó a definir los puntos de control**.
+
+ | Actúa como una función evaluadora e independiente que **verifica la existencia y el grado de cumplimiento** de los objetivos y controles ya establecidos por la organización, recolectando evidencias mediante pruebas de cumplimiento (o exámenes más profundos y muestreo cuando se requiere) para identificar puntos fuertes, débiles y riesgos no cubiertos.
+
+ |
+
+---
+
+##### Síntesis para recordar en el examen
+
+* **Lardent** piensa en el auditor metido en el proyecto como un **asesor preventivo** que se asegura de que haya un *Plan Maestro*, un *Estudio de Factibilidad* rentable y que se planten **puntos de control y pistas de auditoría** adentro del software antes de que salga a la calle (cubriendo además qué pasa si el software se compra hecho o si se modifica en mantenimiento).
+
+
+* **Piattini & Del Peso** miran el desarrollo desde la **Ingeniería del Software y la metodología ISACA**, separando la auditoría en dos mitades (**1. Cómo está organizado el departamento de desarrollo** y **2. Cómo se gestiona y construye cada proyecto en sí**), dándole al auditor una **guía estructurada de Objetivos de Control, Técnicas y Pruebas de Cumplimiento** desde el análisis hasta la implantación.
