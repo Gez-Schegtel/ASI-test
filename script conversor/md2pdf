@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 # ==============================================================================
 # SCRIPT: md2pdf
@@ -27,7 +28,7 @@
 #     3. Ejecuta pandoc una vez por archivo. El PDF se guarda al lado del .md
 #        con el mismo nombre (nota.md -> nota.pdf). Las imágenes se buscan
 #        primero en la carpeta del .md, así funciona aunque lo ejecutes desde
-#        otra carpeta.
+#        otra carpeta, y después en las carpetas que pases con -i.
 #     4. Si un archivo falla, sigue con los demás y al final informa cuáles
 #        no se pudieron convertir.
 #
@@ -38,10 +39,16 @@
 #   md2pdf ~/notas/*.md       (Los archivos pueden estar en cualquier carpeta)
 #   md2pdf -y archivo.md      (-y o --yes: convierte sin pedir confirmación;
 #                              va con cualquiera de las formas de arriba)
+#   md2pdf -i ~/imagenes archivo.md
+#                             (-i o --imagenes: otra carpeta donde buscar las
+#                              imágenes, también en sus subcarpetas. Se puede
+#                              repetir: -i una -i otra. Sirve cuando las
+#                              imágenes no están al lado del .md ni dentro del
+#                              vault o repositorio de la nota)
 #
-# NOTAS DE OBSIDIAN:
-#   Si un .md tiene sintaxis de Obsidian ([[...]]) o imágenes, antes de pasarlo a pandoc
-#   se traduce a Markdown estándar en una copia temporal (el .md no se toca):
+# SINTAXIS QUE PANDOC NO ENTIENDE (Obsidian, GitHub, Notion...):
+#   Si un .md tiene enlaces [[...]], imágenes o avisos > [!NOTE], antes de
+#   pasarlo a pandoc se traduce en una copia temporal (el .md no se toca):
 #       ![[foto.png]]         ->  la imagen
 #       ![[foto.png|400]]     ->  la imagen con 400 px de ancho
 #       ![[foto.png|derecha]] ->  la imagen pegada a la derecha ("izquierda"
@@ -51,15 +58,27 @@
 #       [[Nota]]              ->  Nota          (texto, sin enlace)
 #       [[Nota|otro texto]]   ->  otro texto
 #   La imagen se busca, en este orden: en la carpeta del .md (o la ruta escrita,
-#   si tiene carpeta), y después por nombre en todo el vault (la carpeta que
-#   tiene .obsidian/). Si no hay vault, en todo el repositorio git del .md; y
-#   si tampoco hay, en la carpeta del .md y sus subcarpetas.
+#   si tiene carpeta); en las carpetas de -i, si pasaste alguna (también por
+#   nombre en sus subcarpetas); y después por nombre en todo el vault (la
+#   carpeta que tiene .obsidian/). Si no hay vault, en todo el repositorio git
+#   del .md; y si tampoco hay, en la carpeta del .md, sus subcarpetas y las
+#   carpetas hermanas (las que están al lado, dentro de la misma carpeta) con
+#   sus subcarpetas, salvo que la carpeta de arriba sea tu carpeta personal o /
+#   (para no recorrer todo el disco). Si hay varias con el mismo nombre, usa
+#   la más cercana a la nota.
 #   Lo mismo vale para las imágenes de Markdown estándar, ![texto](foto.png),
 #   que es lo que Obsidian escribe si desactivás los wikilinks (con %20 en vez
 #   de espacios): si el archivo no está donde dice la ruta, se busca por nombre
 #   en el vault. Si la ruta existe tal cual, no se toca nada.
+#   Si el texto de una imagen es solo el nombre del archivo
+#   (![image.png](...), como exporta Notion), no se usa: pandoc lo pondría de
+#   epígrafe. Los acentos de la ruta se aceptan escritos de las dos formas
+#   que existen en Unicode (las exportaciones de Notion a veces usan la otra).
+#   Avisos de GitHub y callouts de Obsidian:
+#       > [!NOTE]             ->  > **Nota**   (el tipo, traducido)
+#       > [!tip] Mi título    ->  > **Mi título**
 #   Dentro de bloques de código y de `código en línea` no se cambia nada.
-#   Los .md sin [[ ]] ni imágenes pasan directo a pandoc, sin traducción.
+#   Los .md sin [[ ]], imágenes ni avisos pasan directo a pandoc, sin traducción.
 #
 # CÓDIGO DE SALIDA:
 #   0 si todo se convirtió (o si cancelaste), 1 si algún archivo falló o si
@@ -71,7 +90,8 @@
 #     estilo (la lista completa está en el README del repositorio Pandoc config)
 #   - El repositorio Pandoc config instalado en la carpeta de datos de pandoc
 #     (para comprobarlo: pandoc --version | grep -i "user data")
-#   - perl, solo para las notas de Obsidian (viene instalado en Debian/Ubuntu).
+#   - perl, para traducir la sintaxis que pandoc no entiende (viene instalado
+#     en Debian/Ubuntu).
 #     git es opcional: si está, se usa para encontrar la raíz del repositorio.
 #
 # Instalación de dependencias en Debian/Ubuntu:
@@ -112,14 +132,31 @@ if ! echo "" | pandoc -d estilo -t plain -o /dev/null 2>/dev/null; then
 fi
 
 # --- Opciones -----------------------------------------------------------------
-# -y / --yes: no pregunta, convierte directo. zparseopts saca las opciones de
-# los argumentos (-E: en cualquier posición); -F falla con una opción que no
-# existe. Un "--" suelto se descarta (se acepta por costumbre de otros comandos).
-zparseopts -D -E -F -- y=opcion_y -yes=opcion_y 2>/dev/null || {
-  echo "❌ Opción no válida. Uso: md2pdf [-y] [archivo.md ...]"
+# -y / --yes: no pregunta, convierte directo.
+# -i carpeta / --imagenes carpeta: otra carpeta donde buscar las imágenes. Se
+#   puede repetir (-i una -i otra).
+# zparseopts saca las opciones de los argumentos (-E: en cualquier posición);
+# -F falla con una opción que no existe. Un "--" suelto se descarta (se acepta
+# por costumbre de otros comandos).
+uso="Uso: md2pdf [-y] [-i carpeta_de_imágenes] [archivo.md ...]"
+zparseopts -D -E -F -- y=opcion_y -yes=opcion_y \
+    i+:=opcion_i -imagenes+:=opcion_i 2>/dev/null || {
+  echo "❌ Opción no válida o incompleta. $uso"
   exit 1
 }
 [[ $1 == -- ]] && shift
+
+# opcion_i queda como pares (-i carpeta -i carpeta ...): se toman las carpetas,
+# se comprueba que existan y se pasan a ruta absoluta.
+carpetas_imagenes=()
+for (( k = 2; k <= $#opcion_i; k += 2 )); do
+  carpeta="${opcion_i[k]#=}"      # --imagenes=carpeta deja un "=" adelante
+  if [[ ! -d $carpeta ]]; then
+    echo "❌ La carpeta de imágenes '$carpeta' no existe. $uso"
+    exit 1
+  fi
+  carpetas_imagenes+=("${carpeta:A}")
+done
 
 # --- 1. Construimos la lista de archivos a convertir --------------------------
 archivos=()
@@ -172,11 +209,16 @@ else
   esac
 fi
 
-# --- Traducción de la sintaxis de Obsidian -----------------------------------
-# Solo se usa con los .md que tienen [[ ]] (ver "NOTAS DE OBSIDIAN" arriba).
+# --- Traducción de la sintaxis que pandoc no entiende -------------------------
+# Solo se usa con los .md que tienen [[ ]], imágenes o avisos [!...] (ver
+# "SINTAXIS QUE PANDOC NO ENTIENDE" arriba).
 
 # Carpeta donde buscar imágenes por nombre: el vault de Obsidian (la carpeta
-# que contiene .obsidian/), si no el repositorio git, si no la carpeta del .md.
+# que contiene .obsidian/), si no el repositorio git. Si no hay ninguno, la
+# carpeta de arriba del .md: así entran la carpeta del .md, sus subcarpetas y
+# las carpetas "hermanas" (por ejemplo notas/ y fotos/ dentro de la misma
+# carpeta). Pero si la carpeta de arriba es tu carpeta personal o la raíz (/),
+# se busca solo en la del .md, para no recorrer todo el disco.
 carpeta_de_busqueda() {
   local carpeta=${1:A} d=${1:A} raiz
   while [[ $d != / ]]; do
@@ -185,44 +227,63 @@ carpeta_de_busqueda() {
   done
   if raiz=$(git -C "$carpeta" rev-parse --show-toplevel 2>/dev/null); then
     print -r -- $raiz
-  else
+  elif [[ ${carpeta:h} == (/|${HOME:A}) ]]; then
     print -r -- $carpeta
+  else
+    print -r -- ${carpeta:h}
   fi
 }
 
 # Programa en perl que hace la traducción. Lee el .md y escribe el resultado.
 # Variables que recibe: CARPETA_MD (carpeta del .md) y BASE (dónde buscar).
-read -r -d '' TRADUCIR_OBSIDIAN <<'PERL'
+read -r -d '' TRADUCIR <<'PERL'
 use strict; use warnings; use utf8;
-use File::Find; use File::Basename qw(basename);
-use Encode qw(encode decode);
+use File::Find; use File::Basename qw(basename); use File::Spec;
+use Encode qw(encode decode); use Unicode::Normalize qw(NFC NFD);
 # Las rutas se manejan como texto (decodificado) y se codifican en UTF-8 solo
 # al preguntarle algo al sistema de archivos, para que anden acentos y eñes.
 sub fs  { encode("UTF-8", $_[0]) }
 sub txt { decode("UTF-8", $_[0]) }
 my $carpeta = txt($ENV{CARPETA_MD});
 my $base    = txt($ENV{BASE});
-my %indice;   # nombre de archivo -> rutas encontradas (se arma al necesitarlo)
-my $indexado = 0;
+# Carpetas pasadas con -i (una por línea; pueden no venir).
+my @extras  = grep { length } split /\n/, txt($ENV{IMAGENES} // "");
+my %indices;  # carpeta -> { nombre de archivo -> rutas } (se arma al necesitarlo)
 
+sub indice_de {
+  my ($dir) = @_;
+  return $indices{$dir} if $indices{$dir};
+  my %ind; my $raiz = fs($dir);
+  find({ no_chdir => 1, wanted => sub {
+    if (-d $_ && basename($_) =~ /^\./ && $_ ne $raiz) { $File::Find::prune = 1; return; }
+    if (-f $_) { my $r = txt($_); push @{ $ind{NFC(basename($r))} }, $r; }
+  } }, $raiz);
+  return $indices{$dir} = \%ind;
+}
+
+# Orden: la ruta tal cual desde la carpeta del .md, desde cada carpeta de -i y
+# desde el vault; después, por nombre dentro de las carpetas de -i (y sus
+# subcarpetas) y por último por nombre en todo el vault.
 sub buscar {
   my ($ruta) = @_;
-  return "$carpeta/$ruta" if -f fs("$carpeta/$ruta");
-  return "$base/$ruta"    if -f fs("$base/$ruta");
-  if (!$indexado) {
-    my $raiz = fs($base);
-    find({ no_chdir => 1, wanted => sub {
-      if (-d $_ && basename($_) =~ /^\./ && $_ ne $raiz) { $File::Find::prune = 1; return; }
-      if (-f $_) { my $r = txt($_); push @{ $indice{basename($r)} }, $r; }
-    } }, $raiz);
-    $indexado = 1;
+  # Los acentos pueden estar escritos de dos formas ("á" o "a" + tilde, como
+  # en algunas exportaciones de Notion): se prueban las dos.
+  for my $dir ($carpeta, @extras, $base) {
+    for my $v ($ruta, NFC($ruta), NFD($ruta)) {
+      return "$dir/$v" if -f fs("$dir/$v");
+    }
   }
-  my @c = @{ $indice{basename($ruta)} || [] };
   my $fin = "/$ruta";                               # si se escribió carpeta/foto.png
-  my @exactos = grep { substr($_, -length($fin)) eq $fin } @c;
-  @c = @exactos if @exactos;
-  return undef unless @c;
-  return (sort { length($a) <=> length($b) || $a cmp $b } @c)[0];  # la más cercana
+  for my $dir (@extras, $base) {
+    my @c = @{ indice_de($dir)->{NFC(basename($ruta))} || [] };
+    my @exactos = grep { my $n = NFC($_); substr($n, -length($fin)) eq NFC($fin) } @c;
+    @c = @exactos if @exactos;
+    # Si hay varias con el mismo nombre, la más cercana a la nota: la que está
+    # a menos carpetas de distancia (contando las subidas con ..).
+    my %dist = map { my $r = File::Spec->abs2rel($_, $carpeta); ($_ => scalar(split m{/}, $r)) } @c;
+    return (sort { $dist{$a} <=> $dist{$b} || $a cmp $b } @c)[0] if @c;
+  }
+  return undef;
 }
 
 sub traducir {
@@ -265,19 +326,48 @@ sub imagen_estandar {
   my $d = $dest;
   $d =~ s/^<(.*)>$/$1/;
   return $original if $d =~ m{^(?:[a-zA-Z][a-zA-Z0-9+.\-]*:|/|\#)};   # URL, ruta absoluta
-  my $dec = $d;
+  # %XX son bytes de UTF-8: se decodifican sobre los bytes de la ruta (no sobre
+  # el texto), así anda también si la ruta tiene acentos o emojis sin codificar.
+  my $dec = fs($d);
   $dec =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/ge;
   $dec = txt($dec);                                   # bytes UTF-8 -> texto
-  return $original if -f fs("$carpeta/$d") || -f fs("$carpeta/$dec");
+  # Si el texto es solo el nombre del archivo ("image.png", como lo exporta
+  # Notion), no se usa: pandoc lo pondría de epígrafe ("Figura 1: image.png").
+  my $alt_nuevo = (NFC(lc $alt) eq NFC(lc basename($dec))
+                   || $alt =~ /^\s*(?:untitled|image|imagen|pasted image[^\]]*)(?:\.\w{3,4})?\s*$/i) ? "" : $alt;
+  my $resto = defined $titulo ? $titulo : "";
+  if (-f fs("$carpeta/$d") || -f fs("$carpeta/$dec")) {
+    return $alt_nuevo eq $alt ? $original : "![$alt_nuevo]($dest$resto)";
+  }
   my $ruta = buscar($dec);
   return $original unless defined $ruta;
-  return "![$alt](<$ruta>" . (defined $titulo ? $titulo : "") . ")";
+  return "![$alt_nuevo](<$ruta>$resto)";
 }
 
-my $en_codigo = 0;
+# Nombre en castellano de cada tipo de aviso ([!NOTE], [!tip]...).
+my %TIPOS = (note => "Nota", info => "Información", tip => "Consejo", hint => "Consejo",
+  important => "Importante", warning => "Advertencia", caution => "Precaución",
+  attention => "Atención", danger => "Peligro", error => "Error", bug => "Error",
+  example => "Ejemplo", quote => "Cita", cite => "Cita", question => "Pregunta",
+  faq => "Pregunta", help => "Pregunta", success => "Hecho", check => "Hecho",
+  done => "Hecho", failure => "Falla", fail => "Falla", missing => "Falta",
+  todo => "Pendiente", abstract => "Resumen", summary => "Resumen", tldr => "Resumen");
+# Un bloque de código se cierra con la misma marca con que se abrió (``` o
+# ~~~, de al menos el mismo largo): un ~~~ dentro de un ``` no lo cierra.
+my $cerca = "";
+sub cierra { $_[0] =~ /^\s*(`+|~+)\s*$/ && substr($1, 0, 1) eq substr($_[1], 0, 1) && length($1) >= length($_[1]) }
 while (my $linea = <STDIN>) {
-  if ($linea =~ /^\s*(```|~~~)/) { $en_codigo = !$en_codigo; print $linea; next; }
-  if ($en_codigo) { print $linea; next; }
+  if ($cerca ne "") { print $linea; $cerca = "" if cierra($linea, $cerca); next; }
+  if ($linea =~ /^\s*(```+|~~~+)/) { $cerca = $1; print $linea; next; }
+  # Avisos de GitHub y callouts de Obsidian: "> [!NOTE] Título". Pandoc los
+  # muestra como una cita con "[!NOTE]" a la vista: queda el título en negrita
+  # (o el tipo, traducido, si no tiene título). El +/- de plegado se ignora.
+  $linea =~ s{^(\s*(?:>\s*)+)\[!(\w+)\][-+]?[ \t]*(.*?)[ \t\r]*$}{
+    my ($pre, $tipo, $titulo) = ($1, lc $2, $3);
+    $titulo = $TIPOS{$tipo} // ucfirst($tipo) if $titulo eq "";
+    (my $vacia = $pre) =~ s/\s+$//;               # línea de cita vacía: el título va solo
+    "$pre**$titulo**\n$vacia"
+  }e;
   # `código` se deja igual; ![[...]] y [[...]] se traducen
   $linea =~ s{(`+)(.*?)\1|(!?)\[\[([^\[\]\n]+?)\]\]|!\[([^\[\]\n]*)\]\((<[^>\n]+>|[^)\s]+)(\s+"[^"\n]*")?\)}{
     defined $1 ? "$1$2$1"
@@ -295,26 +385,32 @@ PERL
 # --resource-path: carpetas donde pandoc busca las imágenes (separadas por ":").
 # Por defecto busca solo en la carpeta desde donde se ejecuta el comando, así
 # que "md2pdf ~/notas/apunte.md" desde otra carpeta perdía las imágenes de
-# ~/notas. ${archivo:h} es la carpeta del .md; después se prueba la actual.
+# ~/notas. ${archivo:h} es la carpeta del .md; después, las carpetas de -i, y
+# por último la actual.
 #
-# Si el .md tiene sintaxis de Obsidian, pandoc lee una copia traducida (en una
+# Si el .md tiene algo que traducir, pandoc lee una copia traducida (en una
 # carpeta temporal); las imágenes normales se siguen buscando en la carpeta
 # del .md gracias a --resource-path.
 fallidos=()
+temporal=""
+# Borrar la copia temporal al salir, también si se cancela con Ctrl+C.
+trap 'rm -f -- ${temporal:+"$temporal"}' EXIT
+trap 'echo; echo "Cancelado."; exit 130' INT TERM HUP
 for archivo in "${archivos[@]}"; do
   salida="${archivo:r}.pdf"
   entrada="$archivo"
   temporal=""
-  if grep -q -e '\[\[' -e '!\[' -- "$archivo"; then
+  if grep -q -e '\[\[' -e '!\[' -e '\[!' -- "$archivo"; then
     temporal="$(mktemp --suffix=.md)"
     if ! CARPETA_MD="${archivo:h:A}" BASE="$(carpeta_de_busqueda "${archivo:h}")" \
-         perl -CSD -e "$TRADUCIR_OBSIDIAN" < "$archivo" > "$temporal"; then
-      echo "❌ Error al traducir la sintaxis de Obsidian: $archivo"
+         IMAGENES="${(F)carpetas_imagenes}" perl -CSD -e "$TRADUCIR" < "$archivo" > "$temporal"; then
+      echo "❌ Error al traducir la sintaxis que pandoc no entiende: $archivo"
       fallidos+=("$archivo"); rm -f "$temporal"; continue
     fi
     entrada="$temporal"
   fi
-  if pandoc -d estilo --resource-path="${archivo:h}:." --output="$salida" -- "$entrada"; then
+  rutas=("${archivo:h}" "${carpetas_imagenes[@]}" ".")
+  if pandoc -d estilo --resource-path="${(j.:.)rutas}" --output="$salida" -- "$entrada"; then
     echo "✔ Generado: $salida"
   else
     echo "❌ Error al convertir: $archivo"
