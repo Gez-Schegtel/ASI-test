@@ -75,9 +75,9 @@ Dicha falla es una pérdida de uno o más de los siguientes **tres aspectos** de
 
 De esta definición se desprende que las organizaciones necesitan **administrar el riesgo** de exposición de cada uno de los elementos de los IS. **Este management deberá considerar el equilibrio entre los costos resultantes de una falla de seguridad y los costos de las medidas necesarias para aumentar la seguridad.** El punto central es identificar el equilibrio óptimo.
 
-![[Pasted image 20261024191753.png]]
+![](../assets/Pasted%20image%2020261024191753.png)
 
-![[Pasted image 20261024191758.png]]
+![](../assets/Pasted%20image%2020261024191758.png)
 
 El costo de no tener seguridad puede ser difícil de definir, aun cuando las fallas ocurran. El management del riesgo intenta reducir estas pérdidas. **Un enfoque sistemático del management del riesgo permitirá administrar la seguridad de los IS reconociendo la vulnerabilidad y la sensibilidad de los sistemas de la empresa y de los datos que contienen, pero también los costos de los controles y de las medidas para el manejo de riesgos.** **Ningún sistema puede ser completamente seguro.** El management permite elegir e implementar las contramedidas de forma planificada y administrada.
 
@@ -130,9 +130,9 @@ La vulnerabilidad de un área en particular depende de los siguientes factores:
 - El tamaño de la red.
 - La calidad de la transmisión de datos.
 
-![[Pasted image 20261024191812.png]]
+![](../assets/Pasted%20image%2020261024191812.png)
 
-![[Pasted image 20261024191819.png]]
+![](../assets/Pasted%20image%2020261024191819.png)
 
 Los activos vulnerables a pérdidas debido a una amenaza pueden ser:
 
@@ -179,7 +179,7 @@ El análisis del impacto potencial (es decir, para cada riesgo identificado, la 
 1. La primera evalúa los costos empresariales que surgen de una brecha de seguridad. Esta evaluación debería incluir, al menos de modo aproximado, cálculos financieros, incluso para los costos conceptuales. Existe un gran número de aspectos relacionados con las pérdidas potenciales provenientes de una falla de seguridad.
 2. A esto se le suma la posibilidad calculada de que suceda: la segunda etapa consiste en estimar la frecuencia de ocurrencia de cualquier falla de seguridad a partir de la probabilidad de agresión y de la probabilidad de que la agresión prospere (se entiende por agresión cualquier falla en la seguridad, no necesariamente un abuso humano deliberado).
 
-![[Pasted image 20261024191832.png]]
+![](../assets/Pasted%20image%2020261024191832.png)
 
 El producto del costo y la frecuencia da como resultado la pérdida anual esperada para cada amenaza:
 
@@ -201,7 +201,7 @@ Para evaluar la magnitud de la pérdida resultante de una falla de seguridad se 
 
 No todas las pérdidas empresariales son el resultado directo de una falla de seguridad. Las **pérdidas secundarias** (que surgen como consecuencia de las pérdidas primarias y no de la falla en sí misma) tienen gran importancia en el cálculo de las pérdidas.
 
-![[Pasted image 20261024191855.png]]
+![](../assets/Pasted%20image%2020261024191855.png)
 
 Si las consecuencias primarias son difíciles de cuantificar, aún más difícil es evaluar las secundarias, que tienden a ser más costosas que las pérdidas directas y, como son costos empresariales, por lo general aparecen después de un largo tiempo. Pocas veces resulta práctico asignar valores monetarios detallados a las consecuencias secundarias; en su lugar, se utilizan clasificaciones cualitativas.
 
@@ -344,7 +344,7 @@ Los términos relacionados con estas etapas son:
 
 El primer paso de la planificación de contingencias consiste en clasificar los sistemas y las aplicaciones según la necesidad de las operaciones empresariales (***grado de tolerancia***). Esta clasificación permite establecer prioridades entre los elementos de los IS. El plan de recuperación debe cubrir todos los aspectos del uso y del management de los SI.
 
-![[Pasted image 20261024191926.png]]
+![](../assets/Pasted%20image%2020261024191926.png)
 
 Las organizaciones con un alto nivel de automatización están sometidas a mayores riesgos que las escasamente mecanizadas: tendrán mayores dificultades para restaurar sus procedimientos y, además, menor capacidad para procesar sus datos.
 
@@ -450,8 +450,10 @@ Una política puede ser:
 
 - **Prohibitiva**: todo lo que no está expresamente permitido está denegado.
     - Es mucho más restrictiva, y podría considerarse más efectiva en cuanto a seguridad.
+
     > Ejemplo: al área de TIC solo puede entrar el personal del área; a tal área solo pueden entrar tales personas.
 - **Permisiva**: todo lo que no está expresamente prohibido está permitido.
+
     > ***Ejemplo: no puedo tomar mate en el laboratorio, pero entonces sí puedo tomar café o gaseosa.***
 
 Las políticas prohibitivas son más efectivas en cuanto a seguridad.
@@ -508,7 +510,7 @@ Cualquier política debe contemplar seis elementos clave de la seguridad de un s
 4. **Fase de eliminación**:
     1. **Retiro**: una vez que la política cumplió su finalidad y ya no es necesaria (por ejemplo, por grandes avances tecnológicos), debe retirarse.
 
-![[Pasted image 20261024191945.png]]
+![](../assets/Pasted%20image%2020261024191945.png)
 
 ## Clasificación y tipos de ataques contra sistemas de información
 
@@ -639,7 +641,7 @@ La implantación de una política y una cultura de seguridad debe realizarse por
 
 La creación de un sistema de control informático es una responsabilidad de la Gerencia y un punto destacable de la política del entorno informático.
 
-![[Pasted image 20261024192007.png|350]]
+![](../assets/Pasted%20image%2020261024192007.png){width=350px}
 
 ### Auditoría informática vs. Control Interno Informático (Piattini)
 
@@ -737,9 +739,9 @@ El **programa de auditoría** es un conjunto de instrucciones que guía a los au
 
 ## **Pasos para la ejecución de una auditoría de sistemas de información**
 
-![[Pasted image 20261024192019.png]]
+![](../assets/Pasted%20image%2020261024192019.png)
 
-![[Pasted image 20261024192026.png]]
+![](../assets/Pasted%20image%2020261024192026.png)
 
 Entre los aspectos que el auditor de sistemas de información debe considerar al planificar se encuentran los siguientes:
 
@@ -873,7 +875,7 @@ Reporta a organismos oficiales públicos o a determinadas empresas. *Tiene impli
 |Solo personal interno.|Personal interno o externo con dependencia de la organización.||
 |Alcance: el Departamento de Informática.|Alcance: cubre todos los componentes de SI de la organización. Orientada a la mejora continua.||
 
-![[aInterna_vs_aExterna.jpeg|550]]
+![](../assets/aInterna_vs_aExterna.jpeg){width=550px}
 
 ## Informes de auditoría
 
@@ -989,7 +991,6 @@ Propone usar la metodología ISACA para evaluar los riesgos definiendo objetivos
     - Posinstalación (mantenimiento).
 
 > **Nota...**
->
 > **IMPORTANTE: no hay que confundir auditoría con certificación de calidad. La certificación utiliza la auditoría, pero también se puede hacer una auditoría solo para saber si se están haciendo bien las cosas.**
 
 ## Auditoría de Sistemas de Aplicación Instalados
@@ -1207,7 +1208,7 @@ Auditoría externa informática:
 2. **Trabajo de campo y documentación:** corresponde al **paso 3** (ejecución del programa de revisión), donde se sale a aplicar la planificación y se documentan las fuentes de evidencia (algo que se está separando de la norma).
 3. **Reporte y seguimiento:** abarca los **pasos 4, 5 y 6**, ya que el reporte comprende el cierre de la revisión y la elaboración del informe final, seguido de la verificación posterior de las recomendaciones.
 
-![[Pasted image 20261024192225.png]]
+![](../assets/Pasted%20image%2020261024192225.png)
 
 ### Importancia de procedimientos
 
@@ -1346,7 +1347,118 @@ Diseño e implementación de esquemas de líneas preventivas, de detección y de
 
 1. ¿Qué es el delito informático? ¿Quiénes son sus artífices y con qué modalidad operan?
 
-## Parte II. Auditoría de SI/TI
+> Lo que puse a continuación es un montón, pero lo agrego igual porque me gustó...
+
+### 1. ¿Qué es el delito informático?
+
+Según **Emilio del Peso y Mario Piattini** (la definición exacta incluida en la sección *3.3.* de tu apunte):
+
+> *«Se denomina **delito informático** a toda acción (u omisión) culpable realizada por un ser humano, que cause perjuicio a otras personas sin que necesariamente se beneficie el autor o que, por el contrario, produzca un beneficio ilícito a su autor aunque no perjudique de forma directa o indirecta a la víctima, **tipificado por la ley**, que se realiza en un **entorno informático** y está **sancionado con una pena**»*.
+> 
+> 
+
+* **Características clave:**
+* Los sistemas de información y las computadoras pueden funcionar tanto como el **medio o instrumento** para cometer el ilícito (por ejemplo, una estafa financiera alterando registros contables) como el **fin u objeto** del delito en sí mismo (por ejemplo, el sabotaje informático, la destrucción de bases de datos o la piratería de software).
+
+
+* Se los cataloga como **«delitos de cuello blanco»**: requieren conocimientos técnicos específicos, ocurren sin violencia física visible, a distancia y en fracciones de segundo, dejando muy poco rastro físico, lo que genera una alta complejidad probatoria.
+
+
+* En un sentido amplio, abarcan tres grandes grupos de figuras delictivas: **delitos contra la intimidad** (descubrimiento y revelación de secretos o datos personales), **delitos contra el patrimonio** (estafas informáticas, defraudaciones, daños a datos/programas y violación de propiedad intelectual) y **falsedades documentales** (como la falsificación de tarjetas o documentos electrónicos).
+
+
+
+
+
+---
+
+### 2. ¿Quiénes son sus artífices (sujetos activos)?
+
+Lardent y Piattini clasifican a los causantes de violaciones y delitos informáticos según su vínculo con la organización, su nivel técnico y su motivación:
+
+1. **Personal interno y ex-empleados (*Insiders*):** Estadísticamente representan la **mayor fuente de riesgo** para cualquier organización. Conocen en detalle los procedimientos, las debilidades de los controles internos, las claves y las rutas de acceso (incluyen operadores, programadores, administradores de bases de datos o usuarios finales deshonestos o disconformes). Por esto es vital aplicar la segregación de funciones.
+
+
+2. **Hackers:** Son individuos con profundos conocimientos técnicos en sistemas, programación y redes que buscan demostrar su habilidad para burlar los controles y acceder a información reservada por desafío intelectual o curiosidad. Aunque en principio su propósito no suele ser destruir información, el resultado final sí puede ocasionar daños graves.
+
+
+3. **Crackers:** Sujetos con altos conocimientos técnicos que operan con **fines maliciosos, de lucro ilícito o contratados por terceros**. Irrumpen en los sistemas para destruir datos, denegar servicios, cometer fraudes, robar información o desproteger software comercial.
+
+
+4. **Phreakers:** Especialistas que intentan ingresar y manipular ilegalmente los **sistemas de telecomunicaciones y redes telefónicas** para interceptar transmisiones o utilizar los servicios de comunicación sin pagar.
+
+
+5. **Piratas informáticos / Bucaneros:** Personas u organizaciones dedicadas a la copia, reproducción, distribución y comercialización ilegal de software o datos protegidos por derechos de autor (propiedad intelectual).
+
+
+6. **Lamers (*Script-kiddies*):** Usuarios sin conocimientos técnicos profundos que descargan y ejecutan herramientas de ataque automatizadas, virus o *scripts* armados por terceros para causar daño.
+
+
+7. **Espías industriales / Intrusos remunerados / Ciberterroristas:** Profesionales contratados por competidores u organizaciones criminales para sustraer secretos industriales, sabotear infraestructura crítica o extorsionar.
+
+
+
+---
+
+### 3. ¿Con qué modalidad operan?
+
+Esta parte de la pregunta se responde en **dos niveles**: las categorías generales de ataque a la información (sección *3.3.* del apunte) y las técnicas operativas específicas de fraude informático (Capítulo 22 de Lardent):
+
+#### A. Modalidades generales de ataque al flujo de información
+
+Se dividen en **ataques pasivos** (el intruso solo escucha o monitorea sin alterar los datos) y **ataques activos** (alteran el flujo de datos o crean flujos falsos, como la *suplantación de identidad*, la *reactuación/repetición de mensajes*, la *modificación de mensajes* y la *degradación fraudulenta del servicio*), agrupándose en cuatro categorías:
+
+* **Interrupción (contra la disponibilidad):** Destruir un recurso del sistema o dejarlo inutilizable (ej. dañar un disco duro o cortar una línea de comunicación).
+
+
+* **Intercepción (contra la confidencialidad):** Acceder sin autorización a un recurso (ej. pinchar una línea de red o copiar ilícitamente archivos).
+
+
+* **Modificación (contra la integridad):** Acceder a un recurso y además manipular su contenido (ej. cambiar saldos en un archivo o alterar el código de un programa).
+
+
+* **Fabricación (contra la autenticidad):** Insertar objetos o registros falsificados en el sistema (ej. inyectar mensajes espurios en la red o agregar registros falsos a una base de datos).
+
+
+
+#### B. Técnicas específicas para cometer delitos informáticos (Lardent)
+
+* **Alteración o manipulación de datos de entrada (*Data Diddling*):** Es la técnica más frecuente y sencilla. Se realiza antes de que se active el sistema de protección y consiste en modificar, falsificar u omitir datos antes o durante su ingreso a la computadora (cualquier persona que intervenga en la creación, grabación o codificación puede hacerlo).
+
+
+* **Caballos de Troya (*Trojan Horse*):** Consiste en introducir de forma encubierta, dentro de un programa autorizado y de uso habitual, un grupo de instrucciones ocultas con fines maliciosos que se ejecutan sin levantar sospechas cada vez que corre el programa legítimo (por ejemplo, para robar contraseñas o desviar dinero en una liquidación de sueldos).
+
+
+* **Técnica del salame (*Salami Technique*) y Redondeo por defecto (*Rounding Down*):** Modalidades de fraude financiero automatizado que consisten en retirar pequeñas cantidades o fracciones de centavos (producto del redondeo hacia abajo en cálculos de intereses o liquidaciones) de miles de cuentas o transacciones para desviarlas y acumularlas en una cuenta no autorizada.
+
+
+* **Superzapping (*Llave maestra*):** Uso fraudulento de un programa utilitario de emergencia del sistema que permite burlar todos los controles de seguridad y acceder directamente a los archivos o bases de datos almacenados para modificarlos sin dejar rastro en las pistas de auditoría.
+
+
+* **Virus informáticos, Gusanos y Bombas lógicas/de tiempo:**
+* Los **virus** son programas que se autoduplican desplazándose entre computadoras (por red, correo o soportes magnéticos) para destruir o dañar datos.
+
+
+* Las **bombas lógicas o de tiempo** son instrucciones destructivas que permanecen inactivas (latentes) dentro de un programa hasta que un acontecimiento determinado o una fecha específica activa su poder destructivo.
+
+
+* Los **gusanos** destruyen datos o saturan recursos de computación y redes hasta colapsarlas, pero sin necesitar infectar un archivo anfitrión como los virus.
+
+
+
+
+* **Puertas traseras o falsas (*Trap Doors / Backdoors*):** Instrucciones o accesos secretos insertados maliciosamente por los programadores en un programa autorizado (o dejados desde la etapa de desarrollo/depuración) para saltarse los controles de autenticación e introducir rutinas no autorizadas.
+
+
+* **Ingreso a caballito de otro (*Piggy-backing*):** Consiste en conectar una línea de comunicaciones a una computadora o sesión ya autorizada para interceptar los datos de la transmisión y alterarlos (o aprovechar la sesión abierta de un usuario legítimo).
+
+
+* **Ataque asincrónico:** Aprovecha el momento en que los datos en líneas de telecomunicaciones asincrónicas quedan en espera de que la línea esté libre antes de ser transmitidos, quedando expuestos a accesos o alteraciones no autorizadas.
+
+
+* **Recolección de residuos (*Scavenging*) y Fuga de datos:** Extraer información confidencial del equipo de computación, ya sea revisando listados impresos desechados o leyendo sectores de memoria y almacenamiento que otros usuarios utilizaron y dejaron sin borrar.
+
+## Cuestionario Parte II. Auditoría de SI/TI
 
 ### ¿Qué es la auditoría de sistemas de información?
 
@@ -1459,7 +1571,7 @@ El enfoque de Mario Piattini sobre la **auditoría del desarrollo** de software 
 - **Cobertura del ciclo de vida del software**: la auditoría del desarrollo incluye todo el ciclo de vida del software (análisis, diseño, construcción e implantación), pero no considera las fases de explotación, mantenimiento o retirada del servicio.
 - **Metodología basada en ISACA**: Piattini adopta el enfoque de evaluación de riesgos propuesto por la ISACA. Parte de los riesgos potenciales y define objetivos de control específicos, asociados a técnicas y pruebas de cumplimiento.
 
-    ![[Pasted image 20261024192457.png]]
+    ![](../assets/Pasted%20image%2020261024192457.png)
 
     > Observar la fuente (ISACA).
 
@@ -1471,66 +1583,18 @@ El enfoque de Mario Piattini sobre la **auditoría del desarrollo** de software 
 
 En resumen, el enfoque de Piattini combina la perspectiva técnica y la organizativa, y destaca la necesidad de controles de calidad y de gestión de riesgos durante todo el ciclo de vida del desarrollo.
 
+> En el apunte original estaba explicado el enfoque de Piattini solamente. A continuación, agregué un cuadro comparativo con el enfoque de Lardent también:
+
 #### Cuadro comparativo: Auditoría del Desarrollo de Sistemas (Lardent vs. Piattini & Del Peso)
 
 | Criterio de comparación | Enfoque de Alberto R. Lardent | Enfoque de Mario Piattini y Emilio del Peso |
 | --- | --- | --- |
-| **Objetivo principal** | Identificar, analizar y evaluar los requerimientos del usuario, los riesgos, las exposiciones a riesgos y los **puntos de control** que deben incorporarse a los sistemas de aplicación durante las fases de desarrollo para asegurar que cumplan con los requisitos del negocio.
-
- | Comprobar la existencia de **procedimientos de control interno** y verificar su correcta definición y aplicación según principios sólidos de **Ingeniería de Software**, determinando las deficiencias de control existentes y los riesgos asociados.
-
- |
-| **Nivel de estructuración y flexibilidad** | **Más flexible y general:** Plantea un conjunto de acciones y propuestas generales sin imponer el «cómo» estricto; el auditor decide dónde poner el foco. Por eso se adapta más fácilmente tanto a metodologías clásicas como a marcos ágiles.
-
- | **Muy estructurado, técnico y detallado:** Define procedimientos y guías claras paso a paso (asociado a metodologías tradicionales en cascada derivadas de normas ISO, como *Métrica v3*), apoyándose en herramientas y listas de verificación para cada etapa.
-
- |
-| **Mirada y foco principal** | Se enfoca más en el **marco institucional, administrativo y organizacional** del desarrollo, con la mirada puesta en la productividad, la relación costo-beneficio (justificación económica), el planeamiento estratégico y los aspectos normativos.
-
- | Combina una **perspectiva técnica de ingeniería de software y de gestión organizativa** («Doble foco»), centrada en la calidad del software para evitar los altos costos de mantenimiento y el fracaso de proyectos (*crisis del software*).
-
- |
-| **Metodología de auditoría utilizada** | Se basa en la determinación de **puntos de control** clave insertos en el cuerpo del sistema y a lo largo de las fases del proyecto, junto con la incorporación de **módulos y pistas de auditoría** para facilitar futuras revisiones de rutina.
-
- | Aplica formalmente la **metodología de evaluación de riesgos de ISACA**: parte de los riesgos potenciales de la actividad y sigue el esquema jerárquico: **$N$ Objetivos de Control $\rightarrow$ Técnicas de Control (`C-X-m`) $\rightarrow$ Pruebas de Cumplimiento**.
-
- |
-| **Cobertura y división del alcance** | **Abordaje amplio en 4 niveles** (incluye etapas previas y posteriores a la construcción):
-
-<br>
-
-<br>1. **Revisión del ciclo de vida:** Parte del *Plan Maestro de SI/TI*, el *Estudio de Factibilidad* y recorre las fases desde análisis de requerimientos hasta la **Posinstalación (mantenimiento)**.
-
-<br>
-
-<br>2. **Auditoría de la documentación de sistemas:** Documentos exigidos por etapa.
-
-<br>
-
-<br>3. **Auditoría de adquisición de software:** Solvencia del proveedor, contratos, recupero/propiedad del código fuente y soporte.
-
-<br>
-
-<br>4. **Auditoría de modificación de programas:** Autorización, trazabilidad del cambio y concordancia entre código fuente y objeto.
-
- | **Abordaje dividido en 2 grandes bloques (Doble foco)**, acotado al ciclo de desarrollo puro (abarca análisis, diseño, construcción e implantación, pero **excluye** explotación, mantenimiento y retiro, que se tratan en capítulos aparte):
-
-<br>
-
-<br>1. **Auditoría de la organización y gestión del área de desarrollo:** Cómo se administra y trabaja el personal (propone 8 objetivos de control divididos en niveles de la A a la G).
-
-<br>
-
-<br>2. **Auditoría de proyectos de desarrollo de SI:** Aprobación, planificación, gestión y calidad de cada proyecto específico según sus riesgos, complejidad y recursos.
-
- |
-| **Rol del auditor e independencia** | Cumple un **papel activo de consultoría/asesoría** trabajando a la par del equipo durante las fases del ciclo de vida para definir los puntos de control y rastros de auditoría. Para no perder objetividad ni independencia, **la persona que luego audite el sistema en posinstalación/producción debe ser distinta de la que ayudó a definir los puntos de control**.
-
- | Actúa como una función evaluadora e independiente que **verifica la existencia y el grado de cumplimiento** de los objetivos y controles ya establecidos por la organización, recolectando evidencias mediante pruebas de cumplimiento (o exámenes más profundos y muestreo cuando se requiere) para identificar puntos fuertes, débiles y riesgos no cubiertos.
-
- |
-
----
+| **Objetivo principal** | Identificar, analizar y evaluar los requerimientos del usuario, los riesgos, las exposiciones a riesgos y los **puntos de control** que deben incorporarse a los sistemas de aplicación durante las fases de desarrollo para asegurar que cumplan con los requisitos del negocio. | Comprobar la existencia de **procedimientos de control interno** y verificar su correcta definición y aplicación según principios sólidos de **Ingeniería de Software**, determinando las deficiencias de control existentes y los riesgos asociados. |
+| **Nivel de estructuración y flexibilidad** | **Más flexible y general:** Plantea un conjunto de acciones y propuestas generales sin imponer el «cómo» estricto; el auditor decide dónde poner el foco. Por eso se adapta más fácilmente tanto a metodologías clásicas como a marcos ágiles. | **Muy estructurado, técnico y detallado:** Define procedimientos y guías claras paso a paso (asociado a metodologías tradicionales en cascada derivadas de normas ISO, como *Métrica v3*), apoyándose en herramientas y listas de verificación para cada etapa. |
+| **Mirada y foco principal** | Se enfoca más en el **marco institucional, administrativo y organizacional** del desarrollo, con la mirada puesta en la productividad, la relación costo-beneficio (justificación económica), el planeamiento estratégico y los aspectos normativos. | Combina una **perspectiva técnica de ingeniería de software y de gestión organizativa** («Doble foco»), centrada en la calidad del software para evitar los altos costos de mantenimiento y el fracaso de proyectos (*crisis del software*). |
+| **Metodología de auditoría utilizada** | Se basa en la determinación de **puntos de control** clave insertos en el cuerpo del sistema y a lo largo de las fases del proyecto, junto con la incorporación de **módulos y pistas de auditoría** para facilitar futuras revisiones de rutina. | Aplica formalmente la **metodología de evaluación de riesgos de ISACA**: parte de los riesgos potenciales de la actividad y sigue el esquema jerárquico: **$N$ Objetivos de Control $\rightarrow$ Técnicas de Control (`C-X-m`) $\rightarrow$ Pruebas de Cumplimiento**. |
+| **Cobertura y división del alcance** | **Abordaje amplio en 4 niveles** (incluye etapas previas y posteriores a la construcción): 1. **Revisión del ciclo de vida:** Parte del *Plan Maestro de SI/TI*, el *Estudio de Factibilidad* y recorre las fases desde análisis de requerimientos hasta la **Posinstalación (mantenimiento)**. 2. **Auditoría de la documentación de sistemas:** Documentos exigidos por etapa. 3. **Auditoría de adquisición de software:** Solvencia del proveedor, contratos, recupero/propiedad del código fuente y soporte. 4. **Auditoría de modificación de programas:** Autorización, trazabilidad del cambio y concordancia entre código fuente y objeto. | **Abordaje dividido en 2 grandes bloques (Doble foco)**, acotado al ciclo de desarrollo puro (abarca análisis, diseño, construcción e implantación, pero **excluye** explotación, mantenimiento y retiro, que se tratan en capítulos aparte): 1. **Auditoría de la organización y gestión del área de desarrollo:** Cómo se administra y trabaja el personal (propone 8 objetivos de control divididos en niveles de la A a la G). 2. **Auditoría de proyectos de desarrollo de SI:** Aprobación, planificación, gestión y calidad de cada proyecto específico según sus riesgos, complejidad y recursos. |
+| **Rol del auditor e independencia** | Cumple un **papel activo de consultoría/asesoría** trabajando a la par del equipo durante las fases del ciclo de vida para definir los puntos de control y rastros de auditoría. Para no perder objetividad ni independencia, **la persona que luego audite el sistema en posinstalación/producción debe ser distinta de la que ayudó a definir los puntos de control**. | Actúa como una función evaluadora e independiente que **verifica la existencia y el grado de cumplimiento** de los objetivos y controles ya establecidos por la organización, recolectando evidencias mediante pruebas de cumplimiento (o exámenes más profundos y muestreo cuando se requiere) para identificar puntos fuertes, débiles y riesgos no cubiertos. |
 
 ##### Síntesis para recordar en el examen
 
