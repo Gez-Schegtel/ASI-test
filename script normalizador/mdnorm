@@ -1,0 +1,855 @@
+#!/usr/bin/env zsh
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+# ==============================================================================
+# SCRIPT: mdnorm
+# DESCRIPCIÓN:
+#   Normaliza archivos Markdown para que pandoc los convierta bien a PDF. Hace
+#   solo cambios mínimos y deja todo lo demás tal cual: no reformatea párrafos,
+#   títulos, fórmulas ni código.
+#
+#   Funciona con Markdown de cualquier origen: Obsidian, Notion (exportado
+#   como Markdown), GitHub, Typora, VS Code, texto copiado de un chat de IA...
+#   Muchas notas se ven bien en el editor pero pandoc las lee distinto,
+#   porque el Markdown de pandoc es más estricto. Lo que arregla:
+#
+#   1. Líneas en blanco que faltan. Pandoc NO reconoce una lista, una tabla o
+#      una cita (">") pegada al párrafo de arriba: la toma como texto común.
+#      Agrega una línea en blanco antes de:
+#        - una lista con viñetas (-, *, +) o numerada (1., 3., 1)...);
+#        - una tabla;
+#        - una cita, y antes de una lista dentro de una cita (con ">");
+#        - y antes y después de una imagen sola en su línea (si no, pandoc
+#          la pega al texto de arriba y de abajo).
+#      Entre los ítems de una lista que ya empezó no agrega nada (la lista no
+#      se parte).
+#      Sublistas: pandoc solo anida una sublista si empieza al menos en la
+#      columna del texto del ítem de arriba (3 espacios debajo de "1. ");
+#      con menos, corta la lista en pedazos. Les agrega la sangría que falta.
+#      <br> fuera de las tablas: pandoc lo borra en el PDF y pega las
+#      palabras. Lo cambia por un salto de línea de Markdown (\ al final).
+#
+#   2. Títulos. Pandoc tampoco reconoce un título (# Título) pegado al
+#      párrafo de arriba: sale como texto con el "#". Agrega la línea en
+#      blanco antes. Las etiquetas de Obsidian (#etiqueta, sin espacio) no son
+#      títulos y no se tocan.
+#
+#   3. Tablas. En Markdown cada fila de una tabla va en UNA sola línea.
+#      Cuando una fila está partida en varias (pasa al copiar de una página
+#      web o de un chat), pandoc corta la tabla ahí y el resto sale como texto
+#      suelto. Además, pandoc borra SIN AVISAR las columnas de más: si una fila
+#      tiene más celdas que el encabezado, o si la línea separadora
+#      (|---|---|) tiene menos columnas que el encabezado. Entonces:
+#        - junta en una sola línea cada fila partida, uniendo las partes con
+#          un espacio (los <br> de esa fila pasan a ser un espacio);
+#        - agrega columnas al encabezado y al separador para que entren todas
+#          las celdas (las de más quedan con encabezado vacío);
+#        - cambia los <br> de las celdas por un espacio (pandoc los borra y
+#          pega las palabras: "1<br>2" sale "12").
+#      Solo se reescriben las líneas que tienen alguno de esos problemas; las
+#      demás quedan exactamente como estaban (alineación, espacios y anchos
+#      del separador incluidos).
+#
+#   4. Imágenes de Obsidian a Markdown estándar:
+#        ![[foto.png]]             ->  ![](assets/foto.png)
+#        ![[foto.png|300]]         ->  ![](assets/foto.png){width=300px}
+#        ![[foto.png|derecha]]     ->  ![](assets/foto.png){.derecha}
+#      ("izquierda" también vale, y se combina con el ancho: |derecha|300.)
+#      La imagen se busca como en md2pdf: en la carpeta del .md, y si no, por
+#      nombre en todo el vault (la carpeta con .obsidian/), o en todo el
+#      repositorio git. Si no hay ninguno de los dos, en la carpeta del .md,
+#      sus subcarpetas y las carpetas hermanas (las que están al lado, dentro
+#      de la misma carpeta) con sus subcarpetas; salvo que la carpeta de arriba
+#      sea tu carpeta personal o /, para no recorrer todo el disco. Las
+#      carpetas ocultas (.algo) no se miran. Si hay varias con el mismo
+#      nombre, usa la más cercana a la nota. La ruta
+#      queda relativa a la nota, con %20 en lugar de los espacios (como la
+#      escribe Obsidian). OJO: Obsidian no entiende {width=...} y lo muestra
+#      como texto al lado de la imagen; en el PDF sale bien.
+#      Si no encuentra la imagen, o si tiene otro texto después del | (por
+#      ejemplo un texto alternativo), la deja como está y avisa.
+#      Las imágenes de Markdown estándar, ![texto](foto.png), también se
+#      comprueban y se avisa si falta alguna. Solo se cambian si:
+#        - la ruta no existe tal cual pero la imagen está en otro lado (pasa
+#          con los acentos en las exportaciones de Notion, que pueden estar
+#          escritos de otra forma): se pone la ruta correcta;
+#        - el texto es solo el nombre del archivo (![image.png](...), como
+#          lo exporta Notion): se borra, porque pandoc lo usaría de epígrafe
+#          ("Figura 1: image.png").
+#      Los enlaces a notas ([[Nota]]) no se tocan.
+#
+#   5. Cabecera YAML (entre --- al principio del archivo). Arregla los
+#      errores que hacen fallar a pandoc o que cambian el valor sin avisar,
+#      en las claves de primer nivel ("clave: valor", también con espacios
+#      o acentos en la clave, como "fecha de entrega:"):
+#        title: Unidad III: Subsistema  ->  title: 'Unidad III: Subsistema'
+#      Pone el valor entre comillas simples cuando hace falta: si tiene ": "
+#      o termina en ":"; si tiene " #" (pandoc tomaría el resto como un
+#      comentario y lo borraría: "Unidad #3" quedaba "Unidad"); o si empieza
+#      con un carácter especial (# @ ` [ { * & ! % ? , | > o "- "; por
+#      ejemplo "tags: #etiqueta" quedaba vacío). No toca
+#      valores como true, 11pt o \today, ni las listas [a, b].
+#        title:Hola       ->  title: Hola       (faltaba el espacio)
+#        title: "Hola     ->  title: "Hola"     (faltaba cerrar la comilla)
+#      Si falta el --- de cierre, lo agrega en la primera línea en blanco o
+#      antes del primer título (sin él, toda la cabecera salía como texto en
+#      el PDF). También reconoce la cabecera si hay líneas en blanco antes
+#      del primer --- o una marca BOM (pandoc la lee igual). Si una clave
+#      está repetida, avisa (pandoc usa la última sin decir nada).
+#      Las listas y los valores anidados no se tocan. Al final, si pandoc
+#      está instalado, se comprueba que la cabecera se pueda leer y, si no,
+#      se muestra el error de pandoc.
+#
+#   6. Fórmulas con \( ... \) y \[ ... \] (las usan los chats de IA, LaTeX y
+#      algunos editores): pandoc solo entiende $ ... $ y $$ ... $$, así que
+#      salían como texto. Se cambian. Un \[...\] dentro de una línea se
+#      cambia solo si parece una fórmula, para no tocar corchetes escapados
+#      como \[1\].
+#
+#   7. Notion:
+#        - Encabezado de la página: Notion no exporta una cabecera YAML sino
+#          "# Título" y debajo las propiedades ("Created: ...", "Tags: ...").
+#          Pandoc toma el título como una sección más y junta las
+#          propiedades en un renglón. El título pasa a la cabecera
+#          (title:) y las propiedades quedan una por renglón, visibles en el
+#          PDF. Avisa cuáles son: si no querés que salgan, pasalas a mano a
+#          la cabecera (ahí pandoc las guarda pero no las muestra).
+#        - Callouts (<aside> ... </aside>): pasan a ser una cita (>); si no,
+#          pandoc borra las etiquetas y queda un párrafo común.
+#
+#   No toca: los bloques de código (``` o ~~~), el código en línea (`...`),
+#   las fórmulas $$...$$ ni los entornos de LaTeX (\begin...\end).
+#
+#   Cómo funciona: arma la versión normalizada, muestra las diferencias y
+#   pregunta antes de guardar (y o ENTER aceptan). Si no hay nada que cambiar,
+#   lo dice y no toca el archivo. Pasar el script dos veces da lo mismo que
+#   pasarlo una.
+#
+# USO:
+#   mdnorm nota.md            (Normaliza un archivo, mostrando los cambios)
+#   mdnorm a.md b.md          (Varios archivos; pregunta por cada uno)
+#   mdnorm                    (Todos los .md de la carpeta actual)
+#   mdnorm -n nota.md         (-n o --mostrar: solo muestra los cambios, no
+#                              guarda nada)
+#   mdnorm -y nota.md         (-y o --yes: guarda sin preguntar)
+#
+# CÓDIGO DE SALIDA:
+#   0 si terminó bien; 1 si falló algún archivo, si quedaron imágenes sin
+#   encontrar o si falta una dependencia. Al final se listan los archivos con
+#   imágenes sin encontrar.
+#
+# DEPENDENCIAS REQUERIDAS:
+#   - zsh y perl (vienen en Debian/Ubuntu; zsh: sudo apt install zsh)
+#   - diff (paquete diffutils, viene instalado) para mostrar los cambios.
+#   - git es opcional: si está, se usa para encontrar la raíz del repositorio
+#     y para mostrar los cambios con colores.
+# ==============================================================================
+
+# extended_glob: permite el patrón *.(#i)(md|markdown)(N.) de más abajo.
+setopt extended_glob
+
+# --- Comprobaciones previas ---------------------------------------------------
+for programa in perl diff; do
+  if (( ! $+commands[$programa] )); then
+    echo "❌ Error: falta '$programa'."
+    exit 1
+  fi
+done
+
+# --- Opciones -----------------------------------------------------------------
+# zparseopts saca las opciones de los argumentos (-E: en cualquier posición);
+# -F falla con una opción que no existe. Un "--" suelto se descarta.
+uso="Uso: mdnorm [-y | -n] [archivo.md ...]"
+zparseopts -D -E -F -- y=opcion_y -yes=opcion_y n=opcion_n -mostrar=opcion_n 2>/dev/null || {
+  echo "❌ Opción no válida. $uso"
+  exit 1
+}
+[[ $1 == -- ]] && shift
+if (( $#opcion_y && $#opcion_n )); then
+  echo "❌ -y y -n no van juntas. $uso"
+  exit 1
+fi
+
+# --- 1. Lista de archivos -----------------------------------------------------
+archivos=()
+if (( $# > 0 )); then
+  for archivo in "$@"; do
+    if [[ ! -f "$archivo" ]]; then
+      echo "⚠️ Saltando '$archivo': no existe."
+    elif [[ "${(L)archivo:e}" != (md|markdown) ]]; then
+      echo "⚠️ Saltando '$archivo': no es un archivo Markdown (.md)."
+    else
+      archivos+=("$archivo")
+    fi
+  done
+else
+  archivos=( *.(#i)(md|markdown)(N.) )
+fi
+if (( ${#archivos[@]} == 0 )); then
+  echo "No se encontraron archivos Markdown para normalizar."
+  exit 0
+fi
+
+# --- Dónde buscar las imágenes por nombre --------------------------------------
+# El vault de Obsidian (la carpeta que contiene .obsidian/), si no el
+# repositorio git. Si no hay ninguno, la carpeta de arriba del .md: así entran
+# la carpeta del .md, sus subcarpetas y las carpetas "hermanas" (por ejemplo
+# notas/ y fotos/ dentro de la misma carpeta), con sus subcarpetas. Pero si la
+# carpeta de arriba es tu carpeta personal o la raíz (/), se busca solo en la
+# del .md, para no recorrer todo el disco. (Igual que en md2pdf.)
+carpeta_de_busqueda() {
+  local carpeta=${1:A} d=${1:A} raiz
+  while [[ $d != / ]]; do
+    [[ -d $d/.obsidian ]] && { print -r -- $d; return }
+    d=${d:h}
+  done
+  if raiz=$(git -C "$carpeta" rev-parse --show-toplevel 2>/dev/null); then
+    print -r -- $raiz
+  elif [[ ${carpeta:h} == (/|${HOME:A}) ]]; then
+    print -r -- $carpeta
+  else
+    print -r -- ${carpeta:h}
+  fi
+}
+
+# --- El normalizador (perl) ---------------------------------------------------
+# Lee el .md por la entrada estándar y escribe la versión normalizada. Recibe
+# CARPETA_MD (carpeta del .md) y BASE (dónde buscar imágenes por nombre). Los
+# avisos salen por la salida de errores.
+read -r -d '' NORMALIZAR <<'PERL'
+use strict; use warnings; use utf8;
+use File::Find; use File::Basename qw(basename); use File::Spec;
+use Encode qw(encode decode); use Unicode::Normalize qw(NFC NFD);
+sub fs  { encode("UTF-8", $_[0]) }
+sub txt { decode("UTF-8", $_[0]) }
+my $carpeta = txt($ENV{CARPETA_MD});
+my $base    = txt($ENV{BASE});
+my %indice; my $indexado = 0;
+my $faltan = 0;   # imágenes que no se encontraron
+my $avisos = 0;   # otros avisos (clave repetida, imagen con texto después del |)
+
+# --- Imágenes ---
+# Los acentos se pueden escribir de dos formas en Unicode: "á" (un carácter)
+# o "a" + tilde (dos; así los guarda macOS, y así quedan a veces las rutas de
+# las exportaciones de Notion). Se ven igual pero son bytes distintos: se
+# prueban las dos formas y el índice compara en la forma de un carácter (NFC).
+sub buscar {
+  my ($ruta) = @_;
+  for my $v ($ruta, NFC($ruta), NFD($ruta)) {
+    return "$carpeta/$v" if -f fs("$carpeta/$v");
+    return "$base/$v"    if -f fs("$base/$v");
+  }
+  if (!$indexado) {
+    my $raiz = fs($base);
+    find({ no_chdir => 1, wanted => sub {
+      if (-d $_ && basename($_) =~ /^\./ && $_ ne $raiz) { $File::Find::prune = 1; return; }
+      if (-f $_) { my $r = txt($_); push @{ $indice{NFC(basename($r))} }, $r; }
+    } }, $raiz);
+    $indexado = 1;
+  }
+  my @c = @{ $indice{NFC(basename($ruta))} || [] };
+  my $fin = NFC("/$ruta");
+  my @exactos = grep { my $n = NFC($_); substr($n, -length($fin)) eq $fin } @c;
+  @c = @exactos if @exactos;
+  return undef unless @c;
+  # Si hay varias con el mismo nombre, la más cercana a la nota: la que está a
+  # menos carpetas de distancia (contando las subidas con ..).
+  my %dist = map { my $r = File::Spec->abs2rel($_, $carpeta); ($_ => scalar(split m{/}, $r)) } @c;
+  return (sort { $dist{$a} <=> $dist{$b} || $a cmp $b } @c)[0];
+}
+
+sub ruta_md {   # ruta relativa a la nota, apta para Markdown
+  my ($abs) = @_;
+  my $rel = File::Spec->abs2rel($abs, $carpeta);
+  $rel =~ s/([ ()<>#%])/sprintf("%%%02X", ord($1))/ge;
+  return $rel;
+}
+
+sub imagen_obsidian {
+  my ($original, $dentro) = @_;
+  my ($destino, @extra) = split /\|/, $dentro;
+  $destino =~ s/\\$//; $destino =~ s/^\s+|\s+$//g;
+  return $original if $destino =~ /#/;                      # sección de una nota
+  return $original unless $destino =~ /\.(png|jpe?g|gif|bmp|webp|svg|pdf)$/i;
+  my (@attr, $raro);
+  for my $t (@extra) {
+    $t =~ s/\\$//; $t =~ s/^\s+|\s+$//g;
+    if    ($t =~ /^(\d+)(?:x\d+)?$/)           { push @attr, "width=$1px" unless grep { /^width=/ } @attr; }
+    elsif ($t =~ /^(izquierda|derecha)$/i)    { push @attr, "." . lc($1) unless grep { /^\./ } @attr; }
+    elsif ($t ne "")                          { $raro = $t; }
+  }
+  if (defined $raro) {
+    warn "   ⚠️  La dejé como está (tiene el texto \"$raro\" después del |): $original\n";
+    $avisos++;
+    return $original;
+  }
+  my $ruta = buscar($destino);
+  if (!defined $ruta) {
+    warn "   ⚠️  No encontré la imagen, la dejé como está: $original\n";
+    $faltan++;
+    return $original;
+  }
+  my $atributos = @attr ? "{" . join(" ", @attr) . "}" : "";
+  return "![](" . ruta_md($ruta) . ")$atributos";
+}
+
+# Imagen de Markdown estándar, ![texto](ruta). Se comprueba que exista (al
+# lado de la nota, o por nombre donde md2pdf la buscaría). Solo se cambia:
+#   - la ruta, si no existe tal cual pero la imagen está en otro lado (por
+#     ejemplo, por los acentos de las exportaciones de Notion);
+#   - el texto, si es solo el nombre del archivo ("image.png", "Untitled"):
+#     Notion lo pone así y pandoc lo usaría de epígrafe ("Figura 1: image.png").
+sub revisar_estandar {
+  my ($original, $alt, $dest, $titulo) = @_;
+  my $d = $dest; $d =~ s/^<(.*)>$/$1/;
+  # %XX son bytes de UTF-8: se decodifican sobre los bytes, no sobre el texto
+  # (si no, una ruta con acentos o emojis se rompía o hacía fallar el script).
+  my $dec = fs($d); $dec =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/ge; $dec = txt($dec);
+  my $nombre = basename($dec);
+  my $alt_nuevo = $alt;
+  if (NFC(lc $alt) eq NFC(lc $nombre) || $alt =~ /^\s*(?:untitled|image|imagen|pasted image[^\]]*)(?:\.\w{3,4})?\s*$/i) {
+    $alt_nuevo = "";
+  }
+  my $dest_nuevo = $dest;
+  if ($d !~ m{^(?:[a-zA-Z][a-zA-Z0-9+.\-]*:|\#)}) {                  # no es una URL
+    if ($d =~ m{^/}) {                                                # absoluta
+      if (!-f fs($d)) { warn "   ⚠️  No encontré la imagen: $original\n"; $faltan++; }
+    } elsif (!-f fs("$carpeta/$d") && !-f fs("$carpeta/$dec")) {
+      my $ruta = buscar($dec);
+      if (defined $ruta) {
+        $dest_nuevo = ruta_md($ruta);
+        aviso("La imagen $d no estaba en esa ruta: la cambié por $dest_nuevo.");
+      } else {
+        warn "   ⚠️  No encontré la imagen: $original\n"; $faltan++;
+      }
+    }
+  }
+  return $original if $alt_nuevo eq $alt && $dest_nuevo eq $dest;
+  return "![$alt_nuevo]($dest_nuevo" . ($titulo // "") . ")";
+}
+
+sub imagenes_en_linea {
+  my ($l) = @_;
+  $l =~ s{(`+)(.*?)\1|!\[\[([^\[\]\n]+?)\]\]|!\[([^\[\]\n]*)\]\((<[^>\n]+>|[^)\s]+)(\s+"[^"\n]*")?\)}{
+    defined $1 ? "$1$2$1" : defined $3 ? imagen_obsidian($&, $3) : revisar_estandar($&, $4, $5, $6)
+  }ge;
+  return formulas_en_linea($l);
+}
+
+# Fórmulas con \( ... \) y \[ ... \] (las escriben los chats de IA, LaTeX y
+# varios editores): el Markdown de pandoc solo entiende $ ... $ y $$ ... $$.
+# Un \[...\] se cambia solo si parece una fórmula (tiene \ ^ _ = o {), así
+# no se tocan corchetes escapados como \[1\].
+sub formula {   # (delimitador, contenido) -> fórmula de pandoc, sin espacios en los bordes
+  my ($m, $f) = @_;
+  $f =~ s/^\s+|\s+$//g;
+  return "$m$f$m";
+}
+sub formulas_en_linea {
+  my ($l) = @_;
+  return $l unless $l =~ /\\[(\[]/;
+  my $simbolo = qr/[\\^_=\x{7B}]/;   # \ ^ _ = {
+  $l =~ s{(`+)(.*?)\1|\\\((.+?)\\\)|\\\[(.+?)\\\]}{
+    defined $1 ? "$1$2$1"
+    : defined $3 ? formula('$', $3)
+    : $4 =~ $simbolo ? formula('$$', $4) : $&
+  }ge;
+  return $l;
+}
+
+# --- Tablas ---
+sub celdas {    # divide una fila por los | que separan celdas
+  # No cuentan los | escapados (\|) ni los que están dentro de `código` o de
+  # una fórmula ($|x|$), igual que hace pandoc.
+  my ($fila) = @_;
+  my $s = $fila; $s =~ s/^\s+|\s+$//g;
+  my @c; my $act = "";
+  while (length $s) {
+    if ($s =~ s/^(\\.)//)            { $act .= $1; }
+    elsif ($s =~ s/^((`+).*?(?<!`)\2(?!`))//) { $act .= $1; }   # código en línea
+    elsif ($s =~ s/^(\$\$.+?\$\$)//)  { $act .= $1; }             # fórmula $$...$$
+    elsif ($s =~ s/^(\$(?=\S)[^\$]*?(?<=\S)\$(?!\d))//) { $act .= $1; }   # fórmula $...$
+    elsif ($s =~ s/^\|//)             { push @c, $act; $act = ""; }
+    else { $s =~ s/^(.)//s; $act .= $1; }
+  }
+  push @c, $act;
+  shift @c if @c && $c[0] =~ /^\s*$/ && $fila =~ /^\s*\|/;   # | del principio
+  pop @c   if @c && $c[-1] =~ /^\s*$/ && $fila =~ /\|\s*$/;  # | del final
+  s/^\s+|\s+$//g for @c;
+  return @c;
+}
+sub es_separador {
+  my ($l) = @_;
+  return $l =~ /\|/ && $l =~ /^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?\s*$/;
+}
+
+sub br_a_espacio {      # <br> -> espacio, salvo dentro de `código`
+  my ($x) = @_;
+  $x =~ s{(`+)(.*?)\1|\s*<br\s*/?>\s*}{ defined $1 ? $& : " " }gie;
+  return $x;
+}
+
+sub arreglar_tabla {    # recibe las líneas de una tabla, devuelve las nuevas
+  # Solo cambia lo que hace falta: las líneas que ya están bien quedan tal
+  # cual (con su alineación y sus espacios).
+  my ($sangria, @lineas) = @_;
+  my @c = map { [ celdas($_) ] } @lineas;
+  my $n = 0;
+  for (@c) { $n = @$_ if @$_ > $n; }
+  my $fila = sub { $sangria . "| " . join(" | ", @{$_[0]}) . " |" };
+  my @res;
+  for my $k (0..$#lineas) {
+    my @f = @{ $c[$k] };
+    my $cambia = 0;
+    if ($k == 1) {                              # separador
+      if (@f < $n) { push @f, "---" while @f < $n; $cambia = 1; }
+    } else {
+      if (grep { /<br\s*\/?>/i } @f) { $_ = br_a_espacio($_) for @f; $cambia = 1; }
+      # El encabezado necesita tantas columnas como la fila más larga; las
+      # filas cortas pandoc las completa solo.
+      if ($k == 0 && @f < $n) { push @f, "" while @f < $n; $cambia = 1; }
+    }
+    # Si la línea terminaba en \r (saltos de Windows), la reescrita también.
+    push @res, $cambia ? $fila->(\@f) . ($lineas[$k] =~ /\r$/ ? "\r" : "") : $lineas[$k];
+  }
+  return @res;
+}
+
+# --- Recorrido línea por línea ---
+my @in = <STDIN>;
+chomp @in;
+# Marca BOM de UTF-8 (la ponen algunos editores de Windows): se saca para
+# analizar y se vuelve a poner al final.
+my $bom = (@in && $in[0] =~ s/^\x{FEFF}//) ? "\x{FEFF}" : "";
+
+# --- Encabezado de Notion ---
+# Notion exporta la página sin cabecera YAML: el título como "# Título" y,
+# debajo, las propiedades una por línea ("Created: ...", "Tags: ..."). Pandoc
+# toma el título como una sección más (con numbersections sale "1 Título") y
+# junta las propiedades en un solo renglón. Se pasa el título a la cabecera
+# YAML (title:) y las propiedades quedan como texto, una por renglón.
+{
+  my $p = 0;
+  $p++ while $p < @in && $in[$p] !~ /\S/;
+  if ($p < @in && $in[$p] =~ /^#[ \t]+(\S.*?)\s*$/) {
+    my $titulo = $1;
+    my $k = $p + 1;
+    $k++ while $k < @in && $in[$k] !~ /\S/;
+    my $j = $k;
+    $j++ while $j < @in && $in[$j] =~ /^[^\s:#|>*\-\[!<`][^:]{0,40}:[ \t]+\S/;
+    # Para no confundir una nota común que empieza con "# Título" y un
+    # párrafo como "Definición: ...", tiene que ser de Notion (el nombre del
+    # archivo termina con el código de 32 letras y números que le agrega
+    # Notion) o tener al menos 2 propiedades cortas (clave sin puntos y valor
+    # de una línea corta que no termina en punto).
+    my $de_notion = ($ENV{NOMBRE_MD} // "") =~ /[0-9a-f]{32}\.(?:md|markdown)$/i;
+    my $parecen = $j - $k >= 2 && !grep {
+      my ($cl, $v) = /^([^:]+):\s*(.*?)\s*$/;
+      $cl =~ /[.!?]/ || length($v) > 100 || $v =~ /[.!?]$/
+    } @in[$k..$j-1];
+    if ($j > $k && $k > $p + 1 && ($j == @in || $in[$j] !~ /\S/) && ($de_notion || $parecen)) {
+      my $cr = $in[$p] =~ /\r$/ ? "\r" : "";
+      my @props = map { (my $x = $_) =~ s/\s+$//; $x } @in[$k..$j-1];
+      $_ .= "\\" for @props[0..$#props-1];                 # un renglón por propiedad
+      my $valor = arreglar_valor($titulo) // $titulo;
+      splice @in, $p, $j - $p, map { "$_$cr" } ("---", "title: $valor", "---", "", @props);
+      my @nombres = map { /^([^:]+):/ ? $1 : () } @props;
+      aviso("Encabezado de Notion: pasé el título \"$titulo\" a la cabecera YAML (title:).\n"
+          . "      Las propiedades (" . join(", ", @nombres) . ") quedaron como texto al principio,\n"
+          . "      así que salen en el PDF. Si no querés que salgan, pasalas a la cabecera\n"
+          . "      (entre los ---): pandoc las guarda ahí pero no las muestra.");
+    }
+  }
+}
+
+# --- Cabecera YAML ---
+# Solo se tocan las claves de primer nivel ("clave: valor" sin sangría). Las
+# listas, los valores anidados y los bloques (| o >) quedan como están.
+sub aviso { warn "   ⚠️  $_[0]\n"; $avisos++; }
+
+sub arreglar_valor {    # devuelve el valor arreglado, o undef si está bien
+  my ($v) = @_;
+  my $t = $v; $t =~ s/\s+$//;
+  return undef if $t eq "";
+  return undef if $t =~ /^[|>][-+0-9]*$/;                 # bloque | o >
+  if ($t =~ /^"/) {                                       # entre comillas dobles
+    my $sin = $t; $sin =~ s/\\.//g;
+    my $n = () = $sin =~ /"/g;
+    return $n % 2 ? qq{$t"} : undef;                      # cierra la que falta
+  }
+  if ($t =~ /^'/) {                                       # entre comillas simples
+    my $sin = $t; $sin =~ s/''//g;
+    my $n = () = $sin =~ /'/g;
+    return $n % 2 ? qq{$t'} : undef;
+  }
+  return undef if $t =~ /^\[.*\]$/ || $t =~ /^\{.*\}$/;  # lista [a, b] o {...}
+  my $hace_falta =
+       $t =~ /:\s/ || $t =~ /:$/         # dos puntos seguidos de espacio, o al final
+    || $t =~ /\s#/                       # " #": el resto sería un comentario
+    || $t =~ /^[\@`\[\{*&!%?,|>#]/       # empieza con un carácter especial
+                                         # ("#" sola: todo el valor sería un comentario)
+    || $t =~ /^-\s/;                     # "- algo" (parece una lista)
+  return undef unless $hace_falta;
+  (my $e = $t) =~ s/'/''/g;
+  return "'$e'";
+}
+
+# Pandoc acepta la cabecera aunque haya líneas en blanco antes del primer ---,
+# siempre que la línea siguiente no esté en blanco (si no, es una línea
+# horizontal).
+my $h = 0;
+$h++ while $h < @in && $in[$h] !~ /\S/;
+my $hay_yaml = $h + 1 < @in && $in[$h] =~ /^---\s*$/ && $in[$h+1] =~ /\S/;
+# Clave de primer nivel: "clave:" seguida de un espacio o del final de la
+# línea. Puede tener espacios y acentos ("fecha de entrega:"), como las
+# propiedades de Obsidian.
+my $clave_re = qr/[^\s#:'"\[\]{},&*!|>%@`?-][^:]*?/;
+if ($hay_yaml) {
+  my $cierre;
+  for my $k ($h+1..$#in) { if ($in[$k] =~ /^(---|\.\.\.)\s*$/) { $cierre = $k; last; } }
+  if (!defined $cierre) {
+    # Falta el --- de cierre: la cabecera termina en la primera línea en
+    # blanco (o en la primera que no parece YAML).
+    # Un título de Markdown ("# Título") ya no es parte de la cabecera, aunque
+    # en YAML sería un comentario.
+    my $k = $h + 1;
+    while ($k < @in && $in[$k] =~ /\S/ && $in[$k] !~ /^#{1,6}\s/ &&
+           ($in[$k] =~ /^\s/ || $in[$k] =~ /^-\s/ || $in[$k] =~ /^$clave_re:(?:\s|$)/ ||
+            $in[$k] =~ /^[\w-]+:/ || $in[$k] =~ /^#/)) { $k++; }
+    if ($k > $h + 1) {
+      splice @in, $k, 0, ($in[$h] =~ /\r$/ ? "---\r" : "---");
+      $cierre = $k;
+      aviso("Faltaba el --- que cierra la cabecera: lo agregué después de la línea $k.");
+    }
+  }
+  if (defined $cierre) {
+    my (%visto);
+    for my $k ($h+1..$cierre-1) {
+      my $l = $in[$k];
+      my $cr = $l =~ s/\r$// ? "\r" : "";
+      if ($l =~ /^\s/ || $l !~ /\S/) { $in[$k] = $l . $cr; next; }   # anidado o vacío
+      if ($l =~ /^([\w-]+):(\S.*)$/ && $l !~ /^[\w-]+:\/\//) {
+        aviso("Línea " . ($k+1) . ": faltaba el espacio después de \"$1:\".");
+        $l = "$1: $2";
+      }
+      if ($l =~ /^($clave_re):(?=\s|$)(\s*)(.*)$/) {
+        my ($clave, $esp, $valor) = ($1, $2, $3);
+        push @{ $visto{$clave} }, $k+1;
+        my $nuevo = arreglar_valor($valor);
+        if (defined $nuevo) {
+          aviso("Línea " . ($k+1) . ": " . ($valor =~ /^["']/ ? "cerré la comilla de" : "puse entre comillas") . " \"$clave\" ($nuevo).");
+          $l = "$clave: $nuevo";
+        }
+      }
+      $in[$k] = $l . $cr;
+    }
+    for my $clave (sort keys %visto) {
+      my @ls = @{ $visto{$clave} };
+      aviso("\"$clave\" está repetida (líneas " . join(", ", @ls) . "): pandoc usa la última. Borrá la que sobre.") if @ls > 1;
+    }
+  }
+}
+
+my @out;
+my ($en_yaml, $en_codigo, $cerca, $en_math, $en_latex) = (0, 0, "", 0, 0);
+my $en_lista = 0;     # dentro de una lista que ya empezó
+my $en_cita  = 0;
+my ($cita_lista, $cita_previa) = (0, "");   # lista dentro de la cita / línea anterior de la cita
+my $item  = qr/^\s*(?:[-*+]|\d+[.)])\s+\S/;
+# Lista numerada: hasta 3 cifras, así un año al principio de una línea
+# ("1810. Después...") no se toma como el comienzo de una lista.
+my $item_inicio = qr/^\s{0,3}(?:[-*+]|\d{1,3}[.)])\s+\S/;
+my $cita  = qr/^\s{0,3}>/;
+
+# Si el archivo usa saltos de línea de Windows (\r\n), la línea agregada también.
+my $vacia = (@in && $in[0] =~ /\r$/) ? "\r" : "";
+sub blanco_antes { push @out, $vacia if @out && $out[-1] =~ /\S/; }
+
+# Sublistas con poca sangría. Pandoc solo anida una sublista si empieza al
+# menos en la columna del texto del ítem de arriba (3 espacios debajo de
+# "1. ", 2 debajo de "- "); si no, corta la lista en pedazos. Obsidian la
+# anida igual. Se guarda, por cada nivel abierto: [columna de la viñeta
+# original, columna del texto original, columna del texto ya corregida].
+my @niveles;
+sub ancho { my $n = 0; for (split //, $_[0]) { $n = $_ eq "\t" ? $n + 4 - $n % 4 : $n + 1; } $n }
+sub sangrar_item {
+  my ($l) = @_;
+  my ($esp, $marca, $sep) = $l =~ /^(\s*)([-*+]|\d+[.)])(\s+)/ or return $l;
+  my $w = ancho($esp);
+  my $txt = length($marca) + (ancho($sep) > 4 ? 1 : ancho($sep));
+  pop @niveles while @niveles && $niveles[-1][0] >= $w;
+  my $nueva = $w;
+  if (@niveles) {
+    my ($pw, $pcont, $pnueva) = @{ $niveles[-1] };
+    if ($w >= $pcont)      { $nueva = $w + $pnueva - $pcont; }   # bien sangrada (se corre si el padre se corrió)
+    elsif ($w >= $pw + 2)  { $nueva = $pnueva; }                 # le falta sangría
+  }
+  push @niveles, [$w, $w + $txt, $nueva + $txt];
+  return $l if $nueva == $w;
+  $l =~ s/^\s*/" " x $nueva/e;
+  return $l;
+}
+
+# Imagen sola en su línea: pandoc la pega al texto de arriba y de abajo si no
+# hay líneas en blanco alrededor (y no la trata como figura).
+my $img_sola = qr/^\s{0,3}(?:!\[[^\]\n]*\]\([^)\n]*\)(?:\{[^}\n]*\})?|!\[\[[^\]\n]+\]\])\s*$/;
+my $blanco_despues = 0;
+
+# <br> fuera de las tablas: pandoc lo borra en el PDF y pega las palabras
+# ("uno<br>dos" sale "unodos"). Se cambia por un salto de línea de Markdown
+# (una \ al final de la línea). En un título se cambia por un espacio.
+sub saltos_html {
+  my ($l, $sigue_texto, $es_titulo) = @_;
+  return $l unless $l =~ /<br\s*\/?>/i;
+  my $cr = $l =~ s/\r$// ? "\r" : "";
+  my $marca = "\x{0}";
+  $l =~ s{(`+)(.*?)\1|[ \t]*(?:<br\s*/?>[ \t]*)+}{ defined $1 ? "$1$2$1" : $marca }gei;
+  if ($es_titulo) { $l =~ s/$marca/ /g; $l =~ s/ +$//; return $l . $cr; }
+  $l =~ s/^(\s*)$marca+/$1/;                 # al principio: no hace falta
+  if ($l =~ s/$marca$//) { $l .= "\\" if $sigue_texto && $l =~ /\S/; }
+  my @partes = split /$marca/, $l, -1;
+  for my $k (1..$#partes) {                  # que lo de abajo no pase a ser una lista o un título
+    $partes[$k] =~ s/^([-*+#>])/\\$1/;
+    $partes[$k] =~ s/^(\d+)([.)])/$1\\$2/;
+  }
+  return join("\\$cr\n", @partes) . $cr;
+}
+
+# Fila de tabla partida en varias líneas (pasa al copiar de una página web o de
+# un chat): se juntan las líneas hasta que la fila termina con | y tiene todas
+# las celdas. Las partes se unen con un espacio y los <br> de esa fila pasan
+# a ser un espacio (pandoc los borra del PDF y pegaría las palabras).
+sub juntar {
+  my $r = shift;
+  for my $p (@_) {
+    next if $p =~ /^<br\s*\/?>$/i;
+    $r = ($r eq '') ? $p : "$r $p";
+  }
+  $r = br_a_espacio($r);              # los <br> sueltos dentro de la fila: un espacio
+  return $r;
+}
+sub unir_fila {    # devuelve (fila unida, última línea usada) o nada
+  my ($j, $n) = @_;
+  my @trozos;
+  for (my $k = $j; $k < @in && $k < $j + 100; $k++) {
+    my $x = $in[$k]; $x =~ s/\r$//;
+    # Un título, un bloque de código o una línea --- cortan la búsqueda.
+    return if $k > $j && $x =~ /^\s*(#{1,6}\s|```|~~~|---\s*$)/;
+    next if $x !~ /\S/;
+    $x =~ s/^\s+|\s+$//g;
+    push @trozos, $x;
+    my $fila = juntar(@trozos);
+    return ($fila, $k) if $fila =~ /\|$/ && scalar(my @c = celdas($fila)) >= $n;
+  }
+  return;
+}
+
+for (my $i = 0; $i < @in; $i++) {
+  my $l = $in[$i];
+  if ($blanco_despues && $l =~ /\S/) { blanco_antes(); }
+  $blanco_despues = 0;
+
+  # Cabecera YAML: solo si es la primera línea
+  if ($hay_yaml && $i == $h) { $en_yaml = 1; push @out, $l; next; }
+  if ($en_yaml) { push @out, $l; $en_yaml = 0 if $l =~ /^(---|\.\.\.)\s*$/; next; }
+
+  # Bloques de código
+  # Se cierra con la misma marca (``` o ~~~), de al menos el mismo largo y
+  # sin nada después: "```python" o un ~~~ dentro de un ``` no lo cierran.
+  if ($en_codigo) {
+    push @out, $l;
+    $en_codigo = 0 if $l =~ /^\s*(`+|~+)\s*$/ && substr($1, 0, 1) eq substr($cerca, 0, 1) && length($1) >= length($cerca);
+    next;
+  }
+  if ($l =~ /^\s*(```+|~~~+)/) { $cerca = $1; $en_codigo = 1; push @out, $l; next; }
+
+  # \[ y \] solos en su línea: fórmula en bloque, se cambian por $$.
+  if ($l =~ /^(\s*)\\[\[\]]\s*$/) { my $cr = $l =~ /\r$/ ? "\r" : ""; $l = "$1\$\$$cr"; }
+
+  # Fórmulas $$ ... $$ y entornos de LaTeX
+  if ($en_math) { push @out, $l; my $k = () = $l =~ /\$\$/g; $en_math = 0 if $k % 2; next; }
+  if ($l =~ /^\s*\$\$/) { my $k = () = $l =~ /\$\$/g; $en_math = 1 if $k % 2; push @out, $l; next; }
+  if ($en_latex) { push @out, $l; $en_latex += () = $l =~ /\\begin\{/g; $en_latex -= () = $l =~ /\\end\{/g; next; }
+  if ($l =~ /^\s*\\begin\{/) {
+    $en_latex = (() = $l =~ /\\begin\{/g) - (() = $l =~ /\\end\{/g);
+    $en_latex = 0 if $en_latex < 0;
+    push @out, $l; next;
+  }
+
+  # Callout de Notion (<aside> ... </aside>): pandoc borra las etiquetas en el
+  # PDF y el contenido queda como un párrafo más. Se cambia por una cita (>).
+  if (!$en_lista && $l =~ /^\s*<aside>\s*$/i) {
+    my $k = $i + 1;
+    $k++ while $k < @in && $k < $i + 300 && $in[$k] !~ /^\s*<\/aside>\s*$/i;
+    if ($k < @in && $in[$k] =~ /^\s*<\/aside>\s*$/i) {
+      my $cr = $l =~ /\r$/ ? "\r" : "";
+      my @c = map { (my $x = $_) =~ s/\s+$//; $x } @in[$i+1..$k-1];
+      shift @c while @c && $c[0] !~ /\S/;
+      pop @c   while @c && $c[-1] !~ /\S/;
+      my @cita = map { (/\S/ ? "> $_" : ">") . $cr } @c;
+      push @cita, $cr if $k + 1 < @in && $in[$k+1] =~ /\S/;   # línea en blanco después
+      splice @in, $i, $k - $i + 1, @cita;
+      $i--; next;                                             # se procesa como cita
+    }
+  }
+
+  # Tabla: una fila con | seguida de una línea separadora
+  if ($l =~ /\|/ && $i + 1 < @in && es_separador($in[$i+1]) && !es_separador($l)) {
+    my ($sangria) = $l =~ /^(\s*)/;
+    my @t = ($l, $in[$i+1]);
+    my $n = () = celdas($l);
+    my $con_cierre = $l =~ /\|\s*\r?$/;      # el encabezado termina con |
+    my $j = $i + 2;
+    while ($j < @in && $in[$j] =~ /\S/ && $in[$j] =~ /\|/) {
+      my $fila = $in[$j];
+      # ¿Fila partida? No termina con | (el encabezado sí), le faltan celdas y
+      # la línea de abajo no empieza otra fila (está en blanco o no empieza
+      # con | en la primera columna).
+      if ($con_cierre && $fila !~ /\|\s*\r?$/ && (() = celdas($fila)) < $n
+          && ($j + 1 >= @in || $in[$j+1] !~ /^\|/)) {
+        my ($unida, $k) = unir_fila($j, $n);
+        if (defined $unida) {
+          aviso("Línea " . ($j+1) . ": la fila de la tabla estaba partida en " . ($k-$j+1) . " líneas; la junté en una.");
+          push @t, $unida . $vacia;
+          $j = $k + 1;
+          next;
+        }
+        aviso("Línea " . ($j+1) . ": parece una fila de tabla partida en varias líneas, pero no la pude juntar. Revisala a mano.");
+      }
+      push @t, $fila; $j++;
+    }
+    blanco_antes();
+    push @out, map { imagenes_en_linea($_) } arreglar_tabla($sangria, @t);
+    $i = $j - 1; $en_lista = 0; $en_cita = 0; @niveles = ();
+    next;
+  }
+
+  if ($l !~ /\S/) {                       # línea en blanco
+    push @out, $l; $en_cita = 0; ($cita_lista, $cita_previa) = (0, "");
+    next;
+  }
+
+  my $es_titulo = $l =~ /^#{1,6}\s+\S/;
+  if ($es_titulo) {                       # título: siempre con una línea en blanco antes
+    blanco_antes();
+    $en_lista = 0; $en_cita = 0; @niveles = ();
+  } elsif ($l =~ $item) {
+    if (!$en_lista && $l =~ $item_inicio) { blanco_antes(); @niveles = (); }
+    $en_lista = 1 if $en_lista || $l =~ $item_inicio || ($out[-1] // "") !~ /\S/;
+    $en_cita = 0;
+    $l = sangrar_item($l) if $en_lista;
+  } elsif ($en_lista && $l =~ /^\s+>/) {
+    # Cita dentro de un ítem de lista: también necesita una línea en blanco
+    # antes (si no, pandoc la pega al texto del ítem).
+    blanco_antes() if ($out[-1] // "") !~ /^\s*>/;
+  } elsif ($l =~ $cita) {
+    if (!$en_cita) { blanco_antes(); ($cita_lista, $cita_previa) = (0, ""); }
+    # Dentro de la cita vale lo mismo: una lista pegada a la línea de arriba
+    # no es una lista. Se agrega una línea con solo ">" antes.
+    my ($pre, $dentro) = $l =~ /^(\s{0,3}>)\s?(.*)$/;
+    if ($en_cita && $dentro =~ $item_inicio && !$cita_lista && $cita_previa =~ /\S/) {
+      push @out, $pre . $vacia;
+    }
+    if    ($dentro =~ $item)                               { $cita_lista = 1; }
+    elsif ($dentro =~ /\S/ && $dentro !~ /^\s/ && $cita_previa !~ /\S/) { $cita_lista = 0; }
+    $cita_previa = $dentro;
+    $en_cita = 1;
+  } elsif ($l !~ /^\s/ && ($out[-1] // "") !~ /\S/) {
+    $en_lista = 0; @niveles = ();         # párrafo nuevo, fuera de la lista
+  }
+  if (!$es_titulo && !$en_lista && !$en_cita && $l =~ $img_sola) {
+    blanco_antes(); $blanco_despues = 1;  # imagen sola, fuera de listas y citas
+  }
+
+  my $sigue_texto = $i + 1 < @in && $in[$i+1] =~ /\S/;
+  push @out, saltos_html(imagenes_en_linea($l), $sigue_texto, $es_titulo);
+}
+$out[0] = $bom . $out[0] if @out;
+print "$_\n" for @out;
+# Cuántas imágenes faltan y cuántos otros avisos hubo, para el resumen (se
+# escriben en el archivo que indica FALTAN).
+if ($ENV{FALTAN}) { open(my $f, ">", $ENV{FALTAN}) or die; print $f "$faltan $avisos\n"; close $f; }
+PERL
+
+# --- 2. Procesar cada archivo -------------------------------------------------
+# Si git está, muestra las diferencias con colores; si no, con diff común.
+mostrar_cambios() {
+  if (( $+commands[git] )); then
+    git --no-pager diff --no-index --color=auto -- "$1" "$2" | tail -n +5
+  else
+    diff -u -- "$1" "$2" | tail -n +3
+  fi
+}
+
+fallidos=()
+con_faltantes=()
+cuenta="$(mktemp)"
+temporal=""
+# Borrar los temporales al salir, también si se cancela con Ctrl+C.
+trap 'rm -f -- "$cuenta" ${temporal:+"$temporal"}' EXIT
+trap 'echo; echo "Cancelado."; exit 130' INT TERM HUP
+for archivo in "${archivos[@]}"; do
+  temporal="$(mktemp --suffix=.md)"
+  echo "── $archivo"
+  if ! CARPETA_MD="${archivo:h:A}" BASE="$(carpeta_de_busqueda "${archivo:h}")" \
+       FALTAN="$cuenta" NOMBRE_MD="${archivo:t}" perl -CSD -e "$NORMALIZAR" < "$archivo" > "$temporal"; then
+    echo "   ❌ Error al normalizar."
+    fallidos+=("$archivo"); rm -f "$temporal"; continue
+  fi
+  read faltan avisos < "$cuenta"
+  (( faltan > 0 )) && con_faltantes+=("$archivo ($faltan)")
+  # Si el original no terminaba con salto de línea, se respeta.
+  if [[ -s $archivo && "$(tail -c 1 -- "$archivo")" != "" ]]; then
+    printf '%s' "$(<"$temporal")" > "$temporal"
+  fi
+  # Si pandoc está, se comprueba que la cabecera YAML se pueda leer.
+  error_yaml=""
+  # (La cabecera puede empezar después de líneas en blanco o de una marca BOM.)
+  primera=$(grep -m 1 -v '^[[:space:]]*$' -- "$temporal")
+  if (( $+commands[pandoc] )) && [[ ${primera#$'\xef\xbb\xbf'} == ---* ]]; then
+    error_yaml=$(pandoc -f markdown -t plain -o /dev/null -- "$temporal" 2>&1 | grep -i -A3 'yaml')
+    if [[ -n $error_yaml ]]; then
+      echo "   ❌ La cabecera YAML sigue con un error que no pude arreglar solo"
+      echo "      (pandoc cuenta las líneas desde la que sigue al primer ---):"
+      print -r -- "$error_yaml" | sed 's/^/      /'
+    fi
+  fi
+  if cmp -s -- "$archivo" "$temporal"; then
+    if [[ -n $error_yaml ]] || (( faltan + avisos > 0 )); then
+      echo "   No hay nada más para cambiar, pero revisá lo de arriba."
+    else
+      echo "   ✔ Ya estaba bien, sin cambios."
+    fi
+    rm -f "$temporal"; continue
+  fi
+  mostrar_cambios "$archivo" "$temporal"
+  if (( $#opcion_n )); then
+    echo "   (Solo se muestran los cambios: no se guardó nada.)"
+    rm -f "$temporal"; continue
+  fi
+  if (( ! $#opcion_y )); then
+    read "respuesta?¿Guardar los cambios en $archivo? [Y/n]: " || respuesta=n
+    if [[ $respuesta != (y|Y|) ]]; then
+      echo "   Sin cambios."
+      rm -f "$temporal"; continue
+    fi
+  fi
+  # cat > archivo mantiene los permisos y el archivo original (no lo reemplaza).
+  if cat -- "$temporal" > "$archivo"; then
+    echo "   ✔ Guardado."
+  else
+    echo "   ❌ No se pudo guardar."
+    fallidos+=("$archivo")
+  fi
+  rm -f "$temporal"
+done
+
+rm -f "$cuenta"
+
+if (( ${#con_faltantes[@]} > 0 )); then
+  echo "⚠️ Imágenes sin encontrar en: ${(j:, :)con_faltantes}"
+fi
+if (( ${#fallidos[@]} > 0 )); then
+  echo "⚠️ Fallaron ${#fallidos[@]} archivo(s): ${(j:, :)fallidos}"
+fi
+(( ${#fallidos[@]} + ${#con_faltantes[@]} == 0 )) || exit 1
