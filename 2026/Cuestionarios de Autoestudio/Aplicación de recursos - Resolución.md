@@ -14,6 +14,9 @@ toc: true
 toc-depth: 5
 numbersections: true
 ancho-imagenes: 100%
+header-includes:
+  - \usepackage{caption}
+  - \captionsetup[figure]{labelformat=empty}
 ---
 
 \newpage
@@ -29,25 +32,35 @@ ancho-imagenes: 100%
   * *Finalización:* Termina cuando el nuevo miembro se siente a gusto con la organización y su puesto, y ha aceptado sus normas y valores.
 * **Aspectos claves:**
   * **Conflicto Socialización vs. Personalización:** La organización intenta adaptar al individuo a sus necesidades (*socialización*), mientras el individuo intenta adaptar la empresa a sus metas personales (*personalización*). El **plan de carrera** permite que ambos convivan.
-  * **Los 5 métodos para promoverla:** 1) Planeación del proceso selectivo; 2) Contenido inicial de la tarea (tareas retadoras y gradualmente más complejas para evitar desmotivación); 3) Papel del gerente/supervisor (actúa como tutor: da descripción clara de la tarea, información técnica y retroalimentación); 4) Grupos de trabajo («escuela informal» para satisfacer necesidades sociales); 5) Programas de integración (entrenamiento intensivo sobre asuntos organizacionales, beneficios, presentación y deberes del cargo).
+
+    > *«El plan de carrera es el camino formal de evolución y crecimiento profesional de una persona dentro de la estructura de cargos de la organización. Sirve para alinear las metas personales del empleado (personalización) con los objetivos de la empresa (socialización), se prepara mediante el enriquecimiento vertical y horizontal del cargo, y se gestiona a través de la evaluación de desempeño y la capacitación».*
+
+  * **Los 5 métodos para promoverla:** 1) Planeación del proceso selectivo (aquí se piensan formas de comenzar a socializar, en un nivel mínimo, durante el propio proceso de selección); 2) Contenido inicial de la tarea (tareas retadoras y gradualmente más complejas para evitar desmotivación); 3) Papel del gerente/supervisor (actúa como tutor: da descripción clara de la tarea, información técnica y retroalimentación); 4) Grupos de trabajo («escuela informal» para satisfacer necesidades sociales); 5) Programas de integración (entrenamiento intensivo sobre asuntos organizacionales, beneficios, presentación y deberes del cargo).
 
 ## ¿Qué incluye el subsistema de aplicación? Efectúe un cuadro sinóptico.
 El subsistema de aplicación es el puente entre la **provisión** (reclutar/seleccionar) y el **mantenimiento** (retener/motivar). Define cómo funcionan los recursos dentro de la estructura existente asignando cada persona a un cargo.
 
+![](./imágenes/Gemini_Generated_Image_qlci24qlci24qlci.jpeg)
+
 | Dimensión del Subsistema | Objetivo Principal | Procesos / Actividades que incluye |
-| :--- | :--- | :--- |
+| :--------------- | :------------------- | :-------------------------------------------- |
 | **1. Socialización Organizacional** | Integrar a los nuevos miembros al contexto cultural y laboral. | Métodos de socialización (proceso selectivo, tarea inicial, rol del gerente, grupos de trabajo, programas de integración). |
-| **2. Diseño, Descripción y Análisis de Cargos** | Estructurar el trabajo en el organigrama y definir qué se hace y qué se exige. | • **Diseño:** Modelos clásico, humanista y situacional; enriquecimiento. • **Descripción (Intrínseco):** Qué, cuándo, cómo y por qué se hace. • **Análisis (Extrínseco):** Requisitos intelectuales, físicos, responsabilidades y condiciones. • **Equipos formales y de proyecto.** |
-| **3. Evaluación del Desempeño** | Apreciar sistemáticamente el comportamiento de rol en el cargo y su potencial. | Definición de evaluadores (gerente, autoevaluación, APO, 360°, comité, RRHH), aplicación de métodos tradicionales (escalas gráficas, elección forzada, investigación de campo, incidentes críticos) y entrevista de devolución. |
+| **2. Diseño, Descripción y Análisis de Cargos** | Estructurar el trabajo en el organigrama y definir qué se hace y qué se exige. | • **Diseño:** Modelos clásico, humanista y situacional; enriquecimiento. \newline • **Descripción (Intrínseco):** Qué, cuándo, cómo y por qué se hace. \newline • **Análisis (Extrínseco):** Requisitos intelectuales, físicos, responsabilidades y condiciones. \newline • **Equipos formales y de proyecto.** |
+| **3. Evaluación del Desempeño** | Apreciar sistemáticamente el comportamiento de rol en el cargo y su potencial. | • Definición de evaluadores (gerente, autoevaluación, APO, 360°, comité, RRHH). \newline • Aplicación de métodos tradicionales (escalas gráficas, elección forzada, investigación de campo, incidentes críticos). \newline • Entrevista de devolución. |
 
 ## La empresa como un sistema de roles: concepto de rol. ¿Cuáles son las posibles discrepancias en el desempeño del rol?
 
 * **Concepto de Rol:** Es el conjunto de actividades y comportamientos (expectativa de conducta subjetiva: liderazgo, comunicación, etc.) que se solicitan a un individuo que ocupa una determinada posición en la organización. La empresa es un sistema de roles superpuestos.
+
+    > *«Se dice que la empresa es un sistema de roles superpuestos porque la organización no es una suma de puestos aislados, sino una red de grupos humanos que se entrelazan. Alrededor de cada individuo gira un conjunto de personas que tienen expectativas sobre su comportamiento, y como cada persona interactúa simultáneamente en varios grupos (siendo a la vez subordinado de su jefe, líder de su equipo y colega de sus pares), todos esos conjuntos de roles se solapan entre sí».*
+
 * **Proceso y las 4 Discrepancias en el desempeño del rol:**
   1. **Discrepancia de la expectativa:** Diferencia entre la *expectativa del rol* (lo que el jefe explica y pide) y el *rol percibido* (lo que el subordinado entiende según su interpretación).
   2. **Discrepancia con el rol:** Diferencia entre el *rol percibido* (lo que el empleado entendió) y el *comportamiento del rol* (lo que realmente logra hacer; falla por falta de capacitación o problemas personales).
   3. **Retroalimentación de la discrepancia:** Diferencia entre el *comportamiento del rol* (lo que el subordinado hizo) y el *comportamiento controlado* (lo que el jefe observa y evalúa, ya que no siempre ve todo).
   4. **Discrepancia en el desempeño:** Diferencia final entre el *comportamiento controlado* (lo evaluado por el jefe) y la *expectativa del rol* original que el jefe transmitió.
+
+![](./imágenes/Gemini_Generated_Image_iqr1y4iqr1y4iqr1.jpeg)
 
 ## ¿Qué es un cargo?
 
@@ -66,7 +79,9 @@ Diseñar un cargo consiste en establecer **4 condiciones fundamentales**:
 3. **Responsabilidad:** A quién deberá reportar el ocupante (*relación con su jefe*, por qué cosas o equipos responde).
 4. **Autoridad:** A quién deberá supervisar o dirigir (*relación con sus subordinados*).
 
-*(Nota: Además incluye la Descripción del cargo [aspectos intrínsecos], el Análisis/Especificación del cargo [aspectos extrínsecos: requisitos intelectuales, físicos, responsabilidades implícitas y condiciones de trabajo] y los métodos de recolección: Observación directa, Cuestionario, Entrevista directa y Mixtos, siendo **responsabilidad de línea y función de staff**).*
+> *Nota:*
+>
+> *Además incluye la Descripción del cargo (aspectos intrínsecos), el Análisis/Especificación del cargo (aspectos extrínsecos: requisitos intelectuales, físicos, responsabilidades implícitas y condiciones de trabajo) y los métodos de recolección: Observación directa, Cuestionario, Entrevista directa y Mixtos, siendo **responsabilidad de línea y función de staff**.*
 
 ## Elaborar un cuadro sinóptico de los tres modelos de diseño de los cargos.
 
@@ -91,10 +106,15 @@ Diseñar un cargo consiste en establecer **4 condiciones fundamentales**:
   7. **Liderazgo apropiado** (guía y facilitador).
   8. **Apoyo interno y externo** (capacitación, recursos, incentivos).
 
+> *«Se dice que los equipos de proyecto son "multiculturales" porque sus miembros se seleccionan a partir de la tarea por su especialidad técnica y provienen de distintas áreas funcionales, profesiones e incluso de afuera de la empresa. Por eso no comparten los mismos valores, jergas ni modelos mentales, y el gerente de proyecto debe lograr que se integren y comuniquen en muy corto plazo porque el equipo tiene una existencia efímera».*
+
 ## ¿En qué consiste la evaluación de desempeño?
 
 * **Concepto:** Es la apreciación sistemática del desempeño de cada persona **en el cargo** (su comportamiento de rol) y de su potencial de desarrollo futuro. Es un medio/herramienta integradora para localizar problemas de supervisión o integración, adecuar la persona al cargo, capacitar y promover.
 * **Factores que condicionan el desempeño:** Es situacional; depende del **esfuerzo individual** (condicionado por el *valor de las recompensas* y la *percepción de que estas dependen del esfuerzo*), sumado a las **capacidades del individuo** y su **percepción del papel desempeñado**.
+
+![](./imágenes/Gemini_Generated_Image_bz7q1kbz7q1kbz7q.jpeg){width=80%}
+
 * **Responsabilidad:** Es **responsabilidad de línea** (el gerente evalúa día a día) y **función de staff** (RRHH diseña, asesora y estandariza el sistema). También puede hacerla el propio empleado (autoevaluación), empleado + gerente (**APO**: objetivos por consenso, compromiso, negociación de recursos, desempeño, medición y retroalimentación), el equipo, un Comité, RRHH o **360°** (todos los que interactúan con él).
 * **Métodos tradicionales:** 1) *Escalas gráficas* (doble entrada: continuas, semicontinuas o discontinuas; simple pero sufre efecto halo/subjetividad); 2) *Elección forzada* (bloques de frases positivas/negativas; elimina subjetividad pero es complejo de armar); 3) *Investigación de campo* (gerente + especialista de staff; el más completo pero costoso y lento); 4) *Incidentes críticos* (registra solo extremos muy positivos o muy negativos); 5) *Comparación por pares* y *Frases descriptivas*.
 * **Cierre obligatorio:** La **entrevista de evaluación de desempeño** para dar retroalimentación al empleado.
@@ -181,6 +201,14 @@ Conforma **3 actividades centrales de ingeniería de prestaciones** más su **op
 * **Prestaciones de un SI:** Es el conjunto de capacidades, servicios y comportamientos cuantificables (en términos de velocidad/tiempo de respuesta, productividad/volumen de trabajo procesado y disponibilidad/fiabilidad) que un sistema informático entrega a sus usuarios al ejecutar una carga de trabajo determinada.
 * **Rendimiento de un SI:** Es el grado de **eficacia y eficiencia con que un software determinado utiliza y aprovecha los recursos de hardware** disponibles bajo una determinada combinación de programas (*carga del sistema*). La evaluación del rendimiento es la medida cuantitativa de ese aprovechamiento.
 
+> **Definición comparativa (Rendimiento vs. Prestaciones):**
+>
+> *«La diferencia está en que el rendimiento mira el aprovechamiento interno de los recursos tecnológicos, mientras que las prestaciones son el resultado o servicio externo que el sistema le entrega al usuario:*
+>
+> *El Rendimiento es la eficacia y eficiencia con la que el software utiliza y aprovecha los recursos de hardware (CPU, memoria, disco) cuando procesa una carga de trabajo.*
+>
+> *Las Prestaciones, en cambio, son los resultados operativos y niveles de servicio observables que el sistema entrega como salida frente a esa carga (medidos en velocidad o tiempo de respuesta, volumen de trabajo o productividad/throughput, capacidad y disponibilidad), los cuales deben satisfacer las exigencias de los usuarios y los Acuerdos de Nivel de Servicio (SLA) de la organización».*
+
 ## Defina carga del sistema. ¿Cuáles son las dificultades que plantea la carga real de un sistema? ¿Cuál es la solución a las mismas?
 
 * **Carga del sistema:** Son todas las demandas que realizan los usuarios a un sistema informático (programas, datos, transacciones, órdenes, etc.) durante un intervalo de tiempo determinado.
@@ -257,7 +285,7 @@ Las cargas de prueba o de test se clasifican en **3 grandes tipos** (y sus fases
 
 1. **Cargas de test Reales:** Es la carga observada durante el funcionamiento normal del sistema. Es la más representativa y barata, pero **no es reproducible** para repetir experimentos.
 2. **Cargas de test Sintéticas:** Conjunto compacto de programas que reproduce la carga real; permite repetirse y modificarse sin afectar la producción. Se dividen en:
-   * *Sintéticas Naturales (*Benchmarks* en sentido estricto):* Formadas 100% por programas extraídos de la carga real.
+   * *Sintéticas Naturales (**Benchmarks** en sentido estricto):* Formadas 100% por programas extraídos de la carga real.
    * *Sintéticas Híbridas:* Combinan programas extraídos de la parte conocida de la carga real con elementos artificiales (cuando el sistema aún no existe por completo).
 3. **Cargas de test Artificiales:** Diseñadas exclusivamente para cargar el sistema o un modelo matemático; **ningún componente proviene de la carga real**. Se dividen en:
    * *Artificiales Ejecutables:* 1) Instrucción de suma, 2) Mezcla de instrucciones (*mix*), 3) *Kernels* (núcleos), 4) Programas sintéticos, 5) Secuencias transaccionales, 6) Secuencias conversacionales y 7) *Benchmarks* estándar.
@@ -272,6 +300,10 @@ Dentro de los métodos de predicción (que pueden ser *cualitativos* [subjetivos
    * *Cuándo usarla:* Cuando los datos muestran un patrón **Estacionario** (estable, sin tendencia marcada ni estacionalidad, con pocas variaciones) para predecir a **corto plazo**. Calcula el promedio simple de las últimas $n$ observaciones (eligiendo el $n$ que minimice el Error Cuadrático Medio).
 3. **Suavizado Exponencial ($f_{t+1} = (1-\alpha)f_t + \alpha y_{t+1} = f_t + \alpha(y_{t+1} - f_t)$):**
    * *Cuándo usarla:* Para datos sin tendencia lineal sistemática o con patrones **Cíclicos o Estacionales**, donde importa adaptase rápido a los cambios. Calcula una media ponderada con un factor $\alpha$ ($0 < \alpha < 1$) que **otorga mayor peso a las observaciones más recientes** (incluye la aproximación de Tustin si se toman varios valores previos).
+
+> *Un patrón estacional tiene picos y caídas que se repiten en fechas o temporadas fijas del calendario (se usa suavizado exponencial), mientras que un patrón estacionario se mantiene estable («estacionado») alrededor de un promedio constante sin crecer ni hacer picos (se usa medias móviles).*
+
+![*Patrones de datos históricos.*](<Patrones de datos históricos.png>)
 
 ## ¿Qué son las UPN? ¿Cuándo es conveniente usarlas para predecir el crecimiento de la demanda de prestaciones?
 

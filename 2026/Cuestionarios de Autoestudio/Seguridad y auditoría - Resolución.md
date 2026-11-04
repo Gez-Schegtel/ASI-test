@@ -14,6 +14,11 @@ toc: true
 toc-depth: 5
 numbersections: true
 ancho-imagenes: 100%
+header-includes:
+  - \usepackage{caption}
+  - \captionsetup[figure]{labelformat=empty}
+---
+
 ---
 
 \newpage
@@ -209,7 +214,3 @@ A continuación se detallan las áreas de la Auditoría de SI según la estructu
 | **4. Metodología de Auditoría utilizada** | Se basa en definir e insertar **puntos de control clave** a lo largo de las fases del proyecto, junto con la incorporación de **módulos y pistas de auditoría** dentro del sistema para facilitar futuras revisiones de rutina. | Aplica formalmente la metodología de evaluación de riesgos de **ISACA**: parte de los riesgos potenciales y sigue el esquema jerárquico: **$N$ Objetivos de Control $\rightarrow$ $N$ Técnicas de Control $\rightarrow$ Pruebas de Cumplimiento**. |
 | **5. Cobertura y División del Alcance** | **Cobertura amplia en 4 niveles** (incluye etapas previas y posteriores): 1. **Revisión del ciclo de vida:** Parte del *Plan Maestro de SI/TI*, el *Estudio de Factibilidad* y recorre desde análisis de requerimientos hasta la **Posinstalación (mantenimiento)**. 2. **Auditoría de la documentación** por etapa. 3. **Auditoría de adquisición de SW** (solvencia del proveedor, contratos, recupero/propiedad del código fuente). 4. **Auditoría de modificación de programas** (autorización, trazabilidad, concordancia fuente-objeto). | **Cobertura acotada al desarrollo puro en 2 bloques («Doble foco»)** (abarca análisis, diseño, construcción e implantación, pero **excluye explotación, mantenimiento y retiro**, que trata en capítulos aparte): 1. **Auditoría de la organización y gestión del área de desarrollo** (cómo trabaja y se administra el personal: 8 objetivos de control divididos de la A a la G). 2. **Auditoría de proyectos de desarrollo de SI** (aprobación, planificación, gestión y calidad de cada proyecto según su riesgo y complejidad). |
 | **6. Rol del Auditor e Independencia** | Cumple un **papel activo de consultoría/asesoría preventiva**, trabajando a la par del equipo durante el desarrollo para definir los puntos de control. **Por principio de independencia, la persona que luego audite el sistema en producción debe ser distinta de la que ayudó a definir los puntos de control.** | Actúa como una **función evaluadora e independiente** (aunque con rol asesor en recomendaciones) que verifica la existencia y el grado de cumplimiento de los objetivos y controles mediante pruebas de cumplimiento, muestreo y recolección de evidencias. |
-
----
-
-¡Con esto tenés los dos cuestionarios oficiales de la cátedra 100% resueltos! Si querés hacer un repaso rápido de algún punto puntual o probar cómo responderías una pregunta oral de la profesora Soria Ojeda, avisame y lo practicamos.
