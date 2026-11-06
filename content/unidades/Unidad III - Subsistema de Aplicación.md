@@ -3,9 +3,23 @@ title: "Unidad III - Subsistema de Aplicación"
 subtitle: "Administración de Sistemas de Información"
 author: n1krov, Juani, Pollo y Chipancho
 date: \today
+documentclass: scrartcl
+classoption: numbers=enddot
+geometry: margin=2.5cm
+linestretch: 1.15
+mainfont: Libertinus Serif
+sansfont: Inter
+monofont: JetBrains Mono
 toc: true
 toc-depth: 5
 numbersections: true
+ancho-imagenes: 100%
+header-includes:
+  - |
+    ```{=latex}
+    \usepackage{float}
+    \floatplacement{figure}{H}
+    ```
 ---
 
 \newpage
