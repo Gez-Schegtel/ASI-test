@@ -1,6 +1,6 @@
 # Administración de Sistemas de Información (ASI)
 
-[![Editorial CI/CD (PDF & EPUB)](https://github.com/n1krov/ASI/actions/workflows/editorial-ci.yml/badge.svg)](https://github.com/n1krov/ASI/actions/workflows/editorial-ci.yml)
+[![Editorial CI/CD (PDF & EPUB)](https://github.com/Gez-Schegtel/ASI-test/actions/workflows/editorial-ci.yml/badge.svg)](https://github.com/Gez-Schegtel/ASI-test/actions/workflows/editorial-ci.yml)
 
 Repositorio colaborativo y fuente de verdad canónica de apuntes, trabajos prácticos y laboratorios de **Administración de Sistemas de Información (ASI)** — Ingeniería en Sistemas de Información (UTN FRRe).
 
