@@ -14,8 +14,8 @@
 | Dominio | Ubicación Actual (`AS-IS`) | Ubicación Canónica (`TO-BE`) | Estado Actual |
 | :--- | :--- | :--- | :--- |
 | Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
-| Estado vivo y specs | `docs/STATUS.md` + `docs/specs/` | `docs/STATUS.md` + `docs/specs/` | **Specs 01, 02, 03-B, 04, 05 y 06 implementadas**; Spec 03-A a la espera de material |
-| Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
+| Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05 y 06 implementadas** + Guía de subida lista; Spec 03-A a la espera de material |
+| Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `enunciados-cuestionarios/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
 | Apuntes y cuestionarios por Unidad | `content/unidades/` (`Unidad I/`, `Unidad III/`, `Unidad VI/`) | `content/unidades/<Unidad X>/` | **Organizado por Unidad y normalizado** |
 | Trabajos prácticos y guías | `content/practica/` (`tpi-dvp/`, `tp1-alineamiento/`) | `content/practica/` | **Migrado y 100% en `.md`** |
 | Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
@@ -43,10 +43,10 @@
 | :--- | :--- | :--- | :--- |
 | **Unidad I** | Los SI en la Empresa, Cadena de Valor y Estrategia SI/TI | `content/unidades/Unidad I/` + `legacy/archivo-2025/2025/par_1/u1/` | Cuestionario resuelto en raíz + 4 borradores en `Unidad I/borradores/` |
 | **Unidad II** | Subsistema de Provisión (RRHH y SI/TI) *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u4/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64 y PDFs pasados a `.md`) |
-| **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `content/unidades/Unidad III/` | **Completa** (Apunte teórico + Cuestionario resuelto + Enunciado) |
+| **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `content/unidades/Unidad III/` | **Completa** (Apunte teórico + Cuestionario de autoestudio resuelto) |
 | **Unidad IV** | Mantenimiento y Desarrollo de RRHH *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u6/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64) |
 | **Unidad V** | Subsistema de Seguimiento / Control (Monitores, Benchmarking, Amdahl) | `legacy/archivo-2025/2025/par_1/u2/` | Fragmentado |
-| **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/Unidad VI/` | **Completa** (Apunte teórico + Cuestionario resuelto + Enunciado) |
+| **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/Unidad VI/` | **Completa** (Apunte teórico + Cuestionario de autoestudio resuelto) |
 | **TPI (DVP)** | Caso Dirección de Vialidad Provincial del Chaco (ERP, GeoVial, SiCC) | `content/practica/tpi-dvp/` | **Completo en `.md`** (`Explicación del TPI.md` + `TPI Parte 2.md`) |
 | **TP1 Alineamiento** | Guías, presentaciones y consignas del TP1 de Alineamiento Estratégico | `content/practica/tp1-alineamiento/` | **Completo en `.md`** (9 archivos `.md`) |
 | **Lab Checkmk** | Monitoreo con Checkmk Raw 2.3 en Docker + `http_ping.py` | `content/labs/cmk/` y `content/labs/taller-1/` | **Migrado y funcional** |
@@ -91,6 +91,19 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-06` — Guía de Subida de Apuntes, Unificación de Cuestionarios y Limpieza de Releases
+
+* **Contexto**: Con el objetivo de facilitar la carga futura de las unidades restantes (**Spec 03 — Parte A**) y dejar los Releases de GitHub completamente limpios (únicamente con el apunte teórico y el cuestionario resuelto de cada unidad), se normalizaron los nombres y se redactó la guía operativa para colaboradores.
+* **Acciones ejecutadas**:
+  * **Creación de `docs/GUIA_SUBIDA_APUNTES.md`**: guía paso a paso con estructura de carpetas por unidad, plantillas YAML listas para copiar (apunte teórico y cuestionario resuelto), reglas de `assets/` y uso de `mdnorm`.
+  * **Unificación de nombres de cuestionarios resueltos**:
+    * `Unidad III/Aplicación de recursos - Resolución.md` $\rightarrow$ `Unidad III/Unidad III - Cuestionario de Autoestudio - Resolución.md`.
+    * `Unidad VI/Seguridad y auditoría - Resolución.md` $\rightarrow$ `Unidad VI/Unidad VI - Cuestionario de Autoestudio - Resolución.md`.
+  * **Limpieza de enunciados vacíos y borradores en Releases**:
+    * Traslado de los enunciados sin resolver (`AdmSI-CUESTIONARIOS*`) a `legacy/enunciados-cuestionarios/`.
+    * Exclusión de subcarpetas `*/borradores/*` en la compilación del job `build` (`.github/workflows/editorial-ci.yml`) para que solo se publiquen en Releases los apuntes y cuestionarios definitivos.
+  * Actualización de `README.md`, `GEMINI.md`, `docs/specs/06-publicacion-ordenada-en-releases.md` y `docs/STATUS.md`.
 
 ### `2026-11-06` — Implementación de Spec 06 (Publicación Ordenada por Unidad en GitHub Releases)
 

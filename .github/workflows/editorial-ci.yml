@@ -118,7 +118,7 @@ jobs:
               set -euo pipefail
               mapfile -d "" archivos_compilar < <(
                 find content/unidades content/practica \
-                  -type f -name "*.md" ! -name "README.md" -print0 2>/dev/null | sort -z
+                  -type f -name "*.md" ! -name "README.md" ! -path "*/borradores/*" -print0 2>/dev/null | sort -z
               )
               if (( ${#archivos_compilar[@]} == 0 )); then
                 echo "❌ No se encontraron documentos para compilar."

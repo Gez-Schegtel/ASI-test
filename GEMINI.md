@@ -21,11 +21,12 @@ Este repositorio es la fuente de verdad canónica, colaborativa y versionada de 
 ## 3. Mapa de Arquitectura y Responsabilidades
 
 * `content/`: Material de estudio editable.
-  * `content/unidades/`: Apuntes teóricos consolidados (Unidades I a VI).
-  * `content/practica/`: TPI (Vialidad Provincial - DVP), cuestionarios de autoestudio y guías prácticas.
+  * `content/unidades/`: Apuntes teóricos consolidados y cuestionarios de autoestudio resueltos agrupados por Unidad (`Unidad I/` a `Unidad VI/`).
+  * `content/practica/`: TPI (Vialidad Provincial - DVP) y guías de trabajos prácticos (`tp1-alineamiento/`).
   * `content/labs/`: Talleres y laboratorios prácticos (e.g., Checkmk, monitoreo).
 * `assets/`: Imágenes, diagramas y capturas referenciadas por los documentos Markdown.
-* `docs/`: Documentación del proyecto, estado vivo, bitácora del equipo y especificaciones técnicas.
+* `docs/`: Documentación del proyecto, guías de colaboración, estado vivo y especificaciones técnicas.
+  * `docs/GUIA_SUBIDA_APUNTES.md`: Guía paso a paso para agregar nuevas unidades y apuntes.
   * `docs/STATUS.md`: Bitácora viva y radiografía actualizada del estado real del repositorio, avance de unidades/tooling y pendientes.
   * `docs/specs/`: Especificaciones de cambios de tooling, migración o estructura.
 * `toolchain/`: Scripts de linteo, normalización, compilación e imagen Docker del entorno editorial.

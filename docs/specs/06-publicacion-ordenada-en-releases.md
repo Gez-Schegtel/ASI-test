@@ -47,23 +47,20 @@ El workflow crea y mantiene actualizado automáticamente **un Release independie
 
 Al entrar a **[Releases](https://github.com/Gez-Schegtel/ASI-test/releases)** se ven bloques separados y ordenados:
 
-1. 📘 **Unidad VI — Seguridad y Auditoría de SI/TI** (`tag: unidad-vi`)
-   * *Descripción con tabla de enlaces directos* + *Assets adjuntos*:
-     * `Unidad VI - Seguridad y Auditoría.pdf` / `.epub`
-     * `Seguridad y auditoría - Resolución.pdf` / `.epub`
-     * `AdmSI-CUESTIONARIOS DE ESTUDIO - SEGURIDAD Y AUDITORIA DE SI-TI.pdf` / `.epub`
-     * `Unidad-VI-Completa.zip` (todos los archivos de la unidad en un solo clic)
+1. 📘 **Unidad I — Los SI en la Empresa y Estrategia SI/TI** (`tag: unidad-i`)
+   * `Unidad I - Cuestionario de Autoestudio - Resolución.pdf` / `.epub`
+   * `Unidad-I-Completa.zip` *(excluyendo `borradores/`)*
 2. 📘 **Unidad III — Subsistema de Aplicación** (`tag: unidad-iii`)
    * `Unidad III - Subsistema de Aplicación.pdf` / `.epub`
-   * `Aplicación de recursos - Resolución.pdf` / `.epub`
-   * `AdmSI-CUESTIONARIOS APLICACIÓN DE RECURSOS.pdf` / `.epub`
+   * `Unidad III - Cuestionario de Autoestudio - Resolución.pdf` / `.epub`
    * `Unidad-III-Completa.zip`
-3. 📘 **Unidad I — Los SI en la Empresa y Estrategia SI/TI** (`tag: unidad-i`)
-   * `Unidad I - Cuestionario de Autoestudio - Resolución.pdf` / `.epub`
-   * `Unidad-I-Completa.zip` (incluye borradores)
-4. 🛠️ **Práctica — TPI (Vialidad Provincial - DVP)** (`tag: practica-tpi-dvp`)
+3. 📘 **Unidad VI — Seguridad y Auditoría de SI/TI** (`tag: unidad-vi`)
+   * `Unidad VI - Seguridad y Auditoría.pdf` / `.epub`
+   * `Unidad VI - Cuestionario de Autoestudio - Resolución.pdf` / `.epub`
+   * `Unidad-VI-Completa.zip`
+4. 🛠️ **Práctica — TPI: Vialidad Provincial (DVP)** (`tag: practica-tpi`)
    * `Explicación del TPI.pdf` / `.epub`, `TPI Parte 2.pdf` / `.epub` y `Practica-TPI-DVP.zip`
-5. 🛠️ **Práctica — TP1 (Alineamiento Estratégico de SI/TI)** (`tag: practica-tp1-alineamiento`)
+5. 🛠️ **Práctica — TP1: Alineamiento Estratégico de SI/TI** (`tag: practica-tp1`)
    * `TP1 - Alineamiento de SI-TI.pdf` / `.epub` + guías explicativas en `Practica-TP1-Alineamiento.zip`
 
 ---
