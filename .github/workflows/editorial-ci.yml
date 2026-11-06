@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout del repositorio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Verificar principios de GEMINI.md (Cero binarios y Cero Base64)
         shell: bash
@@ -74,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout del repositorio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Instalar Pandoc, LuaLaTeX y fuentes del toolchain
         run: |
@@ -105,7 +105,7 @@ jobs:
           ls -lh build/
 
       - name: Subir artefactos generados (PDF + EPUB)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: apuntes-asi-pdf-epub
           path: |
@@ -116,7 +116,7 @@ jobs:
 
       - name: Publicar Release en GitHub (en tags v*)
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3.0.4
         with:
           files: |
             build/*.pdf
