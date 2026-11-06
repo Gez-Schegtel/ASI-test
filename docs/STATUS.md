@@ -4,7 +4,7 @@
 > Este archivo es la **fuente de verdad viva y bitácora histórica** del repositorio de **Administración de Sistemas de Información (ASI)** — UTN FRRe. Debe consultarse al inicio de cada sesión y mantenerse estrictamente actualizado tras cada cambio estructural, de contenido o de *tooling*.
 
 * **Última actualización**: `2026-11-06`
-* **Fase actual**: `Fases 1 y 2 Completadas (Specs 01 y 02 implementadas) -> En transición a Spec 03 (Unidades faltantes y CI/CD)`
+* **Fase actual**: `Infraestructura Técnica 100% Completada (Specs 01, 02 y 03-Parte B implementadas) -> En espera de material de estudio para Spec 03-Parte A`
 * **Rama activa**: `changes/juani`
 
 ---
@@ -14,7 +14,7 @@
 | Dominio | Ubicación Actual (`AS-IS`) | Ubicación Canónica (`TO-BE`) | Estado Actual |
 | :--- | :--- | :--- | :--- |
 | Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
-| Estado vivo y specs | `docs/STATUS.md` + `docs/specs/` | `docs/STATUS.md` + `docs/specs/` | **Specs 01 y 02 implementadas**; Spec 03 en cola |
+| Estado vivo y specs | `docs/STATUS.md` + `docs/specs/` | `docs/STATUS.md` + `docs/specs/` | **Specs 01, 02 y 03-B implementadas**; Spec 03-A a la espera de material |
 | Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
 | Apuntes teóricos | `content/unidades/` | `content/unidades/` | **Migrado y normalizado** (U. III y VI listas; U. I en borradores) |
 | Trabajos prácticos y guías | `content/practica/` (`tpi-dvp/`, `tp1-alineamiento/`, `cuestionarios/`) | `content/practica/` | **Migrado y 100% en `.md`** |
@@ -22,7 +22,7 @@
 | Recursos gráficos | `assets/` (307 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
 | Toolchain editorial | `toolchain/bin/` (`mdnorm`, `md2pdf`) y `toolchain/pandoc/` | `toolchain/bin/` y `toolchain/pandoc/` | **Implementado y validado** (PDF LuaLaTeX + EPUB3) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
-| Pipelines CI/CD | *(Inexistente)* | `.github/workflows/` | **Próximo paso (Spec 03)** |
+| Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado y validado localmente** (`lint` + `build` + Releases) |
 
 ### Métricas Auditadas del Árbol Actual (Post-Spec 02)
 
@@ -57,7 +57,7 @@
 
 1. **[01-reestructuracion-y-resguardo-legacy.md](specs/01-reestructuracion-y-resguardo-legacy.md)** — *Estado: **Implementada** (2026-11-06)*. Resguardo en `legacy/`, migración a `content/` y `assets/`, conversión de los 14 PDFs/DOCX de cátedra a `.md` (Opción A), extracción de las 62 imágenes Base64 y nuevo `.gitignore`.
 2. **[02-unificacion-toolchain-pandoc.md](specs/02-unificacion-toolchain-pandoc.md)** — *Estado: **Implementada** (2026-11-06)*. Construcción de `toolchain/bin/mdnorm`, `toolchain/bin/md2pdf` (`--pdf`, `--epub`, `--all`), `toolchain/pandoc/` (`defaults/`, `templates/`, `filters/`) y `toolchain/README.md`, 100% autocontenido y con `Latin Modern Roman` como fuente predeterminada.
-3. **[03-consolidacion-unidades-y-ci-cd.md](specs/03-consolidacion-unidades-y-ci-cd.md)** — *Estado: Lista para implementar*. Plan de redacción/unificación de Unidades I, II, IV y V, y pipeline de GitHub Actions (Artifacts + Releases).
+3. **[03-consolidacion-unidades-y-ci-cd.md](specs/03-consolidacion-unidades-y-ci-cd.md)** — *Estado: **Parte B (CI/CD) implementada** (2026-11-06); **Parte A (Unidades faltantes)** en espera de material de estudio*. Pipeline `.github/workflows/editorial-ci.yml` activo para `lint` (`mdnorm --check` + control de binarios/Base64) y `build` (`md2pdf --all` -> Artifacts y GitHub Releases).
 
 ---
 
@@ -76,11 +76,21 @@
 - [x] Ejecutar **Fase 0 (Spec 01)**: crear `legacy/` y resguardar `script conversor/`, `script normalizador/`, `estilos/` y `2026/herramientas/`.
 - [x] Ejecutar **Fases 1 a 3 (Spec 01)**: migrar a `content/` y `assets/`, convertir los 14 documentos de cátedra a `.md`, extraer las 62 imágenes Base64 de `APUNTE 2 parcial.md` y aplicar el nuevo `.gitignore`.
 - [x] Implementar **Spec 02**: construir `toolchain/bin/mdnorm`, `toolchain/bin/md2pdf` (`--pdf`, `--epub`, `--all`) y `toolchain/pandoc/`.
-- [ ] Implementar **Spec 03**: configurar `.github/workflows/` y consolidar las unidades faltantes.
+- [x] Implementar **Spec 03 (Parte B)**: configurar `.github/workflows/editorial-ci.yml` (`lint` + `build` PDF/EPUB + publicación en Artifacts y Releases).
+- [ ] Implementar **Spec 03 (Parte A)**: consolidar las unidades teóricas faltantes cuando esté listo el material de estudio.
 
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-06` — Implementación de Spec 03 - Parte B (`.github/workflows/editorial-ci.yml`)
+
+* **Contexto**: Con el `toolchain/` unificado y validado, y dado que el material de estudio de las unidades restantes aún se encuentra en preparación, se avanzó con la implementación técnica de la **Parte B de la Spec 03** (Integración y Entrega Continua).
+* **Acciones ejecutadas**:
+  * Creación de `.github/workflows/editorial-ci.yml` con dos *jobs* encadenados:
+    * **`lint`**: verifica que no existan binarios prohibidos (`.pdf`, `.epub`, `.docx`) en Git, que no haya imágenes fuera de `assets/`, que no existan imágenes Base64 (`data:image/`) en `content/` y ejecuta `./toolchain/bin/mdnorm --check` sobre los 24 archivos `.md` de `content/`.
+    * **`build`**: instala `pandoc`, `texlive-luatex`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-fonts-recommended`, `texlive-lang-spanish`, `lmodern`, `fonts-noto-color-emoji` y `fonts-dejavu-core`; compila con `./toolchain/bin/md2pdf -y --all` las unidades consolidadas (`content/unidades/*.md`), resoluciones de cuestionarios (`content/practica/cuestionarios/*Resolución*.md`), TPI (`content/practica/tpi-dvp/*.md`) y TP1 (`content/practica/tp1-alineamiento/TP1*.md`); publica el paquete `apuntes-asi-pdf-epub` como **GitHub Actions Artifact** y adjunta todos los `.pdf` y `.epub` a un **GitHub Release** cuando se pushea un tag `v*`.
+  * **Validación local de extremo a extremo**: se ejecutaron localmente tanto los chequeos del job `lint` como la compilación `--all` (PDF + EPUB) de los 8 documentos incluidos en el job `build`, confirmando salida exitosa (`exit 0`) en el 100% de los casos y limpiando `build/` al finalizar.
 
 ### `2026-11-06` — Implementación y Validación de Spec 02 (`toolchain/` Unificado)
 

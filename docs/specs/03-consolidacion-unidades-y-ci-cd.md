@@ -1,7 +1,7 @@
 # Spec 03 — Consolidación de Unidades Académicas y Pipeline CI/CD
 
-* **Estado**: Propuesta (pendiente de revisión)
-* **Fecha**: 2026-11-05
+* **Estado**: En ejecución (Parte B implementada el 2026-11-06; Parte A pendiente de material de estudio)
+* **Fecha**: 2026-11-06
 * **Alcance**: Plan editorial para consolidar las Unidades I a VI en `content/unidades/` bajo las convenciones de `GEMINI.md`, e implementación de integración y entrega continua en `.github/workflows/`.
 
 ---
@@ -55,11 +55,11 @@ Para cumplir con el Principio 2 de `GEMINI.md` (*Cero artefactos en Git; compila
 
 ### 2.2. Job 2: `build` (Compilación PDF + EPUB y publicación)
 
-* **Entorno**: `ubuntu-latest` con caché de paquetes APT/TeX o contenedor TeX Live ligero con `pandoc`, `texlive-luatex`, `texlive-latex-extra`, `fonts-noto-color-emoji` y las fuentes tipográficas del `toolchain/` (`fonts-libertinus` / `fonts-inter` / `JetBrains Mono`).
+* **Entorno**: `ubuntu-latest` con `pandoc`, `texlive-luatex`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-fonts-recommended`, `texlive-lang-spanish`, `lmodern`, `fonts-noto-color-emoji` y `fonts-dejavu-core`.
 * **Acciones**:
-  1. Ejecuta `toolchain/bin/md2pdf --all -y` sobre `content/unidades/*.md` y `content/practica/**/*.md`.
-  2. Sube el directorio `build/` generado (todos los `.pdf` y `.epub`) como **GitHub Actions Artifact** descargable desde cualquier commit/PR.
-  3. **Publicación automática en Releases**: Cuando se pushea un tag semántico (ej. `v2026.1` o `parcial-2`), crea o actualiza automáticamente un **GitHub Release** adjuntando todos los PDFs y EPUBs listos para estudiar en PC, celular o e-reader.
+  1. Ejecuta `toolchain/bin/md2pdf -y --all` sobre `content/unidades/*.md`, `content/practica/cuestionarios/*Resolución*.md`, `content/practica/tpi-dvp/*.md` y `content/practica/tp1-alineamiento/TP1*.md`.
+  2. Sube el directorio `build/` generado (todos los `.pdf` y `.epub`) como **GitHub Actions Artifact** (`apuntes-asi-pdf-epub`) descargable desde cualquier commit/PR.
+  3. **Publicación automática en Releases**: Cuando se pushea un tag semántico (`v*`, ej. `v2026.1`), crea o actualiza automáticamente un **GitHub Release** adjuntando todos los PDFs y EPUBs listos para estudiar en PC, celular o e-reader.
 
 ---
 

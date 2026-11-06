@@ -1,0 +1,124 @@
+name: Editorial CI/CD (Lint & Build PDF/EPUB)
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - "changes/**"
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  lint:
+    name: Lint Markdown & Reglas del Repositorio
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Verificar principios de GEMINI.md (Cero binarios y Cero Base64)
+        shell: bash
+        run: |
+          set -euo pipefail
+          error=0
+
+          echo "1. Verificando ausencia de artefactos binarios (.pdf, .epub, .docx) en Git..."
+          binarios="$(git ls-files '*.pdf' '*.epub' '*.docx')"
+          if [[ -n "$binarios" ]]; then
+            echo "❌ Se encontraron binarios versionados prohibidos por GEMINI.md:"
+            echo "$binarios"
+            error=1
+          else
+            echo "   ✔ Cero binarios (.pdf/.epub/.docx) en Git."
+          fi
+
+          echo "2. Verificando que no existan imágenes sueltas dentro de content/..."
+          img_fuera="$(git ls-files 'content/*.png' 'content/*.jpg' 'content/*.jpeg' 'content/*.svg' 'content/*.gif' 'content/*.webp' 'content/**/*.png' 'content/**/*.jpg' 'content/**/*.jpeg' 'content/**/*.svg' 'content/**/*.gif' 'content/**/*.webp')"
+          if [[ -n "$img_fuera" ]]; then
+            echo "❌ Se encontraron imágenes fuera de assets/:"
+            echo "$img_fuera"
+            error=1
+          else
+            echo "   ✔ Todas las imágenes residen en assets/."
+          fi
+
+          echo "3. Verificando ausencia de imágenes Base64 incrustadas en content/..."
+          if grep -rn "data:image/" content/; then
+            echo "❌ Se encontraron imágenes codificadas en Base64 dentro de content/."
+            error=1
+          else
+            echo "   ✔ Cero imágenes Base64 en content/."
+          fi
+
+          exit "$error"
+
+      - name: Ejecutar linter y normalizador (mdnorm --check)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -d '' archivos < <(find content -type f -name "*.md" -print0 | sort -z)
+          ./toolchain/bin/mdnorm --check "${archivos[@]}"
+
+  build:
+    name: Compilar Apuntes (PDF & EPUB)
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Pandoc, LuaLaTeX y fuentes del toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            pandoc \
+            texlive-luatex \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-lang-spanish \
+            lmodern \
+            fonts-noto-color-emoji \
+            fonts-dejavu-core
+
+      - name: Compilar unidades y guías prácticas a PDF y EPUB
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          archivos_compilar=(
+            content/unidades/*.md
+            content/practica/cuestionarios/*Resolución*.md
+            content/practica/tpi-dvp/*.md
+            content/practica/tp1-alineamiento/TP1*.md
+          )
+          ./toolchain/bin/md2pdf -y --all "${archivos_compilar[@]}"
+          ls -lh build/
+
+      - name: Subir artefactos generados (PDF + EPUB)
+        uses: actions/upload-artifact@v4
+        with:
+          name: apuntes-asi-pdf-epub
+          path: |
+            build/*.pdf
+            build/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Release en GitHub (en tags v*)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/*.pdf
+            build/*.epub
+          generate_release_notes: true
