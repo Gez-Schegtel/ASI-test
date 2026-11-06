@@ -12,13 +12,13 @@ Esta guía explica paso a paso cómo agregar nuevas unidades teóricas, cuestion
    ```bash
    ./toolchain/bin/mdnorm -y "content/unidades/Unidad II/"*.md
    ```
-4. **Hacé `git commit` y `git push`** (sin subir ningún `.pdf`, `.epub` ni `.docx`): GitHub Actions compilará los documentos y actualizará solo el **Release** de esa unidad.
+4. **Hacé `git commit` y `git push`** (sin subir ningún `.pdf`, `.epub` ni `.docx`): GitHub Actions compilará los documentos y actualizará automáticamente el **Release principal (`/releases/latest`)** ordenando los archivos dentro de su unidad.
 
 ---
 
 ## 1. Dónde ubicar los archivos y cómo nombrarlos
 
-El pipeline de GitHub Actions ([`.github/workflows/editorial-ci.yml`](../.github/workflows/editorial-ci.yml)) detecta automáticamente las carpetas de unidades y crea un Release dedicado para cada una:
+El pipeline de GitHub Actions ([`.github/workflows/editorial-ci.yml`](../.github/workflows/editorial-ci.yml)) detecta automáticamente las carpetas de unidades y usa [`toolchain/bin/mkrelease`](../toolchain/bin/mkrelease) para organizarlas con tablas y paquetes `.zip` separados dentro del Release principal continuo (`apuntes-al-dia` / `/releases/latest`):
 
 ```text
 content/
@@ -39,9 +39,18 @@ content/
 │       ├── Unidad VI - Seguridad y Auditoría.md
 │       └── Unidad VI - Cuestionario de Autoestudio - Resolución.md
 └── practica/
-    ├── tp1-alineamiento/                <- Publica en Release: practica-tp1
-    └── tpi-dvp/                         <- Publica en Release: practica-tpi
+    ├── tp1-alineamiento/                <- Sección Práctica TP1 en /releases/latest
+    └── tpi-dvp/                         <- Sección Práctica TPI en /releases/latest
 ```
+
+> [!TIP]
+> **¿Cómo guardar una foto fija (versión histórica) antes de un parcial o cierre de año?**
+> El Release principal (`apuntes-al-dia`) se mantiene siempre al día con el último commit sin llenar la página de copias repetidas. Si antes de un examen o al terminar la cursada quieren dejar congelada una versión histórica inmutable de todos los PDFs y EPUBs, basta con crear y subir un tag que empiece con `v`:
+> ```bash
+> git tag v2026-parcial1
+> git push myfork v2026-parcial1
+> ```
+> GitHub Actions creará automáticamente un Release histórico separado (`📚 Snapshot Histórico de Apuntes — v2026-parcial1`) que **nunca se sobrescribe ni se borra**, dejando siempre arriba a `apuntes-al-dia` como `Latest`.
 
 ### Convención de nombres recomendada
 

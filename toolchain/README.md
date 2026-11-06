@@ -15,7 +15,8 @@ toolchain/
 ├── Dockerfile                       <- Imagen Docker precompilada (ghcr.io/gez-schegtel/asi-toolchain) con caché de luaotfload
 ├── bin/
 │   ├── mdnorm                       <- Linter y normalizador de Markdown (Bash + Perl)
-│   └── md2pdf                       <- Compilador unificado a PDF y EPUB3 (Bash + Perl + Pandoc)
+│   ├── md2pdf                       <- Compilador unificado a PDF y EPUB3 (Bash + Perl + Pandoc)
+│   └── mkrelease                    <- Empaquetador y publicador de GitHub Releases (Bash + Perl + gh)
 └── pandoc/
     ├── defaults/
     │   ├── pdf.yaml                 <- Defaults de Pandoc para PDF (motor lualatex, filtros Lua)
@@ -76,7 +77,24 @@ Toma uno o varios archivos `.md`, traduce en memoria la sintaxis de Obsidian (`!
 
 ---
 
-## 4. Dependencias del Sistema
+## 4. Uso de `toolchain/bin/mkrelease` (Empaquetado y Publicación de Releases)
+
+Empaqueta el árbol generado en `build/` creando un `.zip` por cada Unidad/Trabajo Práctico (conservando los nombres con tildes y espacios adentro del `.zip`), translitera los archivos `.pdf` y `.epub` individuales a nombres ASCII limpios (para evitar que GitHub reemplace caracteres acentuados por puntos), construye el índice Markdown ordenado con tablas de descarga en 1 clic y actualiza atómicamente el Release en GitHub sin borrarlo.
+
+```bash
+# Simular localmente la generación de assets y notas.md sin llamar a GitHub CLI (--dry-run)
+./toolchain/bin/mkrelease --dry-run build/release-preview
+
+# Actualizar en el lugar el Release continuo principal (apuntes-al-dia -> Latest)
+./toolchain/bin/mkrelease --repo Gez-Schegtel/ASI-test --tag apuntes-al-dia --cleanup-legacy-tags
+
+# Publicar un Snapshot Histórico inmutable para un tag v* (--latest=false)
+./toolchain/bin/mkrelease --repo Gez-Schegtel/ASI-test --tag v2026-parcial1 --historical
+```
+
+---
+
+## 5. Dependencias del Sistema
 
 ### Opción A: Usar la imagen Docker precompilada (CI/CD y uso local sin instalar TeX Live)
 

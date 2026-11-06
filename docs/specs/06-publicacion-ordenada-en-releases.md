@@ -1,95 +1,49 @@
-# Spec 06 — Publicación Automática y Ordenada por Unidad en GitHub Releases
+# Spec 06 — Publicación Continua en Release Principal (`apuntes-al-dia`) y Snapshots Históricos (`v*`)
 
-* **Estado**: Implementada (2026-11-06 — Modalidad A: un Release por cada Unidad y Trabajo Práctico + eliminación de Artifacts redundantes en `main`)
+* **Estado**: Implementada (2026-11-06 — Un único Release principal actualizable en el lugar + soporte de Releases históricos inmutables `v*`)
 * **Fecha**: 2026-11-06
-* **Alcance**: Reemplazo del flujo principal de descarga basado en *GitHub Actions Artifacts* por la publicación automática y continua en **GitHub Releases** (`.github/workflows/editorial-ci.yml` y `README.md`), organizando los apuntes y cuestionarios por Unidad y Trabajo Práctico para descarga directa en 1 clic sin requerir inicio de sesión.
+* **Alcance**: Reemplazo de *GitHub Actions Artifacts* y de múltiples releases sueltos por un **único Release principal continuo (`apuntes-al-dia`, marcado como `Latest`)** actualizado atómicamente en el lugar mediante `toolchain/bin/mkrelease`, acompañado de **Releases históricos inmutables** al publicar tags de versión `v*`.
 
 ---
 
-## 1. Diagnóstico del Problema Actual (`AS-IS`)
+## 1. Diagnóstico del Problema (`AS-IS`)
 
-Actualmente, aunque los documentos se compilan y empaquetan por Unidad como *Artifacts* de GitHub Actions, la experiencia de descarga para un estudiante presenta cuatro fricciones importantes:
-
-1. **Navegación engorrosa (4 pasos)**: Quien entra al repositorio debe ir a la pestaña *Actions* $\rightarrow$ seleccionar el workflow *Editorial CI/CD* $\rightarrow$ entrar a la última corrida exitosa $\rightarrow$ bajar hasta el final de la página hasta encontrar la tabla *Artifacts*.
-2. **Requiere cuenta de GitHub e inicio de sesión obligatorio**: GitHub bloquea la descarga de *Actions Artifacts* a usuarios no autenticados (si alguien abre el link desde el celular o sin iniciar sesión en GitHub, los botones aparecen deshabilitados).
-3. **Descarga forzosa en `.zip` y vencimiento a los 30 días**: Los *Artifacts* de Actions siempre comprimen el contenido en un `.zip` (no permiten abrir o bajar un único `.pdf` suelto) y caducan automáticamente.
-4. **La página de `Releases` está vacía salvo que se pushee un tag `v*` manual**: El paso actual de Release solo se ejecuta en tags `v*` y sube todos los archivos mezclados sin separación por Unidad.
+1. **Fricción de *Actions Artifacts***: Descargar desde la pestaña *Actions* requiere múltiples clics, obliga a iniciar sesión en GitHub, comprime todo forzosamente en `.zip` y caduca a los 30 días.
+2. **Riesgos de tener múltiples Releases móviles por unidad**:
+   * Borrar y recrear 5–8 Releases en cada commit (`gh release delete` + `create`) introduce ventanas donde un fallo de red deja una unidad caída (`404`), ensucia la lista de tags de Git y envía múltiples notificaciones por correo a los seguidores (*Watchers*) del repositorio.
+   * Por otro lado, crear un Release nuevo por cada commit sin borrar el anterior llenaría la página de `/releases` con decenas de copias repetidas.
 
 ---
 
-## 2. Arquitectura Propuesta (`TO-BE`)
+## 2. Arquitectura Implementada (`TO-BE`)
 
-Se propone que **cada push a `main` / `master`** (además de `workflow_dispatch`) actualice automáticamente la sección **[Releases](https://github.com/Gez-Schegtel/ASI-test/releases)** del repositorio.
-
-A diferencia de *Actions Artifacts*, **GitHub Releases**:
-* Aparece directamente en la **portada derecha del repositorio** (a 1 clic de distancia).
-* **No requiere iniciar sesión en GitHub** (cualquier compañero puede descargar desde el navegador o el celular).
-* Permite tanto descargar **un `.pdf` o `.epub` individual en 1 clic** como bajar el **`.zip` completo de una Unidad**.
-* No caduca con el tiempo.
+Se implementa una estrategia **dual (Rolling Release + Snapshots Históricos)** gestionada por el script autocontenido [`toolchain/bin/mkrelease`](../../toolchain/bin/mkrelease):
 
 ```mermaid
 flowchart LR
-    A["Push a main / master"] --> B["Compilación en Docker (build/)"]
-    B --> C["Empaquetado por Unidad (.zip + .pdf/.epub)"]
-    C --> D["Publicación automática en GitHub Releases"]
-    D --> E["Descarga pública en 1 clic (sin login)"]
+    A["Compilación en Docker (build/)"] --> B["toolchain/bin/mkrelease"]
+    B --> C{"¿Evento del Workflow?"}
+    C -- "Push normal (main / master)" --> D["Actualiza en el lugar 'apuntes-al-dia' (Latest)"]
+    C -- "Push de tag 'v*' (ej. v2026.1)" --> E["Crea Release Histórico Inmutable 'v2026.1'"]
 ```
 
----
+### 2.1. Un Único Release Principal Continuo (`tag: apuntes-al-dia` / `/releases/latest`)
 
-## 3. Modalidades de Organización en la Página de `Releases`
+En cada push a la rama principal (`main` / `master`):
 
-Existen dos formas limpias de presentar las unidades en `https://github.com/Gez-Schegtel/ASI-test/releases`:
+1. **Actualización en el lugar sin caída de enlaces (`--clobber`)**:
+   * Si el Release `apuntes-al-dia` ya existe, **no se elimina**: se actualiza el puntero del tag al commit actual, se suben y sobrescriben los archivos con `gh release upload --clobber`, se purgan únicamente los assets que hayan quedado obsoletos (si algún documento cambió de nombre) y se actualiza el cuerpo Markdown con `gh release edit --latest=true`.
+   * Así, la URL fija **`/releases/latest`** nunca devuelve `404` durante una compilación ni genera spam de notificaciones.
+2. **Organización interna por Unidad y Trabajo Práctico**:
+   * El cuerpo del Release presenta un **índice ordenado por Unidad** con tablas y enlaces de descarga directa en **1 clic** tanto al paquete `.zip` completo de cada unidad (`Unidad-I-Completa.zip`, `Unidad-III-Completa.zip`, `Unidad-VI-Completa.zip`, `Practica-TPI-DVP.zip`, `Practica-TP1-Alineamiento.zip`) como a cada archivo `.pdf` y `.epub` individual.
+   * Al preparar los archivos individuales para GitHub Releases, `mkrelease` translitera tildes y espacios a nombres ASCII limpios (ej. `Unidad-III_-_Subsistema-de-Aplicacion.pdf`) para evitar que GitHub reemplace caracteres acentuados por puntos (`Aplicaci.n.pdf`), mientras que dentro de cada `.zip` se conservan los nombres originales completos con tildes y espacios.
 
-### Modalidad A — Un Release por cada Unidad y Trabajo Práctico (Tarjetas separadas en `/releases`)
+### 2.2. Resguardo de Versiones Anteriores: Releases Históricos Inmutables (`tags: v*`)
 
-El workflow crea y mantiene actualizado automáticamente **un Release independiente por cada Unidad y Trabajo Práctico** (usando tags fijos como `unidad-i`, `unidad-iii`, `unidad-vi`, `practica-tp1`, `practica-tpi`).
+* Las fuentes históricas (`.md` e imágenes) están siempre resguardadas en el historial de commits de Git.
+* Además, cuando el equipo desee congelar una versión histórica de los PDFs/EPUBs compilados (por ejemplo al cierre de un parcial o fin de cursada: `git tag v2026-parcial1 && git push origin v2026-parcial1`), el workflow detecta el prefijo `v*` y publica un **Release Histórico Inmutable** (`📚 Snapshot Histórico — v2026-parcial1`, con `--latest=false`) que **jamás es borrado ni sobrescrito** por los commits posteriores, manteniendo siempre arriba a `apuntes-al-dia` como `Latest`.
 
-Al entrar a **[Releases](https://github.com/Gez-Schegtel/ASI-test/releases)** se ven bloques separados y ordenados:
+### 2.3. Limpieza de *Actions Artifacts* y de `README.md`
 
-1. 📘 **Unidad I — Los SI en la Empresa y Estrategia SI/TI** (`tag: unidad-i`)
-   * `Unidad I - Cuestionario de Autoestudio - Resolución.pdf` / `.epub`
-   * `Unidad-I-Completa.zip` *(excluyendo `borradores/`)*
-2. 📘 **Unidad III — Subsistema de Aplicación** (`tag: unidad-iii`)
-   * `Unidad III - Subsistema de Aplicación.pdf` / `.epub`
-   * `Unidad III - Cuestionario de Autoestudio - Resolución.pdf` / `.epub`
-   * `Unidad-III-Completa.zip`
-3. 📘 **Unidad VI — Seguridad y Auditoría de SI/TI** (`tag: unidad-vi`)
-   * `Unidad VI - Seguridad y Auditoría.pdf` / `.epub`
-   * `Unidad VI - Cuestionario de Autoestudio - Resolución.pdf` / `.epub`
-   * `Unidad-VI-Completa.zip`
-4. 🛠️ **Práctica — TPI: Vialidad Provincial (DVP)** (`tag: practica-tpi`)
-   * `Explicación del TPI.pdf` / `.epub`, `TPI Parte 2.pdf` / `.epub` y `Practica-TPI-DVP.zip`
-5. 🛠️ **Práctica — TP1: Alineamiento Estratégico de SI/TI** (`tag: practica-tp1`)
-   * `TP1 - Alineamiento de SI-TI.pdf` / `.epub` + guías explicativas en `Practica-TP1-Alineamiento.zip`
-
----
-
-### Modalidad B — Un Único Release Principal «📚 Apuntes y Guías Prácticas (Última Versión)» (`tag: latest`)
-
-El workflow mantiene un único Release principal siempre al tope (`/releases/latest`) que:
-
-1. En el **cuerpo del Release (Markdown)** genera automáticamente un **índice ordenado por Unidad** con tablas y enlaces de descarga directa a cada `.pdf`, `.epub` y `.zip` de unidad:
-   * **Unidad I**: Enlaces directos al PDF/EPUB del cuestionario resuelto + `Unidad-I.zip`
-   * **Unidad III**: Enlaces directos al apunte teórico (PDF/EPUB), cuestionario resuelto (PDF/EPUB) + `Unidad-III.zip`
-   * **Unidad VI**: Enlaces directos al apunte teórico (PDF/EPUB), cuestionario resuelto (PDF/EPUB) + `Unidad-VI.zip`
-   * **Trabajos Prácticos (`TP1` y `TPI`)**: Enlaces directos + `Practica-TP1-Alineamiento.zip` y `Practica-TPI-DVP.zip`
-2. En la lista de **Assets** del Release adjunta los paquetes `.zip` por Unidad y los PDFs/EPUBs para que los enlaces de la tabla funcionen en 1 clic.
-
----
-
-## 4. Limpieza de *Actions Artifacts* y Simplificación de `README.md`
-
-1. **¿Qué hacemos con los *Artifacts* de la pestaña Actions?**
-   * Al estar todo publicado en **Releases**, podemos:
-     * **Opción 1**: Eliminar los pasos de `actions/upload-artifact` (o ejecutarlos únicamente en ramas secundarias / Pull Requests donde no se publica en Releases), ahorrando tiempo y espacio de almacenamiento de Actions.
-     * **Opción 2**: Mantenerlos con `retention-days: 3` solo como respaldo de CI.
-2. **Simplificación del `README.md`**:
-   * La sección `📥 Descargar Apuntes Listos (PDF y EPUB3)` pasa a tener un único botón/enlace directo a **[📦 Ir a Releases — Descargar Apuntes por Unidad](https://github.com/Gez-Schegtel/ASI-test/releases)** (sin tener que explicar cómo buscar una corrida en verde dentro de GitHub Actions).
-
----
-
-## 5. Decisiones Resueltas
-
-1. **Modalidad en la página de Releases**: Se eligió la **Modalidad A** (un Release independiente por cada Unidad y Trabajo Práctico: `unidad-i` a `unidad-vi`, `practica-tpi` y `practica-tp1`, cada uno con sus PDFs/EPUBs sueltos y el `.zip` completo de esa unidad).
-2. **Eliminación de *Actions Artifacts* redundantes**: Se eligió la **Opción 1** (en `push` / `workflow_dispatch` se publica directamente en GitHub Releases sin duplicar *Artifacts* en la pestaña Actions; solo en Pull Requests se genera un *Artifact* temporal de vista previa con `retention-days: 3`).
+* En `push` y `workflow_dispatch` no se suben *Artifacts* redundantes en la pestaña *Actions* (solo se suben como vista previa temporal de 3 días en Pull Requests).
+* El `README.md` apunta directamente a `/releases/latest` y a los paquetes `.zip` de cada unidad mediante la ruta permanente `/releases/latest/download/<Unidad>.zip`.

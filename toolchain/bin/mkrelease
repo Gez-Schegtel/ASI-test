@@ -1,0 +1,276 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+# ==============================================================================
+# SCRIPT: mkrelease (toolchain/bin/mkrelease)
+# DESCRIPCIÓN:
+#   Empaqueta el árbol compilado en build/ por Unidad y Trabajo Práctico,
+#   genera un índice Markdown ordenado con enlaces directos en 1 clic y
+#   publica/actualiza de forma segura el Release en GitHub Releases.
+#
+#   Soporta dos modos (Spec 06):
+#     1. Modo continuo (por defecto): actualiza en el lugar (--clobber) el único
+#        Release principal "apuntes-al-dia" (marcado como Latest) sin borrarlo,
+#        evitando enlaces caídos (404) y spam de notificaciones.
+#     2. Modo histórico (--historical): crea un Release fijo e inmutable para un
+#        tag de versión (ej. v2026-parcial1) con --latest=false.
+#
+# USO:
+#   toolchain/bin/mkrelease [opciones]
+#     --build-dir <dir>        Carpeta de entrada (por defecto: <repo>/build)
+#     --repo <owner/repo>      Repositorio GitHub (por defecto: $GITHUB_REPOSITORY)
+#     --tag <tag>              Tag del Release (por defecto: apuntes-al-dia)
+#     --sha <commit>           SHA del commit (por defecto: $GITHUB_SHA o HEAD)
+#     --historical             Publicar como Snapshot Histórico (--latest=false)
+#     --cleanup-legacy-tags    Eliminar releases multi-tag antiguos si existieran
+#     --dry-run <carpeta_out>  Generar assets y notas.md localmente sin llamar a gh
+# ==============================================================================
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd -P)"
+
+BUILD_DIR="$REPO_ROOT/build"
+REPO="${GITHUB_REPOSITORY:-Gez-Schegtel/ASI-test}"
+TAG="apuntes-al-dia"
+SHA="${GITHUB_SHA:-}"
+HISTORICAL=0
+CLEANUP_LEGACY=0
+DRY_RUN_DIR=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --build-dir)           BUILD_DIR="$2"; shift 2 ;;
+    --repo)                REPO="$2"; shift 2 ;;
+    --tag)                 TAG="$2"; shift 2 ;;
+    --sha)                 SHA="$2"; shift 2 ;;
+    --historical)          HISTORICAL=1; shift ;;
+    --cleanup-legacy-tags) CLEANUP_LEGACY=1; shift ;;
+    --dry-run)             DRY_RUN_DIR="$2"; shift 2 ;;
+    -h|--help)
+      sed -n '4,27p' "$0" | sed 's/^# \{0,1\}//'
+      exit 0 ;;
+    *)
+      echo "❌ Opción desconocida en mkrelease: $1" >&2
+      exit 1 ;;
+  esac
+done
+
+if [[ -z "$SHA" ]]; then
+  SHA="$(git -C "$REPO_ROOT" rev-parse HEAD 2>/dev/null || echo "local")"
+fi
+
+if [[ ! -d "$BUILD_DIR" ]]; then
+  echo "❌ Error: no existe el directorio de compilación '$BUILD_DIR'." >&2
+  exit 1
+fi
+
+# Función Perl para convertir un nombre de archivo con tildes/espacios a un slug
+# ASCII limpio y legible (evita que GitHub reemplace letras acentuadas por puntos).
+slugify() {
+  perl -CSDA -MUnicode::Normalize -e '
+    my $s = NFKD($ARGV[0]);
+    $s =~ s/\p{NonspacingMark}//g;
+    $s =~ s/\s+-\s+/_-_/g;
+    $s =~ s/[^A-Za-z0-9._-]+/-/g;
+    $s =~ s/-{2,}/-/g;
+    $s =~ s/^[-_]+|[-_]+$//g;
+    print $s;
+  ' "$1"
+}
+
+TMP_WORK="$(mktemp -d)"
+trap 'rm -rf "$TMP_WORK"' EXIT
+
+if [[ -n "$DRY_RUN_DIR" ]]; then
+  mkdir -p "$DRY_RUN_DIR/assets"
+  STAGE_DIR="$DRY_RUN_DIR/assets"
+  NOTAS="$DRY_RUN_DIR/notas.md"
+else
+  STAGE_DIR="$TMP_WORK/assets"
+  mkdir -p "$STAGE_DIR"
+  NOTAS="$TMP_WORK/notas.md"
+fi
+
+BASE_URL="https://github.com/${REPO}/releases/download/${TAG}"
+
+if (( HISTORICAL )); then
+  TITULO="📚 Snapshot Histórico de Apuntes — ${TAG}"
+  LATEST_FLAG="false"
+else
+  TITULO="📚 Apuntes y Guías Prácticas — Última Versión"
+  LATEST_FLAG="true"
+fi
+
+# Encabezado del cuerpo Markdown del Release
+{
+  if (( HISTORICAL )); then
+    echo "> 📌 **Versión histórica congelada (\`${TAG}\`)** a partir del commit \`${SHA:0:7}\`."
+    echo "> Para descargar la versión más reciente en curso, visitá **[Última Versión (/releases/latest)](https://github.com/${REPO}/releases/latest)**."
+  else
+    echo "> ✅ **Versión actualizada automáticamente** a partir del último cambio en el repositorio (commit \`${SHA:0:7}\`)."
+    echo "> Hacé clic en **\`[📄 PDF]\`** o **\`[📱 EPUB]\`** para bajar un documento suelto en un clic, o descargá el **\`.zip\`** completo de la unidad que estés estudiando."
+  fi
+  echo ""
+} > "$NOTAS"
+
+# Definición ordenada de bloques: "prefijo_slug|titulo_seccion|subcarpeta_build|nombre_zip"
+bloques=(
+  "U1|📘 Unidad I — Los SI en la Empresa y Estrategia SI/TI|Unidad I|Unidad-I-Completa.zip"
+  "U2|📘 Unidad II — Subsistema de Provisión|Unidad II|Unidad-II-Completa.zip"
+  "U3|📘 Unidad III — Subsistema de Aplicación|Unidad III|Unidad-III-Completa.zip"
+  "U4|📘 Unidad IV — Mantenimiento y Desarrollo|Unidad IV|Unidad-IV-Completa.zip"
+  "U5|📘 Unidad V — Subsistema de Seguimiento y Control|Unidad V|Unidad-V-Completa.zip"
+  "U6|📘 Unidad VI — Seguridad y Auditoría de SI/TI|Unidad VI|Unidad-VI-Completa.zip"
+  "TPI|🛠️ Práctica — TPI: Vialidad Provincial (DVP)|Practica/tpi-dvp|Practica-TPI-DVP.zip"
+  "TP1|🛠️ Práctica — TP1: Alineamiento Estratégico de SI/TI|Practica/tp1-alineamiento|Practica-TP1-Alineamiento.zip"
+)
+
+total_bloques=0
+
+for entrada in "${bloques[@]}"; do
+  IFS='|' read -r prefijo titulo_sec rel_dir zip_name <<< "$entrada"
+  carpeta="$BUILD_DIR/$rel_dir"
+  [[ -d "$carpeta" ]] || continue
+
+  mapfile -d '' archivos_bloque < <(find "$carpeta" -type f \( -name "*.pdf" -o -name "*.epub" \) -print0 | sort -z)
+  (( ${#archivos_bloque[@]} > 0 )) || continue
+
+  total_bloques=$(( total_bloques + 1 ))
+
+  # 1. Crear el paquete .zip de la unidad/práctica conservando nombres originales con tildes
+  (
+    cd "$carpeta"
+    zip -r -q "$STAGE_DIR/$zip_name" . -i "*.pdf" "*.epub"
+  )
+
+  # 2. Obtener lista única de documentos base ordenando primero Teoría/Consigna y luego Cuestionario/Anexos
+  mapfile -t bases_ordenadas < <(
+    for f in "${archivos_bloque[@]}"; do
+      rel="${f#"$carpeta"/}"
+      sin_ext="${rel%.*}"
+      if [[ "$sin_ext" == *Cuestionario* || "$sin_ext" == *Explicacion* ]]; then
+        printf '2\t%s\n' "$sin_ext"
+      elif [[ "$sin_ext" == *Presentaci* ]]; then
+        printf '1\t%s\n' "$sin_ext"
+      else
+        printf '0\t%s\n' "$sin_ext"
+      fi
+    done | LC_ALL=C sort -u | cut -f2-
+  )
+
+  # 3. Escribir sección y tabla en notas.md + copiar assets individuales con slug ASCII
+  {
+    echo "---"
+    echo ""
+    echo "## ${titulo_sec}"
+    echo ""
+    echo "📦 **[Descargar paquete completo (${zip_name})](${BASE_URL}/${zip_name})**"
+    echo ""
+    echo "| Documento | Descarga directa |"
+    echo "| :--- | :---: |"
+  } >> "$NOTAS"
+
+  for base_rel in "${bases_ordenadas[@]}"; do
+    nombre_mostrar="$(basename "$base_rel")"
+    slug_base="$(slugify "$nombre_mostrar")"
+    # Si el nombre no empieza ya con "Unidad-" ni "TP", prefijamos para evitar colisiones
+    if [[ ! "$slug_base" =~ ^(Unidad-|TP1|TPI) ]]; then
+      slug_final="${prefijo}_-_${slug_base}"
+    else
+      slug_final="$slug_base"
+    fi
+
+    celdas_links=()
+    if [[ -f "$carpeta/${base_rel}.pdf" ]]; then
+      cp "$carpeta/${base_rel}.pdf" "$STAGE_DIR/${slug_final}.pdf"
+      celdas_links+=("[📄 PDF](${BASE_URL}/${slug_final}.pdf)")
+    fi
+    if [[ -f "$carpeta/${base_rel}.epub" ]]; then
+      cp "$carpeta/${base_rel}.epub" "$STAGE_DIR/${slug_final}.epub"
+      celdas_links+=("[📱 EPUB](${BASE_URL}/${slug_final}.epub)")
+    fi
+
+    # Unir enlaces con separador legible
+    if (( ${#celdas_links[@]} == 2 )); then
+      links_str="${celdas_links[0]} · ${celdas_links[1]}"
+    else
+      links_str="${celdas_links[0]:--}"
+    fi
+
+    echo "| **${nombre_mostrar}** | ${links_str} |" >> "$NOTAS"
+  done
+
+  echo "" >> "$NOTAS"
+done
+
+if (( total_bloques == 0 )); then
+  echo "❌ Error: no se encontraron archivos .pdf o .epub en '$BUILD_DIR'." >&2
+  exit 1
+fi
+
+if [[ -n "$DRY_RUN_DIR" ]]; then
+  echo "✔ Simulación (--dry-run) completada en: $DRY_RUN_DIR"
+  echo "  - Bloques procesados: $total_bloques"
+  echo "  - Archivos preparados en $STAGE_DIR: $(find "$STAGE_DIR" -maxdepth 1 -type f | wc -l)"
+  exit 0
+fi
+
+# --- Publicación / actualización atómica en GitHub Releases -------------------
+shopt -s nullglob
+staged_files=("$STAGE_DIR"/*)
+shopt -u nullglob
+
+if gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
+  echo "🔄 Actualizando en el lugar el Release '$TAG' ($TITULO)..."
+  if (( ! HISTORICAL )); then
+    gh api --method PATCH "repos/${REPO}/git/refs/tags/${TAG}" \
+      -f sha="${SHA}" -F force=true >/dev/null 2>&1 || true
+  fi
+
+  # 1. Subir y sobrescribir primero todos los archivos actuales (cero ventana 404)
+  gh release upload "$TAG" "${staged_files[@]}" --repo "$REPO" --clobber
+
+  # 2. Eliminar únicamente assets huérfanos que ya no existan en esta versión
+  declare -A actuales_map=()
+  for sf in "${staged_files[@]}"; do
+    actuales_map["$(basename "$sf")"]=1
+  done
+
+  while IFS= read -r existente; do
+    [[ -n "$existente" ]] || continue
+    if [[ -z "${actuales_map[$existente]:-}" ]]; then
+      echo "🧹 Eliminando asset obsoleto del Release: $existente"
+      gh release delete-asset "$TAG" "$existente" --repo "$REPO" --yes || true
+    fi
+  done < <(gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name')
+
+  # 3. Actualizar puntero target, título, índice Markdown y bandera Latest
+  gh release edit "$TAG" \
+    --repo "$REPO" \
+    --target "$SHA" \
+    --title "$TITULO" \
+    --notes-file "$NOTAS" \
+    --latest="$LATEST_FLAG"
+else
+  echo "✨ Creando Release '$TAG' ($TITULO)..."
+  gh release create "$TAG" "${staged_files[@]}" \
+    --repo "$REPO" \
+    --target "$SHA" \
+    --title "$TITULO" \
+    --notes-file "$NOTAS" \
+    --latest="$LATEST_FLAG"
+fi
+
+# Limpieza opcional de los tags individuales de la iteración previa
+if (( CLEANUP_LEGACY )); then
+  for old_tag in unidad-i unidad-ii unidad-iii unidad-iv unidad-v unidad-vi practica-tp1 practica-tpi; do
+    if gh release view "$old_tag" --repo "$REPO" >/dev/null 2>&1; then
+      echo "🧹 Limpiando release antiguo separado: $old_tag"
+      gh release delete "$old_tag" --repo "$REPO" --yes --cleanup-tag || true
+    fi
+  done
+fi
+
+echo "✅ Release '$TAG' publicado correctamente en https://github.com/${REPO}/releases/tag/${TAG}"

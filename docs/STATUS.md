@@ -20,9 +20,9 @@
 | Trabajos prácticos y guías | `content/practica/` (`tpi-dvp/`, `tp1-alineamiento/`) | `content/practica/` | **Migrado y 100% en `.md`** |
 | Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
 | Recursos gráficos | `assets/` (307 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
-| Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
+| Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`, `mkrelease`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
-| Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`) y Releases automáticos por Unidad (Spec 06)** |
+| Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`), Release continuo (`apuntes-al-dia`) y snapshots históricos (`v*`) (Spec 06)** |
 
 ### Métricas Auditadas del Árbol Actual (Post-Spec 06)
 
@@ -33,6 +33,7 @@
   * `toolchain/Dockerfile`: Imagen Docker (`ghcr.io/gez-schegtel/asi-toolchain`) basada en `ubuntu:24.04` con Pandoc, TeX Live (`LuaLaTeX`) y el caché global de fuentes de `luaotfload` (`/var/cache/texmf-var`) precalentado.
   * `toolchain/bin/mdnorm`: Linter y normalizador en Bash + Perl con soporte `-y`, `-v` y `--check` (`-n`) para CI.
   * `toolchain/bin/md2pdf`: Compilador unificado en Bash + Perl + Pandoc con soporte `--pdf`, `--epub` y `--all`, salida limpia a `build/`, resolución automática de `assets/` y normalización `NFKC` de letras matemáticas Unicode.
+  * `toolchain/bin/mkrelease`: Empaquetador y publicador atómico de GitHub Releases en Bash + Perl + `gh`, con generación de `.zip` por Unidad/Práctica, slugs ASCII para `.pdf`/`.epub` individuales, índice Markdown ordenado en tablas, actualización en el lugar (`--clobber`) de `apuntes-al-dia` (`Latest`) y soporte `--historical` para tags `v*`.
   * `toolchain/pandoc/`: `defaults/pdf.yaml`, `defaults/epub.yaml`, `defaults/metadatos.yaml` (`scrartcl` por defecto), `fonts/` (`Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en el repositorio), `templates/estilo.tex`, `templates/estilo-epub.css` y los 3 filtros Lua (`preambulo.lua`, `cortar-formulas.lua`, `centrar-imagenes.lua`).
 
 ---
@@ -60,7 +61,7 @@
 3. **[03-consolidacion-unidades-y-ci-cd.md](specs/03-consolidacion-unidades-y-ci-cd.md)** — *Estado: **Parte B (CI/CD) implementada** (2026-11-06); **Parte A (Unidades faltantes)** en espera de material de estudio*. Pipeline `.github/workflows/editorial-ci.yml` activo para `lint` (`mdnorm --check` + control de binarios/Base64) y `build` (`md2pdf --all` -> Artifacts y GitHub Releases).
 4. **[04-organizacion-unidades-y-artefactos.md](specs/04-organizacion-unidades-y-artefactos.md)** — *Estado: **Implementada** (2026-11-06)*. Agrupación por Unidad en `content/unidades/<Unidad X>/` (uniendo teoría y cuestionarios de cada unidad), preservación de subcarpetas en `build/` desde `toolchain/bin/md2pdf` y empaquetado de Artifacts separados por Unidad y Práctica (Modalidad B) en GitHub Actions.
 5. **[05-imagen-docker-toolchain-ghcr.md](specs/05-imagen-docker-toolchain-ghcr.md)** — *Estado: **Implementada** (2026-11-06)*. Creación de `toolchain/Dockerfile` con Pandoc, LuaLaTeX y caché global de `luaotfload` (`/var/cache/texmf-var`) precalentado, e integración con GitHub Container Registry (`ghcr.io/gez-schegtel/asi-toolchain`) en `.github/workflows/editorial-ci.yml`.
-6. **[06-publicacion-ordenada-en-releases.md](specs/06-publicacion-ordenada-en-releases.md)** — *Estado: **Implementada** (2026-11-06)*. Publicación automática y continua de las Unidades y Trabajos Prácticos en **GitHub Releases** individuales (`unidad-i` a `unidad-vi`, `practica-tpi`, `practica-tp1`) en cada push a `main` / `master`, permitiendo descarga pública en 1 clic sin requerir inicio de sesión.
+6. **[06-publicacion-ordenada-en-releases.md](specs/06-publicacion-ordenada-en-releases.md)** — *Estado: **Implementada** (2026-11-06)*. Arquitectura dual gestionada por `toolchain/bin/mkrelease`: un **único Release continuo principal (`apuntes-al-dia`, marcado como `Latest` en `/releases/latest`)** actualizado atómicamente en el lugar (`--clobber`) con tablas y paquetes `.zip` separados por Unidad/Práctica, más **Releases históricos inmutables** para tags `v*`.
 
 ---
 
@@ -73,7 +74,7 @@
 - [x] **Tipografía estándar en `toolchain/`**: Embebidas `Libertinus Serif` (texto), `Inter` (títulos) y `JetBrains Mono` (código) directamente en `toolchain/pandoc/fonts/` y cargadas por defecto desde `estilo.tex` + `preambulo.lua` sin depender del gestor de paquetes de cada distribución Linux.
 - [x] **Organización por Unidad y Modalidad de Artifacts en Spec 04**: Implementada **Modalidad B** y compilación de **todos** los `.md` de `content/unidades/` y `content/practica/`.
 - [x] **Eliminación de tiempos de instalación de TeX Live en CI/CD (Spec 05)**: Implementada imagen Docker precompilada en GitHub Container Registry (`ghcr.io/gez-schegtel/asi-toolchain`) con caché de fuentes `luaotfload` precalentado.
-- [x] **Publicación directa por Unidad en GitHub Releases (Spec 06)**: Implementada **Modalidad A** (un Release independiente por Unidad y Trabajo Práctico con sus `.pdf`/`.epub` sueltos y un `.zip` de la unidad completa) + eliminación de *Actions Artifacts* redundantes en `main`.
+- [x] **Publicación segura y sin duplicados en GitHub Releases (Spec 06)**: Reemplazo de los múltiples releases móviles por un **único Release continuo principal (`apuntes-al-dia` / `/releases/latest`)** actualizado en el lugar mediante `toolchain/bin/mkrelease` (evitando enlaces `404` y copias repetidas por commit) junto con **Releases históricos inmutables (`v*`)** para resguardar cierres de parcial/cursada.
 
 ### Decisiones pendientes (para Spec 03 - Parte A)
 - [ ] **Numeración oficial 2026 de Unidades II, IV y V (Spec 03)**: confirmar el orden exacto de *Provisión*, *Mantenimiento*, *Desarrollo* y *Seguimiento/Control* en el programa 2026.
@@ -85,12 +86,24 @@
 - [x] Implementar **Spec 03 (Parte B)**: configurar `.github/workflows/editorial-ci.yml` (`lint` + `build` PDF/EPUB + publicación en Artifacts y Releases).
 - [x] Implementar **Spec 04**: reorganizar `content/unidades/<Unidad X>/` (con sus cuestionarios) y estructurar `build/` por Unidad.
 - [x] Implementar **Spec 05**: encapsular el entorno Pandoc + LuaLaTeX en `toolchain/Dockerfile` y publicarlo automáticamente en `ghcr.io/gez-schegtel/asi-toolchain`.
-- [x] Implementar **Spec 06**: publicar automáticamente un Release independiente por Unidad y Trabajo Práctico en GitHub Releases (`unidad-i` a `unidad-vi`, `practica-tpi`, `practica-tp1`).
+- [x] Implementar **Spec 06**: crear `toolchain/bin/mkrelease` para publicar y actualizar en el lugar el Release principal continuo (`apuntes-al-dia` / `/releases/latest`) organizado por Unidad + soporte de snapshots históricos (`v*`).
 - [ ] Implementar **Spec 03 (Parte A)**: consolidar las unidades teóricas faltantes cuando esté listo el material de estudio.
 
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-06` — Refinamiento de Spec 06: Único Release Continuo (`apuntes-al-dia`) + Snapshots Históricos (`v*`)
+
+* **Contexto**: Para evitar tanto la proliferación de releases repetidos en cada commit como el riesgo de borrar y recrear 5–8 releases separados por unidad (ventanas `404` ante fallos de red y spam de notificaciones), se evolucionó la **Spec 06** hacia una arquitectura dual gestionada por un ejecutable dedicado dentro de `toolchain/`.
+* **Acciones ejecutadas**:
+  * **Actualización de `docs/specs/06-publicacion-ordenada-en-releases.md`**: documentación de la estrategia dual (`apuntes-al-dia` actualizable en el lugar como `Latest` + tags `v*` como snapshots históricos inmutables).
+  * **Creación y validación de `toolchain/bin/mkrelease`**:
+    * Empaqueta un `.zip` por cada Unidad y Trabajo Práctico conservando los nombres originales con tildes y espacios dentro del archivo comprimido.
+    * Translitera los `.pdf` y `.epub` individuales a nombres ASCII limpios (ej. `Unidad-III_-_Subsistema-de-Aplicacion.pdf`) para evitar que GitHub Releases reemplace vocales acentuadas por puntos (`Aplicaci.n.pdf`).
+    * Genera un índice Markdown ordenado en tablas por Unidad y Práctica (priorizando el apunte teórico/consigna sobre presentaciones y cuestionarios) con enlaces de descarga en 1 clic.
+    * Actualiza atómicamente `apuntes-al-dia` en el lugar (`gh release upload --clobber`, purga selectiva de assets obsoletos y `gh release edit --latest=true`), limpia automáticamente los tags antiguos separados (`--cleanup-legacy-tags`) y soporta `--historical` (`--latest=false`) para tags `v*`.
+  * **Integración en `.github/workflows/editorial-ci.yml`** y actualización integral de `README.md`, `GEMINI.md`, `toolchain/README.md`, `docs/GUIA_SUBIDA_APUNTES.md` y `docs/STATUS.md`.
 
 ### `2026-11-06` — Guía de Subida de Apuntes, Unificación de Cuestionarios y Limpieza de Releases
 
