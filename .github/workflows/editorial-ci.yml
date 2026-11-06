@@ -94,10 +94,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          luaotfload-tool --update
-          find content/unidades content/practica -type f -name "*.md" -print0 \
-            | sort -z \
-            | xargs -0 -n 1 -P "$(nproc)" ./toolchain/bin/md2pdf -y --all
+          mapfile -d '' archivos_compilar < <(
+            find content/unidades content/practica \
+              -type f -name "*.md" ! -name "README.md" -print0 2>/dev/null | sort -z
+          )
+          if (( ${#archivos_compilar[@]} == 0 )); then
+            echo "❌ No se encontraron documentos para compilar."
+            exit 1
+          fi
+          ./toolchain/bin/md2pdf -y --all "${archivos_compilar[@]}"
           echo "=== Árbol de artefactos generados en build/ ==="
           find build -type f | sort
 

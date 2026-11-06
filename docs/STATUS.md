@@ -95,7 +95,7 @@
     * `content/unidades/Unidad VI/`: `Unidad VI - Seguridad y Auditoría.md`, `Seguridad y auditoría - Resolución.md` y `AdmSI-CUESTIONARIOS DE ESTUDIO - SEGURIDAD Y AUDITORIA DE SI-TI.md`.
     * Ejecución de `toolchain/bin/mdnorm -y` para actualizar automáticamente todas las rutas relativas hacia `assets/` (`../../../assets/`).
   * **Preservación de jerarquía en `toolchain/bin/md2pdf`**: actualización de `calcular_salida()` para que genere los PDFs y EPUBs respetando la subcarpeta de la Unidad (`build/Unidad I/`, `build/Unidad III/`, `build/Unidad VI/`) y de Práctica (`build/Practica/tp1-alineamiento/`, `build/Practica/tpi-dvp/`).
-  * **Modalidad B en `.github/workflows/editorial-ci.yml`**: compilación paralela (`xargs -P $(nproc)`) de todos los `.md` de `content/unidades/` y `content/practica/`, y publicación de Artifacts individuales descargables por cada Unidad (`Unidad-I` a `Unidad-VI`) y trabajo práctico (`Practica-TP1-Alineamiento`, `Practica-TPI-DVP`).
+  * **Modalidad B en `.github/workflows/editorial-ci.yml`**: compilación unificada (`./toolchain/bin/md2pdf -y --all "${archivos_compilar[@]}"`) de todos los `.md` de `content/unidades/` y `content/practica/` sobre `ubuntu-24.04` (preservando la búsqueda de fuentes del sistema en `OSFONTDIR` dentro de `md2pdf` y evitando condiciones de carrera en el caché de `luaotfload`), y publicación de Artifacts individuales descargables por cada Unidad (`Unidad-I` a `Unidad-VI`) y trabajo práctico (`Practica-TP1-Alineamiento`, `Practica-TPI-DVP`).
 
 ### `2026-11-06` — Implementación de Spec 03 - Parte B (`.github/workflows/editorial-ci.yml`)
 
