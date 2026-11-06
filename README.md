@@ -1,8 +1,8 @@
-# Administración de Sistemas de Información (ASI)
+# Administración de Sistemas de Información (ASI-test)
 
-[![Editorial CI/CD (PDF & EPUB)](https://github.com/Gez-Schegtel/ASI-test/actions/workflows/editorial-ci.yml/badge.svg)](https://github.com/Gez-Schegtel/ASI-test/actions/workflows/editorial-ci.yml)
+[![Editorial CI/CD (PDF & EPUB)](https://github.com/Gez-Schegtel/ASI-test-test/actions/workflows/editorial-ci.yml/badge.svg)](https://github.com/Gez-Schegtel/ASI-test/actions/workflows/editorial-ci.yml)
 
-Repositorio colaborativo y fuente de verdad canónica de apuntes, trabajos prácticos y laboratorios de **Administración de Sistemas de Información (ASI)** — Ingeniería en Sistemas de Información (UTN FRRe).
+Repositorio colaborativo y fuente de verdad canónica de apuntes, trabajos prácticos y laboratorios de **Administración de Sistemas de Información (ASI-test)** — Ingeniería en Sistemas de Información (UTN FRRe).
 
 Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % automatizada** a **PDF** y **EPUB3** mediante GitHub Actions (Pandoc + LuaLaTeX).
 
@@ -14,7 +14,7 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 
 > [!TIP]
 > ### Atajo directo a los apuntes compilados
-> 1. Entrá a **[Ejecuciones de Editorial CI/CD (GitHub Actions)](https://github.com/n1krov/ASI/actions/workflows/editorial-ci.yml)** y hacé clic en la primera ejecución con tilde verde (`✔`).
+> 1. Entrá a **[Ejecuciones de Editorial CI/CD (GitHub Actions)](https://github.com/Gez-Schegtel/ASI-test/actions/workflows/editorial-ci.yml)** y hacé clic en la primera ejecución con tilde verde (`✔`).
 > 2. Bajá hasta el final de esa página, a la sección **Artifacts**, y descargá únicamente la carpeta que necesites (requiere haber iniciado sesión en GitHub):
 >    * 📦 **`Unidad-I`** — Cuestionario de autoestudio resuelto y material de la Unidad I.
 >    * 📦 **`Unidad-III`** — Apunte teórico completo (*Subsistema de Aplicación*), cuestionario resuelto y enunciado.
@@ -22,21 +22,21 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 >    * 📦 **`Practica-TP1-Alineamiento`** — TP1 de Alineamiento Estratégico de SI/TI y guías explicativas.
 >    * 📦 **`Practica-TPI-DVP`** — Trabajo Práctico Integrador (Caso Vialidad Provincial - DVP).
 >
-> También podés consultar las versiones empaquetadas por hito en la sección **[Releases del repositorio](https://github.com/n1krov/ASI/releases)**.
+> También podés consultar las versiones empaquetadas por hito en la sección **[Releases del repositorio](https://github.com/Gez-Schegtel/ASI-test/releases)**.
 
 ---
 
 ## Estructura del Repositorio
 
 ```text
-ASI/
+ASI-test/
 ├── content/
 │   ├── unidades/           <- Apuntes teóricos y cuestionarios organizados por Unidad (Unidad I a VI)
 │   ├── practica/           <- TPI (Vialidad Provincial - DVP) y TP1 (Alineamiento de SI/TI)
 │   └── labs/               <- Laboratorios prácticos y talleres (Checkmk, monitoreo)
 ├── assets/                 <- Almacén único de imágenes, diagramas y recursos gráficos
 ├── toolchain/
-│   ├── Dockerfile          <- Imagen precompilada (ghcr.io/n1krov/asi-toolchain) con Pandoc y LuaLaTeX
+│   ├── Dockerfile          <- Imagen precompilada (ghcr.io/Gez-Schegtel/asi-toolchain) con Pandoc y LuaLaTeX
 │   ├── bin/                <- Ejecutables autocontenidos (mdnorm y md2pdf)
 │   └── pandoc/             <- Defaults YAML, fuentes embebidas, plantillas LaTeX/CSS y filtros Lua
 ├── docs/
@@ -57,7 +57,7 @@ Si querés leer desde las fuentes en Markdown, colaborar en los apuntes o genera
 * **Compilar usando la imagen Docker del repositorio (sin instalar TeX Live)**:
   ```bash
   docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/workspace" -w /workspace \
-    ghcr.io/n1krov/asi-toolchain:latest \
+    ghcr.io/Gez-Schegtel/asi-toolchain:latest \
     ./toolchain/bin/md2pdf -y --all "content/unidades/Unidad III/"*.md
   ```
 * **Normalizar y compilar de forma nativa**:
