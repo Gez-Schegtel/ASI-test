@@ -14,6 +14,11 @@
 # los nombres automáticos ("Índice", "Referencias", etc.).
 lang: es
 
+# Clase KOMA-Script para artículos académicos (títulos en sans-serif Inter y
+# numeración con punto final: 1., 1.1., etc.).
+documentclass: scrartcl
+classoption: numbers=enddot
+
 # Márgenes de la hoja (paquete geometry). Acepta también valores por lado,
 # por ejemplo: geometry: top=2cm, bottom=2cm, left=3cm, right=2cm
 geometry: margin=2.2cm
@@ -48,6 +53,7 @@ block-headings: true
 # No van acá porque no se quieren en todos los documentos:
 #   toc: true              índice al principio (toc-depth: 3 limita los niveles)
 #   numbersections: true   numera los títulos (1, 1.1, 1.2, ...)
-#   mainfont: Libertinus Serif   otra letra principal (los emojis se mantienen;
-#                                el nombre es el que muestra "fc-list")
+#   mainfont: Latin Modern Roman otra letra principal (por defecto se usan
+#                                Libertinus Serif, Inter y JetBrains Mono
+#                                embebidas en toolchain/pandoc/fonts/)
 # ==============================================================================

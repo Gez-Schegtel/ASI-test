@@ -23,7 +23,8 @@
 --   letra del "mainfont" de la nota, la cargaría sin ese respaldo y los emojis
 --   desaparecerían. Por eso este filtro le saca el "mainfont" a pandoc y le
 --   pasa el nombre a estilo.tex, que carga esa letra con el respaldo.
---   Sin "mainfont", la letra es Latin Modern Roman.
+--   Sin "mainfont", se cargan las fuentes embebidas en toolchain/pandoc/fonts/
+--   (Libertinus Serif para texto, Inter para títulos y JetBrains Mono para código).
 --
 -- LAS IMÁGENES
 --   "ancho-imagenes" es el ancho máximo de las imágenes, como porcentaje del
@@ -44,9 +45,10 @@ if FORMAT ~= 'latex' and FORMAT ~= 'beamer' then
   return {}
 end
 
--- estilo.tex está en ../defaults/ respecto de este archivo.
+-- estilo.tex y fonts/ están en ../ respecto de este archivo.
 local carpeta = pandoc.path.directory(pandoc.path.directory(PANDOC_SCRIPT_FILE))
 local ESTILO = pandoc.path.join({ carpeta, 'templates', 'estilo.tex' })
+local FUENTES = pandoc.path.join({ carpeta, 'fonts' })
 
 local function bloque(latex)
   return pandoc.MetaBlocks({ pandoc.RawBlock('latex', latex) })
@@ -59,7 +61,12 @@ end
 function Meta(meta)
   local partes = pandoc.List({})
 
-  -- 1. La letra principal
+  -- 0. Ruta a las fuentes embebidas en toolchain/pandoc/fonts/
+  if not FUENTES:find('[%%#{}\\"]') then
+    partes:insert(bloque('\\def\\carpetaFuentes{' .. FUENTES .. '}'))
+  end
+
+  -- 1. Las letras (principal, sans y mono)
   if meta.mainfont ~= nil then
     local nombre = pandoc.utils.stringify(meta.mainfont)
     meta.mainfont = nil
@@ -67,6 +74,20 @@ function Meta(meta)
       avisar('nombre de letra no válido, se usa la de siempre: ' .. nombre)
     else
       partes:insert(bloque('\\def\\fuenteprincipal{' .. nombre .. '}'))
+    end
+  end
+  if meta.sansfont ~= nil then
+    local nombre = pandoc.utils.stringify(meta.sansfont)
+    meta.sansfont = nil
+    if nombre ~= '' and not nombre:find('[{}\\%%#]') then
+      partes:insert(bloque('\\def\\fuentesans{' .. nombre .. '}'))
+    end
+  end
+  if meta.monofont ~= nil then
+    local nombre = pandoc.utils.stringify(meta.monofont)
+    meta.monofont = nil
+    if nombre ~= '' and not nombre:find('[{}\\%%#]') then
+      partes:insert(bloque('\\def\\fuentemono{' .. nombre .. '}'))
     end
   end
 

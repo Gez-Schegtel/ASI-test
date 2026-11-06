@@ -19,9 +19,13 @@ toolchain/
     ├── defaults/
     │   ├── pdf.yaml                 <- Defaults de Pandoc para PDF (motor lualatex, filtros Lua)
     │   ├── epub.yaml                <- Defaults de Pandoc para EPUB3 (MathML, CSS, capítulos)
-    │   └── metadatos.yaml           <- Valores base compartidos (lang: es, Latin Modern Roman, márgenes)
+    │   └── metadatos.yaml           <- Valores base compartidos (lang: es, scrartcl, márgenes)
+    ├── fonts/
+    │   ├── libertinus-serif/        <- Fuente principal embebida (Libertinus Serif)
+    │   ├── inter/                   <- Fuente de títulos embebida (Inter)
+    │   └── jetbrains-mono/          <- Fuente monoespaciada embebida (JetBrains Mono)
     ├── templates/
-    │   ├── estilo.tex               <- Preámbulo LaTeX (cajas celestes de callouts, emojis a color, fvextra)
+    │   ├── estilo.tex               <- Preámbulo LaTeX (fuentes embebidas, cajas de callouts, emojis a color, fvextra)
     │   └── estilo-epub.css          <- Hoja de estilos para lectores de libros electrónicos (EPUB3)
     └── filters/
         ├── preambulo.lua            <- Inyecta templates/estilo.tex respetando mainfont y header-includes
@@ -91,4 +95,4 @@ sudo pacman -S bash perl pandoc-cli \
   otf-latin-modern ttf-dejavu noto-fonts-emoji
 ```
 
-*(Opcional: si una nota especifica `mainfont: Libertinus Serif`, `sansfont: Inter` o `monofont: JetBrains Mono` en su cabecera YAML, instalar también `ttf-libertinus`, `inter-font` y `ttf-jetbrains-mono`).*
+*(Las fuentes tipográficas estándar del repositorio —**Libertinus Serif** para texto, **Inter** para títulos y **JetBrains Mono** para código— están incluidas directamente en `toolchain/pandoc/fonts/`, por lo que funcionan en cualquier distribución Linux sin necesidad de instalarlas desde el gestor de paquetes).*

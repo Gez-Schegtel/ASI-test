@@ -45,6 +45,7 @@ REPO_ROOT="$(cd "$TOOLCHAIN_DIR/.." && pwd -P)"
 PDF_DEFAULTS="$TOOLCHAIN_DIR/pandoc/defaults/pdf.yaml"
 EPUB_DEFAULTS="$TOOLCHAIN_DIR/pandoc/defaults/epub.yaml"
 DEFAULT_BUILD_DIR="$REPO_ROOT/build"
+export OSFONTDIR="$TOOLCHAIN_DIR/pandoc/fonts${OSFONTDIR:+:$OSFONTDIR}"
 
 # --- Opciones -----------------------------------------------------------------
 uso="Uso: md2pdf [-y|--yes] [--pdf] [--epub] [--all] [-o salida] [-i carpeta_imágenes] [archivo.md ...]"

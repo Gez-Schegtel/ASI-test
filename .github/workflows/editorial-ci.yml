@@ -88,10 +88,7 @@ jobs:
             texlive-lang-spanish \
             lmodern \
             fonts-noto-color-emoji \
-            fonts-dejavu-core \
-            fonts-libertinus \
-            fonts-inter \
-            fonts-jetbrains-mono
+            fonts-dejavu-core
 
       - name: Compilar unidades y guías prácticas a PDF y EPUB
         shell: bash

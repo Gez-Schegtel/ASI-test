@@ -41,36 +41,87 @@
 
 
 % ------------------------------------------------------------------------------
-% 0) Fuente principal con respaldo: emojis a color y símbolos
+% 0) Fuentes principales embebidas con respaldo: emojis a color y símbolos
 %
-%    Ninguna letra de texto trae emojis, y muchas no traen símbolos. Con
-%    lualatex se le puede decir qué fuente usar "de respaldo" cuando falta un
+%    Las tres fuentes estándar del repositorio están incluidas directamente en
+%    toolchain/pandoc/fonts/ para no depender del gestor de paquetes de cada
+%    distribución Linux:
+%      - Cuerpo (mainfont):  Libertinus Serif
+%      - Títulos (sansfont): Inter
+%      - Código (monofont):  JetBrains Mono
+%
+%    Además, con lualatex se configura una cascada de respaldo cuando falta un
 %    carácter:
-%      1.º Noto Color Emoji  (emojis a color; "mode=harf" es lo que permite
-%                             dibujarlos en color)
-%      2.º DejaVu Sans       (símbolos como ✓ o →; suele venir instalada)
-%
-%    La letra principal es Latin Modern Roman (la clásica de LaTeX), salvo
-%    que la nota ponga otra con "mainfont: ..." en su cabecera. En ese caso,
-%    el filtro filters/preambulo.lua define \fuenteprincipal con ese
-%    nombre, y acá se carga esa letra, también con el respaldo de emojis.
-%    (Sin el filtro, pandoc cargaría la letra por su cuenta y sin emojis.)
-%
-%    Con xelatex no hay respaldo (es una función de lualatex): se usa la letra
-%    pedida, sin emojis. Con pdflatex no se toca nada.
+%      1.º Noto Color Emoji  (emojis a color; "mode=harf")
+%      2.º DejaVu Sans       (símbolos matemáticos/técnicos como ✓ o →)
 % ------------------------------------------------------------------------------
 \ifdefined\fuenteprincipal\else
-  \def\fuenteprincipal{Latin Modern Roman}
+  \def\fuenteprincipal{Libertinus Serif}
 \fi
+\ifdefined\fuentesans\else
+  \def\fuentesans{Inter}
+\fi
+\ifdefined\fuentemono\else
+  \def\fuentemono{JetBrains Mono}
+\fi
+\def\nombreLibertinus{Libertinus Serif}
+\def\nombreInter{Inter}
+\def\nombreJetBrains{JetBrains Mono}
 \ifLuaTeX
   \directlua{
     luaotfload.add_fallback("emojis",
       {"Noto Color Emoji:mode=harf;", "DejaVu Sans:"})
   }
-  \setmainfont{\fuenteprincipal}[RawFeature={fallback=emojis}]
+  \ifdefined\carpetaFuentes
+    \ifx\fuenteprincipal\nombreLibertinus
+      \setmainfont{libertinus-serif}[
+        Path           = {\carpetaFuentes/libertinus-serif/},
+        Extension      = .ttf,
+        UprightFont    = *,
+        ItalicFont     = *-italic,
+        BoldFont       = *-700,
+        BoldItalicFont = *-700-italic,
+        RawFeature     = {fallback=emojis}
+      ]
+    \else
+      \setmainfont{\fuenteprincipal}[RawFeature={fallback=emojis}]
+    \fi
+    \ifx\fuentesans\nombreInter
+      \setsansfont{inter}[
+        Path           = {\carpetaFuentes/inter/},
+        Extension      = .ttf,
+        UprightFont    = *,
+        ItalicFont     = *-italic,
+        BoldFont       = *-700,
+        BoldItalicFont = *-700-italic,
+        RawFeature     = {fallback=emojis}
+      ]
+    \else
+      \setsansfont{\fuentesans}[RawFeature={fallback=emojis}]
+    \fi
+    \ifx\fuentemono\nombreJetBrains
+      \setmonofont{jetbrains-mono}[
+        Path           = {\carpetaFuentes/jetbrains-mono/},
+        Extension      = .ttf,
+        UprightFont    = *,
+        ItalicFont     = *-italic,
+        BoldFont       = *-700,
+        BoldItalicFont = *-700-italic,
+        RawFeature     = {fallback=emojis}
+      ]
+    \else
+      \setmonofont{\fuentemono}[RawFeature={fallback=emojis}]
+    \fi
+  \else
+    \setmainfont{\fuenteprincipal}[RawFeature={fallback=emojis}]
+    \setsansfont{\fuentesans}[RawFeature={fallback=emojis}]
+    \setmonofont{\fuentemono}[RawFeature={fallback=emojis}]
+  \fi
 \else
   \ifdefined\setmainfont
     \setmainfont{\fuenteprincipal}
+    \setsansfont{\fuentesans}
+    \setmonofont{\fuentemono}
   \fi
 \fi
 
@@ -309,3 +360,5 @@
 % ------------------------------------------------------------------------------
 \usepackage{float}
 \floatplacement{figure}{H}
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
