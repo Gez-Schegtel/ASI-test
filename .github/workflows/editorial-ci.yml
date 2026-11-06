@@ -20,7 +20,7 @@ permissions:
 jobs:
   lint:
     name: Lint Markdown & Reglas del Repositorio
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v7
@@ -71,7 +71,7 @@ jobs:
   build:
     name: Compilar Apuntes (PDF & EPUB)
     needs: lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v7
