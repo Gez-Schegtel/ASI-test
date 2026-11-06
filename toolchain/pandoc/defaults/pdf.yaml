@@ -1,0 +1,21 @@
+# ==============================================================================
+# pdf.yaml — Archivo de "defaults" de Pandoc para compilación a PDF (LuaLaTeX)
+#
+# Autocontenido dentro del repositorio (toolchain/pandoc/defaults/pdf.yaml).
+# Utiliza ${.} (carpeta de este archivo) para referenciar metadatos.yaml y los
+# filtros Lua sin depender de ~/.local/share/pandoc.
+# ==============================================================================
+
+pdf-engine: lualatex
+
+highlight-style: tango
+
+from: markdown+hard_line_breaks
+
+metadata-files:
+  - ${.}/metadatos.yaml
+
+filters:
+  - ${.}/../filters/preambulo.lua
+  - ${.}/../filters/cortar-formulas.lua
+  - ${.}/../filters/centrar-imagenes.lua

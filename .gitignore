@@ -1,1 +1,23 @@
+# Entornos de edición y SO
 .obsidian/
+.DS_Store
+Thumbs.db
+
+# Salidas de compilación y artefactos generados (Principio 2)
+build/
+**/build/
+*.pdf
+*.epub
+*.tex
+!toolchain/**/*.tex
+!legacy/**/*.tex
+*.log
+*.aux
+*.toc
+*.out
+
+# Entornos virtuales y datos de laboratorios (Checkmk / Python)
+**/venv/
+**/.venv/
+**/__pycache__/
+**/checkmk_data/

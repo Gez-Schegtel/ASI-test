@@ -1,7 +1,7 @@
 # Spec 01 — Resguardo en `legacy/` y Reestructuración Física del Repositorio
 
-* **Estado**: Propuesta (pendiente de revisión)
-* **Fecha**: 2026-11-05
+* **Estado**: Implementada (2026-11-06 — Opción A aplicada para conversión de los 14 PDFs/DOCX de cátedra a `.md`)
+* **Fecha**: 2026-11-06
 * **Alcance**: Resguardo preventivo de herramientas actuales en `legacy/`, migración del árbol de directorios a `content/` y `assets/`, extracción de imágenes Base64 y aplicación de la política de cero artefactos compilados en Git.
 
 ---

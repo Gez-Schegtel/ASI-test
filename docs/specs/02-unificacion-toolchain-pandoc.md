@@ -1,7 +1,7 @@
 # Spec 02 — Unificación y Autocontención del Toolchain (`toolchain/`)
 
-* **Estado**: Propuesta (pendiente de revisión)
-* **Fecha**: 2026-11-05
+* **Estado**: Implementada (2026-11-06 — `toolchain/` creado y validado con `Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en `toolchain/pandoc/fonts/`)
+* **Fecha**: 2026-11-06
 * **Alcance**: Análisis comparativo de los scripts resguardados en `legacy/` y diseño de una arquitectura única y autocontenida en `toolchain/` para normalización (`mdnorm`) y compilación editorial a PDF/EPUB (`md2pdf` / compilador unificado).
 
 ---
@@ -39,9 +39,13 @@ toolchain/
     ├── defaults/
     │   ├── pdf.yaml                 <- Opciones Pandoc para PDF (pdf-engine: lualatex, metadata-files, filters)
     │   ├── epub.yaml                <- Opciones Pandoc para EPUB3 (split-level, toc, mathml, css, filters)
-    │   └── metadatos.yaml           <- Valores base compartidos (lang: es, Libertinus/Latin Modern, márgenes, colores)
+    │   └── metadatos.yaml           <- Valores base compartidos (lang: es, scrartcl, márgenes, colores)
+    ├── fonts/
+    │   ├── libertinus-serif/        <- Fuente principal embebida (Libertinus Serif)
+    │   ├── inter/                   <- Fuente de títulos embebida (Inter)
+    │   └── jetbrains-mono/          <- Fuente monoespaciada embebida (JetBrains Mono)
     ├── templates/
-    │   ├── estilo.tex               <- Preámbulo LaTeX modular (cajas de callouts, fallback Noto Color Emoji, fvextra, tablas)
+    │   ├── estilo.tex               <- Preámbulo LaTeX modular (fuentes embebidas, cajas de callouts, fallback Noto Color Emoji, fvextra, tablas)
     │   └── estilo-epub.css          <- Hoja de estilos responsiva para lectores EPUB (tablas, bloques de código, callouts, figuras)
     └── filters/
         ├── obsidian-syntax.lua      <- (Opcional/integrado) Traducción limpia en el AST de Pandoc de callouts, wikilinks e imágenes
@@ -68,6 +72,10 @@ pandoc \
 
 Como `pdf.yaml` utiliza la variable nativa `${.}` de Pandoc para referenciar `${.}/metadatos.yaml` y `${.}/../filters/*.lua`, todo el sistema funcionará idénticamente en cualquier computadora Linux o contenedor de GitHub Actions apenas clonado el repositorio.
 
+> [!NOTE]
+> **Ruta a `templates/estilo.tex` en `preambulo.lua`**:
+> Como `estilo.tex` se ubica canónicamente en `toolchain/pandoc/templates/estilo.tex` (en lugar de `defaults/estilo.tex`), el filtro `preambulo.lua` debe resolver la ruta base como `pandoc.path.join({ carpeta, 'templates', 'estilo.tex' })`.
+
 ### 3.2. Unificación de `md2pdf` y `compilar-epub.sh` en un solo comando
 
 El ejecutable `toolchain/bin/md2pdf` será el **punto de entrada único de compilación** (manteniendo el nombre establecido en `GEMINI.md`), incorporando las capacidades de ambos scripts previos:
@@ -78,8 +86,9 @@ El ejecutable `toolchain/bin/md2pdf` será el **punto de entrada único de compi
   * Con `--all` genera ambos formatos en una sola pasada de preprocesamiento.
 * **Directorio de salida limpio**:
   * Por defecto escribe en `$REPO_ROOT/build/` (estructurado o plano, p. ej. `build/pdf/` y `build/epub/`, o personalizable con `-o`), evitando ensuciar `content/` con archivos binarios.
-* **Traducción completa de sintaxis Obsidian/GFM**:
+* **Traducción completa de sintaxis Obsidian/GFM y normalización en el motor Perl**:
   * Conserva el motor Perl de resolución de imágenes en `assets/` (con normalización Unicode NFC/NFD para tildes exportadas de Notion/macOS), tamaños `|400`, alineaciones `|derecha`/`|izquierda`, conversión de `[[Nota|alias]]` a texto plano y transformación de callouts `> [!NOTE]`, `> [!WARNING]`, `> [!IMPORTANT]`, `> [!EXAMPLE]` tanto para cajas LaTeX en PDF como para bloques estilizados en EPUB.
+  * **Normalización de caracteres matemáticos Unicode**: Se incorpora al motor Perl la regla `s/([\x{1D400}-\x{1D7FF}])/NFKC($1)/ge;` (proveniente de `compilar.sh`), convirtiendo letras matemáticas cursivas/negritas copiadas de IA u Obsidian (`𝐴`, `𝑓`, `𝛼`) a caracteres estándar (`A`, `f`, `α`) para prevenir errores de caracteres faltantes (*Missing character*) en el motor LaTeX.
 
 ### 3.3. Mejoras a `toolchain/bin/mdnorm`
 
@@ -89,15 +98,15 @@ Se partirá de la base probada en `legacy/script normalizador/mdnorm`, aplicando
 2. **Modo `--check` para CI**: Agregar una bandera `--check` (o extender `-n`) que devuelva código de salida distinto de `0` si un archivo `.md` no está normalizado o si referencia una imagen inexistente en `assets/`, bloqueando PRs rotos en GitHub Actions.
 3. **Preservación de compatibilidad con Obsidian en imágenes**: Actualmente `mdnorm` agrega `{width=300px}` al convertir `![[foto.png|300]]`, lo cual Obsidian muestra como texto literal. Se revisará esta regla para respetar la convención de `GEMINI.md` (`![Descripción](../../assets/nombre.png)` o `![[nombre.png]]`) dejando que el ajuste fino de atributos para Pandoc ocurra en tiempo de compilación (`md2pdf`).
 
-### 3.4. Estándar Tipográfico Unificado
+### 3.4. Estándar Tipográfico Unificado y Autocontenido
 
-* **Tipografía base**: Configurar un esquema consistente (por ejemplo, `Libertinus Serif` + `Inter` + `JetBrains Mono` como usan hoy los apuntes de 2026, con fallback automático a `Latin Modern Roman` si una fuente opcional no está instalada localmente, más `Noto Color Emoji` y `DejaVu Sans` vía `luaotfload`).
-* **Cabecera mínima en cada `.md`**: Limpiar los frontmatters largos repetidos en cada nota (`header-includes`, fuentes y geometrías duplicadas en `Unidad III` y `Unidad VI`) para que vivan centralizados en `toolchain/pandoc/defaults/metadatos.yaml`, dejando en cada apunte únicamente `title`, `subtitle`, `author`, `date`, `toc: true` y `numbersections: true`.
+* **Tipografía embebida en el repositorio (`toolchain/pandoc/fonts/`)**: Se incluyen directamente en el repositorio los archivos `.ttf` (variantes Regular, Italic, Bold y BoldItalic) de **`Libertinus Serif`** (cuerpo), **`Inter`** (títulos `scrartcl`) y **`JetBrains Mono`** (código), cargados por ruta desde `preambulo.lua` + `estilo.tex` con respaldo `Noto Color Emoji` y `DejaVu Sans` vía `luaotfload`. Así no se depende de que estén disponibles en el gestor de paquetes de cada distribución Linux.
+* **Cabecera mínima en cada `.md`**: Limpiar los frontmatters largos repetidos en cada nota (`header-includes`, fuentes y geometrías duplicadas) para que vivan centralizados en `toolchain/pandoc/defaults/metadatos.yaml` y `estilo.tex`, dejando en cada apunte únicamente `title`, `subtitle`, `author`, `date`, `toc: true` y `numbersections: true`.
 
 ---
 
-## 4. Decisiones Abiertas para Revisar con el Equipo
+## 4. Decisiones Resueltas
 
-1. **Nombre del ejecutable unificado**: `GEMINI.md` define `toolchain/bin/md2pdf` y `toolchain/bin/mdnorm`. ¿Mantenemos el nombre `md2pdf` agregándole la bandera `--epub` / `--all`, o preferís sumar un alias corto (ej. `toolchain/bin/mdbuild` con symlink `md2pdf`)?
-2. **Portabilidad a Bash**: ¿Estás de acuerdo en pasar el wrapper externo de `mdnorm` y `md2pdf` de `zsh` a `bash` (manteniendo intacto y comentado todo el motor Perl interno para que sea fácil de estudiar y comparar contra `legacy/`)?
-3. **Fuente principal por defecto en los PDFs**: ¿Preferís estandarizar para todas las unidades `Libertinus Serif` + `Inter` + `JetBrains Mono` (estética actual de `compilar.sh` y de `Unidad III`/`VI`) o `Latin Modern Roman` (estética por defecto de `estilos/`)?
+1. **Nombre del ejecutable unificado**: Se mantiene `toolchain/bin/md2pdf` con soporte para `--pdf`, `--epub` y `--all`.
+2. **Portabilidad a Bash**: Se migró el wrapper externo de `mdnorm` y `md2pdf` de `zsh` a `bash`, conservando el motor Perl completo.
+3. **Fuentes por defecto embebidas**: Se estandarizó `Libertinus Serif` + `Inter` + `JetBrains Mono` alojadas en `toolchain/pandoc/fonts/` para garantizar autocontención en cualquier distribución Linux y en GitHub Actions.

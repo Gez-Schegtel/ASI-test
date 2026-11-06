@@ -1,0 +1,229 @@
+name: Editorial CI/CD (Lint & Build PDF/EPUB)
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - "changes/**"
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  lint:
+    name: Lint Markdown & Reglas del Repositorio
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v7
+
+      - name: Verificar principios de GEMINI.md (Cero binarios y Cero Base64)
+        shell: bash
+        run: |
+          set -euo pipefail
+          error=0
+
+          echo "1. Verificando ausencia de artefactos binarios (.pdf, .epub, .docx) en Git..."
+          binarios="$(git ls-files '*.pdf' '*.epub' '*.docx')"
+          if [[ -n "$binarios" ]]; then
+            echo "❌ Se encontraron binarios versionados prohibidos por GEMINI.md:"
+            echo "$binarios"
+            error=1
+          else
+            echo "   ✔ Cero binarios (.pdf/.epub/.docx) en Git."
+          fi
+
+          echo "2. Verificando que no existan imágenes sueltas dentro de content/..."
+          img_fuera="$(git ls-files 'content/*.png' 'content/*.jpg' 'content/*.jpeg' 'content/*.svg' 'content/*.gif' 'content/*.webp' 'content/**/*.png' 'content/**/*.jpg' 'content/**/*.jpeg' 'content/**/*.svg' 'content/**/*.gif' 'content/**/*.webp')"
+          if [[ -n "$img_fuera" ]]; then
+            echo "❌ Se encontraron imágenes fuera de assets/:"
+            echo "$img_fuera"
+            error=1
+          else
+            echo "   ✔ Todas las imágenes residen en assets/."
+          fi
+
+          echo "3. Verificando ausencia de imágenes Base64 incrustadas en content/..."
+          if grep -rn "data:image/" content/; then
+            echo "❌ Se encontraron imágenes codificadas en Base64 dentro de content/."
+            error=1
+          else
+            echo "   ✔ Cero imágenes Base64 en content/."
+          fi
+
+          exit "$error"
+
+      - name: Ejecutar linter y normalizador (mdnorm --check)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -d '' archivos < <(find content -type f -name "*.md" -print0 | sort -z)
+          ./toolchain/bin/mdnorm --check "${archivos[@]}"
+
+  build:
+    name: Compilar Apuntes (PDF & EPUB)
+    needs: lint
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v7
+
+      - name: Obtener o construir imagen Docker del toolchain (ghcr.io)
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          OWNER="${GITHUB_REPOSITORY_OWNER,,}"
+          IMAGE="ghcr.io/${OWNER}/asi-toolchain"
+          TAG_HASH="$(find toolchain/Dockerfile toolchain/pandoc -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | cut -c1-12)"
+          echo "TOOLCHAIN_IMAGE=${IMAGE}:${TAG_HASH}" >> "$GITHUB_ENV"
+
+          echo "${GITHUB_TOKEN}" | docker login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
+
+          if docker pull "${IMAGE}:${TAG_HASH}"; then
+            echo "✔ Imagen precompilada encontrada en GHCR: ${IMAGE}:${TAG_HASH}"
+          else
+            echo "⚙ Imagen ${IMAGE}:${TAG_HASH} no encontrada en GHCR. Construyendo desde toolchain/Dockerfile..."
+            docker build \
+              -t "${IMAGE}:${TAG_HASH}" \
+              -t "${IMAGE}:latest" \
+              -f toolchain/Dockerfile \
+              toolchain
+
+            if [[ "${GITHUB_EVENT_NAME}" != "pull_request" ]]; then
+              echo "⬆ Publicando imagen en GHCR (${IMAGE}:${TAG_HASH} y :latest)..."
+              docker push "${IMAGE}:${TAG_HASH}"
+              docker push "${IMAGE}:latest"
+            fi
+          fi
+
+      - name: Compilar unidades y guías prácticas a PDF y EPUB
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker run --rm \
+            --user "$(id -u):$(id -g)" \
+            -v "$PWD:/workspace" \
+            -w /workspace \
+            "$TOOLCHAIN_IMAGE" \
+            bash -c '
+              set -euo pipefail
+              mapfile -d "" archivos_compilar < <(
+                find content/unidades content/practica \
+                  -type f -name "*.md" ! -name "README.md" -print0 2>/dev/null | sort -z
+              )
+              if (( ${#archivos_compilar[@]} == 0 )); then
+                echo "❌ No se encontraron documentos para compilar."
+                exit 1
+              fi
+              ./toolchain/bin/md2pdf -y --all "${archivos_compilar[@]}"
+            '
+          echo "=== Árbol de artefactos generados en build/ ==="
+          find build -type f | sort
+
+      - name: Publicar Artefactos — Unidad I
+        if: hashFiles('build/Unidad I/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Unidad-I
+          path: |
+            build/Unidad I/**/*.pdf
+            build/Unidad I/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Unidad II
+        if: hashFiles('build/Unidad II/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Unidad-II
+          path: |
+            build/Unidad II/**/*.pdf
+            build/Unidad II/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Unidad III
+        if: hashFiles('build/Unidad III/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Unidad-III
+          path: |
+            build/Unidad III/**/*.pdf
+            build/Unidad III/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Unidad IV
+        if: hashFiles('build/Unidad IV/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Unidad-IV
+          path: |
+            build/Unidad IV/**/*.pdf
+            build/Unidad IV/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Unidad V
+        if: hashFiles('build/Unidad V/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Unidad-V
+          path: |
+            build/Unidad V/**/*.pdf
+            build/Unidad V/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Unidad VI
+        if: hashFiles('build/Unidad VI/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Unidad-VI
+          path: |
+            build/Unidad VI/**/*.pdf
+            build/Unidad VI/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Práctica TP1 (Alineamiento SI/TI)
+        if: hashFiles('build/Practica/tp1-alineamiento/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Practica-TP1-Alineamiento
+          path: |
+            build/Practica/tp1-alineamiento/**/*.pdf
+            build/Practica/tp1-alineamiento/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Práctica TPI (Vialidad Provincial - DVP)
+        if: hashFiles('build/Practica/tpi-dvp/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Practica-TPI-DVP
+          path: |
+            build/Practica/tpi-dvp/**/*.pdf
+            build/Practica/tpi-dvp/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Release en GitHub (en tags v*)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v3.0.4
+        with:
+          files: |
+            build/**/*.pdf
+            build/**/*.epub
+          generate_release_notes: true

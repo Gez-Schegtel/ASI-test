@@ -28,9 +28,10 @@ Este repositorio es la fuente de verdad canónica, colaborativa y versionada de 
 * `docs/`: Documentación del proyecto, estado vivo, bitácora del equipo y especificaciones técnicas.
   * `docs/STATUS.md`: Bitácora viva y radiografía actualizada del estado real del repositorio, avance de unidades/tooling y pendientes.
   * `docs/specs/`: Especificaciones de cambios de tooling, migración o estructura.
-* `toolchain/`: Scripts de linteo, normalización y compilación.
+* `toolchain/`: Scripts de linteo, normalización, compilación e imagen Docker del entorno editorial.
+  * `toolchain/Dockerfile`: Imagen Docker (`ghcr.io/<owner>/asi-toolchain`) con Pandoc, LuaLaTeX y caché de fuentes precalentado.
   * `toolchain/bin/`: Ejecutables (`mdnorm`, `md2pdf`).
-  * `toolchain/pandoc/`: Defaults YAML, plantillas LaTeX/CSS y filtros Lua.
+  * `toolchain/pandoc/`: Defaults YAML, fuentes embebidas (`fonts/`), plantillas LaTeX/CSS y filtros Lua.
 * `plantillas/`: Prompts base y guías de redacción/mejora de notas.
 * `.github/workflows/`: Pipelines de integración y entrega continua (CI/CD).
 

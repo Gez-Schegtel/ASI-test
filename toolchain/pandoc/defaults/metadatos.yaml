@@ -1,0 +1,59 @@
+# ==============================================================================
+# metadatos.yaml — Valores por defecto de todos los documentos del repositorio
+#
+# Lo cargan pdf.yaml y epub.yaml con "metadata-files". Es un YAML común (no
+# lleva las líneas "---" de la cabecera de una nota).
+#
+# Son valores "de base": cualquier nota puede cambiar uno poniéndolo en su
+# propia cabecera, y también se pueden cambiar desde la terminal con -M.
+# Por ejemplo, una nota con tablas anchas puede tener en su cabecera:
+#     geometry: margin=1.5cm
+# ==============================================================================
+
+# Idioma del documento. Define cómo se cortan las palabras al final de línea y
+# los nombres automáticos ("Índice", "Referencias", etc.).
+lang: es
+
+# Clase KOMA-Script para artículos académicos (títulos en sans-serif Inter y
+# numeración con punto final: 1., 1.1., etc.).
+documentclass: scrartcl
+classoption: numbers=enddot
+
+# Márgenes de la hoja (paquete geometry). Acepta también valores por lado,
+# por ejemplo: geometry: top=2cm, bottom=2cm, left=3cm, right=2cm
+geometry: margin=2.2cm
+
+# Tamaño de la letra. LaTeX acepta 10pt, 11pt o 12pt.
+fontsize: 11pt
+
+# Enlaces con color (en vez de recuadros alrededor).
+colorlinks: true
+
+# Color de los enlaces internos, de las URL y del índice (NavyBlue = azul
+# marino). Sin toccolor, el índice sale en negro.
+linkcolor: NavyBlue
+urlcolor: NavyBlue
+toccolor: NavyBlue
+
+# Ancho máximo de las imágenes, como porcentaje del ancho del texto. Las más
+# anchas se achican; las más chicas quedan igual. Para una imagen puntual:
+#     ![](foto.png){width=40%}
+ancho-imagenes: 80%
+
+# Interlineado: 1 es el normal de LaTeX; con más de 1 queda más aire entre
+# renglones (los PDF salen algo más largos).
+linestretch: 1.10
+
+# Títulos de nivel 4 y 5 (#### y #####) en una línea propia. Sin esto, LaTeX
+# los pega al texto que sigue ("Título. Texto del párrafo..."). Para volver a
+# ese comportamiento, borrar esta línea o poner "block-headings: false" en la nota.
+block-headings: true
+
+# --- Otras opciones que se suelen poner en la cabecera de UNA nota ------------
+# No van acá porque no se quieren en todos los documentos:
+#   toc: true              índice al principio (toc-depth: 3 limita los niveles)
+#   numbersections: true   numera los títulos (1, 1.1, 1.2, ...)
+#   mainfont: Latin Modern Roman otra letra principal (por defecto se usan
+#                                Libertinus Serif, Inter y JetBrains Mono
+#                                embebidas en toolchain/pandoc/fonts/)
+# ==============================================================================

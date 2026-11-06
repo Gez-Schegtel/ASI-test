@@ -3,9 +3,9 @@
 > [!IMPORTANT]
 > Este archivo es la **fuente de verdad viva y bitácora histórica** del repositorio de **Administración de Sistemas de Información (ASI)** — UTN FRRe. Debe consultarse al inicio de cada sesión y mantenerse estrictamente actualizado tras cada cambio estructural, de contenido o de *tooling*.
 
-* **Última actualización**: `2026-11-05`
-* **Fase actual**: `Fase 0 — Diagnóstico y Revisión de Especificaciones (Pre-Reestructuración)`
-* **Rama activa**: `master`
+* **Última actualización**: `2026-11-06`
+* **Fase actual**: `Infraestructura Técnica, Organización por Unidad e Imagen Docker GHCR 100% Completadas (Specs 01, 02, 03-B, 04 y 05 implementadas) -> En espera de material de estudio para Spec 03-Parte A`
+* **Rama activa**: `changes/juani`
 
 ---
 
@@ -13,30 +13,27 @@
 
 | Dominio | Ubicación Actual (`AS-IS`) | Ubicación Canónica (`TO-BE`) | Estado Actual |
 | :--- | :--- | :--- | :--- |
-| Protocolo rector | `GEMINI.md` | `GEMINI.md` | Activo y actualizado |
-| Estado vivo y specs | `docs/STATUS.md` + `docs/specs/` | `docs/STATUS.md` + `docs/specs/` | Activo (3 specs en revisión) |
-| Resguardo temporal | En raíz (`estilos/`, `script *`) y `2026/herramientas/` | `legacy/` (temporal hasta cerrar `toolchain/`) | Pendiente de mover (Fase 0) |
-| Apuntes teóricos | `2026/*.md`, `2026/Unidad I/`, `2025/`, `APUNTE 2 parcial.md` | `content/unidades/` | Pendiente de migrar |
-| Trabajos prácticos y guías | `2026/Trabajo Práctico/`, `2026/Cuestionarios de Autoestudio/` | `content/practica/` | Pendiente de migrar |
-| Laboratorios y talleres | `otros/labs/cmk/`, `otros/taller_1/`, `otros/actividades/` | `content/labs/` | Pendiente de migrar |
-| Recursos gráficos | `assets/` (62), `otros/img/` (150), `2025/` (21), Base64 (62) | `assets/` (único almacén sin Base64) | Pendiente de unificar |
-| Toolchain editorial | `2026/herramientas/`, `estilos/`, `script conversor/`, `script normalizador/` | `toolchain/bin/` y `toolchain/pandoc/` | Pendiente de unificar |
-| Plantillas y prompts | `plantillas/` | `plantillas/` | En su lugar |
-| Pipelines CI/CD | *(Inexistente)* | `.github/workflows/` | Pendiente de crear |
+| Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
+| Estado vivo y specs | `docs/STATUS.md` + `docs/specs/` | `docs/STATUS.md` + `docs/specs/` | **Specs 01, 02, 03-B, 04 y 05 implementadas**; Spec 03-A a la espera de material |
+| Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
+| Apuntes y cuestionarios por Unidad | `content/unidades/` (`Unidad I/`, `Unidad III/`, `Unidad VI/`) | `content/unidades/<Unidad X>/` | **Organizado por Unidad y normalizado** |
+| Trabajos prácticos y guías | `content/practica/` (`tpi-dvp/`, `tp1-alineamiento/`) | `content/practica/` | **Migrado y 100% en `.md`** |
+| Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
+| Recursos gráficos | `assets/` (307 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
+| Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
+| Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
+| Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`) y Artifacts por Unidad (Modalidad B)** |
 
-### Métricas Auditadas del Árbol Actual
+### Métricas Auditadas del Árbol Actual (Post-Spec 05)
 
-* **Peso total del directorio de trabajo**: ~109 MB.
-* **Archivos binarios/documentos no-Markdown detectados (26 archivos)**:
-  * **12 artefactos compilados propios** (`.pdf` y `.epub` en `2026/build/`, raíz de `2026/`, `Cuestionarios de Autoestudio/`, `Trabajo Práctico/` y `estilos/examples/`) que ya tienen su fuente `.md` exacta -> *listos para desversionar*.
-  * **14 documentos PDF/DOCX de cátedra o entregas grupales** (como `TPI Parte 2.pdf`, `U1-Desarrollo de los temas-1.pdf`, `TP1 - Alineamiento de SI-TI.pdf` y enunciados oficiales) que aún no tienen versión `.md` -> *requiere decisión antes de purgar PDFs*.
-* **Recursos gráficos**:
-  * `assets/`: 62 imágenes (cursada 2026).
-  * `otros/img/`: 150 imágenes (cursada 2025).
-  * `2025/par_2/consignas/`: 20 capturas JPEG.
-  * `2025/par_1-RECUPERATORIO/`: 1 PNG (duplicado exacto SHA-256 de `otros/img/Pasted image 20251114205618.png`).
-  * `otros/gárficos.drawio`: 1 archivo fuente de diagramas.
-  * `APUNTE 2 parcial.md`: 62 imágenes embebidas en Base64 (`data:image/...`, 4,1 MB en un solo archivo).
+* **Archivos binarios PDF/EPUB/DOCX en el repositorio**: **0 archivos** (regla de cero artefactos activa en `.gitignore`).
+* **Imágenes Base64 incrustadas en Markdown**: **0**.
+* **Recursos gráficos centralizados en `assets/`**: **307 archivos**.
+* **Toolchain autocontenido (`toolchain/`)**:
+  * `toolchain/Dockerfile`: Imagen Docker (`ghcr.io/n1krov/asi-toolchain`) basada en `ubuntu:24.04` con Pandoc, TeX Live (`LuaLaTeX`) y el caché global de fuentes de `luaotfload` (`/var/cache/texmf-var`) precalentado.
+  * `toolchain/bin/mdnorm`: Linter y normalizador en Bash + Perl con soporte `-y`, `-v` y `--check` (`-n`) para CI.
+  * `toolchain/bin/md2pdf`: Compilador unificado en Bash + Perl + Pandoc con soporte `--pdf`, `--epub` y `--all`, salida limpia a `build/`, resolución automática de `assets/` y normalización `NFKC` de letras matemáticas Unicode.
+  * `toolchain/pandoc/`: `defaults/pdf.yaml`, `defaults/epub.yaml`, `defaults/metadatos.yaml` (`scrartcl` por defecto), `fonts/` (`Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en el repositorio), `templates/estilo.tex`, `templates/estilo-epub.css` y los 3 filtros Lua (`preambulo.lua`, `cortar-formulas.lua`, `centrar-imagenes.lua`).
 
 ---
 
@@ -44,55 +41,110 @@
 
 | Componente / Unidad | Tema Principal | Ubicación Actual | Estado Editorial |
 | :--- | :--- | :--- | :--- |
-| **Unidad I** | Los SI en la Empresa, Cadena de Valor y Estrategia SI/TI | `2026/Unidad I/` + `2025/par_1/u1/` | Fragmentado |
-| **Unidad II** | Subsistema de Provisión (RRHH y SI/TI) *(orden 2026 a confirmar)* | `2025/u4/` + `APUNTE 2 parcial.md` | En crudo / Base64 |
-| **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `2026/Unidad III - Subsistema de Aplicación.md` | **Consolidado** (1.826 líneas) |
-| **Unidad IV** | Mantenimiento y Desarrollo de RRHH *(orden 2026 a confirmar)* | `2025/u6/` + `APUNTE 2 parcial.md` | En crudo / Base64 |
-| **Unidad V** | Subsistema de Seguimiento / Control (Monitores, Benchmarking, Amdahl) | `2025/par_1/u2/` | Fragmentado |
-| **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `2026/Unidad VI - Seguridad y Auditoría.md` | **Consolidado** (1.604 líneas) |
-| **TPI (DVP)** | Caso Dirección de Vialidad Provincial del Chaco (ERP, GeoVial, SiCC) | `2026/Trabajo Práctico/` | Guía `.md` lista + `TPI Parte 2.pdf` |
-| **Cuestionarios** | Resoluciones de Aplicación de Recursos y Seguridad/Auditoría | `2026/Cuestionarios de Autoestudio/` | **Consolidados** en `.md` |
-| **Lab Checkmk** | Monitoreo con Checkmk Raw 2.3 en Docker + `http_ping.py` | `otros/labs/cmk/` | Funcional (pendiente mover a `content/labs/`) |
+| **Unidad I** | Los SI en la Empresa, Cadena de Valor y Estrategia SI/TI | `content/unidades/Unidad I/` + `legacy/archivo-2025/2025/par_1/u1/` | Cuestionario resuelto en raíz + 4 borradores en `Unidad I/borradores/` |
+| **Unidad II** | Subsistema de Provisión (RRHH y SI/TI) *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u4/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64 y PDFs pasados a `.md`) |
+| **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `content/unidades/Unidad III/` | **Completa** (Apunte teórico + Cuestionario resuelto + Enunciado) |
+| **Unidad IV** | Mantenimiento y Desarrollo de RRHH *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u6/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64) |
+| **Unidad V** | Subsistema de Seguimiento / Control (Monitores, Benchmarking, Amdahl) | `legacy/archivo-2025/2025/par_1/u2/` | Fragmentado |
+| **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/Unidad VI/` | **Completa** (Apunte teórico + Cuestionario resuelto + Enunciado) |
+| **TPI (DVP)** | Caso Dirección de Vialidad Provincial del Chaco (ERP, GeoVial, SiCC) | `content/practica/tpi-dvp/` | **Completo en `.md`** (`Explicación del TPI.md` + `TPI Parte 2.md`) |
+| **TP1 Alineamiento** | Guías, presentaciones y consignas del TP1 de Alineamiento Estratégico | `content/practica/tp1-alineamiento/` | **Completo en `.md`** (9 archivos `.md`) |
+| **Lab Checkmk** | Monitoreo con Checkmk Raw 2.3 en Docker + `http_ping.py` | `content/labs/cmk/` y `content/labs/taller-1/` | **Migrado y funcional** |
 
 ---
 
 ## 3. Especificaciones Activas (`docs/specs/`)
 
-1. **[01-reestructuracion-y-resguardo-legacy.md](specs/01-reestructuracion-y-resguardo-legacy.md)** — *Estado: En revisión*. Define el resguardo previo en `legacy/`, migración a `content/` y `assets/`, extracción de Base64 y limpieza de `.gitignore`.
-2. **[02-unificacion-toolchain-pandoc.md](specs/02-unificacion-toolchain-pandoc.md)** — *Estado: En revisión*. Define la fusión de `compilar*.sh` + `md2pdf` + `mdnorm` + `estilos/` dentro de `toolchain/` (LuaLaTeX + EPUB3, autocontenido sin `~/.local/share/pandoc`, wrapper en `bash` sin requerir `zsh` ni fallar si falta `diff`).
-3. **[03-consolidacion-unidades-y-ci-cd.md](specs/03-consolidacion-unidades-y-ci-cd.md)** — *Estado: En revisión*. Define el plan de redacción/unificación de Unidades I, II, IV y V, y el pipeline de GitHub Actions (Artifacts + Releases).
+1. **[01-reestructuracion-y-resguardo-legacy.md](specs/01-reestructuracion-y-resguardo-legacy.md)** — *Estado: **Implementada** (2026-11-06)*. Resguardo en `legacy/`, migración a `content/` y `assets/`, conversión de los 14 PDFs/DOCX de cátedra a `.md` (Opción A), extracción de las 62 imágenes Base64 y nuevo `.gitignore`.
+2. **[02-unificacion-toolchain-pandoc.md](specs/02-unificacion-toolchain-pandoc.md)** — *Estado: **Implementada** (2026-11-06)*. Construcción de `toolchain/bin/mdnorm`, `toolchain/bin/md2pdf` (`--pdf`, `--epub`, `--all`), `toolchain/pandoc/` (`defaults/`, `fonts/`, `templates/`, `filters/`) y `toolchain/README.md`, 100% autocontenido y con `Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en `toolchain/pandoc/fonts/`.
+3. **[03-consolidacion-unidades-y-ci-cd.md](specs/03-consolidacion-unidades-y-ci-cd.md)** — *Estado: **Parte B (CI/CD) implementada** (2026-11-06); **Parte A (Unidades faltantes)** en espera de material de estudio*. Pipeline `.github/workflows/editorial-ci.yml` activo para `lint` (`mdnorm --check` + control de binarios/Base64) y `build` (`md2pdf --all` -> Artifacts y GitHub Releases).
+4. **[04-organizacion-unidades-y-artefactos.md](specs/04-organizacion-unidades-y-artefactos.md)** — *Estado: **Implementada** (2026-11-06)*. Agrupación por Unidad en `content/unidades/<Unidad X>/` (uniendo teoría y cuestionarios de cada unidad), preservación de subcarpetas en `build/` desde `toolchain/bin/md2pdf` y empaquetado de Artifacts separados por Unidad y Práctica (Modalidad B) en GitHub Actions.
+5. **[05-imagen-docker-toolchain-ghcr.md](specs/05-imagen-docker-toolchain-ghcr.md)** — *Estado: **Implementada** (2026-11-06)*. Creación de `toolchain/Dockerfile` con Pandoc, LuaLaTeX y caché global de `luaotfload` (`/var/cache/texmf-var`) precalentado, e integración con GitHub Container Registry (`ghcr.io/n1krov/asi-toolchain`) en `.github/workflows/editorial-ci.yml`.
 
 ---
 
 ## 4. Tablero de Pendientes y Decisiones Abiertas
 
-### Decisiones pendientes de validación del equipo (bloqueantes para ejecutar Spec 01/02/03)
+### Decisiones resueltas
+- [x] **14 PDFs/DOCX de cátedra sin `.md`**: Resuelto con **Opción A** (convertidos todos a `.md` y desversionados los binarios de Git).
+- [x] **Archivo histórico `2025/` y `APUNTE 2 parcial.md`**: Alojados en `legacy/archivo-2025/` limpios de Base64 y binarios.
+- [x] **Ubicación de `estilo.tex` y normalización Perl en Spec 02**: `estilo.tex` en `toolchain/pandoc/templates/estilo.tex` y motor Perl con normalización `NFKC` de letras matemáticas Unicode.
+- [x] **Tipografía estándar en `toolchain/`**: Embebidas `Libertinus Serif` (texto), `Inter` (títulos) y `JetBrains Mono` (código) directamente en `toolchain/pandoc/fonts/` y cargadas por defecto desde `estilo.tex` + `preambulo.lua` sin depender del gestor de paquetes de cada distribución Linux.
+- [x] **Organización por Unidad y Modalidad de Artifacts en Spec 04**: Implementada **Modalidad B** (Artifacts separados por Unidad y Práctica en GitHub Actions: `Unidad-I` a `Unidad-VI`, `Practica-TP1-Alineamiento` y `Practica-TPI-DVP`) y compilación de **todos** los `.md` de `content/unidades/` y `content/practica/`.
+- [x] **Eliminación de tiempos de instalación de TeX Live en CI/CD (Spec 05)**: Implementada imagen Docker precompilada en GitHub Container Registry (`ghcr.io/n1krov/asi-toolchain`) con caché de fuentes `luaotfload` precalentado.
 
-- [ ] **14 PDFs/DOCX de cátedra sin `.md`** (`TPI Parte 2.pdf`, `U1-Desarrollo de los temas-1.pdf`, `TP1 - Alineamiento de SI-TI.pdf`, enunciados): definir si se resguardan temporalmente en `legacy/referencias-pdf/`, se convierten antes a `.md`, o se quitan del índice con `git rm --cached` quedando solo en disco local.
-- [ ] **Archivo histórico `2025/` y `APUNTE 2 parcial.md`**: confirmar su alojamiento temporal en `legacy/archivo-2025/` mientras se extraen las unidades faltantes.
-- [ ] **Tipografía estándar en `toolchain/`**: elegir entre `Libertinus Serif` + `Inter` + `JetBrains Mono` (actual en Unidades III y VI) o `Latin Modern Roman` (default en `estilos/`).
-- [ ] **Numeración oficial 2026 de Unidades II, IV y V**: confirmar el orden exacto de *Provisión*, *Mantenimiento*, *Desarrollo* y *Seguimiento/Control* en el programa 2026.
+### Decisiones pendientes (para Spec 03 - Parte A)
+- [ ] **Numeración oficial 2026 de Unidades II, IV y V (Spec 03)**: confirmar el orden exacto de *Provisión*, *Mantenimiento*, *Desarrollo* y *Seguimiento/Control* en el programa 2026.
 
 ### Próximas tareas técnicas en cola
-
-- [ ] Ejecutar **Fase 0 (Spec 01)**: crear `legacy/` y mover allí `script conversor/`, `script normalizador/`, `estilos/` y `2026/herramientas/` (no borrar `legacy/` hasta entender todo el código y tener el script único validado).
-- [ ] Ejecutar **Fases 1 a 3 (Spec 01)**: migrar a `content/` y `assets/`, extraer las 62 imágenes Base64 de `APUNTE 2 parcial.md` y aplicar el nuevo `.gitignore` desversionando los PDFs/EPUBs generados.
-- [ ] Implementar **Spec 02**: construir `toolchain/bin/mdnorm`, `toolchain/bin/md2pdf` (`--pdf`, `--epub`, `--all`) y `toolchain/pandoc/`.
-- [ ] Implementar **Spec 03**: configurar `.github/workflows/` y consolidar las unidades faltantes.
+- [x] Ejecutar **Fase 0 (Spec 01)**: crear `legacy/` y resguardar `script conversor/`, `script normalizador/`, `estilos/` y `2026/herramientas/`.
+- [x] Ejecutar **Fases 1 a 3 (Spec 01)**: migrar a `content/` y `assets/`, convertir los 14 documentos de cátedra a `.md`, extraer las 62 imágenes Base64 de `APUNTE 2 parcial.md` y aplicar el nuevo `.gitignore`.
+- [x] Implementar **Spec 02**: construir `toolchain/bin/mdnorm`, `toolchain/bin/md2pdf` (`--pdf`, `--epub`, `--all`) y `toolchain/pandoc/`.
+- [x] Implementar **Spec 03 (Parte B)**: configurar `.github/workflows/editorial-ci.yml` (`lint` + `build` PDF/EPUB + publicación en Artifacts y Releases).
+- [x] Implementar **Spec 04**: reorganizar `content/unidades/<Unidad X>/` (con sus cuestionarios) y estructurar `build/` y los Artifacts de CI por Unidad (Modalidad B).
+- [x] Implementar **Spec 05**: encapsular el entorno Pandoc + LuaLaTeX en `toolchain/Dockerfile` y publicarlo automáticamente en `ghcr.io/n1krov/asi-toolchain`.
+- [ ] Implementar **Spec 03 (Parte A)**: consolidar las unidades teóricas faltantes cuando esté listo el material de estudio.
 
 ---
 
 ## 5. Bitácora de Sesiones
 
+### `2026-11-06` — Implementación de Spec 05 (Imagen Docker del Toolchain en GHCR)
+
+* **Contexto**: Para evitar demoras de instalación de paquetes `texlive-*` en GitHub Actions por degradación de mirrors de Ubuntu/Azure, desempaquetado de ~30.000 archivos con `dpkg` y regeneración en frío de `luaotfload` y `fmtutil-sys`, se redactó e implementó la **Spec 05**.
+* **Acciones ejecutadas**:
+  * Redacción de `docs/specs/05-imagen-docker-toolchain-ghcr.md`.
+  * Creación de `toolchain/Dockerfile` sobre `ubuntu:24.04` con `Dpkg::Options::="--force-unsafe-io"`, `Acquire::ForceIPv4=true` y precalentamiento del caché global de fuentes (`TEXMFVAR=/var/cache/texmf-var`, `TEXMFCACHE=/var/cache/texmf-var`) compilando las tablas `.luc` de `Libertinus Serif`, `Inter`, `JetBrains Mono`, `Latin Modern Math`, `DejaVu Sans` y `Noto Color Emoji` durante el `docker build`.
+  * Actualización de `.github/workflows/editorial-ci.yml` (`permissions: packages: write`) para calcular un hash determinista (`TAG_HASH`) sobre `toolchain/Dockerfile` y `toolchain/pandoc/`: si `ghcr.io/n1krov/asi-toolchain:<TAG_HASH>` existe en GHCR la descarga en segundos (`docker pull`), y solo si no existe aún (primera ejecución o cambio en `toolchain/`) la construye y publica automáticamente en `ghcr.io`, ejecutando luego `md2pdf` mediante `docker run`.
+  * Actualización de `GEMINI.md`, `README.md`, `toolchain/README.md` y `docs/STATUS.md`.
+
+### `2026-11-06` — Implementación de Spec 04 (Organización por Unidad y Artifacts Separados en CI/CD)
+
+* **Contexto**: A fin de evitar que todos los artefactos se generen mezclados en una única carpeta plana y que los cuestionarios estén separados de sus unidades teóricas, se redactó e implementó la **Spec 04** con **Modalidad B** y compilación de todos los documentos de `content/unidades/` y `content/practica/`.
+* **Acciones ejecutadas**:
+  * **Reorganización de `content/unidades/`**:
+    * `content/unidades/Unidad I/`: `Unidad I - Cuestionario de Autoestudio - Resolución.md` + `borradores/` (4 archivos).
+    * `content/unidades/Unidad III/`: `Unidad III - Subsistema de Aplicación.md`, `Aplicación de recursos - Resolución.md` y `AdmSI-CUESTIONARIOS APLICACIÓN DE RECURSOS.md`.
+    * `content/unidades/Unidad VI/`: `Unidad VI - Seguridad y Auditoría.md`, `Seguridad y auditoría - Resolución.md` y `AdmSI-CUESTIONARIOS DE ESTUDIO - SEGURIDAD Y AUDITORIA DE SI-TI.md`.
+    * Ejecución de `toolchain/bin/mdnorm -y` para actualizar automáticamente todas las rutas relativas hacia `assets/` (`../../../assets/`).
+  * **Preservación de jerarquía en `toolchain/bin/md2pdf`**: actualización de `calcular_salida()` para que genere los PDFs y EPUBs respetando la subcarpeta de la Unidad (`build/Unidad I/`, `build/Unidad III/`, `build/Unidad VI/`) y de Práctica (`build/Practica/tp1-alineamiento/`, `build/Practica/tpi-dvp/`).
+  * **Modalidad B en `.github/workflows/editorial-ci.yml`**: compilación unificada (`./toolchain/bin/md2pdf -y --all "${archivos_compilar[@]}"`) de todos los `.md` de `content/unidades/` y `content/practica/` sobre `ubuntu-24.04` (preservando la búsqueda de fuentes del sistema en `OSFONTDIR` dentro de `md2pdf` y evitando condiciones de carrera en el caché de `luaotfload`), y publicación de Artifacts individuales descargables por cada Unidad (`Unidad-I` a `Unidad-VI`) y trabajo práctico (`Practica-TP1-Alineamiento`, `Practica-TPI-DVP`).
+
+### `2026-11-06` — Implementación de Spec 03 - Parte B (`.github/workflows/editorial-ci.yml`)
+
+* **Contexto**: Con el `toolchain/` unificado y validado, y dado que el material de estudio de las unidades restantes aún se encuentra en preparación, se avanzó con la implementación técnica de la **Parte B de la Spec 03** (Integración y Entrega Continua).
+* **Acciones ejecutadas**:
+  * Creación de `.github/workflows/editorial-ci.yml` con dos *jobs* encadenados:
+    * **`lint`**: verifica que no existan binarios prohibidos (`.pdf`, `.epub`, `.docx`) en Git, que no haya imágenes fuera de `assets/`, que no existan imágenes Base64 (`data:image/`) en `content/` y ejecuta `./toolchain/bin/mdnorm --check` sobre los 24 archivos `.md` de `content/`.
+    * **`build`**: instala `pandoc`, `texlive-luatex`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-fonts-recommended`, `texlive-lang-spanish`, `lmodern`, `fonts-noto-color-emoji` y `fonts-dejavu-core`; compila con `./toolchain/bin/md2pdf -y --all` las unidades consolidadas (`content/unidades/*.md`), resoluciones de cuestionarios (`content/practica/cuestionarios/*Resolución*.md`), TPI (`content/practica/tpi-dvp/*.md`) y TP1 (`content/practica/tp1-alineamiento/TP1*.md`); publica el paquete `apuntes-asi-pdf-epub` como **GitHub Actions Artifact** y adjunta todos los `.pdf` y `.epub` a un **GitHub Release** cuando se pushea un tag `v*`.
+  * **Inclusión de fuentes en `toolchain/pandoc/fonts/`**: se embebieron las variantes `.ttf` de `Libertinus Serif`, `Inter` y `JetBrains Mono` dentro de `toolchain/pandoc/fonts/` (cargadas por ruta desde `preambulo.lua` + `estilo.tex`), manteniendo intactas las cabeceras YAML originales de los apuntes y cuestionarios y garantizando que compilen sin depender del gestor de paquetes de cada distribución.
+  * **Validación local de extremo a extremo**: se ejecutaron localmente tanto los chequeos del job `lint` como la compilación `--all` (PDF + EPUB) de los 8 documentos incluidos en el job `build`, confirmando salida exitosa (`exit 0`) en el 100% de los casos y limpiando `build/` al finalizar.
+
+### `2026-11-06` — Implementación y Validación de Spec 02 (`toolchain/` Unificado)
+
+* **Contexto**: Tras el commit `e435c2a` de la Spec 01, se implementó la arquitectura completa de `toolchain/` definida en la Spec 02.
+* **Acciones ejecutadas**:
+  * **Configuración Pandoc (`toolchain/pandoc/`)**:
+    * Creación de `defaults/metadatos.yaml`, `defaults/pdf.yaml` y `defaults/epub.yaml` utilizando `${.}` para rutas relativas sin depender de `~/.local/share/pandoc`.
+    * Configuración de `templates/estilo.tex` (con `Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en `toolchain/pandoc/fonts/` más soporte de emojis/símbolos en LuaLaTeX) y `templates/estilo-epub.css` (con cajas celestes para callouts equivalentes a las del PDF).
+    * Migración de `filters/preambulo.lua` (apuntando a `templates/estilo.tex`), `filters/cortar-formulas.lua` y `filters/centrar-imagenes.lua`.
+  * **Ejecutables (`toolchain/bin/`)**:
+    * Construcción de `toolchain/bin/mdnorm` (portado a Bash estándar manteniendo el motor Perl completo, agregando `--check` para CI, normalización matemática `NFKC` y preservación de wikilinks con atributos `|300` para no ensuciar Obsidian).
+    * Construcción de `toolchain/bin/md2pdf` (compilador unificado en Bash + Perl con banderas `--pdf`, `--epub`, `--all`, `-y`, `-o` y `-i`, salida por defecto a `build/` e inclusión automática de `assets/`).
+  * **Limpieza, auditoría y pruebas reales**:
+    * Se eliminaron los 3 atributos residuales `{width=...}` que ensuciaban Obsidian (reemplazándolos por wikilinks limpios `![[...|ancho]]` o dejando el `80%` por defecto) y se normalizaron los **24 archivos `.md`** de `content/` con `toolchain/bin/mdnorm -y` (`mdnorm --check` pasa al 100% con código de salida `0`), preservando intactas las cabeceras YAML de cada documento.
+    * Se probó `./toolchain/bin/md2pdf -y --all` sobre `Unidad III - Subsistema de Aplicación.md` (PDF 5,0 MB / EPUB 6,0 MB), `Unidad VI - Seguridad y Auditoría.md` (PDF 6,2 MB / EPUB 6,7 MB) y `Aplicación de recursos - Resolución.md` (PDF 4,1 MB / EPUB 3,8 MB), generando todos los artefactos sin errores y limpiando luego `build/`.
+
+### `2026-11-06` — Ejecución Completa de Spec 01 (Reestructuración Física, Opción A y Resguardo en `legacy/`)
+
+* **Contexto**: Con la validación de la Spec 01 y la elección de la **Opción A** (conversión previa a `.md` de los 14 documentos de cátedra/entregas antes de purgar binarios), se ejecutaron las Fases 0, 1, 2 y 3 de la especificación (commit `e435c2a`).
+* **Acciones ejecutadas**:
+  * Conversión de los 14 binarios de cátedra a Markdown, resguardo en `legacy/`, migración a `content/` y `assets/` (307 archivos), extracción de las 62 imágenes Base64 de `APUNTE 2 parcial.md` y eliminación de los 26 archivos `.pdf`/`.epub`/`.docx` de Git.
+
+### `2026-11-06` — Refinamiento de Spec 02 (Toolchain Editorial)
+
+* **Ajustes en Spec 02**: Ubicación de `estilo.tex` en `toolchain/pandoc/templates/estilo.tex` y normalización `NFKC` de caracteres matemáticos Unicode en el motor Perl.
+
 ### `2026-11-05` — Diagnóstico Integral, `GEMINI.md` y Plan Maestro Spec-Driven
 
-* **Contexto**: Se estableció `GEMINI.md` como protocolo rector del repositorio y se definió `docs/STATUS.md` como bitácora y monitor de estado obligatorio en cada sesión.
-* **Hallazgos clave del relevamiento**:
-  * Coexistencia de dos sistemas de compilación (`2026/herramientas/` con Bash + XeLaTeX/EPUB3, y `estilos/` + `md2pdf` + `mdnorm` con Zsh + Perl + LuaLaTeX + filtros Lua dependientes de `~/.local/share/pandoc`).
-  * Se detectó que `script normalizador/mdnorm` exige el binario `diff` en su chequeo inicial (línea 152) aunque luego puede usar `git diff --no-index`, fallando en entornos mínimos sin `diffutils`.
-  * Se inventariaron 26 archivos binarios (12 compilados propios descartables y 14 documentos de cátedra/entregas sin fuente `.md`), 235 imágenes sueltas (con solo 1 colisión idéntica SHA-256) y 62 imágenes Base64 dentro de `APUNTE 2 parcial.md` (4,1 MB).
-* **Acciones ejecutadas**:
-  * Actualización de `GEMINI.md` incorporando la directiva obligatoria de consultar y mantener siempre al día `docs/STATUS.md`.
-  * Creación de `docs/STATUS.md` unificando estado arquitectónico e historial de bitácora.
-  * Redacción de las especificaciones `01`, `02` y `03` en `docs/specs/`, incorporando como Fase 0 el resguardo temporal de `script conversor/`, `script normalizador/` y `estilos/` dentro de `legacy/` antes de reestructurar.
-* **Estado al cierre**: Árbol original intacto; a la espera de revisión y aprobación de las 3 specs para iniciar la ejecución.
+* **Contexto**: Relevamiento inicial del repositorio, definición de `GEMINI.md` y `docs/STATUS.md`, y redacción de las especificaciones `01`, `02` y `03`.
