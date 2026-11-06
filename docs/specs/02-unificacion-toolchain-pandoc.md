@@ -68,6 +68,10 @@ pandoc \
 
 Como `pdf.yaml` utiliza la variable nativa `${.}` de Pandoc para referenciar `${.}/metadatos.yaml` y `${.}/../filters/*.lua`, todo el sistema funcionará idénticamente en cualquier computadora Linux o contenedor de GitHub Actions apenas clonado el repositorio.
 
+> [!NOTE]
+> **Ruta a `templates/estilo.tex` en `preambulo.lua`**:
+> Como `estilo.tex` se ubica canónicamente en `toolchain/pandoc/templates/estilo.tex` (en lugar de `defaults/estilo.tex`), el filtro `preambulo.lua` debe resolver la ruta base como `pandoc.path.join({ carpeta, 'templates', 'estilo.tex' })`.
+
 ### 3.2. Unificación de `md2pdf` y `compilar-epub.sh` en un solo comando
 
 El ejecutable `toolchain/bin/md2pdf` será el **punto de entrada único de compilación** (manteniendo el nombre establecido en `GEMINI.md`), incorporando las capacidades de ambos scripts previos:
@@ -78,8 +82,9 @@ El ejecutable `toolchain/bin/md2pdf` será el **punto de entrada único de compi
   * Con `--all` genera ambos formatos en una sola pasada de preprocesamiento.
 * **Directorio de salida limpio**:
   * Por defecto escribe en `$REPO_ROOT/build/` (estructurado o plano, p. ej. `build/pdf/` y `build/epub/`, o personalizable con `-o`), evitando ensuciar `content/` con archivos binarios.
-* **Traducción completa de sintaxis Obsidian/GFM**:
+* **Traducción completa de sintaxis Obsidian/GFM y normalización en el motor Perl**:
   * Conserva el motor Perl de resolución de imágenes en `assets/` (con normalización Unicode NFC/NFD para tildes exportadas de Notion/macOS), tamaños `|400`, alineaciones `|derecha`/`|izquierda`, conversión de `[[Nota|alias]]` a texto plano y transformación de callouts `> [!NOTE]`, `> [!WARNING]`, `> [!IMPORTANT]`, `> [!EXAMPLE]` tanto para cajas LaTeX en PDF como para bloques estilizados en EPUB.
+  * **Normalización de caracteres matemáticos Unicode**: Se incorpora al motor Perl la regla `s/([\x{1D400}-\x{1D7FF}])/NFKC($1)/ge;` (proveniente de `compilar.sh`), convirtiendo letras matemáticas cursivas/negritas copiadas de IA u Obsidian (`𝐴`, `𝑓`, `𝛼`) a caracteres estándar (`A`, `f`, `α`) para prevenir errores de caracteres faltantes (*Missing character*) en el motor LaTeX.
 
 ### 3.3. Mejoras a `toolchain/bin/mdnorm`
 
