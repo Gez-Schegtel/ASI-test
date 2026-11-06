@@ -10,19 +10,19 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 
 ## 📥 Descargar Apuntes Listos (PDF y EPUB3)
 
-**No necesitás instalar nada ni compilar por tu cuenta para estudiar.** Cada vez que se actualiza un apunte, el repositorio genera automáticamente todos los PDFs y EPUBs organizados por unidad y trabajo práctico.
+**No necesitás instalar nada, ni compilar por tu cuenta, ni iniciar sesión en GitHub para estudiar.** Cada vez que se actualiza un apunte, el repositorio publica automáticamente todos los PDFs y EPUBs organizados por unidad en la sección **[Releases](https://github.com/Gez-Schegtel/ASI-test/releases)**.
 
 > [!TIP]
-> ### Atajo directo a los apuntes compilados
-> 1. Entrá a **[Ejecuciones de Editorial CI/CD (GitHub Actions)](https://github.com/Gez-Schegtel/ASI-test/actions/workflows/editorial-ci.yml)** y hacé clic en la primera ejecución con tilde verde (`✔`).
-> 2. Bajá hasta el final de esa página, a la sección **Artifacts**, y descargá únicamente la carpeta que necesites (requiere haber iniciado sesión en GitHub):
->    * 📦 **`Unidad-I`** — Cuestionario de autoestudio resuelto y material de la Unidad I.
->    * 📦 **`Unidad-III`** — Apunte teórico completo (*Subsistema de Aplicación*), cuestionario resuelto y enunciado.
->    * 📦 **`Unidad-VI`** — Apunte teórico completo (*Seguridad y Auditoría*), cuestionario resuelto y enunciado.
->    * 📦 **`Practica-TP1-Alineamiento`** — TP1 de Alineamiento Estratégico de SI/TI y guías explicativas.
->    * 📦 **`Practica-TPI-DVP`** — Trabajo Práctico Integrador (Caso Vialidad Provincial - DVP).
+> ### Atajos directos por Unidad y Práctica
+> Hacé clic en el nombre de una unidad para bajar sus archivos `.pdf` o `.epub` individuales, o en **`[📥 Descargar ZIP]`** para bajar la unidad completa en un clic:
 >
-> También podés consultar las versiones empaquetadas por hito en la sección **[Releases del repositorio](https://github.com/Gez-Schegtel/ASI-test/releases)**.
+> * 📘 **[Unidad I — Los SI en la Empresa y Estrategia SI/TI](https://github.com/Gez-Schegtel/ASI-test/releases/tag/unidad-i)** — Cuestionario de autoestudio resuelto y borradores · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/download/unidad-i/Unidad-I-Completa.zip)**
+> * 📘 **[Unidad III — Subsistema de Aplicación](https://github.com/Gez-Schegtel/ASI-test/releases/tag/unidad-iii)** — Apunte teórico completo, cuestionario resuelto y enunciado · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/download/unidad-iii/Unidad-III-Completa.zip)**
+> * 📘 **[Unidad VI — Seguridad y Auditoría de SI/TI](https://github.com/Gez-Schegtel/ASI-test/releases/tag/unidad-vi)** — Apunte teórico completo, cuestionario resuelto y enunciado · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/download/unidad-vi/Unidad-VI-Completa.zip)**
+> * 🛠️ **[Práctica — TPI (Vialidad Provincial - DVP)](https://github.com/Gez-Schegtel/ASI-test/releases/tag/practica-tpi)** — Trabajo Práctico Integrador (Partes 1 y 2) · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/download/practica-tpi/Practica-TPI-DVP.zip)**
+> * 🛠️ **[Práctica — TP1 (Alineamiento Estratégico de SI/TI)](https://github.com/Gez-Schegtel/ASI-test/releases/tag/practica-tp1)** — Consigna, presentaciones y guías explicativas · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/download/practica-tp1/Practica-TP1-Alineamiento.zip)**
+>
+> 👉 **[Ver todas las Unidades en la página de Releases](https://github.com/Gez-Schegtel/ASI-test/releases)**
 
 ---
 

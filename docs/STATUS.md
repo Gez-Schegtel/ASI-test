@@ -4,7 +4,7 @@
 > Este archivo es la **fuente de verdad viva y bitácora histórica** del repositorio de **Administración de Sistemas de Información (ASI)** — UTN FRRe. Debe consultarse al inicio de cada sesión y mantenerse estrictamente actualizado tras cada cambio estructural, de contenido o de *tooling*.
 
 * **Última actualización**: `2026-11-06`
-* **Fase actual**: `Infraestructura Técnica, Organización por Unidad e Imagen Docker GHCR 100% Completadas (Specs 01, 02, 03-B, 04 y 05 implementadas) -> En espera de material de estudio para Spec 03-Parte A`
+* **Fase actual**: `Infraestructura Técnica, Organización por Unidad, Imagen Docker GHCR y Publicación en Releases 100% Completadas (Specs 01, 02, 03-B, 04, 05 y 06 implementadas) -> En espera de material de estudio para Spec 03-Parte A`
 * **Rama activa**: `main` (`myfork` — `Gez-Schegtel/ASI-test`)
 
 ---
@@ -14,7 +14,7 @@
 | Dominio | Ubicación Actual (`AS-IS`) | Ubicación Canónica (`TO-BE`) | Estado Actual |
 | :--- | :--- | :--- | :--- |
 | Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
-| Estado vivo y specs | `docs/STATUS.md` + `docs/specs/` | `docs/STATUS.md` + `docs/specs/` | **Specs 01, 02, 03-B, 04 y 05 implementadas**; Spec 03-A a la espera de material |
+| Estado vivo y specs | `docs/STATUS.md` + `docs/specs/` | `docs/STATUS.md` + `docs/specs/` | **Specs 01, 02, 03-B, 04, 05 y 06 implementadas**; Spec 03-A a la espera de material |
 | Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
 | Apuntes y cuestionarios por Unidad | `content/unidades/` (`Unidad I/`, `Unidad III/`, `Unidad VI/`) | `content/unidades/<Unidad X>/` | **Organizado por Unidad y normalizado** |
 | Trabajos prácticos y guías | `content/practica/` (`tpi-dvp/`, `tp1-alineamiento/`) | `content/practica/` | **Migrado y 100% en `.md`** |
@@ -22,9 +22,9 @@
 | Recursos gráficos | `assets/` (307 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
 | Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
-| Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`) y Artifacts por Unidad (Modalidad B)** |
+| Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`) y Releases automáticos por Unidad (Spec 06)** |
 
-### Métricas Auditadas del Árbol Actual (Post-Spec 05)
+### Métricas Auditadas del Árbol Actual (Post-Spec 06)
 
 * **Archivos binarios PDF/EPUB/DOCX en el repositorio**: **0 archivos** (regla de cero artefactos activa en `.gitignore`).
 * **Imágenes Base64 incrustadas en Markdown**: **0**.
@@ -60,6 +60,7 @@
 3. **[03-consolidacion-unidades-y-ci-cd.md](specs/03-consolidacion-unidades-y-ci-cd.md)** — *Estado: **Parte B (CI/CD) implementada** (2026-11-06); **Parte A (Unidades faltantes)** en espera de material de estudio*. Pipeline `.github/workflows/editorial-ci.yml` activo para `lint` (`mdnorm --check` + control de binarios/Base64) y `build` (`md2pdf --all` -> Artifacts y GitHub Releases).
 4. **[04-organizacion-unidades-y-artefactos.md](specs/04-organizacion-unidades-y-artefactos.md)** — *Estado: **Implementada** (2026-11-06)*. Agrupación por Unidad en `content/unidades/<Unidad X>/` (uniendo teoría y cuestionarios de cada unidad), preservación de subcarpetas en `build/` desde `toolchain/bin/md2pdf` y empaquetado de Artifacts separados por Unidad y Práctica (Modalidad B) en GitHub Actions.
 5. **[05-imagen-docker-toolchain-ghcr.md](specs/05-imagen-docker-toolchain-ghcr.md)** — *Estado: **Implementada** (2026-11-06)*. Creación de `toolchain/Dockerfile` con Pandoc, LuaLaTeX y caché global de `luaotfload` (`/var/cache/texmf-var`) precalentado, e integración con GitHub Container Registry (`ghcr.io/gez-schegtel/asi-toolchain`) en `.github/workflows/editorial-ci.yml`.
+6. **[06-publicacion-ordenada-en-releases.md](specs/06-publicacion-ordenada-en-releases.md)** — *Estado: **Implementada** (2026-11-06)*. Publicación automática y continua de las Unidades y Trabajos Prácticos en **GitHub Releases** individuales (`unidad-i` a `unidad-vi`, `practica-tpi`, `practica-tp1`) en cada push a `main` / `master`, permitiendo descarga pública en 1 clic sin requerir inicio de sesión.
 
 ---
 
@@ -70,8 +71,9 @@
 - [x] **Archivo histórico `2025/` y `APUNTE 2 parcial.md`**: Alojados en `legacy/archivo-2025/` limpios de Base64 y binarios.
 - [x] **Ubicación de `estilo.tex` y normalización Perl en Spec 02**: `estilo.tex` en `toolchain/pandoc/templates/estilo.tex` y motor Perl con normalización `NFKC` de letras matemáticas Unicode.
 - [x] **Tipografía estándar en `toolchain/`**: Embebidas `Libertinus Serif` (texto), `Inter` (títulos) y `JetBrains Mono` (código) directamente en `toolchain/pandoc/fonts/` y cargadas por defecto desde `estilo.tex` + `preambulo.lua` sin depender del gestor de paquetes de cada distribución Linux.
-- [x] **Organización por Unidad y Modalidad de Artifacts en Spec 04**: Implementada **Modalidad B** (Artifacts separados por Unidad y Práctica en GitHub Actions: `Unidad-I` a `Unidad-VI`, `Practica-TP1-Alineamiento` y `Practica-TPI-DVP`) y compilación de **todos** los `.md` de `content/unidades/` y `content/practica/`.
+- [x] **Organización por Unidad y Modalidad de Artifacts en Spec 04**: Implementada **Modalidad B** y compilación de **todos** los `.md` de `content/unidades/` y `content/practica/`.
 - [x] **Eliminación de tiempos de instalación de TeX Live en CI/CD (Spec 05)**: Implementada imagen Docker precompilada en GitHub Container Registry (`ghcr.io/gez-schegtel/asi-toolchain`) con caché de fuentes `luaotfload` precalentado.
+- [x] **Publicación directa por Unidad en GitHub Releases (Spec 06)**: Implementada **Modalidad A** (un Release independiente por Unidad y Trabajo Práctico con sus `.pdf`/`.epub` sueltos y un `.zip` de la unidad completa) + eliminación de *Actions Artifacts* redundantes en `main`.
 
 ### Decisiones pendientes (para Spec 03 - Parte A)
 - [ ] **Numeración oficial 2026 de Unidades II, IV y V (Spec 03)**: confirmar el orden exacto de *Provisión*, *Mantenimiento*, *Desarrollo* y *Seguimiento/Control* en el programa 2026.
@@ -81,13 +83,22 @@
 - [x] Ejecutar **Fases 1 a 3 (Spec 01)**: migrar a `content/` y `assets/`, convertir los 14 documentos de cátedra a `.md`, extraer las 62 imágenes Base64 de `APUNTE 2 parcial.md` y aplicar el nuevo `.gitignore`.
 - [x] Implementar **Spec 02**: construir `toolchain/bin/mdnorm`, `toolchain/bin/md2pdf` (`--pdf`, `--epub`, `--all`) y `toolchain/pandoc/`.
 - [x] Implementar **Spec 03 (Parte B)**: configurar `.github/workflows/editorial-ci.yml` (`lint` + `build` PDF/EPUB + publicación en Artifacts y Releases).
-- [x] Implementar **Spec 04**: reorganizar `content/unidades/<Unidad X>/` (con sus cuestionarios) y estructurar `build/` y los Artifacts de CI por Unidad (Modalidad B).
+- [x] Implementar **Spec 04**: reorganizar `content/unidades/<Unidad X>/` (con sus cuestionarios) y estructurar `build/` por Unidad.
 - [x] Implementar **Spec 05**: encapsular el entorno Pandoc + LuaLaTeX en `toolchain/Dockerfile` y publicarlo automáticamente en `ghcr.io/gez-schegtel/asi-toolchain`.
+- [x] Implementar **Spec 06**: publicar automáticamente un Release independiente por Unidad y Trabajo Práctico en GitHub Releases (`unidad-i` a `unidad-vi`, `practica-tpi`, `practica-tp1`).
 - [ ] Implementar **Spec 03 (Parte A)**: consolidar las unidades teóricas faltantes cuando esté listo el material de estudio.
 
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-06` — Implementación de Spec 06 (Publicación Ordenada por Unidad en GitHub Releases)
+
+* **Contexto**: Para eliminar la fricción de navegar a la pestaña *Actions* y exigir inicio de sesión en GitHub al descargar *Actions Artifacts*, se redactó e implementó la **Spec 06** con **Modalidad A** y **Opción 1**.
+* **Acciones ejecutadas**:
+  * Redacción e implementación de `docs/specs/06-publicacion-ordenada-en-releases.md`.
+  * Actualización de `.github/workflows/editorial-ci.yml` para que en cada `push` (y `workflow_dispatch`) publique y mantenga actualizados automáticamente Releases separados por Unidad y Trabajo Práctico (`unidad-i` a `unidad-vi`, `practica-tpi`, `practica-tp1`) ordenados de arriba hacia abajo en `/releases`, adjuntando en cada uno tanto el paquete `.zip` completo de esa unidad como sus `.pdf` y `.epub` individuales (y dejando `actions/upload-artifact` únicamente para vistas previas en Pull Requests).
+  * Actualización de `README.md` con enlaces directos en 1 clic a cada Unidad y su `.zip` correspondiente en Releases, y sincronización de `docs/STATUS.md`.
 
 ### `2026-11-06` — Implementación de Spec 05 (Imagen Docker del Toolchain en GHCR)
 

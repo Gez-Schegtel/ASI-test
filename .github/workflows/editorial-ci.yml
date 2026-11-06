@@ -6,8 +6,6 @@ on:
       - main
       - master
       - "changes/**"
-    tags:
-      - "v*"
   pull_request:
     branches:
       - main
@@ -131,99 +129,80 @@ jobs:
           echo "=== Árbol de artefactos generados en build/ ==="
           find build -type f | sort
 
-      - name: Publicar Artefactos — Unidad I
-        if: hashFiles('build/Unidad I/**') != ''
+      - name: Publicar Unidades y Trabajos Prácticos en GitHub Releases
+        if: github.event_name != 'pull_request'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          publicar_release() {
+            local tag="$1"
+            local titulo="$2"
+            local carpeta="$3"
+            local zip_name="$4"
+            local es_latest="${5:-false}"
+
+            [[ -d "$carpeta" ]] || return 0
+            local archivos=()
+            mapfile -d '' archivos < <(find "$carpeta" -type f \( -name "*.pdf" -o -name "*.epub" \) -print0 | sort -z)
+            (( ${#archivos[@]} > 0 )) || return 0
+
+            echo "=== Publicando Release: $titulo ($tag) ==="
+            local tmp_dir
+            tmp_dir="$(mktemp -d)"
+            local zip_path="$tmp_dir/$zip_name"
+            (
+              cd "$carpeta"
+              zip -r -q "$zip_path" . -i "*.pdf" "*.epub"
+            )
+
+            local repo_url="https://github.com/${GITHUB_REPOSITORY}/releases/download/${tag}"
+            local notas="$tmp_dir/notas.md"
+            {
+              echo "### 📦 Descargar paquete completo de la unidad (PDF + EPUB)"
+              echo "- [**📥 ${zip_name}**](${repo_url}/${zip_name})"
+              echo ""
+              echo "### 📄 Documentos individuales disponibles abajo en *Assets*"
+              for f in "${archivos[@]}"; do
+                echo "- \`$(basename "$f")\`"
+              done
+              echo ""
+              echo "---"
+              echo "*Compilado automáticamente a partir del commit \`${GITHUB_SHA:0:7}\`.*"
+            } > "$notas"
+
+            gh release delete "$tag" --yes --cleanup-tag 2>/dev/null || true
+            sleep 1
+            gh release create "$tag" "$zip_path" "${archivos[@]}" \
+              --target "$GITHUB_SHA" \
+              --title "$titulo" \
+              --notes-file "$notas" \
+              --latest="$es_latest"
+
+            rm -rf "$tmp_dir"
+            sleep 1
+          }
+
+          # Se publican de abajo hacia arriba para que en /releases queden ordenadas
+          # de Unidad I (arriba) a Unidad VI y luego los Trabajos Prácticos (abajo).
+          publicar_release "practica-tp1" "🛠️ Práctica — TP1: Alineamiento Estratégico de SI/TI" "build/Practica/tp1-alineamiento" "Practica-TP1-Alineamiento.zip" "false"
+          publicar_release "practica-tpi" "🛠️ Práctica — TPI: Vialidad Provincial (DVP)" "build/Practica/tpi-dvp" "Practica-TPI-DVP.zip" "false"
+          publicar_release "unidad-vi"    "📘 Unidad VI — Seguridad y Auditoría de SI/TI" "build/Unidad VI" "Unidad-VI-Completa.zip" "false"
+          publicar_release "unidad-v"     "📘 Unidad V — Subsistema de Seguimiento y Control" "build/Unidad V" "Unidad-V-Completa.zip" "false"
+          publicar_release "unidad-iv"    "📘 Unidad IV — Mantenimiento y Desarrollo" "build/Unidad IV" "Unidad-IV-Completa.zip" "false"
+          publicar_release "unidad-iii"   "📘 Unidad III — Subsistema de Aplicación" "build/Unidad III" "Unidad-III-Completa.zip" "false"
+          publicar_release "unidad-ii"    "📘 Unidad II — Subsistema de Provisión" "build/Unidad II" "Unidad-II-Completa.zip" "false"
+          publicar_release "unidad-i"     "📘 Unidad I — Los SI en la Empresa y Estrategia SI/TI" "build/Unidad I" "Unidad-I-Completa.zip" "true"
+
+      - name: Publicar Artefactos de vista previa (solo en Pull Requests)
+        if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v7
         with:
-          name: Unidad-I
+          name: preview-pr-pdf-epub
           path: |
-            build/Unidad I/**/*.pdf
-            build/Unidad I/**/*.epub
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Publicar Artefactos — Unidad II
-        if: hashFiles('build/Unidad II/**') != ''
-        uses: actions/upload-artifact@v7
-        with:
-          name: Unidad-II
-          path: |
-            build/Unidad II/**/*.pdf
-            build/Unidad II/**/*.epub
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Publicar Artefactos — Unidad III
-        if: hashFiles('build/Unidad III/**') != ''
-        uses: actions/upload-artifact@v7
-        with:
-          name: Unidad-III
-          path: |
-            build/Unidad III/**/*.pdf
-            build/Unidad III/**/*.epub
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Publicar Artefactos — Unidad IV
-        if: hashFiles('build/Unidad IV/**') != ''
-        uses: actions/upload-artifact@v7
-        with:
-          name: Unidad-IV
-          path: |
-            build/Unidad IV/**/*.pdf
-            build/Unidad IV/**/*.epub
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Publicar Artefactos — Unidad V
-        if: hashFiles('build/Unidad V/**') != ''
-        uses: actions/upload-artifact@v7
-        with:
-          name: Unidad-V
-          path: |
-            build/Unidad V/**/*.pdf
-            build/Unidad V/**/*.epub
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Publicar Artefactos — Unidad VI
-        if: hashFiles('build/Unidad VI/**') != ''
-        uses: actions/upload-artifact@v7
-        with:
-          name: Unidad-VI
-          path: |
-            build/Unidad VI/**/*.pdf
-            build/Unidad VI/**/*.epub
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Publicar Artefactos — Práctica TP1 (Alineamiento SI/TI)
-        if: hashFiles('build/Practica/tp1-alineamiento/**') != ''
-        uses: actions/upload-artifact@v7
-        with:
-          name: Practica-TP1-Alineamiento
-          path: |
-            build/Practica/tp1-alineamiento/**/*.pdf
-            build/Practica/tp1-alineamiento/**/*.epub
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Publicar Artefactos — Práctica TPI (Vialidad Provincial - DVP)
-        if: hashFiles('build/Practica/tpi-dvp/**') != ''
-        uses: actions/upload-artifact@v7
-        with:
-          name: Practica-TPI-DVP
-          path: |
-            build/Practica/tpi-dvp/**/*.pdf
-            build/Practica/tpi-dvp/**/*.epub
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Publicar Release en GitHub (en tags v*)
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@v3.0.4
-        with:
-          files: |
             build/**/*.pdf
             build/**/*.epub
-          generate_release_notes: true
+          if-no-files-found: error
+          retention-days: 3
