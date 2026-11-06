@@ -69,6 +69,7 @@ Management de recursos de IS. Colección Management Estratégico de Sistemas de
 Información. MP Ediciones. 2ª edición. 1999. Argentina.
 
 Preguntas.
+
 1. Socialización: concepto, momentos, aspectos claves.
 2. ¿Qué incluye el subsistema de aplicación? Efectúe un cuadro sinóptico.
 3. La empresa como un sistema de roles: concepto de rol. ¿Cuáles son las posibles discrepancias en
@@ -105,6 +106,7 @@ Bibliografía de Referencia:
 • MOLERO, Xavier; JUIZ, Carlos y RODEÑO, Miguel. “Evaluación y Modelado del Rendimiento de los
 Sistemas Informáticos”. Pearson Prentice Hall. 2004. Madrid. España
 Preguntas:
+
 1. ¿Qué conforma el proceso de aplicación del SW y HW?
 2. Elabore un concepto de prestaciones de un sistema informático. Elabore un concepto de
 rendimiento de un sistema informático.

@@ -113,7 +113,7 @@ Diseñar un cargo consiste en establecer **4 condiciones fundamentales**:
 * **Concepto:** Es la apreciación sistemática del desempeño de cada persona **en el cargo** (su comportamiento de rol) y de su potencial de desarrollo futuro. Es un medio/herramienta integradora para localizar problemas de supervisión o integración, adecuar la persona al cargo, capacitar y promover.
 * **Factores que condicionan el desempeño:** Es situacional; depende del **esfuerzo individual** (condicionado por el *valor de las recompensas* y la *percepción de que estas dependen del esfuerzo*), sumado a las **capacidades del individuo** y su **percepción del papel desempeñado**.
 
-![](../../../assets/Gemini_Generated_Image_bz7q1kbz7q1kbz7q.jpeg){width=80%}
+![](../../../assets/Gemini_Generated_Image_bz7q1kbz7q1kbz7q.jpeg)
 
 * **Responsabilidad:** Es **responsabilidad de línea** (el gerente evalúa día a día) y **función de staff** (RRHH diseña, asesora y estandariza el sistema). También puede hacerla el propio empleado (autoevaluación), empleado + gerente (**APO**: objetivos por consenso, compromiso, negociación de recursos, desempeño, medición y retroalimentación), el equipo, un Comité, RRHH o **360°** (todos los que interactúan con él).
 * **Métodos tradicionales:** 1) *Escalas gráficas* (doble entrada: continuas, semicontinuas o discontinuas; simple pero sufre efecto halo/subjetividad); 2) *Elección forzada* (bloques de frases positivas/negativas; elimina subjetividad pero es complejo de armar); 3) *Investigación de campo* (gerente + especialista de staff; el más completo pero costoso y lento); 4) *Incidentes críticos* (registra solo extremos muy positivos o muy negativos); 5) *Comparación por pares* y *Frases descriptivas*.

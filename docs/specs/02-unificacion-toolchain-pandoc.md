@@ -1,7 +1,7 @@
 # Spec 02 — Unificación y Autocontención del Toolchain (`toolchain/`)
 
-* **Estado**: Propuesta (pendiente de revisión)
-* **Fecha**: 2026-11-05
+* **Estado**: Implementada (2026-11-06 — `toolchain/` creado y validado con `Latin Modern Roman` por defecto)
+* **Fecha**: 2026-11-06
 * **Alcance**: Análisis comparativo de los scripts resguardados en `legacy/` y diseño de una arquitectura única y autocontenida en `toolchain/` para normalización (`mdnorm`) y compilación editorial a PDF/EPUB (`md2pdf` / compilador unificado).
 
 ---

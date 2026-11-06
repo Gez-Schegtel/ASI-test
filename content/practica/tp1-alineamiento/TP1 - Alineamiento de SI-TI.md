@@ -864,6 +864,7 @@ Jurídicos
 5y1
 
 Listado de Necesidades y Alineación Estratégica (SI/TI)
+
 1. Control de Gestión Institucional (Alta Dirección)
 
 ●​ Necesidad de Información:
@@ -1042,6 +1043,7 @@ Valor de la Inversión: Identificar los tipos de beneficios y los tipos de inver
 las estrategias de SI/TI.
 
 Tipos de beneficios
+
 1. Beneficios de Eficiencia (Nivel Operacional)
 
 Estos beneficios corresponden a la Primera Era de la Información (E1 - Automatizar).
@@ -1095,6 +1097,7 @@ técnico rápido e indiscutible, el organismo puede exigir el cumplimiento de la
 garantías de obra a las contratistas antes del vencimiento de los plazos legales,
 evitando que el Estado asuma el costo financiero de reconstruir calzadas
 defectuosas.
+
 2. Beneficios de Efectividad (Nivel Táctico)
 Estos beneficios se perciben en el nivel táctico (mandos medios y gerencias de
 departamento), corresponden a la Segunda Era de la Información (E2 - Informar) y su
@@ -1124,6 +1127,7 @@ las direcciones de una herramienta analítica confiable para tomar decisiones
 efectivas de promoción y ascensos basadas en el mérito real, incrementando la
 motivación, reduciendo el favoritismo subjetivo y fomentando el "sentido de
 propiedad" de los empleados públicos hacia la organización.
+
 3. Beneficios de Avance Estratégico (Nivel Estratégico)
 Estos beneficios impactan directamente en la alta dirección (nivel institucional),
 corresponden a la Tercera Era de la Información (E3 - Transformar) y están orientados al

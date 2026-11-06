@@ -9,6 +9,8 @@ build/
 *.pdf
 *.epub
 *.tex
+!toolchain/**/*.tex
+!legacy/**/*.tex
 *.log
 *.aux
 *.toc

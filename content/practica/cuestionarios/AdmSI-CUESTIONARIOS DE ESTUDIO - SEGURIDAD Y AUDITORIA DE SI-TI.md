@@ -80,6 +80,7 @@ Enumerar y sintetizar las etapas de la administración del riesgo.
 operan?
 
 Parte II. Auditoría de SI/TI.
+
 1. ¿Qué es la auditoría de sistemas de información?
 2. ¿Qué es el control interno? Desarrolle las clasificaciones de control. Ejemplifique cada una.
 3. ¿Cuáles son los tipos de prueba que se requieren en la Auditoría de SI?

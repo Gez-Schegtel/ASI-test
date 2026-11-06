@@ -24,6 +24,7 @@ Análisis de la cartera de aplicaciones. Las estrategias genéricas de gestión 
 ---
 
 Cuestionario de Autoestudio
+
 1. Interpretar, teniendo en cuenta la definición de sistemas de información propuesta por
 Andreu, Ricart y Valor, la ubicación y función de los SI/TI en la cadena de valor de la
 organización.
@@ -648,6 +649,7 @@ rendimiento de los activos (RoA) de la organización.
 crecimiento corporativo a largo plazo y la competitividad.
 Estos beneficios se conocen también como beneficios genéricos, los cuales se detallan
 en la siguiente pregunta.
+
 3. Según las categorías de valor de la "Economía de la información" (Parker y Benson):
 ●​ Rendimiento de la inversión: tal vez el tipo de valor más tradicional, en el que los
 análisis financieros de costo/beneficio evidencian una diferencia positiva entre el
@@ -718,6 +720,7 @@ beneficios intangibles son ganancias extra que se miden mejor mediante
 investigaciones o encuestas.
 ●​ Propósito (Era de la información): Pertenece a la segunda era (E2), cuyo objetivo
 primordial es informar.
+
 3. Avance estratégico (Competitividad o Explotación)
 ●​ Nivel organizacional: Se percibe en el nivel estratégico de la empresa.
 ●​ Orientación: Está orientado al crecimiento del negocio y es, por definición, un

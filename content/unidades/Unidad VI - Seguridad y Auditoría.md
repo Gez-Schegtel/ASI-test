@@ -3,22 +3,9 @@ title: "Unidad VI - Seguridad y Auditoría de Sistemas de Información"
 subtitle: "Administración de Sistemas de Información"
 author: n1krov, Juani, Pollo y Chipancho
 date: \today
-documentclass: scrartcl
-classoption: numbers=enddot
-geometry: margin=2.5cm
-linestretch: 1.15
-mainfont: Libertinus Serif
-sansfont: Inter
-monofont: JetBrains Mono
 toc: true
 toc-depth: 5
 numbersections: true
-header-includes:
-  - |
-    ```{=latex}
-    \usepackage{float}
-    \floatplacement{figure}{H}
-    ```
 ---
 
 \newpage
@@ -641,7 +628,7 @@ La implantación de una política y una cultura de seguridad debe realizarse por
 
 La creación de un sistema de control informático es una responsabilidad de la Gerencia y un punto destacable de la política del entorno informático.
 
-![](../../assets/Pasted%20image%2020261024192007.png){width=350px}
+![[Pasted image 20261024192007.png|350]]
 
 ### Auditoría informática vs. Control Interno Informático (Piattini)
 
@@ -875,7 +862,7 @@ Reporta a organismos oficiales públicos o a determinadas empresas. *Tiene impli
 |Solo personal interno.|Personal interno o externo con dependencia de la organización.||
 |Alcance: el Departamento de Informática.|Alcance: cubre todos los componentes de SI de la organización. Orientada a la mejora continua.||
 
-![](../../assets/aInterna_vs_aExterna.jpeg){width=550px}
+![[aInterna_vs_aExterna.jpeg|550]]
 
 ## Informes de auditoría
 

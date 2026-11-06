@@ -75,6 +75,7 @@ complejo e involucra múltiples variables interactuando como un sistema abierto.
 
 Para estructurar tus apuntes de cara al examen, debes saber que los recursos
 organizacionales se clasifican en cinco grandes grupos:
+
 1. Recursos físicos o materiales: Son aquellos necesarios para efectuar las operaciones
 básicas de la organización, ya sea para producir bienes o prestar servicios. Incluyen el
 espacio físico, los terrenos, los edificios, las instalaciones, el proceso productivo, la
@@ -121,6 +122,7 @@ este concepto es la siguiente:
 alcanzar".
 Para que puedas estructurar tu material de estudio para el examen, te desgloso los puntos
 teóricos más importantes que componen este tema:
+
 1. Racionalidad como sinónimo de eficiencia (Enfoque burocrático):
 ●​ En el contexto de la teoría de la burocracia, la racionalidad significa eficiencia:
 consiste en elegir los medios más eficientes para alcanzar las metas deseadas.
@@ -157,6 +159,7 @@ Por ejemplo, aplicar una racionalidad puramente técnica para maximizar la
 producción podría elevar el precio del producto (sacrificando la racionalidad
 económica) o imponer pésimas condiciones de trabajo a los empleados
 (sacrificando la racionalidad social).
+
 5. La dicotomía entre la organización y el individuo:
 ●​ El texto advierte que el hecho de que una organización sea racional no implica que
 sus miembros actúen de manera racional respecto a sus propias aspiraciones
@@ -178,6 +181,7 @@ con su estrategia".
 Para que puedas estructurar tu material de estudio para el examen, te desgloso los
 conceptos más importantes que se desprenden de esta definición y explican el rol de los
 sistemas de información en la empresa:
+
 1. Es un conjunto formal de procesos: El enfoque de estudio se centra únicamente en el SI
 formal de la empresa, es decir, la parte que está claramente definida y que todos conocen
 cómo utilizar. Aunque existen sistemas de información informales, la definición los excluye
@@ -219,6 +223,7 @@ fundamental que utilizan los autores Andreu, Ricart y Valor para explicar cómo 
 Sistema de Información (SI) con el resto de la empresa.
 Para que organices tu material de estudio para el examen, aquí tienes los conceptos clave y
 las citas textuales exactas del libro sobre este tema:
+
 1. Su ubicación en la cadena de valor (Infraestructura de la empresa): La cadena de valor
 distingue entre actividades "básicas" (o de línea) y actividades "de soporte". El libro define su
 ubicación textualmente afirmando que "el SI de una empresa forma parte precisamente de
@@ -234,6 +239,7 @@ exacta de cómo lo hace es la siguiente: "Todas las actividades de la cadena de 
 sean básicas o de soporte, necesitan y generan información. El SI recopila la información
 que, generada por las distintas actividades, es luego necesaria para el funcionamiento de
 otras. El propio SI distribuye dicha información a cada actividad.".
+
 3. La explotación de los "vínculos" de la cadena: El SI es clave para aprovechar los vínculos,
 entendidos en el libro como "influencias mutuas y a veces indirectas entre actividades". Por
 ejemplo, el SI permite recopilar las quejas de los clientes (actividad de ventas/servicio) para
@@ -263,6 +269,7 @@ frecuentemente Tecnologías de la Información (TI)".
 Para que organices tu material de estudio para el examen, el rol de las TI en la empresa debe
 entenderse siempre en relación directa y subordinación a los Sistemas de Información (SI).
 Aquí te detallo los ejes teóricos más importantes sobre su rol:
+
 1. Son la herramienta de implementación: El rol principal de las TI es actuar como el
 soporte técnico del SI. Su punto de contacto inicial es proporcionar "soluciones claras a
 determinados problemas que se presentan, en mayor o menor grado, en la implementación
@@ -315,6 +322,7 @@ Más adelante, el texto lo reafirma con estas palabras exactas: "el valor de la 
 resulta de la ganancia obtenida con la información dada menos la ganancia obtenida sin
 esa información".
 Para tu examen, te desgloso los conceptos más importantes que estructuran este tema:
+
 1. El origen real del valor: El libro hace una aclaración crucial: el valor se asocia con la
 forma en que se usa la información y no con los sistemas mismos. La tecnología de la
 información o los sistemas (el hardware o el software) no tienen valor por sí solos, sino que
@@ -350,6 +358,7 @@ crear una estructura base para la empresa. No suelen generar beneficios directos
 indirecta al posibilitar o mejorar otras actividades de negocio. Por ello, deben
 evaluarse como activos.
 Ejemplos de estos tipos de inversión.
+
 4. Tangibilidad vs. Intangibilidad: Finalmente, a la hora de invertir, la dirección debe lidiar
 con la dificultad de medir los retornos. Según investigaciones citadas en el texto, los
 beneficios intangibles representan al menos el 30% del valor resultante de las inversiones
@@ -367,6 +376,7 @@ potenciales de los IS, un atributo al que se renuncia es la certeza: no se sabe 
 verdadero resultado de la actividad."
 Para que puedas organizar tu material de estudio para el examen, aquí tienes los ejes
 teóricos fundamentales sobre este tema:
+
 1. La naturaleza de los costos: Visibles y Ocultos Al igual que los beneficios, los costos de
 los IS están conformados por elementos tangibles e intangibles, con varios grados de
 predictibilidad. En la jerga de los negocios, estos elementos suelen mencionarse como
@@ -384,6 +394,7 @@ $0,40 para mantenimiento por cada dólar de desarrollo).
 ●​ Como estos "costos de continuidad" se generan en forma automática y no son
 discrecionales, suelen pasarse por alto en las estimaciones iniciales y constituyen el
 mejor ejemplo de los costos ocultos.
+
 2. El problema de la estimación de costos La predicción de los costos de los IS suele tener
 un factor de error muy alto. Esto se debe a dos grandes dificultades:
 ●​ Para pronosticar, se necesita conocer de antemano y en detalle el proyecto, lo cual
@@ -418,6 +429,7 @@ datos.
 específica, el apoyo y la actualización continua del personal.
 ●​ Costos amplios organizacionales: Incluye costos de incompatibilidad, estructuras de
 salarios, costos transicionales y de gestión del cambio.
+
 4. Cambio de paradigma en el Management Un punto vital para el examen es la diferencia
 en cómo se percibe el costo dependiendo del enfoque de gestión de la empresa:
 ●​ Management de Computación: Ve los costos de los IS como un gasto operativo,
@@ -441,6 +453,7 @@ La segunda definición textual, que explica el beneficio desde la perspectiva em
 "Dichos beneficios son las diversas formas en las que una empresa puede mejorar su
 situación como consecuencia de la manera en que se maneja la información.".
 Para tu examen, te organizo la teoría en los siguientes ejes principales:
+
 1. El origen real de los beneficios
 ●​ Los beneficios no surgen de la tecnología o los sistemas en sí mismos, sino de lo
 que la empresa puede hacer gracias a ellos.
@@ -452,6 +465,7 @@ precisión, la calidad, la funcionalidad, la confiabilidad, la velocidad, la seg
 volumen.
 ●​ La alteración positiva de estos atributos mediante los IS es lo que brinda las
 verdaderas ganancias.
+
 2. Tipos principales de aplicaciones según sus beneficios (Parker et al.) En la "Economía de
 la información", se evalúan las formas en que se acumulan los beneficios de los IS. Se
 clasifican en tres grandes tipos:
@@ -490,6 +504,7 @@ A su vez, la forma en que se administran estos sistemas cambia radicalmente seg�
 en el que nos encontremos (pasando de un "management de computación" a un
 "management de información").
 A continuación, se detalla exhaustivamente este cruce nivel por nivel:
+
 1. Nivel Operacional (Núcleo Técnico / Primera Línea)
 ●​ Perspectiva Organizacional (Chiavenato): Es el nivel más bajo de la organización,
 localizado en las áreas internas. Funciona como un sistema cerrado, orientado a la
@@ -528,6 +543,7 @@ los gerentes departamentales no miran tanto "el fierro" (la máquina), sino que 
 
 enfocan en evaluar cómo la información que les brinda el sistema mejora el
 funcionamiento y el rendimiento de su departamento específico.
+
 3. Nivel Institucional (Estratégico / Cúpula)
 ●​ Perspectiva Organizacional (Chiavenato): Es el nivel más elevado (directores,
 propietarios, altos ejecutivos). Funciona como un sistema abierto, periférico y
@@ -639,6 +655,7 @@ Para que los Sistemas de Información (SI) puedan alinearse con el negocio, prim
 indispensable comprender cómo la empresa diseña su estrategia general. Según Francisco
 Javier Palom Izquierdo, la planificación estratégica es un proceso integrado en el que se
 distinguen cuatro etapas esenciales:
+
 1. La etapa filosófica
 Su finalidad es establecer la esencia de la empresa. Define tres elementos clave:
 ●​ Principios empresariales: Constituyen el sistema de valores que guía los actos de la
@@ -731,6 +748,7 @@ La planificación de los Sistemas de Información (SI), entendida como el proced
 toma de decisiones sobre qué hacer en el futuro con la tecnología, ha atravesado
 históricamente por cuatro fases evolutivas diferenciadas que reflejan el aprendizaje de las
 organizaciones:
+
 1. Fase I: La introducción de la informática en la organización Esta etapa inicial (que cobró
 fuerza en la década de los sesenta) se caracteriza por la llegada de grandes ordenadores
 cuyo manejo estaba reservado de manera exclusiva a los especialistas, resultando un área
@@ -757,6 +775,7 @@ empresa. Las decisiones de inversión en tecnología pasan a tomarse en el nivel
 
 posible, buscando alinear activamente los planes de sistemas con la estrategia de negocio
 general.
+
 4. Fase IV: Interdependencia estrategia de la compañía-TI/SI Es la etapa de madurez en la
 planificación. Una vez superado el aislamiento del área de sistemas, se establece una
 dependencia formal y bidireccional. Los planes de Sistemas de Información (SI) y
@@ -920,6 +939,7 @@ basándose en la contribución que hacen al éxito del negocio, en lugar de enfo
 meramente en la forma en que se suministran operativamente."
 Para que organices tu material de estudio para el examen, te desgloso los ejes teóricos más
 importantes que componen este tema:
+
 1. El propósito del modelo (Las aplicaciones como activos) Al igual que una organización
 gestiona una cartera de productos o de inversiones, este enfoque concibe a las aplicaciones
 como activos que deben ser comprendidos y gestionados según sus valores comerciales
@@ -948,6 +968,7 @@ fallos que puedan colocar a la empresa en desventaja competitiva.
 ●​ Aplicaciones de Apoyo: Son sistemas útiles (generalmente estándar o
 administrativos) que mejoran la eficiencia de tareas cotidianas, pero no son críticos
 ni para el éxito actual ni para la estrategia futura.
+
 3. Factores para la evaluación de prioridades Para optimizar el uso de los recursos y hacer
 frente a la incertidumbre, la evaluación de las prioridades de las aplicaciones dentro de la
 cartera debe basarse en tres factores clave:
@@ -974,6 +995,7 @@ significa cada cuadrante. Es fundamental comprender qué impulsa a cada sistema 
 allí (fuerzas motrices) y qué se le debe exigir para que sea exitoso (requisitos). A
 continuación, se detallan las características exactas de cada cuadrante según las Tablas 6.1
 a 6.4 del autor Edwards:
+
 1. Aplicaciones de Alto Potencial (Tabla 6.1)
 Son el equivalente al área de Investigación y Desarrollo (I+D) de la empresa.
 ●​ Fuerzas motrices (¿Qué las impulsa?): Surgen fundamentalmente de una nueva idea
@@ -1056,6 +1078,7 @@ fundamentales para responder a las diferentes necesidades de la matriz de la car
 aplicaciones.
 Basándose en la observación de empresas reales, Parsons identifica seis estrategias
 genéricas principales:
+
 1. Planificación centralizada
 ●​ Concepto: La estrategia de los SI/TI está totalmente integrada con la estrategia
 corporativa a través de una unidad centralizadora y especializada a nivel de la alta
@@ -1077,6 +1100,7 @@ innovación tecnológica.
 
 ●​ Aplicación ideal en la Cartera: Es ideal para gestionar las aplicaciones de Alto
 Potencial.
+
 3. Mercado libre
 ●​ Concepto: Se basa en la premisa de que los directivos (que a su vez son usuarios)
 saben qué es lo mejor para la empresa y, por tanto, pueden evaluar y satisfacer sus

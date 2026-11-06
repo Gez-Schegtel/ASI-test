@@ -164,6 +164,7 @@ Bajo la estructura de la Trilogía de Competencias, los cargos directivos deben
 evaluarse a través de tres niveles de competencias abiertas en grados uniformes
 (donde el Grado A representa el nivel de desarrollo superior y el Grado B un nivel
 muy alto sobre el promedio).
+
 1. Competencias Cardinales
 
 (Requeridas a toda la organización, pero exigidas en su máxima expresión para este
@@ -185,6 +186,7 @@ personal, alta productividad y superación de las expectativas.
 transparentes, no burocráticos y simples de entender. Implica ser congruente
 entre el decir y el hacer, promoviendo un clima ético intachable y de
 confianza en el manejo de la información pública.
+
 2. Competencias Específicas Gerenciales
 
 (Exclusivas para roles con personal a cargo; en este caso, al ser un "líder de
@@ -203,6 +205,7 @@ plazo alineados a la planificación estratégica general.
 transformación digital del organismo y lograr que parezca deseable y
 motivadora para los empleados y directivos (stakeholders). Implica promover
 activamente la innovación eliminando la burocracia.
+
 3. Competencias Específicas por Área
 
 (Requeridas por la familia de puestos técnicos y de interacción del área de TICs):
@@ -249,6 +252,7 @@ divide generalmente en tres niveles evolutivos: Nivel de Componente (Operativo),
 Sistema (Táctico) y Nivel de Negocio (Estratégico).
 
 Análisis del Nivel de Prestaciones e Infraestructura
+
 1. Situación Actual de la DVP (AS-IS): Nivel de Componente / Sistema​
 Actualmente, respecto a las prestaciones de sus sistemas e infraestructura, la Dirección de
 Vialidad Provincial se encuentra estancada en un nivel básico/intermedio.

@@ -3,23 +3,9 @@ title: "Unidad III - Subsistema de Aplicación"
 subtitle: "Administración de Sistemas de Información"
 author: n1krov, Juani, Pollo y Chipancho
 date: \today
-documentclass: scrartcl
-classoption: numbers=enddot
-geometry: margin=2.5cm
-linestretch: 1.15
-mainfont: Libertinus Serif
-sansfont: Inter
-monofont: JetBrains Mono
 toc: true
 toc-depth: 5
 numbersections: true
-ancho-imagenes: 100%
-header-includes:
-  - |
-    ```{=latex}
-    \usepackage{float}
-    \floatplacement{figure}{H}
-    ```
 ---
 
 \newpage
@@ -46,7 +32,7 @@ Tiene tres dimensiones:
 
 **Las personas, después de reclutadas y seleccionadas, deben ser integradas en la organización, destinadas a sus cargos y evaluadas en cuanto a su desempeño. En consecuencia, a los procesos de provisión les siguen los procesos de aplicación de recursos humanos.**
 
-![[Pasted image 20261024181310.png]]
+![](../../assets/Pasted%20image%2020261024181310.png)
 
 > **Nota.** El subsistema de aplicación se nutre de la provisión, pero es también el que indica si se necesita provisión, porque es el que determina si hay que incorporar recursos humanos, hardware o software. A su vez, la provisión se nutre de la estrategia organizativa y del subsistema de aplicación.
 
@@ -60,7 +46,7 @@ Es el proceso permanente de inculcar en todos los empleados las actitudes, norma
 
 La organización trata de inducir la adaptación del comportamiento del individuo a sus necesidades y objetivos, imprimiéndole con firmeza sus características. Mientras tanto, el nuevo miembro tratará de influir en la organización y en el gerente para crear una situación laboral que le proporcione satisfacción y le permita alcanzar sus objetivos personales. En muchas ocasiones, este proceso de **personalización** entra en conflicto con el proceso de **socialización** propuesto por la organización.
 
-![[Pasted image 20261024181324.png]]
+![](../../assets/Pasted%20image%2020261024181324.png)
 
 El plan de carrera ofrece caminos para que la personalización (metas y preferencias del individuo) conviva con lo que la organización necesita.
 
@@ -115,7 +101,7 @@ El proceso se desarrolla de la siguiente manera:
 3. El empleado realiza lo que se le pidió, según su interpretación personal (**comportamiento del rol**).
 4. El jefe evalúa el desempeño del subordinado (**comportamiento controlado**) y lo compara con la expectativa del rol.
 
-![[Pasted image 20261024181416.png]]
+![](../../assets/Pasted%20image%2020261024181416.png)
 
 El desempeño del rol no siempre coincide con las expectativas, ya que en este proceso pueden producirse cuatro discrepancias:
 
@@ -200,7 +186,7 @@ En esta lógica fría y mecanicista, el resultado esperado es la eficiencia máx
 
 La siguiente tabla muestra las ventajas esperadas con este modelo y los resultados reales que se obtienen con él:
 
-![[Pasted image 20261024181443.png]]
+![](../../assets/Pasted%20image%2020261024181443.png)
 
 #### Modelo humanista de las relaciones humanas
 
@@ -212,7 +198,7 @@ Este modelo permite una mayor interacción entre las personas y sus superiores, 
 
 Las personas no son máquinas: necesitan reconocimiento y relaciones sociales. El diseño del cargo tiene en cuenta el contexto social y las condiciones humanas.
 
-![[Pasted image 20261024181451.png]]
+![](../../assets/Pasted%20image%2020261024181451.png)
 
 #### Modelo situacional o contingencial
 
@@ -243,7 +229,7 @@ Estas cinco dimensiones esenciales o profundas crean condiciones para que el emp
 
 ### Enriquecimiento de los cargos
 
-![[Pasted image 20261024181510.png]]
+![](../../assets/Pasted%20image%2020261024181510.png)
 
 El enriquecimiento del cargo consiste en ampliar la responsabilidad, los objetivos y los desafíos de las tareas del cargo. Es muy útil para preparar a alguien para un **plan de carrera** y sumarle habilidades, aunque permanezca un tiempo más en el mismo cargo. Puede ser:
 
@@ -254,7 +240,7 @@ El enriquecimiento del cargo consiste en ampliar la responsabilidad, los objetiv
 
 Si bien el enriquecimiento del cargo produce efectos convenientes y positivos, también puede generar efectos colaterales inconvenientes, en especial si las organizaciones privilegian el *statu quo*. Su principal dificultad es la resistencia al cambio ante el incremento de las tareas y atribuciones.
 
-![[Pasted image 20261024181527.png]]
+![](../../assets/Pasted%20image%2020261024181527.png)
 
 Hay muchos factores implícitos en el tema, pero el principal es que, si la organización no está suficientemente madura y concientizada para poner en marcha un programa sincero y auténtico de enriquecimiento de cargos, es mejor no intentarlo.
 
@@ -297,7 +283,7 @@ La descripción y el análisis de cargos están estrechamente relacionados en su
 
 Este análisis es la base para la evaluación y la clasificación de los cargos con fines de comparación.
 
-![[Pasted image 20261024181606.png]]
+![](../../assets/Pasted%20image%2020261024181606.png)
 
 #### Estructura del análisis de cargos
 
@@ -480,7 +466,7 @@ Se recolectan los datos relativos a los cargos que se analizarán y se redacta e
 - **Redacción definitiva** del análisis de cargos.
 - **Presentación de la redacción definitiva** del análisis de cargos para su aprobación.
 
-![[Pasted image 20261024181724.png]]
+![](../../assets/Pasted%20image%2020261024181724.png)
 
 ## Equipos formales
 
@@ -493,7 +479,7 @@ Los equipos de trabajo son distintos de los grupos de trabajo y tienen sus propi
 
 Un **equipo de trabajo** es una unidad de dos o más personas con habilidades complementarias, comprometidas con un propósito común y con una serie de metas de rendimiento y de expectativas que hay que cumplir: no se trata solo de llegar al objetivo, sino de hacerlo cumpliendo estas condiciones. Además, existe una norma colectiva sobre cómo responde cada uno.
 
-![[Pasted image 20261024181833.png]]
+![](../../assets/Pasted%20image%2020261024181833.png)
 
 Todos los equipos son inherentemente grupos formales, lo que significa que están oficialmente definidos y estructurados dentro de una organización. Sin embargo, no todos los grupos formales califican como equipos: por ejemplo, aunque el personal de un departamento constituye un grupo formal, eso no implica automáticamente que funcione como un equipo.
 
@@ -517,7 +503,7 @@ El desarrollo de un equipo pasa por **cinco etapas** principales:
 
 ## Características de un equipo efectivo
 
-![[Pasted image 20261024181851.png]]
+![](../../assets/Pasted%20image%2020261024181851.png)
 
 Los **equipos de alto desempeño** comparten características clave que les permiten alcanzar sus objetivos:
 
@@ -567,7 +553,7 @@ No interesa el desempeño en general, sino el **desempeño del cargo**, es decir
 - A su vez, el esfuerzo individual depende de las **habilidades y capacidades de la persona** y de su **percepción del papel que desempeñará**.
 - Todas estas **variables condicionan el desempeño del cargo**.
 
-![[Pasted image 20261024181923.png]]
+![](../../assets/Pasted%20image%2020261024181923.png)
 
 La evaluación es un concepto dinámico, ya que en las organizaciones los empleados son evaluados con cierta continuidad, formal o informalmente. Es un medio que permite localizar problemas de supervisión de personal, de integración del empleado a la organización o al cargo que ocupa, etc.
 
@@ -693,21 +679,21 @@ Entre los extremos de evaluación existen tres alternativas:
 
 - **Escalas gráficas continuas**: solo están definidos los extremos; la evaluación del desempeño puede situarse en cualquier punto de la línea que los une.
 
-    ![[Pasted image 20261024181957.png]]
+    ![](../../assets/Pasted%20image%2020261024181957.png)
 
 - **Escalas gráficas semicontinuas**: idénticas a las continuas, excepto que incluyen puntos intermedios definidos entre los extremos (límite mínimo y límite máximo) para facilitar la evaluación.
 
-    ![[Pasted image 20261024182001.png]]
+    ![](../../assets/Pasted%20image%2020261024182001.png)
 
 - **Escalas gráficas discontinuas**: la posición de las marcas ya está fijada y descrita de antemano; el evaluador solo debe seleccionar una de ellas para evaluar el desempeño del empleado.
 
-    ![[Pasted image 20261024182006.png]]
+    ![](../../assets/Pasted%20image%2020261024182006.png)
 
 Para facilitar las evaluaciones, las escalas discontinuas se representan mediante gráficas de doble entrada: en las filas se escriben los factores de evaluación del desempeño y en las columnas, los grados o graduaciones de esos factores. De ahí el cuadro de doble entrada que caracteriza a este método.
 
-![[Pasted image 20261024182017.png]]
+![](../../assets/Pasted%20image%2020261024182017.png)
 
-![[Pasted image 20261024182026.png]]
+![](../../assets/Pasted%20image%2020261024182026.png)
 
 **Ventajas:**
 
@@ -734,7 +720,7 @@ La naturaleza de las frases varía bastante; no obstante, hay dos formas de comp
 1. **Bloques de dos frases de significado positivo y dos de significado negativo**: al juzgar al empleado, el supervisor o evaluador elige la frase que más se ajusta y, luego, la que menos se ajusta al desempeño del evaluado.
 2. **Bloques de solo cuatro frases de significado positivo**: al juzgar al empleado, el supervisor o evaluador elige las frases que más se ajustan al desempeño del evaluado.
 
-![[Pasted image 20261024182034.png]]
+![](../../assets/Pasted%20image%2020261024182034.png)
 
 **Ventajas:**
 
@@ -777,7 +763,7 @@ El supervisor inmediato observa y registra los hechos excepcionalmente positivos
 - Las excepciones **positivas** deben realzarse y ponerse más en práctica.
 - Las excepciones **negativas** deben corregirse y eliminarse.
 
-![[Pasted image 20261024182045.png]]
+![](../../assets/Pasted%20image%2020261024182045.png)
 
 #### Método de comparación por pares
 
@@ -785,13 +771,13 @@ Compara a los empleados de a dos y se anota, en la columna de la derecha, aquel 
 
 Solo se recomienda cuando los evaluadores no están en condiciones de utilizar otros métodos más precisos, porque es un proceso muy sencillo y poco eficiente.
 
-![[Pasted image 20261024182050.png]]
+![](../../assets/Pasted%20image%2020261024182050.png)
 
 #### Método de frases descriptivas
 
 Es ligeramente diferente del método de elección forzada, porque la elección de frases no es obligatoria. El evaluador señala las frases que caracterizan el desempeño del subordinado (signo «+» o «S») y aquellas que demuestran lo opuesto a su desempeño (signo «−» o «N»).
 
-![[Pasted image 20261024182055.png]]
+![](../../assets/Pasted%20image%2020261024182055.png)
 
 ## La evaluación de desempeño como elemento integrador de las prácticas de la ARH
 
@@ -1072,7 +1058,7 @@ En general, los IS delegados son apropiados cuando los costos de los recursos so
 
 Se refiere a la organización de las personas consideradas profesionales de SI: cómo estarán agrupadas, qué responsabilidades tendrán y bajo qué jerarquías estarán distribuidas.
 
-![[Pasted image 20261024182128.png]]
+![](../../assets/Pasted%20image%2020261024182128.png)
 
 |**Nivel**|**Qué administra**|**Quiénes lo integran**|**Qué hacen**|
 |---|---|---|---|
@@ -1094,11 +1080,11 @@ Es bastante rígida: el **desarrollo, el mantenimiento y la operación** de los 
 - El personal de **operación** debe trabajar por turnos para maximizar el uso y los beneficios de estos recursos altamente costosos, y porque ninguna instalación podría funcionar sin control. Dentro de este personal se incluyen los **programadores** de sistemas.
 - La sección de **desarrollo** de sistemas estaba formada originalmente por **analistas de sistemas**. El análisis y el diseño eran actividades separadas, lo que generaba graves problemas de comunicación y llevaba a descuidar los objetivos globales del desarrollo. Esta estructura se asocia principalmente con una era de desarrollos internos, de ahí la cantidad de programadores que requería. Todavía existe y se la denomina **centro de datos**.
 
-![[Pasted image 20261024182136.png]]
+![](../../assets/Pasted%20image%2020261024182136.png)
 
 En la época del procesamiento de datos tradicional, la estructura interna solía estar determinada por una función financiera. En esa época era poco probable que algún miembro del *senior management* tuviera una responsabilidad específica sobre la informática, los IS o la información.
 
-![[Pasted image 20261024182143.png]]
+![](../../assets/Pasted%20image%2020261024182143.png)
 
 Esta estructura funcionaba correctamente en la época de los sistemas centralizados, pero con el tiempo surgieron una serie de desventajas que la volvieron inadecuada para muchas circunstancias actuales.
 
@@ -1113,7 +1099,7 @@ Como cada proyecto debe pasar por distintos equipos, es fundamental un nivel de 
 - ***Sistemas inflexibles***: deben producirse especificaciones formales para grupos que están aislados de los usuarios.
 - ***Mantenimiento costoso.***
 
-![[Pasted image 20261024182151.png]]
+![](../../assets/Pasted%20image%2020261024182151.png)
 
 ### Estructura de bases de datos
 
@@ -1125,9 +1111,9 @@ Su principal ventaja es la facilidad de acceso del usuario a los datos, bajo el 
 
 A medida que los usuarios se involucran más —al menos hasta el punto de que se les pregunta cuáles son sus requerimientos de datos—, empiezan a desarrollar conciencia y habilidades respecto de los IS.
 
-![[Pasted image 20261024182201.png]]
+![](../../assets/Pasted%20image%2020261024182201.png)
 
-![[Pasted image 20261024182206.png]]
+![](../../assets/Pasted%20image%2020261024182206.png)
 
 ### Estructura de grupos de proyectos funcionales
 
@@ -1143,11 +1129,11 @@ Esta agrupación del personal de IS según las funciones empresariales estimuló
 
 Cada equipo interpreta los hechos empresariales de distinta manera y maneja sus datos de forma particular. Otra desventaja posible es una carga de trabajo despareja: por ejemplo, que se desarrollen sistemas de marketing para mantener ocupado a ese equipo mientras otros postergan desarrollos más importantes por exceso de carga.
 
-![[Pasted image 20261024182216.png]]
+![](../../assets/Pasted%20image%2020261024182216.png)
 
 Este enfoque contribuyó mucho a que el usuario se involucrara y realizara más por sí mismo, y a la vez permitió que el personal de IS desarrollara mayor conciencia del negocio.
 
-![[Pasted image 20261024182222.png]]
+![](../../assets/Pasted%20image%2020261024182222.png)
 
 ### Centro de información y apoyo a decisiones
 
@@ -1155,7 +1141,7 @@ Las estructuras orientadas al apoyo para la toma de decisiones están estrechame
 
 Ambas estructuras tienen el objetivo de apoyar y fomentar el desarrollo de la computación controlada por el usuario y el management híbrido, y ambas requieren la existencia de estructuras de SI como estas:
 
-![[Pasted image 20261024182232.png]]
+![](../../assets/Pasted%20image%2020261024182232.png)
 
 ### Estructuras externas
 
@@ -1164,7 +1150,7 @@ Este último tipo de estructura de IS se centra en el entorno, a través de dos 
 1. La función se estructura en torno a líneas de servicio al consumidor para satisfacer a la organización del negocio, que es el entorno *inmediato* de los IS. Los grupos de IS alcanzan acuerdos de servicio con la comunidad de usuarios, que definen tanto las *obligaciones* de los IS como las percepciones de *valor* del negocio.
 2. Los SI, al igual que toda la empresa, deben estar enfocados hacia el exterior, hacia los clientes reales: el entorno empresarial afecta a los SI, y los SI influyen en la naturaleza del negocio.
 
-![[Pasted image 20261024182241.png]]
+![](../../assets/Pasted%20image%2020261024182241.png)
 
 Todas las nuevas estructuras se relacionan esencialmente con la transferencia de autonomía para obtener ciclos de desarrollo de sistemas más cortos y sistemas más flexibles y menos prescriptivos, que sirvan de apoyo eficiente al management.
 
@@ -1192,7 +1178,7 @@ La evaluación del rendimiento de un sistema informático se define como ***la m
 
 > **Nota.** El rendimiento de un sistema informático (SI) se refiere a la eficacia con la que un software determinado aprovecha los recursos de hardware bajo una determinada carga de trabajo.
 
-![[Pasted image 20261024182303.png]]
+![](../../assets/Pasted%20image%2020261024182303.png)
 
 Las dificultades para realizar la medición son:
 
@@ -1488,7 +1474,7 @@ Es la carga que procesa el sistema durante la sesión de medida; puede ser la ca
 
 Tipos de carga de test:
 
-![[Pasted image 20261024182327.png]]
+![](../../assets/Pasted%20image%2020261024182327.png)
 
 ### Cargas de test reales
 
@@ -1599,7 +1585,7 @@ Es posible encontrar cuatro patrones de datos históricos:
 - Estacionales → Suavizado.
 - Estacionarios → Medias móviles.
 
-![[Pasted image 20261024182355.png]]
+![](../../assets/Pasted%20image%2020261024182355.png)
 
 ## Técnicas cuantitativas para la predicción de la carga
 

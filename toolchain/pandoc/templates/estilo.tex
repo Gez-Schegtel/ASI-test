@@ -1,0 +1,311 @@
+% ==============================================================================
+% estilo.tex — Preámbulo LaTeX común de mis PDF
+%
+% QUÉ ES
+%   Código LaTeX que se agrega al "preámbulo" (la parte de arriba) de cada
+%   documento, antes de que empiece el texto. Define el aspecto: fuentes,
+%   emojis, listas, tablas, cuadros y bloques de código.
+%
+% CÓMO SE USA
+%   No se llama a mano: lo agrega al preámbulo el filtro
+%   filters/preambulo.lua (que a su vez está activado en estilo.yaml).
+%   Se usa con:
+%       pandoc -d estilo nota.md -o nota.pdf
+%
+% CÓMO SE EDITA
+%   Cada sección (0 a 8) es independiente. Para sacar algo del estilo, borrá
+%   o comentá la sección entera. En LaTeX, un comentario empieza con "%".
+%   Para ver el LaTeX completo que genera pandoc (con este archivo ya
+%   insertado en el preámbulo), sin compilar el PDF:
+%       pandoc -d estilo nota.md -s -t latex -o nota.tex
+%
+% REQUISITOS (Debian/Ubuntu)
+%   sudo apt install pandoc texlive-luatex texlive-latex-recommended \
+%        texlive-latex-extra texlive-fonts-recommended lmodern \
+%        fonts-noto-color-emoji
+%   - texlive-luatex:         el motor lualatex (secciones 0 y 5 lo necesitan).
+%   - texlive-latex-extra:    trae fvextra (sección 4).
+%   - fonts-noto-color-emoji: los emojis a color (sección 0).
+%
+% SECCIONES
+%   0) Fuente principal y emojis (se cambia con "mainfont" en la nota)
+%   1) Listas con más aire
+%   2) Tablas con más aire
+%   3) Cuadros para las citas (> en Markdown)
+%   4) Código: cortar las líneas largas
+%   5) Palabras largas sin espacios (URLs, hashes)
+%   6) \needspace (evitar títulos solos al pie de la página)
+%   7) Ancho máximo de las imágenes (se cambia con "ancho-imagenes")
+%   8) Figuras con epígrafe fijas donde están en el Markdown
+% ==============================================================================
+
+
+% ------------------------------------------------------------------------------
+% 0) Fuente principal con respaldo: emojis a color y símbolos
+%
+%    Ninguna letra de texto trae emojis, y muchas no traen símbolos. Con
+%    lualatex se le puede decir qué fuente usar "de respaldo" cuando falta un
+%    carácter:
+%      1.º Noto Color Emoji  (emojis a color; "mode=harf" es lo que permite
+%                             dibujarlos en color)
+%      2.º DejaVu Sans       (símbolos como ✓ o →; suele venir instalada)
+%
+%    La letra principal es Latin Modern Roman (la clásica de LaTeX), salvo
+%    que la nota ponga otra con "mainfont: ..." en su cabecera. En ese caso,
+%    el filtro filters/preambulo.lua define \fuenteprincipal con ese
+%    nombre, y acá se carga esa letra, también con el respaldo de emojis.
+%    (Sin el filtro, pandoc cargaría la letra por su cuenta y sin emojis.)
+%
+%    Con xelatex no hay respaldo (es una función de lualatex): se usa la letra
+%    pedida, sin emojis. Con pdflatex no se toca nada.
+% ------------------------------------------------------------------------------
+\ifdefined\fuenteprincipal\else
+  \def\fuenteprincipal{Latin Modern Roman}
+\fi
+\ifLuaTeX
+  \directlua{
+    luaotfload.add_fallback("emojis",
+      {"Noto Color Emoji:mode=harf;", "DejaVu Sans:"})
+  }
+  \setmainfont{\fuenteprincipal}[RawFeature={fallback=emojis}]
+\else
+  \ifdefined\setmainfont
+    \setmainfont{\fuenteprincipal}
+  \fi
+\fi
+
+
+% ------------------------------------------------------------------------------
+% 1) Listas con más aire entre ítems
+%
+%    Pandoc usa \tightlist en las listas "apretadas" (sin líneas en blanco
+%    entre ítems) y las deja con separación 0. Acá se les da 0,55 em
+%    (aprox. media línea) entre ítems. Para más o menos aire, cambiar ese número.
+% ------------------------------------------------------------------------------
+\renewcommand{\tightlist}{%
+  \setlength{\itemsep}{0.55em}\setlength{\parskip}{0pt}}
+
+
+% ------------------------------------------------------------------------------
+% 2) Tablas con más aire entre filas
+%
+%    \arraystretch multiplica la altura de las filas (el valor por defecto es
+%    1; acá 1,5). Se aplica solo dentro de las tablas ("longtable", que es lo
+%    que genera pandoc). Si se pusiera global, también ensancharía las líneas
+%    de autor y fecha del título.
+% ------------------------------------------------------------------------------
+\AddToHook{env/longtable/begin}{\renewcommand{\arraystretch}{1.5}}
+
+
+% ------------------------------------------------------------------------------
+% 3) Cuadros para las citas: "Idea clave", "Ojo", "Para el examen"...
+%
+%    Todo bloque de cita de Markdown (las líneas que empiezan con ">") se
+%    dibuja como un cuadro con una barra azul a la izquierda y fondo celeste
+%    pastel, con aire arriba y abajo. OJO: esto cambia TODAS las citas, no se
+%    puede tener a la vez una cita "normal" y un cuadro.
+%
+%    Para cambiar los colores, editar los dos \definecolor (formato RGB, de 0
+%    a 255). El resto arma el cuadro en tres pasos: mide el contenido en una
+%    caja (\cuadrobox), dibuja la barra con la altura de esa caja, y pone la
+%    caja sobre el fondo con 10 pt de margen a cada lado.
+%    Solo usa LaTeX base y color (no necesita paquetes extra).
+% ------------------------------------------------------------------------------
+\definecolor{barcolor}{RGB}{74,111,165}
+\definecolor{fondocolor}{RGB}{232,241,251}
+\newsavebox{\cuadrobox}
+\renewenvironment{quote}{%
+  \par\addvspace{10pt}%
+  \begin{lrbox}{\cuadrobox}%
+  \begin{minipage}[t]{\dimexpr\linewidth-24pt\relax}%
+  \setlength{\parskip}{0.5em}}%
+  {\par\end{minipage}\end{lrbox}%
+  \par\noindent\hbox{%
+    {\color{barcolor}\vrule width 2.5pt
+      height \dimexpr\ht\cuadrobox+6pt\relax
+      depth \dimexpr\dp\cuadrobox+6pt\relax}%
+    {\setlength{\fboxsep}{0pt}%
+     \colorbox{fondocolor}{\vrule width 0pt
+      height \dimexpr\ht\cuadrobox+6pt\relax
+      depth \dimexpr\dp\cuadrobox+6pt\relax
+      \hskip 10pt\usebox{\cuadrobox}\hskip 10pt}}}%
+  \par\addvspace{10pt}}
+
+
+% ------------------------------------------------------------------------------
+% 4) Bloques de código: las líneas largas se cortan
+%
+%    Sin esto, una línea de código más ancha que la hoja se sale por la
+%    derecha. Con el paquete fvextra, se corta y la línea que continúa empieza
+%    con una flechita (↪).
+%      breaklines            corta las líneas largas
+%      breakanywhere         permite cortar también dentro de una palabra larga
+%      breaknonspaceingroup  hace que ese corte funcione también dentro de los
+%                            textos con color del resaltado de sintaxis (por
+%                            ejemplo, un string muy largo)
+%    Las dos redefiniciones de abajo hacen que lo anterior valga para ambos
+%    tipos de bloque de pandoc: "verbatim" (los que no tienen lenguaje) y
+%    "Highlighting" (los que sí tienen, con colores). Este último solo existe
+%    si la nota tiene código con lenguaje, por eso se pregunta antes con
+%    \ifdefined.
+% ------------------------------------------------------------------------------
+\usepackage{fvextra}
+\fvset{breaklines, breakanywhere, breaknonspaceingroup}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
+\ifdefined\Highlighting
+  \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+\fi
+
+
+% ------------------------------------------------------------------------------
+% 5) Palabras largas sin espacios (URLs, hashes, rutas) en tablas, listas
+%    o párrafos
+%
+%    Una palabra muy larga y sin espacios no tiene dónde cortarse y se sale de
+%    la hoja (típico en las celdas de una tabla). Este bloque le avisa a TeX
+%    que, SOLO en las palabras de 20 caracteres o más seguidos, puede cortar
+%    entre dos letras. Es el último recurso: se pone un "corte muy caro"
+%    (penalización 9000 de 10000) para que TeX lo use únicamente si no hay
+%    otra forma de acomodar la línea. Las palabras normales no se tocan, y
+%    tampoco las fórmulas matemáticas. Solo funciona con lualatex.
+%
+%    Para cambiar desde cuántos caracteres se corta, editar el número de
+%    "local MINIMO". Con menos de 20, empiezan a cortarse palabras comunes.
+%
+%    CUIDADO al editar el código de Lua de abajo: TeX lo lee primero, así que
+%      - no se pueden usar comentarios de Lua (--): TeX junta todas las líneas
+%        en una sola y el comentario taparía el resto del código;
+%      - no se pueden usar los símbolos de porcentaje, numeral ni virgulilla
+%        (tampoco el operador "no igual" de Lua): TeX los interpretaría antes.
+%    Por eso las explicaciones van acá afuera.
+% ------------------------------------------------------------------------------
+\ifLuaTeX
+  \directlua{
+    local GLYPH = node.id("glyph")
+    local KERN = node.id("kern")
+    local PENALTY = node.id("penalty")
+    local MATH = node.id("math")
+    local MINIMO = 20
+    local function cortar(head)
+      local enmat = false
+      local n = head
+      while n do
+        if n.id == MATH then
+          enmat = (n.subtype == 0)
+          n = n.next
+        elseif n.id == GLYPH and not enmat then
+          local largo = 0
+          local m = n
+          while m and (m.id == GLYPH or (m.id == KERN and m.subtype == 0)) do
+            if m.id == GLYPH then largo = largo + 1 end
+            m = m.next
+          end
+          if largo >= MINIMO then
+            local c = n
+            while c and not (c == m) do
+              if c.id == GLYPH then
+                local sig = c.next
+                if sig and sig.id == KERN then sig = sig.next end
+                if sig and not (sig == m) and sig.id == GLYPH then
+                  local p = node.new(PENALTY)
+                  p.penalty = 9000
+                  head, c = node.insert_after(head, c, p)
+                end
+              end
+              c = c.next
+            end
+          end
+          n = m
+        else
+          n = n.next
+        end
+      end
+      return head
+    end
+    luatexbase.add_to_callback("pre_linebreak_filter", cortar, "cortar-palabras-largas")
+  }
+\fi
+
+
+% ------------------------------------------------------------------------------
+% 6) \needspace{altura}: evitar títulos solos al pie de la página
+%
+%    Uso: en el .md, en una línea suelta justo antes de un título:
+%        \needspace{5cm}
+%    Si quedan menos de 5 cm libres en la página, salta a la siguiente. Sirve
+%    para que un título no quede abandonado al final con su texto en la página
+%    de abajo. Es la definición del paquete "needspace", copiada acá para no
+%    tener que cargar otro paquete. \providecommand la define solo si no existe.
+% ------------------------------------------------------------------------------
+\makeatletter
+\providecommand{\needspace}[1]{\begingroup\setlength{\dimen@}{#1}%
+  \vskip\z@\@plus\dimen@\penalty-100\vskip\z@\@plus-\dimen@
+  \vskip\dimen@\penalty9999\vskip-\dimen@\vskip\z@skip\endgroup}
+\makeatother
+
+
+% ------------------------------------------------------------------------------
+% 7) Ancho máximo de las imágenes
+%
+%    Pandoc ya achica las imágenes que no entran en el ancho del texto. Esto
+%    baja ese tope: ninguna imagen pasa de \anchoimagenes (por ejemplo, el
+%    80 % del ancho del texto). Las imágenes más chicas quedan como están, y
+%    se mantiene la proporción.
+%
+%    El valor se elige con "ancho-imagenes" en metadatos.yaml (para todas las
+%    notas) o en la cabecera de una nota (solo esa). El filtro
+%    filters/preambulo.lua lo convierte en \anchoimagenes. Sin ese valor, el
+%    tope es el ancho completo del texto, como hace pandoc.
+%
+%    Una imagen con su propio tamaño en el Markdown, por ejemplo
+%        ![](foto.png){width=40%}
+%    usa ese tamaño, sin importar este tope.
+%
+%    Pandoc cambió la forma de achicar imágenes en la versión 3.2.1:
+%      - hasta la 3.2: usa \maxwidth (Debian 13 trae la 3.1.11);
+%      - desde la 3.2.1: usa \pandocbounded.
+%    Acá se redefinen los dos, copiando lo que hace pandoc pero con
+%    \anchoimagenes en lugar del ancho completo (\linewidth), así funciona con
+%    cualquier versión. Si pandoc vuelve a cambiar el nombre, este tope deja
+%    de aplicarse sin dar error: las imágenes vuelven al ancho completo.
+% ------------------------------------------------------------------------------
+\providecommand{\anchoimagenes}{\linewidth}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\anchoimagenes\anchoimagenes\else\Gin@nat@width\fi}
+\ifdefined\pandocbounded
+  \renewcommand*\pandocbounded[1]{%
+    \sbox\pandoc@box{#1}%
+    \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+    \Gscale@div\@tempb{\anchoimagenes}{\wd\pandoc@box}%
+    \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi
+    \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+    \else\usebox{\pandoc@box}%
+    \fi}
+\fi
+\makeatother
+
+
+% ------------------------------------------------------------------------------
+% 8) Figuras con epígrafe fijas donde están en el Markdown
+%
+%    Una imagen con epígrafe, ![Texto](foto.png), es una "figura", y LaTeX la
+%    trata como flotante: la pone donde le queda mejor (por ejemplo, arriba de
+%    la página siguiente) y sube el texto de abajo a ocupar el hueco. Así la
+%    figura puede terminar lejos del párrafo que la menciona.
+%
+%    El paquete float agrega la posición "H" (exactamente acá), y
+%    \floatplacement la pone por defecto en todas las figuras. Si una figura
+%    no entra en lo que queda de la página, pasa entera a la siguiente y deja
+%    un espacio en blanco al final de la anterior.
+%
+%    Las imágenes sin epígrafe no son figuras: siempre quedan en su lugar,
+%    con o sin esto. Las tablas tampoco se ven afectadas (pandoc no las hace
+%    flotantes).
+%
+%    Para que una nota vuelva al comportamiento normal de LaTeX, en su
+%    cabecera:
+%        header-includes: \floatplacement{figure}{tbp}
+%    El paquete float viene en texlive-latex-recommended.
+% ------------------------------------------------------------------------------
+\usepackage{float}
+\floatplacement{figure}{H}

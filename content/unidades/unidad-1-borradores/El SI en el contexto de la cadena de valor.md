@@ -4,7 +4,7 @@ Imagina que la empresa es una **gran orquesta**. Cada sección (actividades bás
 
 Aquí tienes la explicación detallada punto por punto:
 
-![[Captura de pantalla_20260428_112659.png]]
+![](../../../assets/Captura%20de%20pantalla_20260428_112659.png)
 
 ## 1. Ubicación: El SI como "Infraestructura"
 

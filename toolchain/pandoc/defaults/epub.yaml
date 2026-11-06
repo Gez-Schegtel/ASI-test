@@ -1,0 +1,24 @@
+# ==============================================================================
+# epub.yaml — Archivo de "defaults" de Pandoc para compilación a EPUB3
+#
+# Autocontenido dentro del repositorio (toolchain/pandoc/defaults/epub.yaml).
+# ==============================================================================
+
+from: markdown+hard_line_breaks
+to: epub3
+
+toc: true
+toc-depth: 3
+number-sections: true
+split-level: 1
+
+highlight-style: tango
+
+html-math-method:
+  method: mathml
+
+css:
+  - ${.}/../templates/estilo-epub.css
+
+metadata-files:
+  - ${.}/metadatos.yaml

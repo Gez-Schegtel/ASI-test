@@ -29,6 +29,7 @@ respecto al cuadro de presentacion y compromiso del equipo
 Primera cuestion -> es una **gerencia**
 
 **Grupo base** -> Meto un gerente que no es del rubro, o que no es de sistemas.
+
 - *jefe de estacion terminal* NO forma parte del **grupo base**.
 
 Interesante lo qeu se habla del orden en el cambio de fases y demas
@@ -51,6 +52,7 @@ otra cosa
 | operativo  | +          |             |                |     |
 
 no puede existir un sistema que sea eficiente a nivel estrategiico ni tactico
+
 - **estrategico** -> no es eficiente, no es efectivo, es competitivo
 - **tactico** -> no es eficiente, es efectivo, no es competitivo
 - **operativo** -> es eficiente, no es efectivo, no es competitivo

@@ -1,0 +1,398 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+# ==============================================================================
+# SCRIPT: md2pdf (toolchain/bin/md2pdf)
+# DESCRIPCIÓN:
+#   Compilador editorial unificado y autocontenido de apuntes Markdown (.md) a
+#   PDF (LuaLaTeX) y/o EPUB3 mediante Pandoc.
+#
+#   Autocontención total (Principio 3 de GEMINI.md):
+#     No requiere instalar nada en ~/.local/share/pandoc. Carga directamente:
+#       toolchain/pandoc/defaults/pdf.yaml       opciones de Pandoc para PDF
+#       toolchain/pandoc/defaults/epub.yaml      opciones de Pandoc para EPUB3
+#       toolchain/pandoc/defaults/metadatos.yaml valores base (idioma, márgenes, letra)
+#       toolchain/pandoc/templates/estilo.tex    preámbulo LaTeX (cajas, emojis, código)
+#       toolchain/pandoc/templates/estilo-epub.css estilos para lectores EPUB
+#       toolchain/pandoc/filters/*.lua           filtros Lua (preámbulo, fórmulas, figuras)
+#
+#   Por defecto guarda todos los documentos generados en <raíz-del-repo>/build/
+#   para mantener content/ libre de archivos binarios (personalizable con -o).
+#
+# USO:
+#   toolchain/bin/md2pdf archivo.md               (Genera build/archivo.pdf)
+#   toolchain/bin/md2pdf --epub archivo.md        (Genera build/archivo.epub)
+#   toolchain/bin/md2pdf --all archivo.md         (Genera PDF y EPUB en una pasada)
+#   toolchain/bin/md2pdf -y content/unidades/*.md (Convierte varios sin preguntar)
+#   toolchain/bin/md2pdf -o salida.pdf archivo.md (Guarda en una ruta o carpeta específica)
+#   toolchain/bin/md2pdf -i ~/fotos archivo.md    (Agrega carpeta extra de imágenes)
+#
+# SINTAXIS TRADUCIDA AUTOMÁTICAMENTE (MOTOR PERL):
+#   - Imágenes de Obsidian: ![[foto.png]], ![[foto.png|400]], ![[foto.png|derecha|300]]
+#   - Imágenes Markdown estándar con rutas relativas, %20 o diferencias NFC/NFD
+#   - Limpieza de epígrafes basura exportados de Notion (![image.png](...))
+#   - Wikilinks: [[Nota]] -> Nota, [[Nota|alias]] -> alias
+#   - Callouts de Obsidian/GitHub: > [!NOTE], > [!WARNING], > [!IMPORTANT], > [!EXAMPLE]
+#   - Letras matemáticas Unicode: 𝐴, 𝑓, 𝛼 (U+1D400..U+1D7FF) -> A, f, α (NFKC)
+#   - Respeta bloques de código (``` / ~~~) y `código en línea` sin tocar su contenido.
+# ==============================================================================
+
+set -uo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+TOOLCHAIN_DIR="$(cd "$SCRIPT_DIR/.." && pwd -P)"
+REPO_ROOT="$(cd "$TOOLCHAIN_DIR/.." && pwd -P)"
+PDF_DEFAULTS="$TOOLCHAIN_DIR/pandoc/defaults/pdf.yaml"
+EPUB_DEFAULTS="$TOOLCHAIN_DIR/pandoc/defaults/epub.yaml"
+DEFAULT_BUILD_DIR="$REPO_ROOT/build"
+
+# --- Opciones -----------------------------------------------------------------
+uso="Uso: md2pdf [-y|--yes] [--pdf] [--epub] [--all] [-o salida] [-i carpeta_imágenes] [archivo.md ...]"
+opcion_y=0
+gen_pdf=0
+gen_epub=0
+out_custom=""
+carpetas_imagenes=()
+args=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -y|--yes)  opcion_y=1; shift ;;
+    --pdf)     gen_pdf=1; shift ;;
+    --epub)    gen_epub=1; shift ;;
+    --all)     gen_pdf=1; gen_epub=1; shift ;;
+    -o|--output)
+      [[ $# -ge 2 ]] || { echo "❌ Falta el argumento para $1. $uso" >&2; exit 1; }
+      out_custom="$2"; shift 2 ;;
+    --output=*)
+      out_custom="${1#*=}"; shift ;;
+    -i|--imagenes)
+      [[ $# -ge 2 ]] || { echo "❌ Falta la carpeta para $1. $uso" >&2; exit 1; }
+      [[ -d "$2" ]] || { echo "❌ La carpeta de imágenes '$2' no existe." >&2; exit 1; }
+      carpetas_imagenes+=("$(cd "$2" && pwd -P)"); shift 2 ;;
+    --imagenes=*)
+      carp="${1#*=}"
+      [[ -d "$carp" ]] || { echo "❌ La carpeta de imágenes '$carp' no existe." >&2; exit 1; }
+      carpetas_imagenes+=("$(cd "$carp" && pwd -P)"); shift ;;
+    -h|--help)
+      sed -n '4,37p' "$0" | sed 's/^# \{0,1\}//'
+      exit 0 ;;
+    --) shift; while [[ $# -gt 0 ]]; do args+=("$1"); shift; done ;;
+    -*)
+      echo "❌ Opción no válida: $1. $uso" >&2
+      exit 1 ;;
+    *) args+=("$1"); shift ;;
+  esac
+done
+
+# Por defecto genera PDF si no se especificó --epub ni --all
+if (( gen_pdf == 0 && gen_epub == 0 )); then
+  gen_pdf=1
+fi
+
+# Incluir siempre $REPO_ROOT/assets si existe
+if [[ -d "$REPO_ROOT/assets" ]]; then
+  carpetas_imagenes+=("$REPO_ROOT/assets")
+fi
+
+# --- Comprobaciones previas ---------------------------------------------------
+if ! command -v pandoc >/dev/null 2>&1; then
+  echo "❌ Error: pandoc no está instalado." >&2
+  exit 1
+fi
+
+if ! command -v perl >/dev/null 2>&1; then
+  echo "❌ Error: perl no está instalado." >&2
+  exit 1
+fi
+
+if (( gen_pdf )); then
+  if ! command -v lualatex >/dev/null 2>&1; then
+    echo "❌ Error: lualatex no está instalado (requerido para generar PDF)." >&2
+    exit 1
+  fi
+  if [[ ! -f "$PDF_DEFAULTS" ]]; then
+    echo "❌ Error: no se encontró '$PDF_DEFAULTS'." >&2
+    exit 1
+  fi
+  if ! echo "" | pandoc --defaults="$PDF_DEFAULTS" -t plain -o /dev/null 2>/dev/null; then
+    echo "❌ Error: pandoc no pudo cargar '$PDF_DEFAULTS'." >&2
+    exit 1
+  fi
+fi
+
+if (( gen_epub )) && [[ ! -f "$EPUB_DEFAULTS" ]]; then
+  echo "❌ Error: no se encontró '$EPUB_DEFAULTS'." >&2
+  exit 1
+fi
+
+# --- 1. Construir lista de archivos a convertir -------------------------------
+archivos=()
+if (( ${#args[@]} > 0 )); then
+  for archivo in "${args[@]}"; do
+    if [[ ! -f "$archivo" ]]; then
+      echo "⚠️ Saltando '$archivo': no existe."
+    elif [[ ! "${archivo,,}" =~ \.(md|markdown)$ ]]; then
+      echo "⚠️ Saltando '$archivo': no es un archivo Markdown (.md)."
+    else
+      archivos+=("$archivo")
+    fi
+  done
+else
+  shopt -s nullglob nocaseglob
+  for f in *.md *.markdown; do
+    [[ -f "$f" ]] && archivos+=("$f")
+  done
+  shopt -u nullglob nocaseglob
+fi
+
+if (( ${#archivos[@]} == 0 )); then
+  echo "No se encontraron archivos Markdown para convertir."
+  exit 0
+fi
+
+# Helper para calcular la ruta de salida de cada archivo y formato
+calcular_salida() {
+  local archivo="$1" ext="$2" base
+  base="$(basename "${archivo%.*}")"
+  if [[ -n "$out_custom" ]]; then
+    if [[ -d "$out_custom" || "$out_custom" == */ ]] || (( ${#archivos[@]} > 1 )) || (( gen_pdf && gen_epub )); then
+      printf '%s/%s.%s\n' "${out_custom%/}" "$base" "$ext"
+    else
+      printf '%s\n' "$out_custom"
+    fi
+  else
+    printf '%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$base" "$ext"
+  fi
+}
+
+# --- 2. Mostrar qué se va a convertir y pedir confirmación --------------------
+echo "Se van a convertir los siguientes archivos:"
+for archivo in "${archivos[@]}"; do
+  destinos=()
+  (( gen_pdf ))  && destinos+=("$(calcular_salida "$archivo" pdf)")
+  (( gen_epub )) && destinos+=("$(calcular_salida "$archivo" epub)")
+  echo "  - $archivo -> $(IFS=', '; echo "${destinos[*]}")"
+done
+
+if (( ! opcion_y )); then
+  read -r -p "¿Continuar? [Y/n]: " respuesta || respuesta=n
+  case "$respuesta" in
+    y|Y|"") echo "Iniciando conversión..." ;;
+    *) echo "Operación cancelada."; exit 0 ;;
+  esac
+else
+  echo "Iniciando conversión..."
+fi
+
+# --- 3. Dónde buscar imágenes por nombre --------------------------------------
+carpeta_de_busqueda() {
+  local carpeta d raiz home_abs
+  carpeta="$(cd "$1" && pwd -P)"
+  d="$carpeta"
+  home_abs="$(cd "$HOME" && pwd -P)"
+  while [[ "$d" != "/" ]]; do
+    if [[ -d "$d/.obsidian" ]]; then
+      printf '%s\n' "$d"
+      return
+    fi
+    d="$(dirname "$d")"
+  done
+  if command -v git >/dev/null 2>&1 && raiz="$(git -C "$carpeta" rev-parse --show-toplevel 2>/dev/null)"; then
+    printf '%s\n' "$raiz"
+  elif [[ "$(dirname "$carpeta")" == "/" || "$(dirname "$carpeta")" == "$home_abs" ]]; then
+    printf '%s\n' "$carpeta"
+  else
+    printf '%s\n' "$(dirname "$carpeta")"
+  fi
+}
+
+# --- 4. Motor en Perl de traducción de sintaxis Obsidian/GFM/Unicode ----------
+read -r -d '' TRADUCIR <<'PERL' || true
+use strict; use warnings; use utf8;
+use File::Find; use File::Basename qw(basename); use File::Spec;
+use Encode qw(encode decode); use Unicode::Normalize qw(NFC NFD NFKC);
+
+sub fs  { encode("UTF-8", $_[0]) }
+sub txt { decode("UTF-8", $_[0]) }
+my $carpeta = txt($ENV{CARPETA_MD});
+my $base    = txt($ENV{BASE});
+my @extras  = grep { length } split /\n/, txt($ENV{IMAGENES} // "");
+my %indices;
+
+sub indice_de {
+  my ($dir) = @_;
+  return $indices{$dir} if $indices{$dir};
+  my %ind; my $raiz = fs($dir);
+  find({ no_chdir => 1, wanted => sub {
+    if (-d $_ && basename($_) =~ /^\./ && $_ ne $raiz) { $File::Find::prune = 1; return; }
+    if (-f $_) { my $r = txt($_); push @{ $ind{NFC(basename($r))} }, $r; }
+  } }, $raiz);
+  return $indices{$dir} = \%ind;
+}
+
+sub buscar {
+  my ($ruta) = @_;
+  for my $dir ($carpeta, @extras, $base) {
+    for my $v ($ruta, NFC($ruta), NFD($ruta)) {
+      return "$dir/$v" if -f fs("$dir/$v");
+    }
+  }
+  my $fin = "/$ruta";
+  for my $dir (@extras, $base) {
+    my @c = @{ indice_de($dir)->{NFC(basename($ruta))} || [] };
+    my @exactos = grep { my $n = NFC($_); substr($n, -length($fin)) eq NFC($fin) } @c;
+    @c = @exactos if @exactos;
+    my %dist = map { my $r = File::Spec->abs2rel($_, $carpeta); ($_ => scalar(split m{/}, $r)) } @c;
+    return (sort { $dist{$a} <=> $dist{$b} || $a cmp $b } @c)[0] if @c;
+  }
+  return undef;
+}
+
+sub traducir {
+  my ($embebido, $dentro) = @_;
+  my ($destino, $extra) = split /\|/, $dentro, 2;
+  $destino =~ s/\\$//;
+  $destino =~ s/^\s+|\s+$//g;
+  my ($sin_seccion) = split /#/, $destino, 2;
+  if ($embebido && $sin_seccion =~ /\.(png|jpe?g|gif|bmp|webp|svg|pdf)$/i) {
+    my $ruta = buscar($sin_seccion);
+    if (!defined $ruta) {
+      warn "⚠️  No encontré la imagen: $sin_seccion\n";
+      return "[imagen no encontrada: $sin_seccion]";
+    }
+    my @attr;
+    if (defined $extra) {
+      for my $t (split /\|/, $extra) {
+        $t =~ s/\\$//; $t =~ s/^\s+|\s+$//g;
+        if    ($t =~ /^(\d+)/)               { push @attr, "width=$1px" unless grep { /^width=/ } @attr; }
+        elsif (lc $t eq 'izquierda')          { push @attr, ".izquierda" unless grep { /^\.(izquierda|derecha)$/ } @attr; }
+        elsif (lc $t eq 'derecha')            { push @attr, ".derecha"   unless grep { /^\.(izquierda|derecha)$/ } @attr; }
+      }
+    }
+    my $atributos = @attr ? "{" . join(" ", @attr) . "}" : "";
+    return "![](<$ruta>)$atributos";
+  }
+  return (defined $extra && $extra ne "") ? $extra : $destino;
+}
+
+sub imagen_estandar {
+  my ($original, $alt, $dest, $titulo) = @_;
+  my $d = $dest;
+  $d =~ s/^<(.*)>$/$1/;
+  return $original if $d =~ m{^(?:[a-zA-Z][a-zA-Z0-9+.\-]*:|/|\#)};
+  my $dec = fs($d);
+  $dec =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/ge;
+  $dec = txt($dec);
+  my $alt_nuevo = (NFC(lc $alt) eq NFC(lc basename($dec))
+                   || $alt =~ /^\s*(?:untitled|image|imagen|pasted image[^\]]*)(?:\.\w{3,4})?\s*$/i) ? "" : $alt;
+  my $resto = defined $titulo ? $titulo : "";
+  if (-f fs("$carpeta/$d") || -f fs("$carpeta/$dec")) {
+    return $alt_nuevo eq $alt ? $original : "![$alt_nuevo]($dest$resto)";
+  }
+  my $ruta = buscar($dec);
+  return $original unless defined $ruta;
+  return "![$alt_nuevo](<$ruta>$resto)";
+}
+
+my %TIPOS = (note => "Nota", info => "Información", tip => "Consejo", hint => "Consejo",
+  important => "Importante", warning => "Advertencia", caution => "Precaución",
+  attention => "Atención", danger => "Peligro", error => "Error", bug => "Error",
+  example => "Ejemplo", quote => "Cita", cite => "Cita", question => "Pregunta",
+  faq => "Pregunta", help => "Pregunta", success => "Hecho", check => "Hecho",
+  done => "Hecho", failure => "Falla", fail => "Falla", missing => "Falta",
+  todo => "Pendiente", abstract => "Resumen", summary => "Resumen", tldr => "Resumen");
+
+my $cerca = "";
+sub cierra { $_[0] =~ /^\s*(`+|~+)\s*$/ && substr($1, 0, 1) eq substr($_[1], 0, 1) && length($1) >= length($_[1]) }
+
+while (my $linea = <STDIN>) {
+  if ($cerca ne "") { print $linea; $cerca = "" if cierra($linea, $cerca); next; }
+  if ($linea =~ /^\s*(```+|~~~+)/) { $cerca = $1; print $linea; next; }
+
+  # Avisos de GitHub y callouts de Obsidian: "> [!NOTE] Título"
+  $linea =~ s{^(\s*(?:>\s*)+)\[!(\w+)\][-+]?[ \t]*(.*?)[ \t\r]*$}{
+    my ($pre, $tipo, $titulo) = ($1, lc $2, $3);
+    $titulo = $TIPOS{$tipo} // ucfirst($tipo) if $titulo eq "";
+    (my $vacia = $pre) =~ s/\s+$//;
+    "$pre**$titulo**\n$vacia"
+  }e;
+
+  # Normalización de letras matemáticas Unicode (𝐴 𝑓 𝛼 -> A f α) fuera de `código`
+  $linea =~ s{(`+)(.*?)\1|([\x{1D400}-\x{1D7FF}])}{
+    defined $1 ? "$1$2$1" : NFKC($3)
+  }ge;
+
+  # `código` se deja igual; ![[...]], [[...]] y ![](...) se traducen
+  $linea =~ s{(`+)(.*?)\1|(!?)\[\[([^\[\]\n]+?)\]\]|!\[([^\[\]\n]*)\]\((<[^>\n]+>|[^)\s]+)(\s+"[^"\n]*")?\)}{
+    defined $1 ? "$1$2$1"
+    : defined $4 ? traducir($3 eq "!", $4)
+    : imagen_estandar($&, $5, $6, $7)
+  }ge;
+  print $linea;
+}
+PERL
+
+# --- 5. Ejecutar pandoc para cada archivo -------------------------------------
+fallidos=()
+temporal=""
+trap 'rm -f -- ${temporal:+"$temporal"}' EXIT
+trap 'echo; echo "Cancelado."; exit 130' INT TERM HUP
+
+imagenes_nl="$(printf '%s\n' "${carpetas_imagenes[@]}")"
+
+for archivo in "${archivos[@]}"; do
+  dir_md="$(cd "$(dirname "$archivo")" && pwd -P)"
+  base_dir="$(carpeta_de_busqueda "$dir_md")"
+  nombre_base="$(basename "${archivo%.*}")"
+
+  temporal="$(mktemp --suffix=.md)"
+  if ! CARPETA_MD="$dir_md" BASE="$base_dir" IMAGENES="$imagenes_nl" \
+       perl -CSD -e "$TRADUCIR" < "$archivo" > "$temporal"; then
+    echo "❌ Error al traducir la sintaxis de: $archivo" >&2
+    fallidos+=("$archivo")
+    rm -f "$temporal"
+    continue
+  fi
+
+  # Si el documento no tiene "title:" en su frontmatter YAML, pasamos el nombre del archivo como fallback
+  extra_meta=()
+  if ! awk 'NR==1 && /^---$/ {in_y=1; next} in_y && /^(---|\.\.\.)$/ {exit} in_y && /^title:/ {found=1; exit} END {exit !found}' "$temporal"; then
+    extra_meta+=(--metadata="title=$nombre_base")
+  fi
+
+  rutas_arr=("$dir_md" "${carpetas_imagenes[@]}" "$REPO_ROOT" ".")
+  resource_path="$(IFS=:; echo "${rutas_arr[*]}")"
+
+  if (( gen_pdf )); then
+    salida_pdf="$(calcular_salida "$archivo" pdf)"
+    mkdir -p "$(dirname "$salida_pdf")"
+    if pandoc --defaults="$PDF_DEFAULTS" "${extra_meta[@]}" \
+         --resource-path="$resource_path" --output="$salida_pdf" -- "$temporal"; then
+      echo "✔ PDF generado:  $salida_pdf"
+    else
+      echo "❌ Error al convertir a PDF: $archivo" >&2
+      fallidos+=("$archivo (PDF)")
+    fi
+  fi
+
+  if (( gen_epub )); then
+    salida_epub="$(calcular_salida "$archivo" epub)"
+    mkdir -p "$(dirname "$salida_epub")"
+    if pandoc --defaults="$EPUB_DEFAULTS" "${extra_meta[@]}" \
+         --resource-path="$resource_path" --output="$salida_epub" -- "$temporal"; then
+      echo "✔ EPUB generado: $salida_epub"
+    else
+      echo "❌ Error al convertir a EPUB: $archivo" >&2
+      fallidos+=("$archivo (EPUB)")
+    fi
+  fi
+
+  rm -f "$temporal"
+done
+
+if (( ${#fallidos[@]} > 0 )); then
+  echo "⚠️ No se pudieron convertir ${#fallidos[@]} objetivo(s): $(IFS=', '; echo "${fallidos[*]}")" >&2
+  exit 1
+fi
+echo "✅ Conversión completa."
