@@ -4,7 +4,7 @@
 > Este archivo es la **fuente de verdad viva y bitácora histórica** del repositorio de **Administración de Sistemas de Información (ASI)** — UTN FRRe. Debe consultarse al inicio de cada sesión y mantenerse estrictamente actualizado tras cada cambio estructural, de contenido o de *tooling*.
 
 * **Última actualización**: `2026-11-06`
-* **Fase actual**: `Infraestructura Técnica y Organización por Unidad 100% Completadas (Specs 01, 02, 03-B y 04 implementadas) -> En espera de material de estudio para Spec 03-Parte A`
+* **Fase actual**: `Infraestructura Técnica, Organización por Unidad e Imagen Docker GHCR 100% Completadas (Specs 01, 02, 03-B, 04 y 05 implementadas) -> En espera de material de estudio para Spec 03-Parte A`
 * **Rama activa**: `changes/juani`
 
 ---
@@ -14,22 +14,23 @@
 | Dominio | Ubicación Actual (`AS-IS`) | Ubicación Canónica (`TO-BE`) | Estado Actual |
 | :--- | :--- | :--- | :--- |
 | Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
-| Estado vivo y specs | `docs/STATUS.md` + `docs/specs/` | `docs/STATUS.md` + `docs/specs/` | **Specs 01, 02, 03-B y 04 implementadas**; Spec 03-A a la espera de material |
+| Estado vivo y specs | `docs/STATUS.md` + `docs/specs/` | `docs/STATUS.md` + `docs/specs/` | **Specs 01, 02, 03-B, 04 y 05 implementadas**; Spec 03-A a la espera de material |
 | Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
 | Apuntes y cuestionarios por Unidad | `content/unidades/` (`Unidad I/`, `Unidad III/`, `Unidad VI/`) | `content/unidades/<Unidad X>/` | **Organizado por Unidad y normalizado** |
 | Trabajos prácticos y guías | `content/practica/` (`tpi-dvp/`, `tp1-alineamiento/`) | `content/practica/` | **Migrado y 100% en `.md`** |
 | Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
 | Recursos gráficos | `assets/` (307 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
-| Toolchain editorial | `toolchain/bin/` (`mdnorm`, `md2pdf`) y `toolchain/pandoc/` | `toolchain/bin/` y `toolchain/pandoc/` | **Implementado y validado** (salida jerárquica en `build/`) |
+| Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
-| Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con Artifacts por Unidad (Modalidad B)** |
+| Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`) y Artifacts por Unidad (Modalidad B)** |
 
-### Métricas Auditadas del Árbol Actual (Post-Spec 02)
+### Métricas Auditadas del Árbol Actual (Post-Spec 05)
 
 * **Archivos binarios PDF/EPUB/DOCX en el repositorio**: **0 archivos** (regla de cero artefactos activa en `.gitignore`).
 * **Imágenes Base64 incrustadas en Markdown**: **0**.
 * **Recursos gráficos centralizados en `assets/`**: **307 archivos**.
 * **Toolchain autocontenido (`toolchain/`)**:
+  * `toolchain/Dockerfile`: Imagen Docker (`ghcr.io/n1krov/asi-toolchain`) basada en `ubuntu:24.04` con Pandoc, TeX Live (`LuaLaTeX`) y el caché global de fuentes de `luaotfload` (`/var/cache/texmf-var`) precalentado.
   * `toolchain/bin/mdnorm`: Linter y normalizador en Bash + Perl con soporte `-y`, `-v` y `--check` (`-n`) para CI.
   * `toolchain/bin/md2pdf`: Compilador unificado en Bash + Perl + Pandoc con soporte `--pdf`, `--epub` y `--all`, salida limpia a `build/`, resolución automática de `assets/` y normalización `NFKC` de letras matemáticas Unicode.
   * `toolchain/pandoc/`: `defaults/pdf.yaml`, `defaults/epub.yaml`, `defaults/metadatos.yaml` (`scrartcl` por defecto), `fonts/` (`Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en el repositorio), `templates/estilo.tex`, `templates/estilo-epub.css` y los 3 filtros Lua (`preambulo.lua`, `cortar-formulas.lua`, `centrar-imagenes.lua`).
@@ -58,6 +59,7 @@
 2. **[02-unificacion-toolchain-pandoc.md](specs/02-unificacion-toolchain-pandoc.md)** — *Estado: **Implementada** (2026-11-06)*. Construcción de `toolchain/bin/mdnorm`, `toolchain/bin/md2pdf` (`--pdf`, `--epub`, `--all`), `toolchain/pandoc/` (`defaults/`, `fonts/`, `templates/`, `filters/`) y `toolchain/README.md`, 100% autocontenido y con `Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en `toolchain/pandoc/fonts/`.
 3. **[03-consolidacion-unidades-y-ci-cd.md](specs/03-consolidacion-unidades-y-ci-cd.md)** — *Estado: **Parte B (CI/CD) implementada** (2026-11-06); **Parte A (Unidades faltantes)** en espera de material de estudio*. Pipeline `.github/workflows/editorial-ci.yml` activo para `lint` (`mdnorm --check` + control de binarios/Base64) y `build` (`md2pdf --all` -> Artifacts y GitHub Releases).
 4. **[04-organizacion-unidades-y-artefactos.md](specs/04-organizacion-unidades-y-artefactos.md)** — *Estado: **Implementada** (2026-11-06)*. Agrupación por Unidad en `content/unidades/<Unidad X>/` (uniendo teoría y cuestionarios de cada unidad), preservación de subcarpetas en `build/` desde `toolchain/bin/md2pdf` y empaquetado de Artifacts separados por Unidad y Práctica (Modalidad B) en GitHub Actions.
+5. **[05-imagen-docker-toolchain-ghcr.md](specs/05-imagen-docker-toolchain-ghcr.md)** — *Estado: **Implementada** (2026-11-06)*. Creación de `toolchain/Dockerfile` con Pandoc, LuaLaTeX y caché global de `luaotfload` (`/var/cache/texmf-var`) precalentado, e integración con GitHub Container Registry (`ghcr.io/n1krov/asi-toolchain`) en `.github/workflows/editorial-ci.yml`.
 
 ---
 
@@ -69,6 +71,7 @@
 - [x] **Ubicación de `estilo.tex` y normalización Perl en Spec 02**: `estilo.tex` en `toolchain/pandoc/templates/estilo.tex` y motor Perl con normalización `NFKC` de letras matemáticas Unicode.
 - [x] **Tipografía estándar en `toolchain/`**: Embebidas `Libertinus Serif` (texto), `Inter` (títulos) y `JetBrains Mono` (código) directamente en `toolchain/pandoc/fonts/` y cargadas por defecto desde `estilo.tex` + `preambulo.lua` sin depender del gestor de paquetes de cada distribución Linux.
 - [x] **Organización por Unidad y Modalidad de Artifacts en Spec 04**: Implementada **Modalidad B** (Artifacts separados por Unidad y Práctica en GitHub Actions: `Unidad-I` a `Unidad-VI`, `Practica-TP1-Alineamiento` y `Practica-TPI-DVP`) y compilación de **todos** los `.md` de `content/unidades/` y `content/practica/`.
+- [x] **Eliminación de tiempos de instalación de TeX Live en CI/CD (Spec 05)**: Implementada imagen Docker precompilada en GitHub Container Registry (`ghcr.io/n1krov/asi-toolchain`) con caché de fuentes `luaotfload` precalentado.
 
 ### Decisiones pendientes (para Spec 03 - Parte A)
 - [ ] **Numeración oficial 2026 de Unidades II, IV y V (Spec 03)**: confirmar el orden exacto de *Provisión*, *Mantenimiento*, *Desarrollo* y *Seguimiento/Control* en el programa 2026.
@@ -79,11 +82,21 @@
 - [x] Implementar **Spec 02**: construir `toolchain/bin/mdnorm`, `toolchain/bin/md2pdf` (`--pdf`, `--epub`, `--all`) y `toolchain/pandoc/`.
 - [x] Implementar **Spec 03 (Parte B)**: configurar `.github/workflows/editorial-ci.yml` (`lint` + `build` PDF/EPUB + publicación en Artifacts y Releases).
 - [x] Implementar **Spec 04**: reorganizar `content/unidades/<Unidad X>/` (con sus cuestionarios) y estructurar `build/` y los Artifacts de CI por Unidad (Modalidad B).
+- [x] Implementar **Spec 05**: encapsular el entorno Pandoc + LuaLaTeX en `toolchain/Dockerfile` y publicarlo automáticamente en `ghcr.io/n1krov/asi-toolchain`.
 - [ ] Implementar **Spec 03 (Parte A)**: consolidar las unidades teóricas faltantes cuando esté listo el material de estudio.
 
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-06` — Implementación de Spec 05 (Imagen Docker del Toolchain en GHCR)
+
+* **Contexto**: Para evitar demoras de instalación de paquetes `texlive-*` en GitHub Actions por degradación de mirrors de Ubuntu/Azure, desempaquetado de ~30.000 archivos con `dpkg` y regeneración en frío de `luaotfload` y `fmtutil-sys`, se redactó e implementó la **Spec 05**.
+* **Acciones ejecutadas**:
+  * Redacción de `docs/specs/05-imagen-docker-toolchain-ghcr.md`.
+  * Creación de `toolchain/Dockerfile` sobre `ubuntu:24.04` con `Dpkg::Options::="--force-unsafe-io"`, `Acquire::ForceIPv4=true` y precalentamiento del caché global de fuentes (`TEXMFVAR=/var/cache/texmf-var`, `TEXMFCACHE=/var/cache/texmf-var`) compilando las tablas `.luc` de `Libertinus Serif`, `Inter`, `JetBrains Mono`, `Latin Modern Math`, `DejaVu Sans` y `Noto Color Emoji` durante el `docker build`.
+  * Actualización de `.github/workflows/editorial-ci.yml` (`permissions: packages: write`) para calcular un hash determinista (`TAG_HASH`) sobre `toolchain/Dockerfile` y `toolchain/pandoc/`: si `ghcr.io/n1krov/asi-toolchain:<TAG_HASH>` existe en GHCR la descarga en segundos (`docker pull`), y solo si no existe aún (primera ejecución o cambio en `toolchain/`) la construye y publica automáticamente en `ghcr.io`, ejecutando luego `md2pdf` mediante `docker run`.
+  * Actualización de `GEMINI.md`, `README.md`, `toolchain/README.md` y `docs/STATUS.md`.
 
 ### `2026-11-06` — Implementación de Spec 04 (Organización por Unidad y Artifacts Separados en CI/CD)
 

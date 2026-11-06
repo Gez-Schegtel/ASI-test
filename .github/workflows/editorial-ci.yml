@@ -16,6 +16,7 @@ on:
 
 permissions:
   contents: write
+  packages: write
 
 jobs:
   lint:
@@ -76,33 +77,57 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v7
 
-      - name: Instalar Pandoc, LuaLaTeX y fuentes del toolchain
+      - name: Obtener o construir imagen Docker del toolchain (ghcr.io)
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            pandoc \
-            texlive-luatex \
-            texlive-latex-recommended \
-            texlive-latex-extra \
-            texlive-fonts-recommended \
-            texlive-lang-spanish \
-            lmodern \
-            fonts-noto-color-emoji \
-            fonts-dejavu-core
+          set -euo pipefail
+          OWNER="${GITHUB_REPOSITORY_OWNER,,}"
+          IMAGE="ghcr.io/${OWNER}/asi-toolchain"
+          TAG_HASH="$(find toolchain/Dockerfile toolchain/pandoc -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | cut -c1-12)"
+          echo "TOOLCHAIN_IMAGE=${IMAGE}:${TAG_HASH}" >> "$GITHUB_ENV"
+
+          echo "${GITHUB_TOKEN}" | docker login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
+
+          if docker pull "${IMAGE}:${TAG_HASH}"; then
+            echo "✔ Imagen precompilada encontrada en GHCR: ${IMAGE}:${TAG_HASH}"
+          else
+            echo "⚙ Imagen ${IMAGE}:${TAG_HASH} no encontrada en GHCR. Construyendo desde toolchain/Dockerfile..."
+            docker build \
+              -t "${IMAGE}:${TAG_HASH}" \
+              -t "${IMAGE}:latest" \
+              -f toolchain/Dockerfile \
+              toolchain
+
+            if [[ "${GITHUB_EVENT_NAME}" != "pull_request" ]]; then
+              echo "⬆ Publicando imagen en GHCR (${IMAGE}:${TAG_HASH} y :latest)..."
+              docker push "${IMAGE}:${TAG_HASH}"
+              docker push "${IMAGE}:latest"
+            fi
+          fi
 
       - name: Compilar unidades y guías prácticas a PDF y EPUB
         shell: bash
         run: |
           set -euo pipefail
-          mapfile -d '' archivos_compilar < <(
-            find content/unidades content/practica \
-              -type f -name "*.md" ! -name "README.md" -print0 2>/dev/null | sort -z
-          )
-          if (( ${#archivos_compilar[@]} == 0 )); then
-            echo "❌ No se encontraron documentos para compilar."
-            exit 1
-          fi
-          ./toolchain/bin/md2pdf -y --all "${archivos_compilar[@]}"
+          docker run --rm \
+            --user "$(id -u):$(id -g)" \
+            -v "$PWD:/workspace" \
+            -w /workspace \
+            "$TOOLCHAIN_IMAGE" \
+            bash -c '
+              set -euo pipefail
+              mapfile -d "" archivos_compilar < <(
+                find content/unidades content/practica \
+                  -type f -name "*.md" ! -name "README.md" -print0 2>/dev/null | sort -z
+              )
+              if (( ${#archivos_compilar[@]} == 0 )); then
+                echo "❌ No se encontraron documentos para compilar."
+                exit 1
+              fi
+              ./toolchain/bin/md2pdf -y --all "${archivos_compilar[@]}"
+            '
           echo "=== Árbol de artefactos generados en build/ ==="
           find build -type f | sort
 
