@@ -154,7 +154,7 @@ fi
 
 # Helper para calcular la ruta de salida de cada archivo y formato
 calcular_salida() {
-  local archivo="$1" ext="$2" base
+  local archivo="$1" ext="$2" base abs_dir rel_dir
   base="$(basename "${archivo%.*}")"
   if [[ -n "$out_custom" ]]; then
     if [[ -d "$out_custom" || "$out_custom" == */ ]] || (( ${#archivos[@]} > 1 )) || (( gen_pdf && gen_epub )); then
@@ -163,7 +163,19 @@ calcular_salida() {
       printf '%s\n' "$out_custom"
     fi
   else
-    printf '%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$base" "$ext"
+    abs_dir="$(cd "$(dirname "$archivo")" && pwd -P)"
+    if [[ "$abs_dir" == "$REPO_ROOT/content/unidades/"* ]]; then
+      rel_dir="${abs_dir#"$REPO_ROOT/content/unidades/"}"
+      printf '%s/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
+    elif [[ "$abs_dir" == "$REPO_ROOT/content/practica/"* ]]; then
+      rel_dir="${abs_dir#"$REPO_ROOT/content/practica/"}"
+      printf '%s/Practica/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
+    elif [[ "$abs_dir" == "$REPO_ROOT/content/labs/"* ]]; then
+      rel_dir="${abs_dir#"$REPO_ROOT/content/labs/"}"
+      printf '%s/Labs/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
+    else
+      printf '%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$base" "$ext"
+    fi
   fi
 }
 

@@ -4,7 +4,7 @@
 > Este archivo es la **fuente de verdad viva y bitácora histórica** del repositorio de **Administración de Sistemas de Información (ASI)** — UTN FRRe. Debe consultarse al inicio de cada sesión y mantenerse estrictamente actualizado tras cada cambio estructural, de contenido o de *tooling*.
 
 * **Última actualización**: `2026-11-06`
-* **Fase actual**: `Infraestructura Técnica 100% Completada (Specs 01, 02 y 03-Parte B implementadas) -> En espera de material de estudio para Spec 03-Parte A`
+* **Fase actual**: `Infraestructura Técnica y Organización por Unidad 100% Completadas (Specs 01, 02, 03-B y 04 implementadas) -> En espera de material de estudio para Spec 03-Parte A`
 * **Rama activa**: `changes/juani`
 
 ---
@@ -14,15 +14,15 @@
 | Dominio | Ubicación Actual (`AS-IS`) | Ubicación Canónica (`TO-BE`) | Estado Actual |
 | :--- | :--- | :--- | :--- |
 | Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
-| Estado vivo y specs | `docs/STATUS.md` + `docs/specs/` | `docs/STATUS.md` + `docs/specs/` | **Specs 01, 02 y 03-B implementadas**; Spec 03-A a la espera de material |
+| Estado vivo y specs | `docs/STATUS.md` + `docs/specs/` | `docs/STATUS.md` + `docs/specs/` | **Specs 01, 02, 03-B y 04 implementadas**; Spec 03-A a la espera de material |
 | Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
-| Apuntes teóricos | `content/unidades/` | `content/unidades/` | **Migrado y normalizado** (U. III y VI listas; U. I en borradores) |
-| Trabajos prácticos y guías | `content/practica/` (`tpi-dvp/`, `tp1-alineamiento/`, `cuestionarios/`) | `content/practica/` | **Migrado y 100% en `.md`** |
+| Apuntes y cuestionarios por Unidad | `content/unidades/` (`Unidad I/`, `Unidad III/`, `Unidad VI/`) | `content/unidades/<Unidad X>/` | **Organizado por Unidad y normalizado** |
+| Trabajos prácticos y guías | `content/practica/` (`tpi-dvp/`, `tp1-alineamiento/`) | `content/practica/` | **Migrado y 100% en `.md`** |
 | Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
 | Recursos gráficos | `assets/` (307 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
-| Toolchain editorial | `toolchain/bin/` (`mdnorm`, `md2pdf`) y `toolchain/pandoc/` | `toolchain/bin/` y `toolchain/pandoc/` | **Implementado y validado** (PDF LuaLaTeX + EPUB3) |
+| Toolchain editorial | `toolchain/bin/` (`mdnorm`, `md2pdf`) y `toolchain/pandoc/` | `toolchain/bin/` y `toolchain/pandoc/` | **Implementado y validado** (salida jerárquica en `build/`) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
-| Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado y validado localmente** (`lint` + `build` + Releases) |
+| Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con Artifacts por Unidad (Modalidad B)** |
 
 ### Métricas Auditadas del Árbol Actual (Post-Spec 02)
 
@@ -40,15 +40,14 @@
 
 | Componente / Unidad | Tema Principal | Ubicación Actual | Estado Editorial |
 | :--- | :--- | :--- | :--- |
-| **Unidad I** | Los SI en la Empresa, Cadena de Valor y Estrategia SI/TI | `content/unidades/unidad-1-borradores/` + `legacy/archivo-2025/2025/par_1/u1/` | En borradores (4 `.md` en `unidad-1-borradores/`, incluye cátedra convertido) |
+| **Unidad I** | Los SI en la Empresa, Cadena de Valor y Estrategia SI/TI | `content/unidades/Unidad I/` + `legacy/archivo-2025/2025/par_1/u1/` | Cuestionario resuelto en raíz + 4 borradores en `Unidad I/borradores/` |
 | **Unidad II** | Subsistema de Provisión (RRHH y SI/TI) *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u4/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64 y PDFs pasados a `.md`) |
-| **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `content/unidades/Unidad III - Subsistema de Aplicación.md` | **Consolidado, normalizado y compilación PDF/EPUB validada** |
+| **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `content/unidades/Unidad III/` | **Completa** (Apunte teórico + Cuestionario resuelto + Enunciado) |
 | **Unidad IV** | Mantenimiento y Desarrollo de RRHH *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u6/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64) |
 | **Unidad V** | Subsistema de Seguimiento / Control (Monitores, Benchmarking, Amdahl) | `legacy/archivo-2025/2025/par_1/u2/` | Fragmentado |
-| **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/Unidad VI - Seguridad y Auditoría.md` | **Consolidado, normalizado y compilación PDF/EPUB validada** |
+| **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/Unidad VI/` | **Completa** (Apunte teórico + Cuestionario resuelto + Enunciado) |
 | **TPI (DVP)** | Caso Dirección de Vialidad Provincial del Chaco (ERP, GeoVial, SiCC) | `content/practica/tpi-dvp/` | **Completo en `.md`** (`Explicación del TPI.md` + `TPI Parte 2.md`) |
 | **TP1 Alineamiento** | Guías, presentaciones y consignas del TP1 de Alineamiento Estratégico | `content/practica/tp1-alineamiento/` | **Completo en `.md`** (9 archivos `.md`) |
-| **Cuestionarios** | Enunciados y resoluciones de Unidad I, Aplicación de Recursos y Seguridad | `content/practica/cuestionarios/` | **Completos en `.md`** (5 archivos `.md`) |
 | **Lab Checkmk** | Monitoreo con Checkmk Raw 2.3 en Docker + `http_ping.py` | `content/labs/cmk/` y `content/labs/taller-1/` | **Migrado y funcional** |
 
 ---
@@ -58,6 +57,7 @@
 1. **[01-reestructuracion-y-resguardo-legacy.md](specs/01-reestructuracion-y-resguardo-legacy.md)** — *Estado: **Implementada** (2026-11-06)*. Resguardo en `legacy/`, migración a `content/` y `assets/`, conversión de los 14 PDFs/DOCX de cátedra a `.md` (Opción A), extracción de las 62 imágenes Base64 y nuevo `.gitignore`.
 2. **[02-unificacion-toolchain-pandoc.md](specs/02-unificacion-toolchain-pandoc.md)** — *Estado: **Implementada** (2026-11-06)*. Construcción de `toolchain/bin/mdnorm`, `toolchain/bin/md2pdf` (`--pdf`, `--epub`, `--all`), `toolchain/pandoc/` (`defaults/`, `fonts/`, `templates/`, `filters/`) y `toolchain/README.md`, 100% autocontenido y con `Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en `toolchain/pandoc/fonts/`.
 3. **[03-consolidacion-unidades-y-ci-cd.md](specs/03-consolidacion-unidades-y-ci-cd.md)** — *Estado: **Parte B (CI/CD) implementada** (2026-11-06); **Parte A (Unidades faltantes)** en espera de material de estudio*. Pipeline `.github/workflows/editorial-ci.yml` activo para `lint` (`mdnorm --check` + control de binarios/Base64) y `build` (`md2pdf --all` -> Artifacts y GitHub Releases).
+4. **[04-organizacion-unidades-y-artefactos.md](specs/04-organizacion-unidades-y-artefactos.md)** — *Estado: **Implementada** (2026-11-06)*. Agrupación por Unidad en `content/unidades/<Unidad X>/` (uniendo teoría y cuestionarios de cada unidad), preservación de subcarpetas en `build/` desde `toolchain/bin/md2pdf` y empaquetado de Artifacts separados por Unidad y Práctica (Modalidad B) en GitHub Actions.
 
 ---
 
@@ -68,20 +68,34 @@
 - [x] **Archivo histórico `2025/` y `APUNTE 2 parcial.md`**: Alojados en `legacy/archivo-2025/` limpios de Base64 y binarios.
 - [x] **Ubicación de `estilo.tex` y normalización Perl en Spec 02**: `estilo.tex` en `toolchain/pandoc/templates/estilo.tex` y motor Perl con normalización `NFKC` de letras matemáticas Unicode.
 - [x] **Tipografía estándar en `toolchain/`**: Embebidas `Libertinus Serif` (texto), `Inter` (títulos) y `JetBrains Mono` (código) directamente en `toolchain/pandoc/fonts/` y cargadas por defecto desde `estilo.tex` + `preambulo.lua` sin depender del gestor de paquetes de cada distribución Linux.
+- [x] **Organización por Unidad y Modalidad de Artifacts en Spec 04**: Implementada **Modalidad B** (Artifacts separados por Unidad y Práctica en GitHub Actions: `Unidad-I` a `Unidad-VI`, `Practica-TP1-Alineamiento` y `Practica-TPI-DVP`) y compilación de **todos** los `.md` de `content/unidades/` y `content/practica/`.
 
-### Decisiones pendientes (para Spec 03)
-- [ ] **Numeración oficial 2026 de Unidades II, IV y V**: confirmar el orden exacto de *Provisión*, *Mantenimiento*, *Desarrollo* y *Seguimiento/Control* en el programa 2026.
+### Decisiones pendientes (para Spec 03 - Parte A)
+- [ ] **Numeración oficial 2026 de Unidades II, IV y V (Spec 03)**: confirmar el orden exacto de *Provisión*, *Mantenimiento*, *Desarrollo* y *Seguimiento/Control* en el programa 2026.
 
 ### Próximas tareas técnicas en cola
 - [x] Ejecutar **Fase 0 (Spec 01)**: crear `legacy/` y resguardar `script conversor/`, `script normalizador/`, `estilos/` y `2026/herramientas/`.
 - [x] Ejecutar **Fases 1 a 3 (Spec 01)**: migrar a `content/` y `assets/`, convertir los 14 documentos de cátedra a `.md`, extraer las 62 imágenes Base64 de `APUNTE 2 parcial.md` y aplicar el nuevo `.gitignore`.
 - [x] Implementar **Spec 02**: construir `toolchain/bin/mdnorm`, `toolchain/bin/md2pdf` (`--pdf`, `--epub`, `--all`) y `toolchain/pandoc/`.
 - [x] Implementar **Spec 03 (Parte B)**: configurar `.github/workflows/editorial-ci.yml` (`lint` + `build` PDF/EPUB + publicación en Artifacts y Releases).
+- [x] Implementar **Spec 04**: reorganizar `content/unidades/<Unidad X>/` (con sus cuestionarios) y estructurar `build/` y los Artifacts de CI por Unidad (Modalidad B).
 - [ ] Implementar **Spec 03 (Parte A)**: consolidar las unidades teóricas faltantes cuando esté listo el material de estudio.
 
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-06` — Implementación de Spec 04 (Organización por Unidad y Artifacts Separados en CI/CD)
+
+* **Contexto**: A fin de evitar que todos los artefactos se generen mezclados en una única carpeta plana y que los cuestionarios estén separados de sus unidades teóricas, se redactó e implementó la **Spec 04** con **Modalidad B** y compilación de todos los documentos de `content/unidades/` y `content/practica/`.
+* **Acciones ejecutadas**:
+  * **Reorganización de `content/unidades/`**:
+    * `content/unidades/Unidad I/`: `Unidad I - Cuestionario de Autoestudio - Resolución.md` + `borradores/` (4 archivos).
+    * `content/unidades/Unidad III/`: `Unidad III - Subsistema de Aplicación.md`, `Aplicación de recursos - Resolución.md` y `AdmSI-CUESTIONARIOS APLICACIÓN DE RECURSOS.md`.
+    * `content/unidades/Unidad VI/`: `Unidad VI - Seguridad y Auditoría.md`, `Seguridad y auditoría - Resolución.md` y `AdmSI-CUESTIONARIOS DE ESTUDIO - SEGURIDAD Y AUDITORIA DE SI-TI.md`.
+    * Ejecución de `toolchain/bin/mdnorm -y` para actualizar automáticamente todas las rutas relativas hacia `assets/` (`../../../assets/`).
+  * **Preservación de jerarquía en `toolchain/bin/md2pdf`**: actualización de `calcular_salida()` para que genere los PDFs y EPUBs respetando la subcarpeta de la Unidad (`build/Unidad I/`, `build/Unidad III/`, `build/Unidad VI/`) y de Práctica (`build/Practica/tp1-alineamiento/`, `build/Practica/tpi-dvp/`).
+  * **Modalidad B en `.github/workflows/editorial-ci.yml`**: compilación paralela (`xargs -P $(nproc)`) de todos los `.md` de `content/unidades/` y `content/practica/`, y publicación de Artifacts individuales descargables por cada Unidad (`Unidad-I` a `Unidad-VI`) y trabajo práctico (`Practica-TP1-Alineamiento`, `Practica-TPI-DVP`).
 
 ### `2026-11-06` — Implementación de Spec 03 - Parte B (`.github/workflows/editorial-ci.yml`)
 

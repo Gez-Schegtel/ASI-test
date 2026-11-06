@@ -94,23 +94,98 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          shopt -s nullglob
-          archivos_compilar=(
-            content/unidades/*.md
-            content/practica/cuestionarios/*Resolución*.md
-            content/practica/tpi-dvp/*.md
-            content/practica/tp1-alineamiento/TP1*.md
-          )
-          ./toolchain/bin/md2pdf -y --all "${archivos_compilar[@]}"
-          ls -lh build/
+          luaotfload-tool --update
+          find content/unidades content/practica -type f -name "*.md" -print0 \
+            | sort -z \
+            | xargs -0 -n 1 -P "$(nproc)" ./toolchain/bin/md2pdf -y --all
+          echo "=== Árbol de artefactos generados en build/ ==="
+          find build -type f | sort
 
-      - name: Subir artefactos generados (PDF + EPUB)
+      - name: Publicar Artefactos — Unidad I
+        if: hashFiles('build/Unidad I/**') != ''
         uses: actions/upload-artifact@v7
         with:
-          name: apuntes-asi-pdf-epub
+          name: Unidad-I
           path: |
-            build/*.pdf
-            build/*.epub
+            build/Unidad I/**/*.pdf
+            build/Unidad I/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Unidad II
+        if: hashFiles('build/Unidad II/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Unidad-II
+          path: |
+            build/Unidad II/**/*.pdf
+            build/Unidad II/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Unidad III
+        if: hashFiles('build/Unidad III/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Unidad-III
+          path: |
+            build/Unidad III/**/*.pdf
+            build/Unidad III/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Unidad IV
+        if: hashFiles('build/Unidad IV/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Unidad-IV
+          path: |
+            build/Unidad IV/**/*.pdf
+            build/Unidad IV/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Unidad V
+        if: hashFiles('build/Unidad V/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Unidad-V
+          path: |
+            build/Unidad V/**/*.pdf
+            build/Unidad V/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Unidad VI
+        if: hashFiles('build/Unidad VI/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Unidad-VI
+          path: |
+            build/Unidad VI/**/*.pdf
+            build/Unidad VI/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Práctica TP1 (Alineamiento SI/TI)
+        if: hashFiles('build/Practica/tp1-alineamiento/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Practica-TP1-Alineamiento
+          path: |
+            build/Practica/tp1-alineamiento/**/*.pdf
+            build/Practica/tp1-alineamiento/**/*.epub
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publicar Artefactos — Práctica TPI (Vialidad Provincial - DVP)
+        if: hashFiles('build/Practica/tpi-dvp/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: Practica-TPI-DVP
+          path: |
+            build/Practica/tpi-dvp/**/*.pdf
+            build/Practica/tpi-dvp/**/*.epub
           if-no-files-found: error
           retention-days: 30
 
@@ -119,6 +194,6 @@ jobs:
         uses: softprops/action-gh-release@v3.0.4
         with:
           files: |
-            build/*.pdf
-            build/*.epub
+            build/**/*.pdf
+            build/**/*.epub
           generate_release_notes: true

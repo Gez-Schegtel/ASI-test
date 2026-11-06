@@ -41,36 +41,36 @@ Corrige automáticamente los detalles de sintaxis que hacen que Pandoc interpret
 
 ```bash
 # Normalizar un apunte de forma interactiva (pregunta antes de guardar)
-./toolchain/bin/mdnorm "content/unidades/Unidad III - Subsistema de Aplicación.md"
+./toolchain/bin/mdnorm "content/unidades/Unidad III/Unidad III - Subsistema de Aplicación.md"
 
 # Ver el detalle línea por línea de los cambios propuestos (-v / --verbose)
-./toolchain/bin/mdnorm -v "content/unidades/Unidad VI - Seguridad y Auditoría.md"
+./toolchain/bin/mdnorm -v "content/unidades/Unidad VI/Unidad VI - Seguridad y Auditoría.md"
 
 # Normalizar y guardar directamente sin pedir confirmación (-y / --yes)
-./toolchain/bin/mdnorm -y content/unidades/*.md
+./toolchain/bin/mdnorm -y "content/unidades/Unidad III/"*.md
 
 # Modo auditoría para CI (--check / -n): no modifica archivos y devuelve exit 1 si algo falla
-./toolchain/bin/mdnorm --check content/unidades/*.md content/practica/**/*.md
+find content -type f -name "*.md" -print0 | xargs -0 ./toolchain/bin/mdnorm --check
 ```
 
 ---
 
 ## 3. Uso de `toolchain/bin/md2pdf` (Compilador a PDF y EPUB3)
 
-Toma uno o varios archivos `.md`, traduce en memoria la sintaxis de Obsidian (`![[...]]`, `|400`, `|derecha`, `[[wikilinks]]`, callouts `> [!NOTE]`, letras matemáticas Unicode) y genera los documentos en la carpeta `build/` de la raíz del repositorio (la cual está ignorada en `.gitignore`).
+Toma uno o varios archivos `.md`, traduce en memoria la sintaxis de Obsidian (`![[...]]`, `|400`, `|derecha`, `[[wikilinks]]`, callouts `> [!NOTE]`, letras matemáticas Unicode) y genera los documentos preservando la carpeta de la Unidad o Práctica dentro de `build/` en la raíz del repositorio (la cual está ignorada en `.gitignore`).
 
 ```bash
-# Generar PDF (por defecto en build/<nombre>.pdf)
-./toolchain/bin/md2pdf -y "content/unidades/Unidad III - Subsistema de Aplicación.md"
+# Generar PDF (por defecto en build/Unidad III/<nombre>.pdf)
+./toolchain/bin/md2pdf -y "content/unidades/Unidad III/Unidad III - Subsistema de Aplicación.md"
 
-# Generar EPUB3 (en build/<nombre>.epub)
-./toolchain/bin/md2pdf -y --epub "content/unidades/Unidad III - Subsistema de Aplicación.md"
+# Generar EPUB3 (en build/Unidad III/<nombre>.epub)
+./toolchain/bin/md2pdf -y --epub "content/unidades/Unidad III/Unidad III - Subsistema de Aplicación.md"
 
-# Generar PDF y EPUB3 simultáneamente en una sola pasada (--all)
-./toolchain/bin/md2pdf -y --all content/unidades/*.md
+# Generar PDF y EPUB3 simultáneamente de toda una Unidad (--all)
+./toolchain/bin/md2pdf -y --all "content/unidades/Unidad III/"*.md
 
 # Especificar un archivo o carpeta de salida personalizada (-o / --output)
-./toolchain/bin/md2pdf -y -o build/unidades/ content/unidades/*.md
+./toolchain/bin/md2pdf -y -o build/custom/ "content/unidades/Unidad VI/"*.md
 ```
 
 ---

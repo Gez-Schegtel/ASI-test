@@ -75,9 +75,9 @@ Dicha falla es una pérdida de uno o más de los siguientes **tres aspectos** de
 
 De esta definición se desprende que las organizaciones necesitan **administrar el riesgo** de exposición de cada uno de los elementos de los IS. **Este management deberá considerar el equilibrio entre los costos resultantes de una falla de seguridad y los costos de las medidas necesarias para aumentar la seguridad.** El punto central es identificar el equilibrio óptimo.
 
-![](../../assets/Pasted%20image%2020261024191753.png)
+![](../../../assets/Pasted%20image%2020261024191753.png)
 
-![](../../assets/Pasted%20image%2020261024191758.png)
+![](../../../assets/Pasted%20image%2020261024191758.png)
 
 El costo de no tener seguridad puede ser difícil de definir, aun cuando las fallas ocurran. El management del riesgo intenta reducir estas pérdidas. **Un enfoque sistemático del management del riesgo permitirá administrar la seguridad de los IS reconociendo la vulnerabilidad y la sensibilidad de los sistemas de la empresa y de los datos que contienen, pero también los costos de los controles y de las medidas para el manejo de riesgos.** **Ningún sistema puede ser completamente seguro.** El management permite elegir e implementar las contramedidas de forma planificada y administrada.
 
@@ -130,9 +130,9 @@ La vulnerabilidad de un área en particular depende de los siguientes factores:
 - El tamaño de la red.
 - La calidad de la transmisión de datos.
 
-![](../../assets/Pasted%20image%2020261024191812.png)
+![](../../../assets/Pasted%20image%2020261024191812.png)
 
-![](../../assets/Pasted%20image%2020261024191819.png)
+![](../../../assets/Pasted%20image%2020261024191819.png)
 
 Los activos vulnerables a pérdidas debido a una amenaza pueden ser:
 
@@ -179,7 +179,7 @@ El análisis del impacto potencial (es decir, para cada riesgo identificado, la 
 1. La primera evalúa los costos empresariales que surgen de una brecha de seguridad. Esta evaluación debería incluir, al menos de modo aproximado, cálculos financieros, incluso para los costos conceptuales. Existe un gran número de aspectos relacionados con las pérdidas potenciales provenientes de una falla de seguridad.
 2. A esto se le suma la posibilidad calculada de que suceda: la segunda etapa consiste en estimar la frecuencia de ocurrencia de cualquier falla de seguridad a partir de la probabilidad de agresión y de la probabilidad de que la agresión prospere (se entiende por agresión cualquier falla en la seguridad, no necesariamente un abuso humano deliberado).
 
-![](../../assets/Pasted%20image%2020261024191832.png)
+![](../../../assets/Pasted%20image%2020261024191832.png)
 
 El producto del costo y la frecuencia da como resultado la pérdida anual esperada para cada amenaza:
 
@@ -197,16 +197,16 @@ Todas las pérdidas que resultan de una falla de seguridad se relacionan con los
 
 Para evaluar la magnitud de la pérdida resultante de una falla de seguridad se deben considerar las **pérdidas directas (o consecuencias primarias)**, es decir, aquellas que se desprenden directamente —y, por lo general, de forma inmediata— de un problema de seguridad.
 
-![*Consecuencias primarias.*](../../assets/Pasted%20image%2020261024191841.png)
+![*Consecuencias primarias.*](../../../assets/Pasted%20image%2020261024191841.png)
 
 No todas las pérdidas empresariales son el resultado directo de una falla de seguridad. Las **pérdidas secundarias** (que surgen como consecuencia de las pérdidas primarias y no de la falla en sí misma) tienen gran importancia en el cálculo de las pérdidas.
 
-![](../../assets/Pasted%20image%2020261024191855.png)
+![](../../../assets/Pasted%20image%2020261024191855.png)
 
 Si las consecuencias primarias son difíciles de cuantificar, aún más difícil es evaluar las secundarias, que tienden a ser más costosas que las pérdidas directas y, como son costos empresariales, por lo general aparecen después de un largo tiempo. Pocas veces resulta práctico asignar valores monetarios detallados a las consecuencias secundarias; en su lugar, se utilizan clasificaciones cualitativas.
 
 
-![*Consecuencias secundarias.*](../../assets/Pasted%20image%2020261024191901.png)
+![*Consecuencias secundarias.*](../../../assets/Pasted%20image%2020261024191901.png)
 
 
 **La magnitud de la pérdida total de una falla de seguridad es la suma de las consecuencias primarias y secundarias.** Si se logran minimizar las consecuencias primarias, la ganancia es doble, porque al reducirse las pérdidas primarias también se minimizan las secundarias.
@@ -344,7 +344,7 @@ Los términos relacionados con estas etapas son:
 
 El primer paso de la planificación de contingencias consiste en clasificar los sistemas y las aplicaciones según la necesidad de las operaciones empresariales (***grado de tolerancia***). Esta clasificación permite establecer prioridades entre los elementos de los IS. El plan de recuperación debe cubrir todos los aspectos del uso y del management de los SI.
 
-![](../../assets/Pasted%20image%2020261024191926.png)
+![](../../../assets/Pasted%20image%2020261024191926.png)
 
 Las organizaciones con un alto nivel de automatización están sometidas a mayores riesgos que las escasamente mecanizadas: tendrán mayores dificultades para restaurar sus procedimientos y, además, menor capacidad para procesar sus datos.
 
@@ -510,7 +510,7 @@ Cualquier política debe contemplar seis elementos clave de la seguridad de un s
 4. **Fase de eliminación**:
     1. **Retiro**: una vez que la política cumplió su finalidad y ya no es necesaria (por ejemplo, por grandes avances tecnológicos), debe retirarse.
 
-![](../../assets/Pasted%20image%2020261024191945.png)
+![](../../../assets/Pasted%20image%2020261024191945.png)
 
 ## Clasificación y tipos de ataques contra sistemas de información
 
@@ -739,9 +739,9 @@ El **programa de auditoría** es un conjunto de instrucciones que guía a los au
 
 ## **Pasos para la ejecución de una auditoría de sistemas de información**
 
-![](../../assets/Pasted%20image%2020261024192019.png)
+![](../../../assets/Pasted%20image%2020261024192019.png)
 
-![](../../assets/Pasted%20image%2020261024192026.png)
+![](../../../assets/Pasted%20image%2020261024192026.png)
 
 Entre los aspectos que el auditor de sistemas de información debe considerar al planificar se encuentran los siguientes:
 
@@ -769,7 +769,7 @@ Estos riesgos también tienen una implicancia material, es decir, económica.
 
 Una vez finalizada la planificación, y antes de ejecutar la auditoría, quedarán definidos el tema y el área que se auditará, el objetivo de la auditoría, su alcance (uno o varios sistemas, o un periodo determinado), las habilidades técnicas y los recursos necesarios, y las fuentes de información para ejecutar pruebas y revisiones. La figura indica los pasos que deben desarrollarse:
 
-![](../../assets/Gemini_Generated_Image_2fru1d2fru1d2fru.jpeg)
+![](../../../assets/Gemini_Generated_Image_2fru1d2fru1d2fru.jpeg)
 
 ## La importancia de los procedimientos (Soria Ojeda)
 
@@ -1208,7 +1208,7 @@ Auditoría externa informática:
 2. **Trabajo de campo y documentación:** corresponde al **paso 3** (ejecución del programa de revisión), donde se sale a aplicar la planificación y se documentan las fuentes de evidencia (algo que se está separando de la norma).
 3. **Reporte y seguimiento:** abarca los **pasos 4, 5 y 6**, ya que el reporte comprende el cierre de la revisión y la elaboración del informe final, seguido de la verificación posterior de las recomendaciones.
 
-![](../../assets/Pasted%20image%2020261024192225.png)
+![](../../../assets/Pasted%20image%2020261024192225.png)
 
 ### Importancia de procedimientos
 
@@ -1571,7 +1571,7 @@ El enfoque de Mario Piattini sobre la **auditoría del desarrollo** de software 
 - **Cobertura del ciclo de vida del software**: la auditoría del desarrollo incluye todo el ciclo de vida del software (análisis, diseño, construcción e implantación), pero no considera las fases de explotación, mantenimiento o retirada del servicio.
 - **Metodología basada en ISACA**: Piattini adopta el enfoque de evaluación de riesgos propuesto por la ISACA. Parte de los riesgos potenciales y define objetivos de control específicos, asociados a técnicas y pruebas de cumplimiento.
 
-    ![](../../assets/Pasted%20image%2020261024192457.png)
+    ![](../../../assets/Pasted%20image%2020261024192457.png)
 
     > Observar la fuente (ISACA).
 

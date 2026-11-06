@@ -11,13 +11,13 @@ Mantenido como bóveda de **Obsidian** y optimizado para compilación editorial 
 ```text
 ASI/
 ├── content/
-│   ├── unidades/           <- Apuntes teóricos consolidados (Unidades I a VI)
-│   ├── practica/           <- TPI (Vialidad Provincial - DVP), TP1 y cuestionarios de autoestudio
+│   ├── unidades/           <- Apuntes teóricos y cuestionarios organizados por Unidad (Unidad I a VI)
+│   ├── practica/           <- TPI (Vialidad Provincial - DVP) y TP1 (Alineamiento de SI/TI)
 │   └── labs/               <- Laboratorios prácticos y talleres (Checkmk, monitoreo)
 ├── assets/                 <- Almacén único de imágenes, diagramas y recursos gráficos
 ├── toolchain/
 │   ├── bin/                <- Ejecutables autocontenidos (mdnorm y md2pdf)
-│   └── pandoc/             <- Defaults YAML, plantillas LaTeX/CSS y filtros Lua
+│   └── pandoc/             <- Defaults YAML, fuentes embebidas, plantillas LaTeX/CSS y filtros Lua
 ├── docs/
 │   ├── STATUS.md           <- Estado vivo y bitácora histórica del repositorio
 │   └── specs/              <- Especificaciones técnicas de arquitectura, toolchain y CI/CD
@@ -34,10 +34,10 @@ ASI/
 * **Normalizar y compilar apuntes a PDF / EPUB3**:
   ```bash
   # Normalizar formato de un apunte
-  ./toolchain/bin/mdnorm "content/unidades/Unidad III - Subsistema de Aplicación.md"
+  ./toolchain/bin/mdnorm "content/unidades/Unidad III/Unidad III - Subsistema de Aplicación.md"
 
-  # Compilar a PDF y EPUB3 en build/
-  ./toolchain/bin/md2pdf -y --all content/unidades/*.md
+  # Compilar una unidad completa a PDF y EPUB3 en build/Unidad III/
+  ./toolchain/bin/md2pdf -y --all "content/unidades/Unidad III/"*.md
   ```
   Consultá [`toolchain/README.md`](toolchain/README.md) para ver el detalle de dependencias y opciones.
 * **Estado del proyecto y hoja de ruta**: Consultá [`docs/STATUS.md`](docs/STATUS.md) para ver el avance de cada unidad y las especificaciones técnicas en [`docs/specs/`](docs/specs/).
