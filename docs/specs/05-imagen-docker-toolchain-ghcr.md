@@ -66,4 +66,4 @@ En el job `build`:
 
 * **Reducción del tiempo de preparación del entorno**: de varios minutos (o más de una hora ante degradación de mirrors de Azure) a **~8–15 segundos** (`docker pull`).
 * **Eliminación del tiempo de arranque de `luaotfload`**: la compilación del primer PDF ya no demora en generar la base de datos de fuentes ni las tablas `.luc`.
-* **Portabilidad local**: cualquier colaborador puede construir o descargar la imagen `ghcr.io/n1krov/asi-toolchain:latest` para compilar los apuntes en su máquina sin instalar TeX Live en su sistema anfitrión.
+* **Portabilidad local**: cualquier colaborador puede construir o descargar la imagen `ghcr.io/gez-schegtel/asi-toolchain:latest` para compilar los apuntes en su máquina sin instalar TeX Live en su sistema anfitrión.

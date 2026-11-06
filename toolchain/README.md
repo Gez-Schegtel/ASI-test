@@ -12,7 +12,7 @@ Pipeline unificado de normalización, linteo y compilación de apuntes en Markdo
 ```text
 toolchain/
 ├── README.md                        <- Esta documentación
-├── Dockerfile                       <- Imagen Docker precompilada (ghcr.io/n1krov/asi-toolchain) con caché de luaotfload
+├── Dockerfile                       <- Imagen Docker precompilada (ghcr.io/gez-schegtel/asi-toolchain) con caché de luaotfload
 ├── bin/
 │   ├── mdnorm                       <- Linter y normalizador de Markdown (Bash + Perl)
 │   └── md2pdf                       <- Compilador unificado a PDF y EPUB3 (Bash + Perl + Pandoc)
@@ -80,12 +80,12 @@ Toma uno o varios archivos `.md`, traduce en memoria la sintaxis de Obsidian (`!
 
 ### Opción A: Usar la imagen Docker precompilada (CI/CD y uso local sin instalar TeX Live)
 
-El repositorio cuenta con `toolchain/Dockerfile` y publica automáticamente la imagen `ghcr.io/n1krov/asi-toolchain:latest` con Pandoc, LuaLaTeX y el caché de fuentes de `luaotfload` ya precalentado:
+El repositorio cuenta con `toolchain/Dockerfile` y publica automáticamente la imagen `ghcr.io/gez-schegtel/asi-toolchain:latest` con Pandoc, LuaLaTeX y el caché de fuentes de `luaotfload` ya precalentado:
 
 ```bash
 # Compilar usando el contenedor sin instalar TeX Live en el sistema anfitrión
 docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/workspace" -w /workspace \
-  ghcr.io/n1krov/asi-toolchain:latest \
+  ghcr.io/gez-schegtel/asi-toolchain:latest \
   ./toolchain/bin/md2pdf -y --all "content/unidades/Unidad III/"*.md
 ```
 

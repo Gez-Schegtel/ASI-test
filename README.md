@@ -1,6 +1,6 @@
 # Administración de Sistemas de Información (ASI-test)
 
-[![Editorial CI/CD (PDF & EPUB)](https://github.com/Gez-Schegtel/ASI-test-test/actions/workflows/editorial-ci.yml/badge.svg)](https://github.com/Gez-Schegtel/ASI-test/actions/workflows/editorial-ci.yml)
+[![Editorial CI/CD (PDF & EPUB)](https://github.com/Gez-Schegtel/ASI-test/actions/workflows/editorial-ci.yml/badge.svg)](https://github.com/Gez-Schegtel/ASI-test/actions/workflows/editorial-ci.yml)
 
 Repositorio colaborativo y fuente de verdad canónica de apuntes, trabajos prácticos y laboratorios de **Administración de Sistemas de Información (ASI-test)** — Ingeniería en Sistemas de Información (UTN FRRe).
 
@@ -36,7 +36,7 @@ ASI-test/
 │   └── labs/               <- Laboratorios prácticos y talleres (Checkmk, monitoreo)
 ├── assets/                 <- Almacén único de imágenes, diagramas y recursos gráficos
 ├── toolchain/
-│   ├── Dockerfile          <- Imagen precompilada (ghcr.io/Gez-Schegtel/asi-toolchain) con Pandoc y LuaLaTeX
+│   ├── Dockerfile          <- Imagen precompilada (ghcr.io/gez-schegtel/asi-toolchain) con Pandoc y LuaLaTeX
 │   ├── bin/                <- Ejecutables autocontenidos (mdnorm y md2pdf)
 │   └── pandoc/             <- Defaults YAML, fuentes embebidas, plantillas LaTeX/CSS y filtros Lua
 ├── docs/
@@ -57,7 +57,7 @@ Si querés leer desde las fuentes en Markdown, colaborar en los apuntes o genera
 * **Compilar usando la imagen Docker del repositorio (sin instalar TeX Live)**:
   ```bash
   docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/workspace" -w /workspace \
-    ghcr.io/Gez-Schegtel/asi-toolchain:latest \
+    ghcr.io/gez-schegtel/asi-toolchain:latest \
     ./toolchain/bin/md2pdf -y --all "content/unidades/Unidad III/"*.md
   ```
 * **Normalizar y compilar de forma nativa**:
