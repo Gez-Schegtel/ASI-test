@@ -688,7 +688,7 @@ Consideraremos dos tipos de management, ***el management (o gestión) de computa
 
 ![](../../../assets/u1i27.png)
 
-<sub>*Fuente: Robson, **Strategic Management and Information Systems**, cap. 7, Fig. 7.4: Costos de IS.*</sub>
+<sub>*Fuente: Robson, **Planteo de estrategias efectivas de sistemas de información** (tomo 3), cap. 7, Fig. 7.4: Costos de IS.*</sub>
 
 > 📝 **Apunte de clase:** los gerentes suelen ir más por el lado del management de computación. En el management de información, el capital son los sistemas, que se pueden convertir en una ventaja competitiva.
 
@@ -720,13 +720,13 @@ Si en la siguiente figura A y B son sistemas reales, existe una cantidad ***medi
 
 ![](../../../assets/u1i28.png)
 
-<sub>*Fuente: Robson, **Strategic Management and Information Systems**, cap. 7, Fig. 7.15: La eficiencia solo depende del costo del medio que se utilice.*</sub>
+<sub>*Fuente: Robson, **Planteo de estrategias efectivas de sistemas de información** (tomo 3), cap. 7, Fig. 7.15: La eficiencia solo depende del costo del medio que se utilice.*</sub>
 
 En el siguiente gráfico se ilustra el beneficio de los IS como resultado de un balance entre los costos y el valor obtenido.
 
 ![](../../../assets/u1i29.png)
 
-<sub>*Fuente: Robson, **Strategic Management and Information Systems**, cap. 7, Fig. 7.16: Balance de costos y beneficios.*</sub>
+<sub>*Fuente: Robson, **Planteo de estrategias efectivas de sistemas de información** (tomo 3), cap. 7, Fig. 7.16: Balance de costos y beneficios.*</sub>
 
 📝 *Apunte de clase:*
 
@@ -746,7 +746,7 @@ Debemos justificar los beneficios e indicar a qué nivel organizacional apunta d
 
 ![](../../../assets/u1i30.png)
 
-<sub>*Fuente: Robson, **Strategic Management and Information Systems**, cap. 7, Fig. 7.17: Beneficio genérico del negocio y nivel organizacional.*</sub>
+<sub>*Fuente: Robson, **Planteo de estrategias efectivas de sistemas de información** (tomo 3), cap. 7, Fig. 7.17: Beneficio genérico del negocio y nivel organizacional.*</sub>
 
 > 📝 **Apunte de clase:** cuando el beneficio está a nivel operativo, estoy en la eficiencia.
 > Cuando el beneficio está a nivel táctico, estoy en la efectividad (logro de resultados).

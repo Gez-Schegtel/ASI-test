@@ -271,7 +271,7 @@ Las tres eras de la información las distinguen Silk y Tapscott y Caston; la den
 
 ![](../../../assets/u1i30.png)
 
-<sub>*Fuente: Robson, cap. 7, Fig. 7.17: Beneficio genérico del negocio y nivel organizacional.*</sub>
+<sub>*Fuente: Robson, **Planteo de estrategias efectivas de sistemas de información** (tomo 3), cap. 7, Fig. 7.17: Beneficio genérico del negocio y nivel organizacional.*</sub>
 
 # 10. ¿Cómo se clasifican los factores generadores de valor de la información, según la Economía de la Información?
 
