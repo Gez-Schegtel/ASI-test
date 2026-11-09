@@ -113,7 +113,7 @@ docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/workspace" -w /workspace \
 sudo apt install bash perl pandoc \
   texlive-luatex texlive-latex-recommended texlive-latex-extra \
   texlive-fonts-recommended texlive-lang-spanish \
-  lmodern fonts-dejavu-core fonts-noto-color-emoji
+  lmodern fonts-dejavu-core fonts-dejavu-mono fonts-noto-color-emoji
 ```
 
 ### Opción C: Instalación nativa en Arch Linux

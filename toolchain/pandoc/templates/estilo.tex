@@ -13,7 +13,7 @@
 %       pandoc -d estilo nota.md -o nota.pdf
 %
 % CÓMO SE EDITA
-%   Cada sección (0 a 8) es independiente. Para sacar algo del estilo, borrá
+%   Cada sección (0 a 9) es independiente. Para sacar algo del estilo, borrá
 %   o comentá la sección entera. En LaTeX, un comentario empieza con "%".
 %   Para ver el LaTeX completo que genera pandoc (con este archivo ya
 %   insertado en el preámbulo), sin compilar el PDF:
@@ -22,10 +22,12 @@
 % REQUISITOS (Debian/Ubuntu)
 %   sudo apt install pandoc texlive-luatex texlive-latex-recommended \
 %        texlive-latex-extra texlive-fonts-recommended lmodern \
-%        fonts-noto-color-emoji
+%        fonts-noto-color-emoji fonts-dejavu-core fonts-dejavu-mono
 %   - texlive-luatex:         el motor lualatex (secciones 0 y 5 lo necesitan).
 %   - texlive-latex-extra:    trae fvextra (sección 4).
 %   - fonts-noto-color-emoji: los emojis a color (sección 0).
+%   - fonts-dejavu-core:      respaldo de símbolos en texto (sección 0).
+%   - fonts-dejavu-mono:      respaldo de símbolos y árboles en código (sección 0).
 %
 % SECCIONES
 %   0) Fuente principal y emojis (se cambia con "mainfont" en la nota)
@@ -37,6 +39,7 @@
 %   6) \needspace (evitar títulos solos al pie de la página)
 %   7) Ancho máximo de las imágenes (se cambia con "ancho-imagenes")
 %   8) Figuras con epígrafe fijas donde están en el Markdown
+%   9) Epígrafes sin "Figura N:"
 % ==============================================================================
 
 
@@ -54,6 +57,9 @@
 %    carácter:
 %      1.º Noto Color Emoji  (emojis a color; "mode=harf")
 %      2.º DejaVu Sans       (símbolos matemáticos/técnicos como ✓ o →)
+%    Los bloques de código tienen su propio respaldo (primero DejaVu Sans Mono
+%    para árboles ├─ │ └ y flechas ↕ en blanco y negro, y segundo Noto Color
+%    Emoji por si hay un emoji puro dentro de `código`).
 % ------------------------------------------------------------------------------
 \ifdefined\fuenteprincipal\else
   \def\fuenteprincipal{Libertinus Serif}
@@ -71,6 +77,8 @@
   \directlua{
     luaotfload.add_fallback("emojis",
       {"Noto Color Emoji:mode=harf;", "DejaVu Sans:"})
+    luaotfload.add_fallback("monoletras",
+      {"DejaVu Sans Mono:", "Noto Color Emoji:mode=harf;"})
   }
   \ifdefined\carpetaFuentes
     \ifx\fuenteprincipal\nombreLibertinus
@@ -99,6 +107,10 @@
     \else
       \setsansfont{\fuentesans}[RawFeature={fallback=emojis}]
     \fi
+    % Letra del código con respaldo: JetBrains Mono / Latin Modern Mono (y
+    % muchas otras) no traen todos los trazos de árboles (├ └ │ ─) o flechas
+    % como ↕; esos salen de DejaVu Sans Mono. Si la nota pone "monofont: ...",
+    % se usa esa letra.
     \ifx\fuentemono\nombreJetBrains
       \setmonofont{jetbrains-mono}[
         Path           = {\carpetaFuentes/jetbrains-mono/},
@@ -107,15 +119,15 @@
         ItalicFont     = *-italic,
         BoldFont       = *-700,
         BoldItalicFont = *-700-italic,
-        RawFeature     = {fallback=emojis}
+        RawFeature     = {fallback=monoletras}
       ]
     \else
-      \setmonofont{\fuentemono}[RawFeature={fallback=emojis}]
+      \setmonofont{\fuentemono}[RawFeature={fallback=monoletras}]
     \fi
   \else
     \setmainfont{\fuenteprincipal}[RawFeature={fallback=emojis}]
     \setsansfont{\fuentesans}[RawFeature={fallback=emojis}]
-    \setmonofont{\fuentemono}[RawFeature={fallback=emojis}]
+    \setmonofont{\fuentemono}[RawFeature={fallback=monoletras}]
   \fi
 \else
   \ifdefined\setmainfont
@@ -360,5 +372,20 @@
 % ------------------------------------------------------------------------------
 \usepackage{float}
 \floatplacement{figure}{H}
+
+
+% ------------------------------------------------------------------------------
+% 9) Epígrafes sin "Figura N:"
+%
+%    Una figura, ![Consecuencias primarias](foto.png), sale normalmente con
+%    el epígrafe "Figura 1: Consecuencias primarias", y el número sigue en
+%    cada figura. Con esto sale solo el texto: "Consecuencias primarias".
+%    Solo cambia las figuras; las tablas con título no se tocan.
+%
+%    Para que una nota vuelva a numerar las figuras, en su cabecera:
+%        header-includes: \captionsetup[figure]{labelformat=simple}
+%    El paquete caption viene en texlive-latex-recommended (pandoc ya lo
+%    carga en muchas notas; cargarlo otra vez no hace nada).
+% ------------------------------------------------------------------------------
 \usepackage{caption}
 \captionsetup[figure]{labelformat=empty}

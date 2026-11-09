@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > Este archivo es la **fuente de verdad viva y bitácora histórica** del repositorio de **Administración de Sistemas de Información (ASI)** — UTN FRRe. Debe consultarse al inicio de cada sesión y mantenerse estrictamente actualizado tras cada cambio estructural, de contenido o de *tooling*.
 
-* **Última actualización**: `2026-11-06`
+* **Última actualización**: `2026-11-09`
 * **Fase actual**: `Infraestructura Técnica, Organización por Unidad, Imagen Docker GHCR y Publicación en Releases 100% Completadas (Specs 01, 02, 03-B, 04, 05 y 06 implementadas) -> En espera de material de estudio para Spec 03-Parte A`
 * **Rama activa**: `main` (`myfork` — `Gez-Schegtel/ASI-test`)
 
@@ -19,7 +19,7 @@
 | Apuntes y cuestionarios por Unidad | `content/unidades/` (`Unidad I/`, `Unidad III/`, `Unidad VI/`) | `content/unidades/<Unidad X>/` | **Organizado por Unidad y normalizado** |
 | Trabajos prácticos y guías | `content/practica/` (`tpi-dvp/`, `tp1-alineamiento/`) | `content/practica/` | **Migrado y 100% en `.md`** |
 | Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
-| Recursos gráficos | `assets/` (307 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
+| Recursos gráficos | `assets/` (344 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
 | Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`, `mkrelease`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
 | Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`), Release continuo (`apuntes-al-dia`) y snapshots históricos (`v*`) (Spec 06)** |
@@ -28,7 +28,7 @@
 
 * **Archivos binarios PDF/EPUB/DOCX en el repositorio**: **0 archivos** (regla de cero artefactos activa en `.gitignore`).
 * **Imágenes Base64 incrustadas en Markdown**: **0**.
-* **Recursos gráficos centralizados en `assets/`**: **307 archivos**.
+* **Recursos gráficos centralizados en `assets/`**: **344 archivos**.
 * **Toolchain autocontenido (`toolchain/`)**:
   * `toolchain/Dockerfile`: Imagen Docker (`ghcr.io/gez-schegtel/asi-toolchain`) basada en `ubuntu:24.04` con Pandoc, TeX Live (`LuaLaTeX`) y el caché global de fuentes de `luaotfload` (`/var/cache/texmf-var`) precalentado.
   * `toolchain/bin/mdnorm`: Linter y normalizador en Bash + Perl con soporte `-y`, `-v` y `--check` (`-n`) para CI.
@@ -42,12 +42,12 @@
 
 | Componente / Unidad | Tema Principal | Ubicación Actual | Estado Editorial |
 | :--- | :--- | :--- | :--- |
-| **Unidad I** | Los SI en la Empresa, Cadena de Valor y Estrategia SI/TI | `content/unidades/Unidad I/` + `legacy/archivo-2025/2025/par_1/u1/` | Cuestionario resuelto en raíz + 4 borradores en `Unidad I/borradores/` |
+| **Unidad I** | Los SI en la Empresa, Cadena de Valor y Planificación Estratégica SI/TI | `content/unidades/Unidad I/` | **Completa** (Apunte teórico + Temario en raíz; Cuestionario resuelto y 4 borradores en `Unidad I/borradores/`) |
 | **Unidad II** | Subsistema de Provisión (RRHH y SI/TI) *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u4/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64 y PDFs pasados a `.md`) |
-| **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `content/unidades/Unidad III/` | **Completa** (Apunte teórico + Cuestionario de autoestudio resuelto) |
+| **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `content/unidades/Unidad III/` | **Completa** (Apunte teórico + Temario + Cuestionario de autoestudio resuelto) |
 | **Unidad IV** | Mantenimiento y Desarrollo de RRHH *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u6/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64) |
 | **Unidad V** | Subsistema de Seguimiento / Control (Monitores, Benchmarking, Amdahl) | `legacy/archivo-2025/2025/par_1/u2/` | Fragmentado |
-| **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/Unidad VI/` | **Completa** (Apunte teórico + Cuestionario de autoestudio resuelto) |
+| **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/Unidad VI/` | **Completa** (Apunte teórico + Temario + Cuestionario de autoestudio resuelto) |
 | **TPI (DVP)** | Caso Dirección de Vialidad Provincial del Chaco (ERP, GeoVial, SiCC) | `content/practica/tpi-dvp/` | **Completo en `.md`** (`Explicación del TPI.md` + `TPI Parte 2.md`) |
 | **TP1 Alineamiento** | Guías, presentaciones y consignas del TP1 de Alineamiento Estratégico | `content/practica/tp1-alineamiento/` | **Completo en `.md`** (9 archivos `.md`) |
 | **Lab Checkmk** | Monitoreo con Checkmk Raw 2.3 en Docker + `http_ping.py` | `content/labs/cmk/` y `content/labs/taller-1/` | **Migrado y funcional** |
@@ -92,6 +92,17 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-09` — Sincronización de Estilos Pandoc (`monoletras` / `DejaVu Sans Mono`) e Inclusión de `fonts-dejavu-mono` en Docker
+
+* **Contexto**: Sincronización de las mejoras de estilo realizadas localmente en `~/.local/share/pandoc` hacia el `toolchain/` autocontenido del repositorio y verificación de la disponibilidad de `DejaVu Sans Mono` en Ubuntu 24.04 (`toolchain/Dockerfile`).
+* **Acciones ejecutadas**:
+  * **Actualización de `toolchain/pandoc/templates/estilo.tex` y `toolchain/pandoc/filters/preambulo.lua`**:
+    * Definición del fallback independiente `monoletras` (`{"DejaVu Sans Mono:", "Noto Color Emoji:mode=harf;"}`) en `luaotfload` para `\setmonofont` (tanto cuando usa `JetBrains Mono` embebida como cuando una nota define otro `monofont`), de modo que los trazos de árboles (`├ └ │ ─`) y flechas (`↕`) dentro de bloques de código provengan primero de `DejaVu Sans Mono` (monoespaciada y en blanco y negro) y solo los emojis puros caigan en `Noto Color Emoji`.
+    * Incorporación de la documentación completa de la Sección 9 (`caption` con `labelformat=empty`) y avisos de validación de `monofont`/`sansfont` en `preambulo.lua`.
+  * **Solución de `DejaVu Sans Mono` en `toolchain/Dockerfile` (Ubuntu 24.04)**:
+    * En Debian 12+ y Ubuntu 24.04 (`noble`), `DejaVuSansMono.ttf` fue separado de `fonts-dejavu-core` al paquete `fonts-dejavu-mono` (que no se instalaba al usar `--no-install-recommends`).
+    * Se agregó `fonts-dejavu-mono` en `toolchain/Dockerfile`, `toolchain/README.md` y `docs/specs/05-imagen-docker-toolchain-ghcr.md`, y se incluyeron los caracteres `├─ │ └ ↕` en el bloque de código del paso de precalentamiento del `Dockerfile` para que `luaotfload` precompile también `dejavusansmono.luc` en `/var/cache/texmf-var`.
 
 ### `2026-11-06` — Refinamiento de Spec 06: Único Release Continuo (`apuntes-al-dia`) + Snapshots Históricos (`v*`)
 

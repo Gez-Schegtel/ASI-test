@@ -6,6 +6,8 @@
 --   este orden:
 --     1. Si la nota pide otra letra con "mainfont: ...", la definición
 --        \fuenteprincipal con ese nombre (ver "LA LETRA" más abajo).
+--        Lo mismo con "sansfont: ..." (\fuentesans) y "monofont: ..." (la letra
+--        del código): \fuentemono.
 --        Y si tiene "ancho-imagenes: ...", el ancho máximo de las imágenes
 --        (ver "LAS IMÁGENES").
 --     2. templates/estilo.tex (el aspecto: emojis, cuadros, tablas, código...).
@@ -25,6 +27,9 @@
 --   pasa el nombre a estilo.tex, que carga esa letra con el respaldo.
 --   Sin "mainfont", se cargan las fuentes embebidas en toolchain/pandoc/fonts/
 --   (Libertinus Serif para texto, Inter para títulos y JetBrains Mono para código).
+--   Con "monofont" (la letra del código) pasa lo mismo: estilo.tex la carga
+--   con un respaldo (DejaVu Sans Mono) para los símbolos que ella no trae
+--   (├ └ │ ─ ↕).
 --
 -- LAS IMÁGENES
 --   "ancho-imagenes" es el ancho máximo de las imágenes, como porcentaje del
@@ -79,14 +84,18 @@ function Meta(meta)
   if meta.sansfont ~= nil then
     local nombre = pandoc.utils.stringify(meta.sansfont)
     meta.sansfont = nil
-    if nombre ~= '' and not nombre:find('[{}\\%%#]') then
+    if nombre == '' or nombre:find('[{}\\%%#]') then
+      avisar('nombre de letra sans no válido, se usa la de siempre: ' .. nombre)
+    else
       partes:insert(bloque('\\def\\fuentesans{' .. nombre .. '}'))
     end
   end
   if meta.monofont ~= nil then
     local nombre = pandoc.utils.stringify(meta.monofont)
     meta.monofont = nil
-    if nombre ~= '' and not nombre:find('[{}\\%%#]') then
+    if nombre == '' or nombre:find('[{}\\%%#]') then
+      avisar('nombre de letra del código no válido, se usa la de siempre: ' .. nombre)
+    else
       partes:insert(bloque('\\def\\fuentemono{' .. nombre .. '}'))
     end
   end

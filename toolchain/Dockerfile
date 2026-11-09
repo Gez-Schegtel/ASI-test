@@ -33,6 +33,7 @@ RUN apt-get -o Acquire::ForceIPv4=true -o Acquire::Retries=5 -o Acquire::http::T
             install -y --no-install-recommends \
       ca-certificates \
       fonts-dejavu-core \
+      fonts-dejavu-mono \
       fonts-noto-color-emoji \
       lmodern \
       pandoc \
@@ -52,7 +53,7 @@ COPY pandoc /workspace/toolchain/pandoc
 RUN mkdir -p /var/cache/texmf-var && \
     export OSFONTDIR="{/workspace/toolchain/pandoc/fonts,/usr/share/fonts,/usr/local/share/fonts}" && \
     luaotfload-tool --update --force && \
-    printf '# Título *cursiva* **negrita** ***ambas***\n\nTexto normal, *cursiva*, **negrita**, ***negrita cursiva***, `código`, matemática $x + y = z$, símbolo ✔ y emoji 📄.\n\n```text\nnormal\n```\n' \
+    printf '# Título *cursiva* **negrita** ***ambas***\n\nTexto normal, *cursiva*, **negrita**, ***negrita cursiva***, `código`, matemática $x + y = z$, símbolo ✔ y emoji 📄.\n\n```text\nnormal ├─ │ └ ↕\n```\n' \
       | pandoc --defaults=/workspace/toolchain/pandoc/defaults/pdf.yaml -o /tmp/warmup.pdf && \
     rm -rf /tmp/warmup.pdf /workspace/toolchain && \
     chmod -R a+rwX /var/cache/texmf-var
