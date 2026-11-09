@@ -10,6 +10,8 @@ toc-depth: 4
 numbersections: true
 ---
 
+\newpage
+
 # El enfoque de TAVISTOCK.
 
 > 📝 **Apunte de clase:** *Es una forma de **ver a las organizaciones como sistemas abiertos** que **transforman recursos en productos o servicios**, y que **no pueden entenderse sin considerar al mismo tiempo a las personas y a la tecnología** que usan.*
