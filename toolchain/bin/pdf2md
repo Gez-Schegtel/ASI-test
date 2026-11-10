@@ -33,7 +33,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 TOOLCHAIN_DIR="$(cd "$SCRIPT_DIR/.." && pwd -P)"
 REPO_ROOT="$(cd "$TOOLCHAIN_DIR/.." && pwd -P)"
 
-if [[ -d "$REPO_ROOT/assets" ]]; then
+if [[ -z "${REPO_ASSETS_DIR:-}" && -d "$REPO_ROOT/assets" ]]; then
   export REPO_ASSETS_DIR="$REPO_ROOT/assets"
 fi
 
@@ -350,10 +350,71 @@ def load_local_images(pdf_dir):
                     rel = os.path.relpath(fpath, pdf_dir)
                     if not rel.startswith("."):
                         rel = "./" + rel
-                    local_map[h] = rel
+                    if h not in local_map or "assets" in rel:
+                        local_map[h] = rel
                 except Exception:
                     pass
     return local_map
+
+
+def slugify_image_stem(s):
+    import unicodedata
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = re.sub(r"[^A-Za-z0-9._-]+", "-", s)
+    s = re.sub(r"-{2,}", "-", s)
+    s = s.strip("-_")
+    if len(s) > 40:
+        sub = s[:40]
+        if "-" in sub:
+            s = sub.rsplit("-", 1)[0]
+        else:
+            s = sub
+    return s.strip("-_") or "imagen"
+
+
+def resolve_asset_filename(target_dir, base_slug, counter, raw_rgb_hash):
+    """
+    Encuentra un nombre de archivo seguro en target_dir evitando colisiones
+    y previniendo la sobrescritura de imágenes existentes con contenido diferente.
+    Retorna: (candidate_name, candidate_path, was_collision)
+    """
+    candidate_name = f"{base_slug}_img_{counter}.png"
+    candidate_path = os.path.join(target_dir, candidate_name)
+
+    if not os.path.exists(candidate_path):
+        return candidate_name, candidate_path, False
+
+    # El archivo existe: verificar si es idéntico por hash MD5 RGB
+    try:
+        with open(candidate_path, "rb") as existing_f:
+            ex_im = Image.open(existing_f).convert("RGB")
+            ex_hash = hashlib.md5(ex_im.tobytes()).hexdigest()
+        if ex_hash == raw_rgb_hash:
+            return candidate_name, candidate_path, False
+    except Exception:
+        pass
+
+    # Colisión con contenido diferente: generar variante con sufijo de hash
+    hash_suffix = raw_rgb_hash[:6]
+    candidate_name = f"{base_slug}_img_{counter}_{hash_suffix}.png"
+    candidate_path = os.path.join(target_dir, candidate_name)
+
+    seq = 2
+    while os.path.exists(candidate_path):
+        try:
+            with open(candidate_path, "rb") as existing_f:
+                ex_im = Image.open(existing_f).convert("RGB")
+                ex_hash = hashlib.md5(ex_im.tobytes()).hexdigest()
+            if ex_hash == raw_rgb_hash:
+                return candidate_name, candidate_path, True
+        except Exception:
+            pass
+        candidate_name = f"{base_slug}_img_{counter}_{hash_suffix}_{seq}.png"
+        candidate_path = os.path.join(target_dir, candidate_name)
+        seq += 1
+
+    return candidate_name, candidate_path, True
 
 
 def decode_pdf_str(val):
@@ -388,6 +449,7 @@ def extract_dests_tree(node):
 def inspect_pdf_structure(pdf_path, emoji_map, local_images):
     pdf_dir = os.path.dirname(os.path.abspath(pdf_path))
     pdf_stem = os.path.splitext(os.path.basename(pdf_path))[0]
+    base_slug = slugify_image_stem(pdf_stem)
     extracted_counter = 0
     saved_hashes = dict(local_images)
     repo_assets = os.getenv("REPO_ASSETS_DIR")
@@ -483,20 +545,29 @@ def inspect_pdf_structure(pdf_path, emoji_map, local_images):
                         img_rel = saved_hashes[md5_rgb]
                     else:
                         extracted_counter += 1
-                        out_fname = f"{pdf_stem}_img_{extracted_counter}.png"
-                        out_fpath = os.path.join(target_img_dir, out_fname)
-                        try:
-                            im_rgb = Image.frombytes("RGB", (w, h), raw_bytes)
-                            if "SMask" in attrs:
-                                smask = resolve1(attrs["SMask"])
-                                im_a = Image.frombytes("L", (w, h), smask.get_data())
-                                im_rgba = im_rgb.copy()
-                                im_rgba.putalpha(im_a)
-                                im_rgba.save(out_fpath)
-                            else:
-                                im_rgb.save(out_fpath)
-                        except Exception:
-                            pass
+                        out_fname, out_fpath, was_collision = resolve_asset_filename(
+                            target_img_dir, base_slug, extracted_counter, md5_rgb
+                        )
+                        if not os.path.exists(out_fpath):
+                            try:
+                                im_rgb = Image.frombytes("RGB", (w, h), raw_bytes)
+                                if "SMask" in attrs:
+                                    smask = resolve1(attrs["SMask"])
+                                    im_a = Image.frombytes("L", (w, h), smask.get_data())
+                                    im_rgba = im_rgb.copy()
+                                    im_rgba.putalpha(im_a)
+                                    im_rgba.save(out_fpath)
+                                else:
+                                    im_rgb.save(out_fpath)
+                                if repo_assets and target_img_dir == repo_assets:
+                                    if was_collision:
+                                        print(f"  ⚠️ Colisión detectada: imagen guardada en la carpeta assets/ como '{out_fname}'")
+                                    else:
+                                        print(f"  📷 Imagen guardada en la carpeta assets/: {out_fname}")
+                                else:
+                                    print(f"  📷 Imagen guardada: {out_fname}")
+                            except Exception:
+                                pass
                         rel = os.path.relpath(out_fpath, pdf_dir)
                         if not rel.startswith("."):
                             rel = "./" + rel

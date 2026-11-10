@@ -70,6 +70,7 @@
 ## 4. Tablero de Pendientes y Decisiones Abiertas
 
 ### Decisiones resueltas
+
 - [x] **14 PDFs/DOCX de cátedra sin `.md`**: Resuelto con **Opción A** (convertidos todos a `.md` y desversionados los binarios de Git).
 - [x] **Archivo histórico `2025/` y `APUNTE 2 parcial.md`**: Alojados en `legacy/archivo-2025/` limpios de Base64 y binarios.
 - [x] **Ubicación de `estilo.tex` y normalización Perl en Spec 02**: `estilo.tex` en `toolchain/pandoc/templates/estilo.tex` y motor Perl con normalización `NFKC` de letras matemáticas Unicode.
@@ -79,9 +80,11 @@
 - [x] **Publicación segura y sin duplicados en GitHub Releases (Spec 06)**: Reemplazo de los múltiples releases móviles por un **único Release continuo principal (`apuntes-al-dia` / `/releases/latest`)** actualizado en el lugar mediante `toolchain/bin/mkrelease` (evitando enlaces `404` y copias repetidas por commit) junto con **Releases históricos inmutables (`v*`)** para resguardar cierres de parcial/cursada.
 
 ### Decisiones pendientes (para Spec 03 - Parte A)
+
 - [ ] **Numeración oficial 2026 de Unidades II, IV y V (Spec 03)**: confirmar el orden exacto de *Provisión*, *Mantenimiento*, *Desarrollo* y *Seguimiento/Control* en el programa 2026.
 
 ### Próximas tareas técnicas en cola
+
 - [x] Ejecutar **Fase 0 (Spec 01)**: crear `legacy/` y resguardar `script conversor/`, `script normalizador/`, `estilos/` y `2026/herramientas/`.
 - [x] Ejecutar **Fases 1 a 3 (Spec 01)**: migrar a `content/` y `assets/`, convertir los 14 documentos de cátedra a `.md`, extraer las 62 imágenes Base64 de `APUNTE 2 parcial.md` y aplicar el nuevo `.gitignore`.
 - [x] Implementar **Spec 02**: construir `toolchain/bin/mdnorm`, `toolchain/bin/md2pdf` (`--pdf`, `--epub`, `--all`) y `toolchain/pandoc/`.
@@ -99,10 +102,18 @@
 
 * **Contexto**: Para facilitar la ingesta y descompilación de documentos PDF de cátedra o apuntes históricos a Markdown editable sin violar los principios de cero binarios y almacenamiento único de imágenes, se redactó la **Spec 07** y se integró el script `pdf2md`.
 * **Acciones ejecutadas**:
-  * **Redacción de `docs/specs/07-incorporacion-pdf2md-toolchain.md`**.
-  * **Creación de `toolchain/bin/pdf2md`**: portado de `zsh` a `bash` estándar, validación de dependencias locales (`mutool`, `python3-lxml`, `python3-pdfminer`, `python3-pil`), e integración con `$REPO_ROOT/assets` para deduplicar imágenes existentes y extraer imágenes nuevas directamente en `assets/`.
-  * **Prueba end-to-end**: compilación de `Conceptos Previos.md` a PDF con `md2pdf` y descompilación inmediata con `pdf2md`, verificando la reconstrucción exacta de metadatos YAML, encabezados, citas, listas y bloques de texto.
-  * **Actualización documental**: sincronización de `GEMINI.md`, `README.md`, `toolchain/README.md` y `docs/STATUS.md`.
+  * **Redacción de `docs/specs/07-incorporacion-pdf2md-toolchain.md`**: especificación de la arquitectura de descompilación, integración con `assets/`, política de prevención de colisiones y fidelidad con el script original de `~/.mis-scripts/`.
+  * **Creación y evolución de `toolchain/bin/pdf2md`**:
+    * Portado del envoltorio de `zsh` a `bash` estándar, validando dependencias locales (`mutool`, `python3-lxml`, `python3-pdfminer`, `python3-pil`).
+    * **Enrutamiento automático hacia `assets/`**: las imágenes extraídas se guardan directamente en el almacén central `$REPO_ROOT/assets/` y se enlazan con rutas relativas limpias desde el `.md`.
+    * **Prevención y resolución de colisiones (`resolve_asset_filename`)**:
+      * *Slugificación*: normalización de nombres base mediante `slugify_image_stem`.
+      * *Deduplicación por contenido*: si una imagen con idéntico hash MD5 RGB ya existe en `assets/`, se reutiliza evitando duplicados innecesarios.
+      * *Disambiguación por hash*: si colisiona el nombre con un archivo de contenido diferente en `assets/`, genera un sufijo direccionado por contenido (`_{hash[:6]}`) sin sobrescribir nunca el archivo preexistente.
+    * **Reporte en consola**: notificaciones claras al usuario indicando el nombre exacto asignado y la carpeta de destino (`📷 Imagen guardada en la carpeta assets/: <nombre>` y `⚠️ Colisión detectada: imagen guardada en la carpeta assets/ como '<nombre>'`).
+    * **Fidelidad funcional total**: preservación intacta de la lógica de reconstrucción sintáctica (YAML, matemáticas, tablas multipágina, código, callouts y jerarquía de títulos) idéntica a `~/.mis-scripts/common/pdf2md`.
+  * **Suite de verificación automatizada**: tests end-to-end con `md2pdf` y `pdf2md` validando extracción en `assets/`, preservación de archivos preexistentes en colisión, descompilación limpia y enlace Markdown correcto.
+  * **Actualización documental**: sincronización de `GEMINI.md`, `README.md`, `toolchain/README.md`, `docs/specs/07-incorporacion-pdf2md-toolchain.md` y `docs/STATUS.md`.
 
 ### `2026-11-09` — Sincronización de Estilos Pandoc (`monoletras` / `DejaVu Sans Mono`) e Inclusión de `fonts-dejavu-mono` en Docker
 
