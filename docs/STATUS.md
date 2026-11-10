@@ -20,7 +20,7 @@
 | Trabajos prácticos y guías | `content/practica/` (`tpi-dvp/`, `tp1-alineamiento/`) | `content/practica/` | **Migrado y 100% en `.md`** |
 | Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
 | Recursos gráficos | `assets/` (344 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
-| Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`, `mkrelease`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
+| Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`, `mkrelease`, `pdf2md`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
 | Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`), Release continuo (`apuntes-al-dia`) y snapshots históricos (`v*`) (Spec 06)** |
 
@@ -34,6 +34,7 @@
   * `toolchain/bin/mdnorm`: Linter y normalizador en Bash + Perl con soporte `-y`, `-v` y `--check` (`-n`) para CI.
   * `toolchain/bin/md2pdf`: Compilador unificado en Bash + Perl + Pandoc con soporte `--pdf`, `--epub` y `--all`, salida limpia a `build/`, resolución automática de `assets/` y normalización `NFKC` de letras matemáticas Unicode.
   * `toolchain/bin/mkrelease`: Empaquetador y publicador atómico de GitHub Releases en Bash + Perl + `gh`, con generación de `.zip` por Unidad/Práctica, slugs ASCII para `.pdf`/`.epub` individuales, índice Markdown ordenado en tablas, actualización en el lugar (`--clobber`) de `apuntes-al-dia` (`Latest`) y soporte `--historical` para tags `v*`.
+  * `toolchain/bin/pdf2md`: Conversor inverso de PDF a Markdown en Bash + Python 3 + `mutool` con recuperación de cabecera YAML, tablas, fórmulas, citas, bloques de código, emojis y deduplicación/extracción hacia `assets/`.
   * `toolchain/pandoc/`: `defaults/pdf.yaml`, `defaults/epub.yaml`, `defaults/metadatos.yaml` (`scrartcl` por defecto), `fonts/` (`Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en el repositorio), `templates/estilo.tex`, `templates/estilo-epub.css` y los 3 filtros Lua (`preambulo.lua`, `cortar-formulas.lua`, `centrar-imagenes.lua`).
 
 ---
@@ -62,6 +63,7 @@
 4. **[04-organizacion-unidades-y-artefactos.md](specs/04-organizacion-unidades-y-artefactos.md)** — *Estado: **Implementada** (2026-11-06)*. Agrupación por Unidad en `content/unidades/<Unidad X>/` (uniendo teoría y cuestionarios de cada unidad), preservación de subcarpetas en `build/` desde `toolchain/bin/md2pdf` y empaquetado de Artifacts separados por Unidad y Práctica (Modalidad B) en GitHub Actions.
 5. **[05-imagen-docker-toolchain-ghcr.md](specs/05-imagen-docker-toolchain-ghcr.md)** — *Estado: **Implementada** (2026-11-06)*. Creación de `toolchain/Dockerfile` con Pandoc, LuaLaTeX y caché global de `luaotfload` (`/var/cache/texmf-var`) precalentado, e integración con GitHub Container Registry (`ghcr.io/gez-schegtel/asi-toolchain`) en `.github/workflows/editorial-ci.yml`.
 6. **[06-publicacion-ordenada-en-releases.md](specs/06-publicacion-ordenada-en-releases.md)** — *Estado: **Implementada** (2026-11-06)*. Arquitectura dual gestionada por `toolchain/bin/mkrelease`: un **único Release continuo principal (`apuntes-al-dia`, marcado como `Latest` en `/releases/latest`)** actualizado atómicamente en el lugar (`--clobber`) con tablas y paquetes `.zip` separados por Unidad/Práctica, más **Releases históricos inmutables** para tags `v*`.
+7. **[07-incorporacion-pdf2md-toolchain.md](specs/07-incorporacion-pdf2md-toolchain.md)** — *Estado: **Implementada** (2026-11-09)*. Incorporación del conversor inverso `toolchain/bin/pdf2md` en Bash + Python 3 + `mutool` con extracción e indexación automática de imágenes hacia `assets/`.
 
 ---
 
@@ -92,6 +94,15 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-09` — Implementación de Spec 07: Incorporación de `toolchain/bin/pdf2md`
+
+* **Contexto**: Para facilitar la ingesta y descompilación de documentos PDF de cátedra o apuntes históricos a Markdown editable sin violar los principios de cero binarios y almacenamiento único de imágenes, se redactó la **Spec 07** y se integró el script `pdf2md`.
+* **Acciones ejecutadas**:
+  * **Redacción de `docs/specs/07-incorporacion-pdf2md-toolchain.md`**.
+  * **Creación de `toolchain/bin/pdf2md`**: portado de `zsh` a `bash` estándar, validación de dependencias locales (`mutool`, `python3-lxml`, `python3-pdfminer`, `python3-pil`), e integración con `$REPO_ROOT/assets` para deduplicar imágenes existentes y extraer imágenes nuevas directamente en `assets/`.
+  * **Prueba end-to-end**: compilación de `Conceptos Previos.md` a PDF con `md2pdf` y descompilación inmediata con `pdf2md`, verificando la reconstrucción exacta de metadatos YAML, encabezados, citas, listas y bloques de texto.
+  * **Actualización documental**: sincronización de `GEMINI.md`, `README.md`, `toolchain/README.md` y `docs/STATUS.md`.
 
 ### `2026-11-09` — Sincronización de Estilos Pandoc (`monoletras` / `DejaVu Sans Mono`) e Inclusión de `fonts-dejavu-mono` en Docker
 

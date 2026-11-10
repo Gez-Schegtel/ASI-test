@@ -37,7 +37,7 @@ ASI-test/
 ├── assets/                       <- Almacén único de imágenes, diagramas y recursos gráficos
 ├── toolchain/
 │   ├── Dockerfile                <- Imagen precompilada (ghcr.io/gez-schegtel/asi-toolchain) con Pandoc y LuaLaTeX
-│   ├── bin/                      <- Ejecutables autocontenidos (mdnorm, md2pdf y mkrelease)
+│   ├── bin/                      <- Ejecutables autocontenidos (mdnorm, md2pdf, mkrelease y pdf2md)
 │   └── pandoc/                   <- Defaults YAML, fuentes embebidas, plantillas LaTeX/CSS y filtros Lua
 ├── docs/
 │   ├── GUIA_SUBIDA_APUNTES.md    <- Guía paso a paso para agregar o editar unidades y apuntes

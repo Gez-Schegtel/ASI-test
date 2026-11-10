@@ -16,7 +16,8 @@ toolchain/
 ├── bin/
 │   ├── mdnorm                       <- Linter y normalizador de Markdown (Bash + Perl)
 │   ├── md2pdf                       <- Compilador unificado a PDF y EPUB3 (Bash + Perl + Pandoc)
-│   └── mkrelease                    <- Empaquetador y publicador de GitHub Releases (Bash + Perl + gh)
+│   ├── mkrelease                    <- Empaquetador y publicador de GitHub Releases (Bash + Perl + gh)
+│   └── pdf2md                       <- Conversor inverso de PDF a Markdown (Bash + Python + mutool)
 └── pandoc/
     ├── defaults/
     │   ├── pdf.yaml                 <- Defaults de Pandoc para PDF (motor lualatex, filtros Lua)
@@ -94,7 +95,29 @@ Empaqueta el árbol generado en `build/` creando un `.zip` por cada Unidad/Traba
 
 ---
 
-## 5. Dependencias del Sistema
+## 5. Uso de `toolchain/bin/pdf2md` (Conversor Inverso PDF a Markdown)
+
+Convierte archivos `.pdf` a Markdown (`.md`), realizando el camino inverso de `md2pdf`. Reconstruye fielmente la cabecera YAML, títulos, listas, tablas (simples y multipágina), bloques de código con su lenguaje, código en línea, fórmulas LaTeX (`$...$` y `$$...$$`), citas, enlaces, emojis (`Noto Color Emoji`) e imágenes con sus clases y anchos (`{.derecha width=25%}`).
+
+Integración con `assets/` (Principio 4 de `GEMINI.md`):
+- Los emojis incrustados por LuaLaTeX se reconocen y vuelven a caracteres Unicode en el texto.
+- Si una imagen del PDF ya existe en `assets/` (o en la carpeta del PDF), se enlaza directamente sin duplicarla.
+- Si la imagen es nueva y el archivo pertenece al repositorio, se extrae dentro de `assets/` y se enlaza con su ruta relativa.
+
+```bash
+# Convertir un PDF específico
+./toolchain/bin/pdf2md apunte.pdf
+
+# Convertir sin pedir confirmación (-y / --yes)
+./toolchain/bin/pdf2md -y apunte.pdf
+
+# Convertir todos los PDFs de la carpeta actual
+./toolchain/bin/pdf2md -y
+```
+
+---
+
+## 6. Dependencias del Sistema
 
 ### Opción A: Usar la imagen Docker precompilada (CI/CD y uso local sin instalar TeX Live)
 
