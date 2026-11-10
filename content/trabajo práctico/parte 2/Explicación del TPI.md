@@ -157,5 +157,3 @@ Estudiate de memoria estas 4 respuestas porque van directo a los detalles finos 
    * *Tu respuesta:* «Según Lardent, durante el desarrollo del ERP Vial el auditor interno participa con un **rol activo y asesor** junto a nuestro *Departamento de Desarrollo de Soluciones* para definir los **puntos de control** (como la segregación de funciones en el Fondo Vial y las pistas de auditoría/logs inalterables). Pero, por el **principio deontológico de independencia y objetividad**, cuando el ERP Vial pase a producción en el Data Center de ECOM, la auditoría de sistema instalado **debe realizarla un auditor distinto** al que asesoró en el diseño de esos controles».
 
 ---
-
-¡Con esto dominás tanto la teoría como cada rincón de tu TP! ¿Te queda alguna duda puntual de alguna página del trabajo o te sentís listo para mañana? ¡Muchísimos éxitos a vos y a todo el grupo!
