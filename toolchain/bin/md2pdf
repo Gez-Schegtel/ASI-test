@@ -170,6 +170,9 @@ calcular_salida() {
     elif [[ "$abs_dir" == "$REPO_ROOT/content/practica/"* ]]; then
       rel_dir="${abs_dir#"$REPO_ROOT/content/practica/"}"
       printf '%s/Practica/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
+    elif [[ "$abs_dir" == "$REPO_ROOT/content/trabajo práctico/"* ]]; then
+      rel_dir="${abs_dir#"$REPO_ROOT/content/trabajo práctico/"}"
+      printf '%s/Practica/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
     elif [[ "$abs_dir" == "$REPO_ROOT/content/labs/"* ]]; then
       rel_dir="${abs_dir#"$REPO_ROOT/content/labs/"}"
       printf '%s/Labs/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"

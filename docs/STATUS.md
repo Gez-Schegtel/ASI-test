@@ -99,6 +99,18 @@
 
 ## 5. Bitácora de Sesiones
 
+### `2026-11-09` — Inclusión de Unidad 0 y Trabajo Práctico en Pipeline de Compilación y GitHub Releases
+
+* **Contexto**: Diagnóstico y corrección del pipeline CI/CD y del empaquetador `toolchain/bin/mkrelease` ante la falta de publicación de `Unidad 0` y la reestructuración de la carpeta `content/trabajo práctico/`.
+* **Causas identificadas**:
+  * `toolchain/bin/mkrelease` poseía una lista estática de `bloques` que comenzaba en `Unidad I` (`U1`), omitiendo `Unidad 0` (`U0`).
+  * `toolchain/bin/md2pdf` y `.github/workflows/editorial-ci.yml` enlazaban estrictamente con la ruta previa `content/practica/`, enviando los documentos de `content/trabajo práctico/` a la raíz de `build/` o salteándolos en el `find` de compilación.
+* **Acciones ejecutadas**:
+  * **Actualización de `toolchain/bin/mkrelease`**: adición del bloque `U0` (`Unidad 0 — Conceptos Previos e Introducción`), generación del paquete `Unidad-0-Completa.zip` y de los bloques `TP1` y `TP2` para `Practica/parte 1` y `Practica/parte 2`.
+  * **Actualización de `toolchain/bin/md2pdf`**: soporte en `calcular_salida()` para `content/trabajo práctico/`, enrutando a `build/Practica/<parte X>/`.
+  * **Actualización de `.github/workflows/editorial-ci.yml`**: ampliación del comando `find` para compilar `content/unidades`, `content/practica` y `content/trabajo práctico`.
+  * **Verificación**: prueba exitosa con `mkrelease --dry-run` comprobando la generación de tablas, paquetes `.zip` y enlaces directos para `Unidad 0` y las partes 1 y 2 de Práctica.
+
 ### `2026-11-09` — Implementación de Spec 07: Incorporación de `toolchain/bin/pdf2md`
 
 * **Contexto**: Para facilitar la ingesta y descompilación de documentos PDF de cátedra o apuntes históricos a Markdown editable sin violar los principios de cero binarios y almacenamiento único de imágenes, se redactó la **Spec 07** y se integró el script `pdf2md`.

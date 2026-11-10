@@ -117,14 +117,17 @@ fi
 
 # Definición ordenada de bloques: "prefijo_slug|titulo_seccion|subcarpeta_build|nombre_zip"
 bloques=(
+  "U0|📘 Unidad 0 — Conceptos Previos e Introducción|Unidad 0|Unidad-0-Completa.zip"
   "U1|📘 Unidad I — Los SI en la Empresa y Estrategia SI/TI|Unidad I|Unidad-I-Completa.zip"
   "U2|📘 Unidad II — Subsistema de Provisión|Unidad II|Unidad-II-Completa.zip"
   "U3|📘 Unidad III — Subsistema de Aplicación|Unidad III|Unidad-III-Completa.zip"
   "U4|📘 Unidad IV — Mantenimiento y Desarrollo|Unidad IV|Unidad-IV-Completa.zip"
   "U5|📘 Unidad V — Subsistema de Seguimiento y Control|Unidad V|Unidad-V-Completa.zip"
   "U6|📘 Unidad VI — Seguridad y Auditoría de SI/TI|Unidad VI|Unidad-VI-Completa.zip"
-  "TPI|🛠️ Práctica — TPI: Vialidad Provincial (DVP)|Practica/tpi-dvp|Practica-TPI-DVP.zip"
   "TP1|🛠️ Práctica — TP1: Alineamiento Estratégico de SI/TI|Practica/tp1-alineamiento|Practica-TP1-Alineamiento.zip"
+  "TPI|🛠️ Práctica — TPI: Vialidad Provincial (DVP)|Practica/tpi-dvp|Practica-TPI-DVP.zip"
+  "TP1|🛠️ Práctica — Parte 1: Alineamiento Estratégico de SI/TI|Practica/parte 1|Practica-Parte-1-Alineamiento.zip"
+  "TP2|🛠️ Práctica — Parte 2: Caso Vialidad Provincial (DVP)|Practica/parte 2|Practica-Parte-2-DVP.zip"
 )
 
 total_bloques=0
@@ -176,7 +179,7 @@ for entrada in "${bloques[@]}"; do
     nombre_mostrar="$(basename "$base_rel")"
     slug_base="$(slugify "$nombre_mostrar")"
     # Si el nombre no empieza ya con "Unidad-" ni "TP", prefijamos para evitar colisiones
-    if [[ ! "$slug_base" =~ ^(Unidad-|TP1|TPI) ]]; then
+    if [[ ! "$slug_base" =~ ^(Unidad-|TP1|TP2|TPI) ]]; then
       slug_final="${prefijo}_-_${slug_base}"
     else
       slug_final="$slug_base"
