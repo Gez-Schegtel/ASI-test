@@ -22,7 +22,7 @@ Este repositorio es la fuente de verdad canónica, colaborativa y versionada de 
 
 * `content/`: Material de estudio editable.
   * `content/unidades/`: Apuntes teóricos consolidados y cuestionarios de autoestudio resueltos agrupados por Unidad (`Unidad I/` a `Unidad VI/`).
-  * `content/practica/`: TPI (Vialidad Provincial - DVP) y guías de trabajos prácticos (`tp1-alineamiento/`).
+  * `content/trabajo práctico/` (o `content/practica/`): TPI (Vialidad Provincial - DVP) y guías de trabajos prácticos (`parte 1/` y `parte 2/`).
   * `content/labs/`: Talleres y laboratorios prácticos (e.g., Checkmk, monitoreo).
 * `assets/`: Imágenes, diagramas y capturas referenciadas por los documentos Markdown.
 * `docs/`: Documentación del proyecto, guías de colaboración, estado vivo y especificaciones técnicas.
