@@ -22,3 +22,6 @@ css:
 
 metadata-files:
   - ${.}/metadatos.yaml
+
+filters:
+  - ${.}/../filters/tablas-listas.lua

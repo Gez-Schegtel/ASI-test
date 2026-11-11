@@ -51,7 +51,7 @@ A continuación tenés una guía de estudio estructurada fase por fase para ente
 
 ## Análisis de los 4 Entornos mediante Matriz FODA (Edwards, cap. 4)
 
-* **Fortalezas (Interno):** No se parte de cero; existen 10 sistemas operativos con bases de datos activas, hay compromiso explícito de la alta dirección (Ing. Canela, Kutnich, Viola, Derka), buena cultura de adopción digital (éxito previo al eliminar el papel en *Viaticar* y *Calificaciones*) y alcance provincial a través de *GesTaller*.
+* **Fortalezas (Interno):** No se parte de cero; existen 11 sistemas operativos con bases de datos activas, hay compromiso explícito de la alta dirección (Ing. Canela, Kutnich, Viola, Derka), buena cultura de adopción digital (éxito previo al eliminar el papel en *Viaticar* y *Calificaciones*) y alcance provincial a través de *GesTaller*.
 
 
 * **Debilidades (Interno):**
@@ -83,8 +83,8 @@ Se define la **función de negocio principal** de cada una de las 10 Direcciones
 
 | Cuadrante Actual | Sistemas Existentes Ubicados | Diagnóstico / Crítica en el TP |
 | --- | --- | --- |
-| **Clave para las operaciones** *(Depende el éxito actual)* | • **StockDVP** (inventario)  • **TallerDLM** (órdenes mecánicas)  • **OrdenesDVP** (compras/partidas)  • **Consorcio** (certificaciones)  • **GesTaller** (parque provincial)  • **SiCC** (cargas de combustible) | Cumplen con registrar la operación diaria, pero están fragmentados (silos), carecen de reportes analíticos, dependen de planillas manuales en papel (*SiCC*) o sufren bloqueo de proveedor sin código fuente (*Consorcio*). |
-| **De Apoyo** *(Valiosos pero no críticos)* | • **Viaticar** (viáticos)  • **RopasDVP** (indumentaria)  • **RRHH** (personal y licencias)  • **Calificaciones** (desempeño)  • **LexDoctor** (juicios/amparos) | Resuelven bien las tareas administrativas y legales locales (destacándose *Calificaciones* y *LexDoctor* por digitalizar circuitos antes manuales), pero los sistemas de personal no están integrados en un legajo único ni analizan gastos. |
+| **Clave para las operaciones** *(Depende el éxito actual)* | • **StockDVP** (inventario) \newline • **TallerDLM** (órdenes mecánicas) \newline • **OrdenesDVP** (compras/partidas) \newline • **Consorcio** (certificaciones) \newline • **GesTaller** (parque provincial) \newline • **SiCC** (cargas de combustible) | Cumplen con registrar la operación diaria, pero están fragmentados (silos), carecen de reportes analíticos, dependen de planillas manuales en papel (*SiCC*) o sufren bloqueo de proveedor sin código fuente (*Consorcio*). |
+| **De Apoyo** *(Valiosos pero no críticos)* | • **Viaticar** (viáticos) \newline • **RopasDVP** (indumentaria) \newline • **RRHH** (personal y licencias) \newline • **Calificaciones** (desempeño) \newline • **LexDoctor** (juicios/amparos) | Resuelven bien las tareas administrativas y legales locales (destacándose *Calificaciones* y *LexDoctor* por digitalizar circuitos antes manuales), pero los sistemas de personal no están integrados en un legajo único ni analizan gastos. |
 | **Estratégicos / Alto Potencial** | *(Vacíos en los sistemas actuales; solo figuran las propuestas futuras)* | **Diagnóstico central de la Fase II:** Todos los recursos históricos se concentraron en sistemas transaccionales aislados (operativos y de apoyo), dejando desatendidos el soporte estratégico y la innovación. |
 
 ---

@@ -46,7 +46,7 @@
 
   * `toolchain/bin/pdf2md`: Conversor inverso de PDF a Markdown en Bash + Python 3 + `mutool` con recuperación de cabecera YAML, tablas, fórmulas, citas, bloques de código, emojis y deduplicación/extracción hacia `assets/`.
 
-  * `toolchain/pandoc/`: `defaults/pdf.yaml`, `defaults/epub.yaml`, `defaults/metadatos.yaml` (`scrartcl` por defecto), `fonts/` (`Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en el repositorio), `templates/estilo.tex`, `templates/estilo-epub.css` y los 3 filtros Lua (`preambulo.lua`, `cortar-formulas.lua`, `centrar-imagenes.lua`).
+  * `toolchain/pandoc/`: `defaults/pdf.yaml`, `defaults/epub.yaml`, `defaults/metadatos.yaml` (`scrartcl` por defecto), `fonts/` (`Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en el repositorio), `templates/estilo.tex`, `templates/estilo-epub.css` y los 4 filtros Lua (`preambulo.lua`, `cortar-formulas.lua`, `centrar-imagenes.lua`, `tablas-listas.lua`).
 
 ---
 
@@ -128,6 +128,44 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-11` — Implementación del Filtro Lua `tablas-listas.lua` (Listas Nativas en Celdas de Tablas)
+
+* **Contexto**: En tablas Markdown estándar (*pipe tables*), Obsidian y la mayoría de editores no permiten saltos de línea con enter dentro de las celdas sin romper la fila de la tabla. Por ello, las listas en celdas se suelen escribir en una sola línea combinando viñetas unicode (`•`, `●`, `○`, `◦`, `▪`, etc.) separadas por espacios, `\newline` o `<br>`. Al compilar a PDF sin transformación, LaTeX agrupaba todos los ítems horizontalmente en un solo párrafo continuo. Para resolverlo sin contaminar los archivos `.md` de origen con sintaxis propietaria o tablas sobredimensionadas (*grid tables*), se implementó un filtro Pandoc Lua de transformación en memoria (Opción A).
+
+* **Acciones ejecutadas**:
+
+  * **Desarrollo de `tablas-listas.lua` (`toolchain/pandoc/filters/` y `~/.local/share/pandoc/filters/`)**:
+
+    * Intercepta bloques `Plain` y `Para` dentro de elementos `Table` en el AST de Pandoc.
+
+    * Detecta viñetas unicode (`•`, `●`, `○`, `◦`, `▪`, `▫`, `⁃`) y divide el contenido de la celda en ítems limpios dentro de un bloque nativo `pandoc.BulletList`.
+
+    * En **PDF (LuaLaTeX)**, Pandoc transforma automáticamente la columna a `p{...}` con un entorno `minipage` y un bloque `\begin{itemize}\item ... \end{itemize}`, garantizando sangrías, viñetas nativas y alineación vertical impecable.
+
+    * En **EPUB (HTML3)**, Pandoc genera listas semánticas estándar `<ul><li>...</li></ul>`.
+
+    * **Heurísticas de seguridad y cero regresiones**:
+
+      * *Preservación de texto introductorio*: Si la celda contiene una introducción antes de los puntos (ej. `Requisitos: \newline • Punto 1`), dicho texto se conserva en un párrafo previo separado de la lista.
+
+      * *Prevención de falsos positivos en separadores inline*: Si el punto medio se emplea como separador tipográfico continuo sin salto de línea previo (ej. `Inicio • Ajustes • Perfil`), se preserva como texto plano sin alterar.
+
+      * *Preservación de fórmulas matemáticas y texto general*: Celdas sin caracteres de viñeta explícitos (incluyendo fórmulas matemáticas con `\newline`) quedan 100% inalteradas.
+
+      * *Saltos de línea internos*: Saltos de línea (`\newline` o `<br>`) dentro de un mismo ítem se normalizan a `pandoc.LineBreak` (vertical box TeX / `<br />` HTML) eliminando espacios redundantes en los extremos.
+
+  * **Registro en la configuración editorial**:
+
+    * Repositorio: registrado en `toolchain/pandoc/defaults/pdf.yaml` y `toolchain/pandoc/defaults/epub.yaml`.
+
+    * Entorno local del usuario: registrado en `~/.local/share/pandoc/defaults/estilo.yaml` y copiado a `~/.local/share/pandoc/filters/tablas-listas.lua`.
+
+  * **Auditoría y compilación de prueba**:
+
+    * Verificación integral con suite de 10 casos de prueba (listas con `\newline`, sin `\newline`, con `<br>`, fórmulas matemáticas, textos introductorios, separadores tipo *breadcrumbs* y viñetas unidas a texto).
+
+    * Compilación exitosa con `toolchain/bin/md2pdf` sobre `content/trabajo práctico/parte 1/Explicación - Trabajo Práctico - Parte 1.md` tanto a PDF como a EPUB, confirmando que la tabla de *Cartera de Aplicaciones* se formatea verticalmente con viñetas nativas.
 
 ### `2026-11-11` — Ingesta de Trabajo Práctico Parte 1 y Optimización Gráfica de la Matriz de Necesidades
 
