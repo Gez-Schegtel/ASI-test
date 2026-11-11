@@ -13,7 +13,7 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 **No necesitás instalar nada, ni compilar por tu cuenta, ni iniciar sesión en GitHub para estudiar.** Cada vez que se actualiza un apunte, el repositorio publica y mantiene al día un único **[Release Principal (`/releases/latest`)](https://github.com/Gez-Schegtel/ASI-test/releases/latest)** con tablas ordenadas por Unidad y Trabajo Práctico, mientras que los cierres de parcial o cursada quedan resguardados como snapshots inmutables en **[Releases](https://github.com/Gez-Schegtel/ASI-test/releases)**.
 
 > [!TIP]
-> ### Atajos directos por Unidad y Práctica
+> ### Atajos directos por Unidad y Trabajo Práctico Integrador
 > En el **[Índice de la Última Versión (`/releases/latest`)](https://github.com/Gez-Schegtel/ASI-test/releases/latest)** podés bajar cualquier `.pdf` o `.epub` individual en un clic, o usar estos enlaces permanentes para bajar el paquete `.zip` completo de cada unidad:
 >
 > * 📘 **Unidad 0 — Conceptos Previos e Introducción** — Apunte introductorio completo y temario · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Unidad-0-Completa.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
@@ -24,9 +24,9 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 >
 > * 📘 **Unidad VI — Seguridad y Auditoría de SI/TI** — Apunte teórico completo, temario y cuestionario resuelto · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Unidad-VI-Completa.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
 >
-> * 🛠️ **Práctica — Parte 1: Alineamiento Estratégico de SI/TI** — Consigna, presentaciones y guías explicativas · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Practica-Parte-1-Alineamiento.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
+> * 🛠️ **Trabajo Práctico Integrador — Parte 1: Caso Vialidad Provincial (DVP) y Alineamiento** — Consigna, presentaciones y guías explicativas · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/TPI-Parte-1-Alineamiento.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
 >
-> * 🛠️ **Práctica — Parte 2: Caso Vialidad Provincial (DVP)** — Organigrama, diccionario de competencias y presentación · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Practica-Parte-2-DVP.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
+> * 🛠️ **Trabajo Práctico Integrador — Parte 2: Caso Vialidad Provincial (DVP)** — Organigrama, diccionario de competencias y presentación · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/TPI-Parte-2-DVP.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
 >
 > 👉 **[Ir a la Última Versión con todos los PDFs y EPUBs individuales (`/releases/latest`)](https://github.com/Gez-Schegtel/ASI-test/releases/latest)** · [Ver versiones históricas](https://github.com/Gez-Schegtel/ASI-test/releases)
 
@@ -38,7 +38,7 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 ASI/
 ├── content/
 │   ├── unidades/                 <- Apuntes teóricos y cuestionarios resueltos por Unidad (Unidad 0 a VI)
-│   ├── trabajo práctico/         <- Guías, presentaciones y resoluciones de Práctica (parte 1 y parte 2)
+│   ├── trabajo práctico/         <- Guías, presentaciones y resoluciones del Trabajo Práctico Integrador (parte 1 y parte 2)
 │   └── labs/                     <- Laboratorios prácticos y talleres (Checkmk, monitoreo)
 ├── assets/                       <- Almacén único de imágenes, diagramas y recursos gráficos
 ├── toolchain/

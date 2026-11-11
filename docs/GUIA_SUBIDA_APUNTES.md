@@ -47,8 +47,8 @@ content/
 │       ├── Unidad VI - Temario.md
 │       └── Unidad VI - Cuestionario de Autoestudio - Resolución.md
 └── trabajo práctico/
-    ├── parte 1/                         <- Sección Práctica Parte 1 (Alineamiento) en /releases/latest
-    └── parte 2/                         <- Sección Práctica Parte 2 (Caso DVP) en /releases/latest
+    ├── parte 1/                         <- Sección Trabajo Práctico Integrador Parte 1 en /releases/latest
+    └── parte 2/                         <- Sección Trabajo Práctico Integrador Parte 2 en /releases/latest
 ```
 
 > [!TIP]

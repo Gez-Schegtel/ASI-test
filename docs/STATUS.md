@@ -61,8 +61,8 @@
 | **Unidad IV** | Mantenimiento y Desarrollo de RRHH *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u6/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64) |
 | **Unidad V** | Subsistema de Seguimiento / Control (Monitores, Benchmarking, Amdahl) | `legacy/archivo-2025/2025/par_1/u2/` | Fragmentado |
 | **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/Unidad VI/` | **Completa** (Apunte teórico + Temario + Cuestionario de autoestudio resuelto) |
-| **Trabajo Práctico (Parte 1)** | Alineamiento Estratégico y Caso DVP Parte 1 | `content/trabajo práctico/parte 1/` | **Completo en `.md`** (Guías, presentaciones y consignas) |
-| **Trabajo Práctico (Parte 2)** | Caso DVP Parte 2 (Organigrama, Competencias y Presentación) | `content/trabajo práctico/parte 2/` | **Completo en `.md`** (`Diccionario de Competencias.md`, `Nuevo Organigrama.md`, `Presentación.md`) |
+| **Trabajo Práctico Integrador (Parte 1)** | Alineamiento Estratégico y Caso DVP Parte 1 | `content/trabajo práctico/parte 1/` | **Completo en `.md`** (`Escenario.md`, `Trabajo Práctico - Parte 1.md`, `Explicación - Trabajo Práctico - Parte 1.md`) |
+| **Trabajo Práctico Integrador (Parte 2)** | Caso DVP Parte 2 (Organigrama, Competencias y Presentación) | `content/trabajo práctico/parte 2/` | **Completo en `.md`** (`Explicación del TPI.md`, `Nuevo Organigrama.pdf`, etc.) |
 | **Lab Checkmk** | Monitoreo con Checkmk Raw 2.3 en Docker + `http_ping.py` | `content/labs/cmk/` y `content/labs/taller-1/` | **Migrado y funcional** |
 
 ---
@@ -159,11 +159,15 @@
 
     * Compilación editorial exitosa a PDF mediante `toolchain/bin/md2pdf`, verificando que la tabla ocupa el ancho completo de las páginas 14 y 15 con nitidez absoluta.
 
-  * **Adaptación de build y empaquetador de releases (`mkrelease` y `md2pdf`)**:
+  * **Evolución editorial a "Trabajo Práctico Integrador" (TPI)**:
 
-    * Actualización de `toolchain/bin/md2pdf` para que la carpeta de destino en `build/` utilice la tilde canónica: `build/Práctica/` (`parte 1/` y `parte 2/`).
+    * Adopción de la denominación canónica **Trabajo Práctico Integrador (TPI)** en sustitución de "Práctica" para reflejar con rigor académico el caso de la Dirección de Vialidad Provincial (DVP).
 
-    * Actualización de `toolchain/bin/mkrelease` con soporte nativo para `build/Práctica/` (y fallback transparente con/sin tilde) para la publicación en Release de la Parte 1 (`Practica-Parte-1-Alineamiento.zip` conteniendo `Escenario.md` y `Trabajo Práctico - Parte 1.md`). Verificación exitosa mediante `--dry-run`.
+    * Actualización de `toolchain/bin/md2pdf` para que las compilaciones de `content/trabajo práctico/` se ubiquen bajo `build/Trabajo Práctico Integrador/` (`parte 1/` y `parte 2/`).
+
+    * Actualización de `toolchain/bin/mkrelease` para publicar los bloques `TPI1` (`TPI-Parte-1-Alineamiento.zip`) y `TPI2` (`TPI-Parte-2-DVP.zip`), con resolución de rutas con fallback (`Trabajo Práctico Integrador` $\leftrightarrow$ `Práctica` $\leftrightarrow$ `Practica`).
+
+    * Actualización de enlaces directos de descarga y atajos permanentes en `README.md` y `docs/GUIA_SUBIDA_APUNTES.md`.
 
 ### `2026-11-11` — Sincronización Integral de Mejoras en `md2pdf`, `mdnorm`, `pdf2md` y Estilos LaTeX (`enumitem`)
 

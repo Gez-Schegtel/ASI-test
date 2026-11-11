@@ -126,8 +126,8 @@ bloques=(
   "U6|📘 Unidad VI — Seguridad y Auditoría de SI/TI|Unidad VI|Unidad-VI-Completa.zip"
   "TP1|🛠️ Práctica — TP1: Alineamiento Estratégico de SI/TI|Practica/tp1-alineamiento|Practica-TP1-Alineamiento.zip"
   "TPI|🛠️ Práctica — TPI: Vialidad Provincial (DVP)|Practica/tpi-dvp|Practica-TPI-DVP.zip"
-  "TP1|🛠️ Práctica — Parte 1: Caso Vialidad Provincial (DVP) y Alineamiento|Práctica/parte 1|Practica-Parte-1-Alineamiento.zip"
-  "TP2|🛠️ Práctica — Parte 2: Caso Vialidad Provincial (DVP)|Práctica/parte 2|Practica-Parte-2-DVP.zip"
+  "TPI1|🛠️ Trabajo Práctico Integrador — Parte 1: Caso Vialidad Provincial (DVP) y Alineamiento|Trabajo Práctico Integrador/parte 1|TPI-Parte-1-Alineamiento.zip"
+  "TPI2|🛠️ Trabajo Práctico Integrador — Parte 2: Caso Vialidad Provincial (DVP)|Trabajo Práctico Integrador/parte 2|TPI-Parte-2-DVP.zip"
 )
 
 total_bloques=0
@@ -136,15 +136,17 @@ for entrada in "${bloques[@]}"; do
   IFS='|' read -r prefijo titulo_sec rel_dir zip_name <<< "$entrada"
   carpeta="$BUILD_DIR/$rel_dir"
   if [[ ! -d "$carpeta" ]]; then
-    # Intento de fallback sin/con tilde (Práctica <-> Practica)
-    alt_rel="${rel_dir/Práctica/Practica}"
-    [[ "$alt_rel" == "$rel_dir" ]] && alt_rel="${rel_dir/Practica/Práctica}"
-    if [[ -d "$BUILD_DIR/$alt_rel" ]]; then
-      carpeta="$BUILD_DIR/$alt_rel"
-    else
-      continue
-    fi
+    # Búsqueda con fallback de variantes de nombre (Trabajo Práctico Integrador <-> Práctica <-> Practica)
+    subparte="${rel_dir#*/}"
+    for dir_base in "Trabajo Práctico Integrador" "Práctica" "Practica"; do
+      posible="$BUILD_DIR/$dir_base/$subparte"
+      if [[ -d "$posible" ]]; then
+        carpeta="$posible"
+        break
+      fi
+    done
   fi
+  [[ -d "$carpeta" ]] || continue
 
   mapfile -d '' archivos_bloque < <(find "$carpeta" -type f \( -name "*.pdf" -o -name "*.epub" \) -print0 | sort -z)
   (( ${#archivos_bloque[@]} > 0 )) || continue
