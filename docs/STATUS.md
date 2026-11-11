@@ -159,6 +159,12 @@
 
     * Compilación editorial exitosa a PDF mediante `toolchain/bin/md2pdf`, verificando que la tabla ocupa el ancho completo de las páginas 14 y 15 con nitidez absoluta.
 
+  * **Adaptación de build y empaquetador de releases (`mkrelease` y `md2pdf`)**:
+
+    * Actualización de `toolchain/bin/md2pdf` para que la carpeta de destino en `build/` utilice la tilde canónica: `build/Práctica/` (`parte 1/` y `parte 2/`).
+
+    * Actualización de `toolchain/bin/mkrelease` con soporte nativo para `build/Práctica/` (y fallback transparente con/sin tilde) para la publicación en Release de la Parte 1 (`Practica-Parte-1-Alineamiento.zip` conteniendo `Escenario.md` y `Trabajo Práctico - Parte 1.md`). Verificación exitosa mediante `--dry-run`.
+
 ### `2026-11-11` — Sincronización Integral de Mejoras en `md2pdf`, `mdnorm`, `pdf2md` y Estilos LaTeX (`enumitem`)
 
 * **Contexto**: Sincronización de las versiones más recientes de los scripts de autoría locales (`~/.mis-scripts/common/{md2pdf, mdnorm, pdf2md}`) y estilos de Pandoc (`~/.local/share/pandoc/defaults/estilo.tex`) dentro del toolchain autocontenido del repositorio, preservando intactas las reglas de autocontención, extracción centralizada en `assets/`, deduplicación por hash, resolución de colisiones y ejecución local exclusiva de `pdf2md`.
