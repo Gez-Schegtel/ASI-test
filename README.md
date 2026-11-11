@@ -16,11 +16,17 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 > ### Atajos directos por Unidad y Práctica
 > En el **[Índice de la Última Versión (`/releases/latest`)](https://github.com/Gez-Schegtel/ASI-test/releases/latest)** podés bajar cualquier `.pdf` o `.epub` individual en un clic, o usar estos enlaces permanentes para bajar el paquete `.zip` completo de cada unidad:
 >
-> * 📘 **Unidad I — Los SI en la Empresa y Estrategia SI/TI** — Apunte teórico completo y temario · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Unidad-I-Completa.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
+> * 📘 **Unidad 0 — Conceptos Previos e Introducción** — Apunte introductorio completo y temario · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Unidad-0-Completa.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
+>
+> * 📘 **Unidad I — Los SI en la Empresa y Estrategia SI/TI** — Apunte teórico completo, aclaraciones de cátedra, temario y cuestionario resuelto · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Unidad-I-Completa.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
+>
 > * 📘 **Unidad III — Subsistema de Aplicación** — Apunte teórico completo, temario y cuestionario resuelto · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Unidad-III-Completa.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
+>
 > * 📘 **Unidad VI — Seguridad y Auditoría de SI/TI** — Apunte teórico completo, temario y cuestionario resuelto · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Unidad-VI-Completa.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
-> * 🛠️ **Práctica — TPI (Vialidad Provincial - DVP)** — Trabajo Práctico Integrador (Partes 1 y 2) · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Practica-TPI-DVP.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
-> * 🛠️ **Práctica — TP1 (Alineamiento Estratégico de SI/TI)** — Consigna, presentaciones y guías explicativas · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Practica-TP1-Alineamiento.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
+>
+> * 🛠️ **Práctica — Parte 1: Alineamiento Estratégico de SI/TI** — Consigna, presentaciones y guías explicativas · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Practica-Parte-1-Alineamiento.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
+>
+> * 🛠️ **Práctica — Parte 2: Caso Vialidad Provincial (DVP)** — Organigrama, diccionario de competencias y presentación · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Practica-Parte-2-DVP.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
 >
 > 👉 **[Ir a la Última Versión con todos los PDFs y EPUBs individuales (`/releases/latest`)](https://github.com/Gez-Schegtel/ASI-test/releases/latest)** · [Ver versiones históricas](https://github.com/Gez-Schegtel/ASI-test/releases)
 
@@ -29,10 +35,10 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 ## Estructura del Repositorio
 
 ```text
-ASI-test/
+ASI/
 ├── content/
-│   ├── unidades/                 <- Apuntes teóricos y cuestionarios resueltos por Unidad (Unidad I a VI)
-│   ├── practica/                 <- TPI (Vialidad Provincial - DVP) y TP1 (Alineamiento de SI/TI)
+│   ├── unidades/                 <- Apuntes teóricos y cuestionarios resueltos por Unidad (Unidad 0 a VI)
+│   ├── trabajo práctico/         <- Guías, presentaciones y resoluciones de Práctica (parte 1 y parte 2)
 │   └── labs/                     <- Laboratorios prácticos y talleres (Checkmk, monitoreo)
 ├── assets/                       <- Almacén único de imágenes, diagramas y recursos gráficos
 ├── toolchain/
@@ -55,13 +61,16 @@ ASI-test/
 Si querés colaborar subiendo unidades nuevas, editar apuntes en Markdown o generar tus propios PDFs/EPUBs en tu máquina:
 
 * **📝 Subir o editar apuntes**: Leé la **[Guía paso a paso para subir apuntes (`docs/GUIA_SUBIDA_APUNTES.md`)](docs/GUIA_SUBIDA_APUNTES.md)** (incluye las plantillas de portada, reglas de imágenes en `assets/` y el comando de normalización).
+
 * **En Obsidian**: Abrí la raíz del repositorio como bóveda (*vault*) para que todas las imágenes de [`assets/`](assets/) se resuelvan automáticamente. Tema sugerido: *Blue Topaz*.
+
 * **Compilar usando la imagen Docker del repositorio (sin instalar TeX Live)**:
   ```bash
   docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/workspace" -w /workspace \
     ghcr.io/gez-schegtel/asi-toolchain:latest \
     ./toolchain/bin/md2pdf -y --all "content/unidades/Unidad III/"*.md
   ```
+
 * **Normalizar y compilar de forma nativa**:
   ```bash
   # Normalizar formato de un apunte
@@ -71,4 +80,5 @@ Si querés colaborar subiendo unidades nuevas, editar apuntes en Markdown o gene
   ./toolchain/bin/md2pdf -y --all "content/unidades/Unidad III/"*.md
   ```
   Consultá [`toolchain/README.md`](toolchain/README.md) para ver el detalle de dependencias y opciones.
+
 * **Estado del proyecto y hoja de ruta**: Consultá [`docs/STATUS.md`](docs/STATUS.md) para ver el avance de cada unidad y las especificaciones técnicas en [`docs/specs/`](docs/specs/).

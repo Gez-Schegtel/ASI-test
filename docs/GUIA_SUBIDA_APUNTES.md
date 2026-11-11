@@ -26,24 +26,29 @@ El pipeline de GitHub Actions ([`.github/workflows/editorial-ci.yml`](../.github
 ```text
 content/
 ├── unidades/
+│   ├── Unidad 0/
+│   │   └── Conceptos Previos.md
 │   ├── Unidad I/
-│   │   ├── Unidad I - Los SI en la Empresa y Estrategia SI-TI.md
-│   │   ├── Unidad I - Cuestionario de Autoestudio - Resolución.md
+│   │   ├── Unidad I - Panificación Estratégica de SI-TI.md
+│   │   ├── Aclaraciones - Unidad I.md
+│   │   ├── Unidad I - Temario.md
 │   │   └── borradores/                  <- Ignorada en Releases (para notas en preparación)
 │   ├── Unidad II/
 │   │   ├── Unidad II - Subsistema de Provisión.md
 │   │   └── Unidad II - Cuestionario de Autoestudio - Resolución.md
 │   ├── Unidad III/
 │   │   ├── Unidad III - Subsistema de Aplicación.md
+│   │   ├── Unidad III - Temario.md
 │   │   └── Unidad III - Cuestionario de Autoestudio - Resolución.md
 │   ├── Unidad IV/
 │   ├── Unidad V/
 │   └── Unidad VI/
 │       ├── Unidad VI - Seguridad y Auditoría.md
+│       ├── Unidad VI - Temario.md
 │       └── Unidad VI - Cuestionario de Autoestudio - Resolución.md
-└── practica/
-    ├── tp1-alineamiento/                <- Sección Práctica TP1 en /releases/latest
-    └── tpi-dvp/                         <- Sección Práctica TPI en /releases/latest
+└── trabajo práctico/
+    ├── parte 1/                         <- Sección Práctica Parte 1 (Alineamiento) en /releases/latest
+    └── parte 2/                         <- Sección Práctica Parte 2 (Caso DVP) en /releases/latest
 ```
 
 > [!TIP]
