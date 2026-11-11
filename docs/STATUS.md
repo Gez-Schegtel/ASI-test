@@ -167,6 +167,14 @@
 
       * Prevención de falsas fusiones en títulos multilínea que colindan con el destino de un nuevo encabezado.
 
+      * **Interlineado dinámico adaptativo y umbral de carátulas (tercera pasada)**:
+
+        * Detección dinámica de interlineado en documentos no-LaTeX (`line_step = max(line_step, steps.most_common(1)[0][0])`), evitando que párrafos con interlineado 1,5 o doble (e.g. Google Docs o Word) se fracturen en fragmentos aislados por tolerancias rígidas.
+
+        * Ajuste del umbral horizontal en `center_block` (`left_margin + 5.0` en lugar de `+ 15.0`) permitiendo reconocer títulos centrados largos en carátulas que se aproximan a los márgenes sin comenzar alineados a la izquierda.
+
+        * Inspección minuciosa de `~/.mis-scripts/common/` y `~/.local/share/pandoc/`, comprobando que `md2pdf`, `mdnorm` y las configuraciones de Pandoc no tuvieron modificaciones adicionales, preservando al 100% las adaptaciones del repositorio.
+
     * **Resolución del límite de argumentos del kernel**: Transmisión del código de Python mediante `stdin` (`python3 - "$archivo" "$temporal" <<< "$CONVERTIR_PY"`) superando el límite Linux `MAX_ARG_STRLEN` (128 KiB).
 
     * **Ampliación de regex de XObjects**: Ajuste para reconocer nombres con puntos y guiones (`/([a-zA-Z0-9_.-]+)\s+Do\b`) generados por motores como ReportLab.

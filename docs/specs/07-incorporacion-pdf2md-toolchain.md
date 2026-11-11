@@ -78,6 +78,10 @@ Se incorpora el ejecutable autocontenido [`toolchain/bin/pdf2md`](../../toolchai
 
        * Función `next_number(a, b)` para preservar saltos de línea intencionales en numeraciones consecutivas aún cuando la línea anterior alcance el margen derecho.
 
+       * **Interlineado dinámico adaptativo (`line_step`)**: En documentos que no provienen de LaTeX con interlineado ampliado (por ejemplo, interlineado 1,5 en Google Docs: 19 pt con letra de 11 pt), se adopta el espaciado vertical predominante real del documento (`line_step = max(line_step, steps.most_common(1)[0][0])`) para evitar que líneas consecutivas del mismo párrafo se separen erróneamente en párrafos independientes.
+
+       * **Títulos centrados extensos en carátulas (`center_block`)**: Se optimiza el umbral horizontal (`left_margin + 5.0` en vez de `+ 15.0`) para reconocer títulos centrados largos cuyos extremos se aproximan a los márgenes sin comenzar alineados a la izquierda.
+
 3. **Herramienta de uso local exclusivo (Principio 2 y 3 de `GEMINI.md`)**:
 
    * `pdf2md` es una herramienta auxiliar para ingesta, extracción y autoría local. **No interviene en el pipeline de CI/CD ni en la compilación de releases**, manteniendo la imagen Docker editorial libre de dependencias pesadas innecesarias (`mutool`, `python3-pdfminer`, `python3-lxml`).
