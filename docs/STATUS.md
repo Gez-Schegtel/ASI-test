@@ -155,6 +155,18 @@
 
     * Integración del motor Python ampliado (~150 KB) con reconstrucción de tablas tipo cuadrícula (*grid tables* de Word, Docs y LibreOffice), títulos jerárquicos basados en *outlines* del PDF (`doc.get_outlines()`), inserción de `\needspace` para evitar figuras huérfanas, superíndices, subíndices y detección de PDFs escaneados.
 
+    * **Sincronización avanzada de heurísticas (segunda pasada)**:
+
+      * Detección y reconstrucción de índices de títulos no numerados (`# Título {-}`) marcados como `section*` por LaTeX, localizando automáticamente el primer título posterior (`toc_first_key`) y calculando la profundidad adecuada (`toc-depth`).
+
+      * Inferencia automática de la clase `documentclass: scrartcl` al comparar tipografías con serifa en cuerpo y sin serifa en encabezados.
+
+      * Función `next_number(a, b)` para preservar saltos de línea intencionales en numeraciones consecutivas aún cuando la línea anterior alcance el margen.
+
+      * Reversión de `0.0.0.1. * Título` a `#### Título {-}` para títulos `\paragraph*` y `\subparagraph*`.
+
+      * Prevención de falsas fusiones en títulos multilínea que colindan con el destino de un nuevo encabezado.
+
     * **Resolución del límite de argumentos del kernel**: Transmisión del código de Python mediante `stdin` (`python3 - "$archivo" "$temporal" <<< "$CONVERTIR_PY"`) superando el límite Linux `MAX_ARG_STRLEN` (128 KiB).
 
     * **Ampliación de regex de XObjects**: Ajuste para reconocer nombres con puntos y guiones (`/([a-zA-Z0-9_.-]+)\s+Do\b`) generados por motores como ReportLab.

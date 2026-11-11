@@ -68,6 +68,16 @@ Se incorpora el ejecutable autocontenido [`toolchain/bin/pdf2md`](../../toolchai
 
      * **Invocación robusta vía `stdin`**: El código de Python (~150 KB) se transmite al intérprete mediante `python3 - "$archivo" "$temporal" <<< "$CONVERTIR_PY"` en lugar de `python3 -c`, eludiendo de manera segura el límite del kernel de Linux `MAX_ARG_STRLEN` (128 KiB).
 
+     * **Heurísticas avanzadas de títulos, índices y saltos de línea**:
+
+       * Detección y reconstrucción de índices de títulos no numerados (`# Título {-}`) y localización del primer título posterior (`toc_first_key`) con inferencia de `toc-depth`.
+
+       * Detección automática de la clase KOMA-Script `documentclass: scrartcl` al combinar texto en serif con títulos sans-serif.
+
+       * Detección de títulos `\paragraph*` convertidos por estilo a `0.0.0.1. * Título` y restitución limpia a `#### Título {-}` con `numbersections`.
+
+       * Función `next_number(a, b)` para preservar saltos de línea intencionales en numeraciones consecutivas aún cuando la línea anterior alcance el margen derecho.
+
 3. **Herramienta de uso local exclusivo (Principio 2 y 3 de `GEMINI.md`)**:
 
    * `pdf2md` es una herramienta auxiliar para ingesta, extracción y autoría local. **No interviene en el pipeline de CI/CD ni en la compilación de releases**, manteniendo la imagen Docker editorial libre de dependencias pesadas innecesarias (`mutool`, `python3-pdfminer`, `python3-lxml`).
