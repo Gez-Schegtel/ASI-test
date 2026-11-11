@@ -989,6 +989,7 @@ que unifique los sistemas de RRHH, Calificaciones, Viaticar y RopasDVP para
 conformar un Legajo Digital Único con visión 360° del empleado.
 
 7. Control de Calidad (Dirección de Tecnología Vial)
+
 ●​ Necesidad de Información:
 ○​ Disponer de un registro centralizado, auditable e histórico con los resultados de
 los ensayos físicos, químicos y mecánicos de materiales de cada obra.
@@ -1005,6 +1006,7 @@ resultados de laboratorios de suelos y materiales, eliminando la dependencia de
 registros informales en cuadernos o archivos PDF aislados.
 
 8. Retención Legal (Dirección de Asuntos Jurídicos)
+
 ●​ Necesidad de Información:
 ○​ Conocer el estado procesal y los vencimientos de plazos de los expedientes
 legales, amparos, expropiaciones y contiendas en las 5 delegaciones zonales.
@@ -1099,6 +1101,7 @@ evitando que el Estado asuma el costo financiero de reconstruir calzadas
 defectuosas.
 
 2. Beneficios de Efectividad (Nivel Táctico)
+
 Estos beneficios se perciben en el nivel táctico (mandos medios y gerencias de
 departamento), corresponden a la Segunda Era de la Información (E2 - Informar) y su
 foco es cualitativo, orientado a optimizar el Rendimiento sobre los Activos (RoA) del
@@ -1129,6 +1132,7 @@ motivación, reduciendo el favoritismo subjetivo y fomentando el "sentido de
 propiedad" de los empleados públicos hacia la organización.
 
 3. Beneficios de Avance Estratégico (Nivel Estratégico)
+
 Estos beneficios impactan directamente en la alta dirección (nivel institucional),
 corresponden a la Tercera Era de la Información (E3 - Transformar) y están orientados al
 crecimiento y a la competitividad del organismo. Son, por definición, intangibles y de largo

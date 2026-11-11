@@ -21,8 +21,11 @@ numbersections: true
 Los procesos de negocio pueden ser de los siguientes tipos:
 
 - **Estratégicos:** son los procesos relacionados con la dirección y el control de la organización.
+
 - **Operativos:** son las tareas que agregan valor a los resultados de manera directa.
+
 - **De apoyo:** son los procesos que generan productos invisibles para el cliente externo, pero imprescindibles para la gestión efectiva del negocio.
+
 - **De gestión o de control:** son los procesos que abarcan una serie de acciones o deberes organizados e interconectados.
 
 > ⚠️ **Revisar:** la definición de los procesos *de gestión o de control* es demasiado general (cualquier proceso es "un conjunto de acciones organizadas e interconectadas") y no los distingue de los otros tres tipos. Conviene completarla con lo que se dijo en clase.
@@ -38,6 +41,7 @@ Cuando se administra cualquier empresa existen dos fases: una **estructural**, e
 Estas dos fases se conocen como **fase mecánica**, que engloba la teoría, y **fase dinámica**, en la que se ejecuta la práctica.
 
 - **Fase mecánica:** es la parte de la administración en la que se establece *qué debe hacerse*.
+
 - **Fase dinámica:** se refiere a *cómo manejar la empresa*.
 
 Existen diversos criterios y enfoques en cuanto al **número de etapas** que constituyen el proceso administrativo, aunque finalmente se establecen cuatro en común: **planeación, organización, dirección y control**. La planeación y la organización forman parte de la fase **mecánica**, y la dirección y el control, de la fase **dinámica**.
@@ -45,8 +49,11 @@ Existen diversos criterios y enfoques en cuanto al **número de etapas** que con
 Cada una de las etapas del proceso administrativo responde a una pregunta:
 
 - **Planeación: ¿qué se va a hacer?** Se debe establecer el objetivo que se pretende alcanzar.
+
 - **Organización: ¿cómo se va a hacer?** Considerando el capital humano y los recursos materiales, financieros y técnicos con los que se cuenta.
+
 - **Dirección: ¿cómo se está haciendo?** Busca guiar y dar seguimiento a la ejecución de los planes y de la organización.
+
 - **Control: ¿cómo se hizo?** Es la etapa que retroalimenta todo el proceso: evalúa y verifica que las actividades se hayan ejecutado conforme a lo planeado, organizado y dirigido, con el objeto de corregir las desviaciones que hayan dificultado llegar al resultado.
 
 > Según Chiavenato, el **control como función administrativa** forma parte del proceso administrativo de *planear, organizar, dirigir y controlar*: «es la función de acompañar y evaluar lo que fue planeado, organizado y dirigido, para detectar desviaciones o variaciones presentadas y efectuar las correcciones necesarias». Su base de acción es la **información de retorno** (retroalimentación) y puede realizarse en el nivel institucional (control estratégico), en el intermedio (control táctico) y en el operativo (control operativo). *(Chiavenato, Administración de recursos humanos, 5.ª ed., parte VII, p. 619.)*
@@ -64,8 +71,11 @@ Es la determinación de los objetivos y la elección de los cursos de acción al
 Palom Izquierdo lo resume así: la planificación es **«un proceso mediante el cual determinamos de dónde venimos, en qué situación estamos, a dónde queremos ir y cómo y cuándo llegaremos allí»**. Su propósito es decidir qué hay que hacer *hoy* para estar en una situación determinada en el futuro, por eso:
 
 - **No se ocupa de las decisiones futuras, sino del impacto futuro de las decisiones actuales.** Se trabaja *hacia atrás*: desde los objetivos hasta lo que hay que hacer ahora.
+
 - **No busca eliminar el riesgo**, sino asegurar que se asuman los riesgos oportunos en el momento oportuno.
+
 - **Busca el uso eficaz de los recursos** para lograr los objetivos más importantes y **prevenir las crisis** antes de que aparezcan («una serie continuada de crisis indica una pobre planificación»).
+
 - **Su objetivo no es "hacer un plan"**, sino instalar el proceso de planificación como una rutina de toda la empresa.
 
 ### Pasos de la planificación.
@@ -73,9 +83,13 @@ Palom Izquierdo lo resume así: la planificación es **«un proceso mediante el 
 Sus **cinco pasos** son:
 
 1. **Definición de los objetivos organizacionales.**
+
 2. **Determinación de dónde se encuentra uno en relación con los objetivos.**
+
 3. **Desarrollo de premisas considerando las condiciones futuras.**
+
 4. **Identificación y elección entre cursos de acción alternativos.**
+
 5. **Puesta en marcha de los planes y evaluación de los resultados.**
 
 > 📝 **Apunte de clase:** este último paso vuelve a cerrar en el primero, para que cada vez que se ejecute haya una mejora continua.
@@ -85,9 +99,13 @@ Sus **cinco pasos** son:
 Los **principios** que la rigen son:
 
 - **Factibilidad:** lo que se planea debe ser realizable.
+
 - **Objetividad y cuantificación:** al planear es necesario basarse en hechos y datos reales, no en suposiciones. La planeación será más confiable y precisa cuanto más pueda medirse en tiempo, dinero, cantidades y especificaciones.
+
 - **Flexibilidad:** el plan debe poder adaptarse a la situación y contemplar imprevistos sin desviarse del objetivo principal.
+
 - **Unidad:** todos los planes específicos que se desarrollen dentro de una organización deben alinearse con un plan general que marque la dirección global. Esto asegura que los esfuerzos de las distintas áreas trabajen en armonía hacia los mismos objetivos.
+
 - **Del cambio de estrategias:** si un plan se extiende en el tiempo, es necesario revisar las estrategias y, si hace falta, cambiarlas para adaptarlas a nuevas realidades o desafíos, de modo que el plan no quede obsoleto.
 
 ### Plazos y resultado de la planificación.
@@ -97,9 +115,13 @@ Puede realizarse en tres **plazos**: **corto** (hasta un año), **mediano** (de 
 El **resultado** de la planificación es el **plan**. Los planes pueden definirse como diseños o esquemas detallados realizables a futuro, y deben contener las especificaciones necesarias para llevarlos a cabo. Según Palom Izquierdo, un buen plan:
 
 - Está orientado a **objetivos específicos y medibles**.
+
 - Se basa en **información actual** sobre el entorno y en las expectativas futuras.
+
 - **Involucra a los subordinados** y asegura que lo comprendan.
+
 - **Asigna tareas, responsables y plazos.**
+
 - **Establece la base para el control.**
 
 Por otro lado, la planeación es esencial para el correcto funcionamiento de cualquier grupo social, ya que **prevé los cambios** que pueden ocurrir con el tiempo y establece las medidas necesarias para afrontarlos.
@@ -113,6 +135,7 @@ La planeación se da en tres **niveles**, que se corresponden con los niveles je
   Sus etapas se desarrollan en el apartado siguiente.
 
 - **Táctica (departamental o funcional):** se da a nivel funcional o de departamento. Su punto de partida es el análisis de la situación de un área o departamento de la empresa, a fin de establecer objetivos tácticos, formular estrategias funcionales y diseñar planes de acción. Una vez hecha la planeación estratégica, se necesitan planes más específicos para lograr los objetivos estratégicos. **Se elaboran los planes de cada departamento de la empresa teniendo en cuenta los estratégicos. Su contenido es menos genérico y más detallado, y está orientada al mediano plazo.**
+
 - **Operacional:** se refiere específicamente a las tareas y operaciones realizadas en los últimos niveles jerárquicos de la organización, y se orienta hacia la optimización y la maximización de los resultados. Responde a ***cómo hacer*** y ***qué hacer*** con los objetivos y planes que vienen de la planeación táctica, con base en la estratégica. **Su contenido es detallado y analítico, y está orientada al corto plazo.**
 
 > 📝 **Apunte de clase:** los planes operacionales se orientan siempre hacia la **eficiencia**, es decir, lograr los resultados deseados con el mínimo de recursos. Los planes tácticos y estratégicos se orientan siempre hacia la **eficacia**, es decir, conseguir lo que se propone en el tiempo estipulado.
@@ -130,16 +153,27 @@ Según Palom Izquierdo, el proceso integrado de planificación estratégica tien
 <sub>*Fuente: Palom Izquierdo, **Management: la tecnología punta del mando** (col. «Prodúctica», Marcombo, 1989), Fig. 3: El proceso integrado de planificación estratégica.*</sub>
 
 1. **Filosófica:** establece *quién es* la empresa.
+
     - **Principios:** el sistema de valores que guía los actos de la organización, dentro y fuera de ella.
+
     - **Misión:** el objetivo central de la empresa, lo que le da sentido y razón de ser. Si los principios son *en qué creemos*, la misión es *qué vamos a hacer* con esos principios. Es dinámica, orientada al futuro, no habla de resultados económicos sino del valor que aporta a la sociedad, y se redefine cada tres a cinco años.
+
     - **Políticas:** acuerdos que guían las decisiones y acciones hacia los objetivos. Se escalonan en **generales** (toda la empresa), **departamentales** y **operacionales**.
+
 2. **Analítica:** diagnostica la situación para poder fijar objetivos alcanzables y estrategias viables.
+
     - **Análisis interno:** **fortalezas** (ventajas que hay que explotar), **debilidades** (desventajas actuales o potenciales) y **carencias** (lo que la empresa debería tener para ser competitiva y todavía no tiene).
+
     - **Análisis externo**, del entorno actual y futuro: **oportunidades**, **problemas** y **amenazas** (factores de gran magnitud que hay que tener siempre en cuenta, aunque sean poco probables).
+
 3. **Operativa:** convierte el diagnóstico en acción.
+
     - **Metas:** los resultados más importantes que se quieren alcanzar, descritos de forma **específica y medible**. Son el punto crucial: todo lo anterior prepara para generarlas y todo lo posterior decide cómo alcanzarlas.
+
     - **Estrategias:** la manera de alcanzar los objetivos. Para Drucker, «la mejor estrategia consiste en aprovechar los puntos fuertes de la empresa en zonas de oportunidad».
+
     - **Programas de acción:** bajan las estrategias a acciones concretas, con responsable, forma de ejecución, fecha y costo.
+
 4. **Acción y desarrollo:** los programas de acción se documentan con **qué** hacer (acción), **quién** (responsabilidad), **cómo** (estrategia), **cuándo** (oportunidad), el **costo** y los **resultados** de cada etapa. Así sirven como instrumento de **control de la acción y control económico**, y su valoración permite armar los **presupuestos** y pasar a la organización y el control.
 
 > 📝 **Apunte de clase:** en clase las actividades de la planeación estratégica se resumieron como **análisis del ambiente** (lo político, social, tecnológico, etc. que afecta a la organización desde afuera), **análisis organizacional** (recursos disponibles y necesarios, FODA) y **formulación de estrategias**. Corresponden a las etapas analítica y operativa de Palom.
@@ -151,6 +185,7 @@ Según Palom Izquierdo, el proceso integrado de planificación estratégica tien
 La palabra *organización* se usa con dos sentidos:
 
 - **Como entidad:** según Chiavenato (siguiendo a Barnard), una organización es **«un sistema de actividades conscientemente coordinadas, formado por dos o más personas, cuya cooperación recíproca es esencial»**. Solo existe cuando hay personas capaces de comunicarse, dispuestas a actuar en conjunto y que buscan un objetivo común. *(Chiavenato, Administración de recursos humanos, 5.ª ed., cap. 1, «Concepto de organizaciones».)*
+
 - **Como etapa del proceso administrativo (organizar):** responde a *¿cómo se va a hacer?* Una vez definido el plan, organizar es **dividir el trabajo en actividades, agruparlas (departamentalizar), asignarlas a personas o áreas con la autoridad y responsabilidad correspondientes, y establecer cómo se coordinan**, junto con los recursos necesarios para cumplir los objetivos. Su resultado es la **estructura organizacional**.
 
 ### El proceso de organizar.
@@ -162,8 +197,11 @@ Su **función principal** es establecer las características de la organización
 Sus características son:
 
 - **Permite la especialización de las distintas áreas. Cuanto más grande es la organización, más especializada debe ser.**
+
 - **Puede ser centralizada o descentralizada**, según dónde se concentre la toma de decisiones.
+
 - **Se diseña sobre la base de un objetivo realista y alcanzable**, para luego adaptarse a las tecnologías y herramientas que posee la organización.
+
 - **Reduce o elimina la duplicación de esfuerzos**, al delimitar funciones y responsabilidades.
 
 ### Las cinco partes de la organización según Mintzberg.
@@ -171,9 +209,13 @@ Sus características son:
 Mintzberg identificó **cinco elementos clave en la estructura organizacional**, que explican cómo se divide el trabajo y cómo se coordinan las actividades dentro de una organización:
 
 1. **Ápice estratégico:** es la parte superior de la organización, compuesta por la alta dirección o gerencia superior. Su función principal es garantizar que la organización cumpla su misión y se adapte al entorno, tomando decisiones estratégicas y supervisando el funcionamiento global.
+
 2. **Línea media:** conecta el ápice estratégico con el núcleo operativo. Está formada por los mandos intermedios, como gerentes o supervisores, que se encargan de transmitir las decisiones estratégicas a los niveles operativos y de supervisar la ejecución de las tareas.
+
 3. **Núcleo operativo:** comprende a los empleados que realizan las actividades esenciales para la producción de bienes o la prestación de servicios. Es el corazón del trabajo diario y representa la base de la organización.
+
 4. **Tecnoestructura:** está formada por especialistas y analistas que diseñan procedimientos, estándares y sistemas para mejorar la eficiencia y el control. No participan directamente en la producción, pero influyen en cómo se lleva a cabo el trabajo.
+
 5. **Staff de apoyo (personal de apoyo):** incluye a los departamentos o unidades que prestan servicios indirectos al resto de la organización, como recursos humanos, contabilidad, limpieza o servicios de seguridad. Su labor es facilitar el trabajo del núcleo operativo y de las demás partes.
 
 > ⚠️ **Revisar:** en Mintzberg, parte de lo que hace recursos humanos (la planificación y la capacitación del personal) y el control contable son tareas de **analistas de la tecnoestructura**. Fijate cómo lo dieron en clase.
@@ -202,8 +244,11 @@ Mintzberg identificó **cinco elementos clave en la estructura organizacional**,
 Se agrupan en departamentos las actividades de trabajo similares o que tienen una relación lógica:
 
 - **Por función empresarial:** consiste en agrupar las actividades y tareas de acuerdo con las funciones principales que se desarrollan en la empresa. Se ve más en las grandes empresas.
+
 - **Territorial o geográfica:** consiste en agrupar las actividades según el área donde se ejecutará el trabajo o el área que cubrirá la empresa.
+
 - **Por clientes:** se basa en diferenciar y agrupar las actividades de acuerdo con el tipo de personas para quienes se realiza el trabajo.
+
 - **Por productos o servicios:** se basa en agrupar las actividades de acuerdo con los productos y resultados que ofrece la empresa.
 
 ### Centralización, descentralización y desconcentración.
@@ -219,18 +264,27 @@ En la **centralización**, la máxima autoridad de la empresa concentra el poder
 Ventajas de **descentralizar**:
 
 - Los jefes están más cerca de los lugares donde hay que tomar las decisiones, lo que ahorra tiempo y dinero.
+
 - Aumenta la eficiencia, ya que se optimiza el uso de los recursos.
+
 - Alivia el trabajo de los jefes en la toma de decisiones, que pueden concentrar sus esfuerzos en temas de mayor importancia.
+
 - Es adecuada si el trabajador conoce bien su área de trabajo.
+
 - Las decisiones se toman más rápidamente.
+
 - Estimula y promueve a la gerencia media, lo que permite formar empleados más motivados.
+
 - Permite crecer en varias áreas al mismo tiempo.
 
 Desventajas de **descentralizar**:
 
 - Puede provocar que no haya un criterio uniforme en la toma de decisiones.
+
 - Puede fracasar si no se aplica correctamente.
+
 - Puede perderse el control sobre determinados temas.
+
 - Lleva tiempo y esfuerzo capacitar a un empleado para que ocupe un puesto de toma de decisiones.
 
 > ⚠️ **Revisar:** *«Aumenta la eficiencia, ya que se optimiza el uso de los recursos»* choca con lo que dice Robson para los SI: la descentralización «pone menos énfasis en los costos [...] y más en la efectividad», y su desventaja más importante es «el aumento de los costos por la duplicación». *(Robson, «Management de recursos de IS», sección «La ubicación de los IS».)*
@@ -240,6 +294,7 @@ En la **desconcentración**, la autoridad se delega y la responsabilidad se comp
 La diferencia con la descentralización está en **quién conserva el poder de decisión**:
 
 - En la **desconcentración** se transfieren **funciones o tareas** a unidades subordinadas (por ejemplo, sucursales u oficinas regionales), pero estas **siguen dependiendo jerárquicamente** del órgano central, que conserva el control y las decisiones de fondo.
+
 - En la **descentralización** se transfiere **el poder de decisión**: la unidad decide por sí misma dentro de su ámbito, con mayor autonomía.
 
 > Las definiciones de *organizar* y la comparación entre desconcentración y descentralización son definiciones generales de administración: no están en tu apunte original ni en los libros del proyecto.

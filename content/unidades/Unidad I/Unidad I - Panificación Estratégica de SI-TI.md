@@ -36,8 +36,10 @@ El sistema sociotécnico lo constituyen tres subsistemas principales:
 
 1. **Sistema técnico o de tareas**: lo que hace la empresa. Incluye el flujo de trabajo, tecnología utilizada, roles de las tareas y variables tecnológicas. Responde por el flujo de información técnica necesaria para conseguir los objetivos organizacionales.
    📝 *Apunte de clase:* define las **habilidades** necesarias, cómo se **organiza el trabajo** y qué tecnología se usa.
+
 2. **Sistema gerencial o administrativo**: implica la estructura organizacional, las políticas, los procedimientos y las reglas, el sistema de recompensas y castigos, el modo de tomar las decisiones y otros elementos proyectados para facilitar los procesos administrativos. Está influido por ambos subsistemas. Define los objetivos del sistema según su capacidad tecnológica.
    📝 *Apunte de clase:* define cómo se **toman decisiones**, cómo se **organiza la estructura**, las **políticas**, las **normas** y los **incentivos**.
+
 3. **Sistema social o humano**: relacionado en primer lugar con la cultura organizacional, los valores y las normas, y la satisfacción de las necesidades personales. En el sistema social también están incluidos la organización informal, el nivel motivacional de los miembros y sus actitudes individuales.
 
 > 📝 **Apunte de clase:** hay que **alinear la tecnología con las personas**.
@@ -71,9 +73,13 @@ La organización es un proyecto social que reúne varios recursos para alcanzar 
 Los recursos organizacionales pueden clasificarse como:
 
 1. **Físicos o materiales**: necesarios para efectuar operaciones básicas de la organización, ya sea para prestar servicios o producir bienes o productos. El espacio físico, los terrenos, edificios, el proceso productivo, la tecnología, los métodos y procesos de trabajo, etc. Gran parte de lo que se refiere a tecnología puede aplicarse también al área de los recursos materiales y físicos de la organización. No obstante, la tecnología no se limita a los recursos físicos o materiales, aunque estos son su mayor componente.
+
 2. **Financieros**: se refieren al dinero, en forma de capital, flujo de caja, financiación, créditos, etc., que están disponibles de manera inmediata o mediata para enfrentar compromisos que adquiere la organización. También se incluyen los ingresos producidos por las operaciones de la empresa y las inversiones de terceros. Estos recursos garantizan los medios para adquirir los demás recursos que la organización necesita. En cierta medida, los recursos financieros definen la eficacia de la organización para lograr sus objetivos, ya que ellos permiten que la empresa adquiera los recursos necesarios para operar dentro de un volumen adecuado.
+
 3. **Humanos**: personas que ingresan, permanecen y participan en la organización, en cualquier nivel jerárquico o tarea. Los recursos humanos están distribuidos en el nivel institucional de la organización (dirección), en el nivel intermedio (gerencia) y en el nivel operacional. El recurso humano es el único recurso vivo y dinámico de la organización, y decide el manejo de los demás. Constituye un tipo de recurso que posee una vocación encaminada hacia el crecimiento y desarrollo. Las personas aportan a la organización sus habilidades, conocimientos, actitudes, comportamientos, percepciones, etc. Sin importar su cargo, las personas cumplen distintos roles dentro de la jerarquía de autoridad y responsabilidad de la organización. Además, las personas difieren entre sí y constituyen un recurso muy diversificado.
+
 4. **Mercadológicos**: constituyen los medios que las organizaciones emplean para localizar, contactar e influir en los clientes o usuarios. También incluyen al propio mercado de consumidores o clientes de los productos o servicios ofrecidos por la organización. Estos recursos comprenden todas las actividades de investigación y análisis de mercado, el sistema de ventas, promoción, publicidad, distribución, desarrollo de nuevos productos según nuevas demandas, fijación de precios, asistencia técnica al consumidor, etc. Sin estos recursos, de nada servirían los demás recursos, ya que la organización perdería a los clientes y desaparecería de manera inevitable su razón de existir.
+
 5. **Administrativos**: constituyen los medios con los cuales se planean, dirigen, controlan y organizan las actividades empresariales. Incluyen los procesos de toma de decisiones y distribución de la información necesaria, además de los esquemas de coordinación e integración utilizados por la organización.
 
 ![](../../../assets/u1i4.png)
@@ -130,15 +136,22 @@ Una primera visión de qué se entiende por SI es: **el sistema encargado de coo
 
 1. **Estrategia de negocio y funciones/procesos de negocio:**
    Estos dos elementos guían las actividades de la empresa. La estrategia define la dirección y los objetivos generales, mientras que las funciones y procesos de negocio representan las acciones específicas que se realizan para alcanzar esos objetivos.
+
 2. **Actividades de la empresa:**
    Las actividades principales se dividen en tres partes:
+
    - **Planificación:** implica la definición de objetivos y la creación de estrategias para alcanzarlos.
+
    - **Diseño y ejecución de acciones:** se enfoca en la implementación de los planes mediante acciones concretas para lograr los objetivos planteados.
+
    - **Control:** se encarga de evaluar los resultados de las acciones en relación con los objetivos, identificando posibles desviaciones para realizar ajustes.
+
 3. **Sistemas de información:**
    Apoyan estas actividades proporcionando datos y herramientas que facilitan la toma de decisiones. La planificación, la ejecución y el control dependen del acceso a información precisa y oportuna.
+
 4. **Registro de transacciones:**
    Se encarga de capturar los datos de las operaciones diarias, como ventas, compras o movimientos de inventario, que alimentan los sistemas de información.
+
 5. **Entorno:**
    Representa los factores externos que afectan a la empresa, como el mercado, la competencia o los cambios en la tecnología. El entorno genera transacciones que son registradas y evaluadas a través del sistema de información para ajustar la planificación y el control.
 
@@ -151,8 +164,11 @@ Ahora, **una definición formal de lo que es un SI**: el conjunto ***formal*** d
 Algunas aclaraciones:
 
 - ***Formal***: la parte del mismo claramente definida, que toda empresa conoce y sabe cómo utilizar. No se quiere decir que no se consideren importantes los SI informales. Simplemente se trata de reconocer la limitación de que los SI informales son, por naturaleza, menos estudiables, menos planificables y, seguramente también, menos dirigibles, al menos desde un punto de vista cohesionado y global.
+
 - ***Colección de datos estructurada de acuerdo con las necesidades de una empresa***: está incluida en el SI y opera sobre ella. La base de datos (BDD) es un componente muy importante de todo SI.
+
 - ***Operaciones y toma de decisiones***: estas son necesarias en las actividades de dirección y control, y se quiere enfatizar el hecho de que no solo existen necesidades de información para coordinar acciones operativas, sino también para ayudar a tomar decisiones y para ejercer el control que se considere adecuado en cada caso.
+
 - ***Funciones, procesos y estrategia de negocio***: el SI de una empresa debe estar al servicio de su enfoque de negocio. Al fin y al cabo, el SI es solamente uno más de los elementos que la empresa diseña y utiliza para conseguir sus objetivos, y es, por tanto, imprescindible que se coordine de manera explícita con ellos.
 
 **Transacciones**: actividades operativas básicas de toda actividad empresarial, que a menudo involucran interacciones de la empresa con su entorno.
@@ -170,6 +186,7 @@ El concepto de cadena de valor distingue entre dos tipos de actividades básicas
 > 📝 **Apunte de clase:**
 >
 > - *Las de línea*: son las que están directamente involucradas en la **creación física del producto, su venta y el servicio postventa.**
+>
 > - *Las de soporte*: sirven de **sustento a las actividades primarias**, facilitando recursos, capacidades y condiciones para que funcionen eficientemente.
 
 En la figura de la cadena de valor (más abajo), una de las actividades de soporte se denomina infraestructura de la empresa. Dado que el SI de una empresa forma parte precisamente de la infraestructura de esta, se entiende que todas las actividades de línea precisan apoyo del SI. También, dado que las distintas actividades de soporte se apoyan entre sí, se llega a la conclusión de que el SI está llamado a interaccionar con todas las demás actividades de cualquier empresa, ya sean básicas o de soporte, y además en un grado no trivial.
@@ -239,6 +256,7 @@ Una implicación importante de todo ello es que *alguien* en la estructura organ
 Pueden darse dos situaciones:
 
 1. Que la tecnología aporte *mejores* maneras de hacer las cosas.
+
 2. Que nos *fuerce* a tener que hacerlas de maneras peores (puede que más eficientes, pero quizá menos efectivas). *Es imprescindible conocer claramente las posibilidades de la tecnología en términos de lo que puede aportar **para nuestro SI***.
 
 > 📝 **Nota personal:** *(Esto está en el super apunte como "El Management de los Recursos de SI", pero no lo pongo porque en la planificación del cursado 2025 no aparece en el apartado de la Unidad I.)*
@@ -288,6 +306,7 @@ La estrategia de TI define cómo se van a satisfacer las necesidades con base en
 Por lo tanto:
 
 - **Las estrategias de SI (demanda)**: determinación de la demanda de aplicaciones.
+
 - **Las estrategias de TI (oferta)**: satisfacción de la demanda de aplicaciones.
 
 > 📝 **Apunte de clase:** con la estrategia de SI tengo una demanda de información que debe ser satisfecha mediante aplicaciones; la estrategia de TI define las formas en las que esa demanda puede ser satisfecha.
@@ -297,19 +316,25 @@ Por lo tanto:
 La planificación de la estrategia de los SI/TI debe llegar a ser un proceso continuo e integrado en la planificación de la empresa. El personal de la empresa y el de TI que ha de implantar la estrategia deben considerarla como cosa propia y, por tanto, deben participar activamente en su desarrollo y comprender sus implicaciones. El proceso de planificación ha de ser manejable, tanto en términos de alcance como de duración, y debe generar resultados válidos a lo largo de su desarrollo, no solamente al final. Ha de haber hitos de control claros en los que se logre un acuerdo, y es preciso contar con el respaldo de la dirección antes de continuar un análisis y una formulación más detallados. Todos deben recibir la siguiente información antes de empezar:
 
 - Lo que está en juego y lo que se puede conseguir.
+
 - Cómo hay que lograrlo.
+
 - Qué productos se esperan obtener.
 
 Un Plan de SI/TI debe incluir:
 
 - **Una lista de proyectos a desarrollar en los próximos 3-5 años**.
+
 - **Referida a la situación en el momento de preparar el Plan**. Es decir, con el reconocimiento explícito del *punto de partida* del que se supone que debe arrancar el Plan, en cuanto a la situación de las TI/SI en la empresa de que se trate. **No solo desde un punto de vista técnico sino también desde un punto de vista de negocio.**
 
 > 📝 **Apunte de clase:** antes de empezar, es importante entender la situación actual de la empresa respecto a la tecnología. No solo desde el lado técnico (qué sistemas ya tiene, qué herramientas usa), sino también desde el lado del negocio (qué necesita mejorar o fortalecer).
 
 - **La prioridad de cada proyecto**. Tal prioridad debe contemplar tanto aspectos de importancia para el negocio (lo más relevante) como aspectos técnicos, relacionados con su implementación con una determinada infraestructura tecnológica.
+
 - Para los proyectos a desarrollar en el primer año, **el detalle suficiente que permita su evaluación en términos de recursos necesarios en su desarrollo**, con objeto de poder incluirlos en el presupuesto anual correspondiente. Para proyectos que no se inicien hasta ejercicios posteriores, una aproximación será suficiente.
+
 - **Mecanismos de evaluación adecuados para permitir los procedimientos de control necesarios en el seguimiento del plan**. Esto quiere decir fundamentalmente un **calendario con fechas clave y un presupuesto suficientemente detallado**.
+
 - **Una lista de actividades de la empresa donde la TI pueda utilizarse como herramienta de soporte para aumentar su eficacia o su eficiencia**.
 
 Es importante observar que **el contenido del Plan de TI/SI es muy poco tecnológico**. ***Los detalles tecnológicos se incluyen solo cuando es estrictamente necesario.*** *La perspectiva bajo la que se elabora el Plan de SI/TI es* **fundamentalmente una perspectiva de negocio**, *no una perspectiva tecnológica*.
@@ -323,8 +348,11 @@ Es importante observar que **el contenido del Plan de TI/SI es muy poco tecnoló
 El plan debe **alinear las estrategias de SI/TI con la estrategia empresarial general**. Para lograr esa alineación, se parte de las siguientes entradas (*inputs*) clave:
 
 - Entorno empresarial externo
+
 - Entorno empresarial interno
+
 - Entorno externo de SI/TI
+
 - Entorno interno de SI/TI
 
 ### El entorno empresarial externo.
@@ -338,6 +366,7 @@ Esta entrada (*input*) del proceso consiste en una evaluación de las fuerzas qu
 Una organización necesita comprender dos aspectos del entorno externo de los SI/TI:
 
 - **Las nuevas tecnologías**: además de beneficios, todas las nuevas tecnologías conllevan algún riesgo y una curva de aprendizaje para la empresa.
+
 - **La utilización de la tecnología**: una organización necesita conocer la forma en que la tecnología de la información es empleada por otros dentro de la industria, con qué objetivo y con qué resultados. Además, el conocimiento del uso de los SI/TI en otras industrias puede proporcionar una fuente de buenas ideas que se pueden trasplantar.
 
 ### El entorno empresarial interno.
@@ -345,8 +374,11 @@ Una organización necesita comprender dos aspectos del entorno externo de los SI
 Esta entrada (*input*) del proceso consiste en un análisis de las necesidades de información y de sistemas sobre la base *de lo que hace la empresa, de cómo lo hace, y de cómo está organizada y dirigida*. Estará relacionado con la misión del negocio, con su actividad, con sus capacidades y con su estructura.
 
 - Misión y objetivos de la empresa.
+
 - Las actividades de la empresa: describir los principales procesos de la empresa que le permiten ofrecer productos y servicios a sus clientes, así como lo que es preciso hacer para controlar y desarrollar el negocio.
+
 - Las fortalezas y debilidades.
+
 - Estructura organizativa y estilo de dirección: es importante comprender cómo funciona la organización y cómo se toman las decisiones.
 
 > 📝 **Apunte de clase:** de este análisis surgen las **fortalezas y debilidades** (la "FD" del FODA).
@@ -392,7 +424,9 @@ Las actividades que se describen a continuación deben entenderse más como algo
 El procedimiento de planificación precisa de varios grupos de trabajo para su implementación. Esta es su composición y funciones principales de manera esquemática:
 
 - **Comité de SI/TI**: es el órgano con responsabilidad última sobre el Sistema de Información que se diseñe. Formado por el máximo responsable de la compañía, los responsables de las distintas áreas funcionales y el director de Sistemas de Información. Sus responsabilidades concretas incluyen la supervisión del proyecto de planificación, explicitar el compromiso de la organización con el Plan en desarrollo, proporcionar criterios estratégicos para la fijación de prioridades y la asignación de recursos y, finalmente, aprobar el Plan de SI/TI desarrollado. **Incluye a los gerentes o directores que formen parte de la Gerencia General y las Gerencias Medias de la organización.** Dentro de las Gerencias Medias se incluye la Gerencia de Sistemas y, dentro de ella, al **subdirector a cargo de SI y al director de SI/TI.**
+
 - **Grupo base**: integrado por **el subdirector general a cargo de SI, el director de Sistemas de Información, el DOP y, eventualmente, por consultores externos expertos en planificación de sistemas de información.** Las labores de este grupo son facilitar la negociación entre usuarios, asegurar la consistencia de los desarrollos y supervisar el equipo de trabajo con mayor asiduidad de la que puede llevar a cabo el comité de Tecnologías y Sistemas de Información. Se puede decir que este grupo debe ***mandar*** sobre el equipo de trabajo, y de alguna manera sobre los usuarios, aun sin disponer de una línea jerárquica explícita.
+
 - **Equipo de trabajo**: lleva a cabo el trabajo operativo encaminado a elaborar el Plan de SI/TI. Está dirigido formalmente por el **director de Sistemas de Información**, aunque **la labor diaria de dirección la lleva a cabo el director operativo de proyecto (DOP)**. En general, el DOP será una persona del departamento de Sistemas, aunque no necesariamente. El equipo está integrado por personal de Sistemas y de los departamentos usuarios especialmente dedicados al proyecto de planificación. (El director líder del proyecto del sistema, con el Director Operativo de Proyecto (DOP) y el personal de sistemas asignado al proyecto. Dependiendo de la envergadura del proyecto, puede haber varios DOP. También se incluye a los jefes o supervisores de las áreas más conflictivas que se hayan detectado en las primeras reuniones del Comité.)
 
 > 📝 **Apunte de clase:** el grupo base vuelve a involucrar al que ofició como gerente de sistemas. Está conformado por los niveles gerenciales de sistemas y los grupos de expertos que son externos. Es el gran staff para poder definir los planes y estrategias de sistemas.
@@ -420,8 +454,11 @@ El objetivo de esta fase es constituir el equipo de trabajo que llevará a cabo 
 **Pasos propuestos**:
 
 1. La decisión de obtener un Plan de TI/SI por parte del Comité de Tecnologías y Sistemas de Información.
+
 2. Formación del grupo base (un embrión del equipo de trabajo, posiblemente con la participación de consultores externos).
+
 3. Identificación de áreas de análisis para describir el Sistema de Información existente.
+
 4. Formación del equipo de trabajo definitivo. Presentación del proyecto.
 
 **Responsables de la fase I: Comité de TI/SI y grupo base.**
@@ -433,6 +470,7 @@ El objetivo de esta fase es constituir el equipo de trabajo que llevará a cabo 
 Consiste en describir la situación de la compañía desde dos dimensiones:
 
 1. El negocio.
+
 2. Los sistemas existentes.
 
 Se deben identificar una serie de funciones y procesos de negocio por área de análisis; alrededor de dichas funciones de negocio se organizará el análisis posterior, incluyendo los flujos de información existentes en la empresa y el grado de cobertura que la «informática» da a estos.
@@ -446,6 +484,7 @@ Es conveniente no concluir con una lista de funciones y procesos demasiado detal
 Un objetivo de esta fase es también obtener una ***descripción precisa y no muy extensa de los subsistemas de información existentes en la empresa***, a fin de poder elaborar posteriormente una crítica de los mismos, tanto desde el punto de vista técnico como de negocio. Dicha descripción tiene dos dimensiones:
 
 1. Los datos manejados.
+
 2. Los procesos que configuran los subsistemas existentes.
 
 ![](../../../assets/u1i22.png)
@@ -455,10 +494,15 @@ Un objetivo de esta fase es también obtener una ***descripción precisa y no mu
 **La información que se precisa acerca de los procesos es**:
 
 1. Su agrupación por subsistemas (es decir, a la implementación de qué subsistema de información pertenece cada proceso).
+
 2. La especificación de qué datos utiliza cada proceso en su funcionamiento (***los inputs***).
+
 3. La lista de los datos que se crean o modifican como resultado de la operación de dichos procesos (***los outputs***).
+
 4. Una breve descripción de:
+
    1. cómo cada uno de ellos está implementado (por ejemplo, si forma parte de un gran sistema, o se soporta con una aplicación que puede haber desarrollado el propio usuario en un ordenador personal).
+
    2. el procedimiento de tratamiento de datos que el proceso requiere (cálculos, búsquedas, etc.).
 
 La utilización de matrices para representar el grado de interacción de cada proceso con cada unidad de datos relevante puede resultar útil a la hora de elaborar, manipular e incluso presentar los resultados de esta actividad.
@@ -470,15 +514,21 @@ Posteriormente a la descripción de los sistemas existentes debemos elaborar una
 La crítica centrada en los **aspectos de negocio** debe incluir al menos los apartados siguientes:
 
 1. El grado de soporte que cada subsistema proporciona a cada función o proceso de negocio;
+
 2. El grado de conveniencia que las actuales estructuras de datos suponen en el desempeño de cada función o proceso de negocio;
+
 3. Lo que se percibe como puntos fuertes y débiles de cada subsistema de información, y
+
 4. Las áreas de mejora que, a juicio de los usuarios, tienen más necesidad de ser atacadas, cómo y por qué.
 
 Desde el punto de vista **técnico** conviene analizar los aspectos siguientes:
 
 1. Tecnología básica empleada en cada subsistema y sus procesos correspondientes,
+
 2. Interrelaciones entre diferentes subsistemas y cómo están resueltas,
+
 3. Rendimientos,
+
 4. Volúmenes y frecuencias.
 
 La información necesaria para todo ello se obtiene fundamentalmente a través de entrevistas que los miembros del equipo de trabajo mantienen con los usuarios de los distintos sistemas y con personal del departamento de SI, que proporciona los datos de carácter más técnico.
@@ -491,8 +541,11 @@ Finalmente, el contenido del análisis crítico elaborado debe ser validado por 
 **Pasos propuestos**:
 
 1. Identificación de las principales funciones y procesos de negocio por área.
+
 2. Descripción de los sistemas existentes. Procesos y estructuras de datos.
+
 3. Crítica de los sistemas existentes, desde el punto de vista técnico y de negocio. Validación.
+
 4. Elaboración del informe acerca de los sistemas existentes.
 
 > 📝 **Apunte de clase:** en el paso 1 empiezo a identificar las estrategias organizacionales y, a partir de ahí, la información que se tiene o se utiliza. En el paso 3 la pregunta es "¿sirve?", y se da una propuesta: estos sistemas permanecen, estos no, y así. El informe del paso 4 es detallado y abarca los sistemas relacionados con los procesos de negocio.
@@ -510,10 +563,15 @@ En esta fase se lleva a cabo la planificación propiamente dicha. El primer paso
 A partir de las necesidades documentadas hay que identificar la **estructura global del SI necesario** (sus subsistemas, procesos y estructuras de datos). Para tratar de ser un poco sistemático en esa identificación, pueden darse algunos consejos:
 
 - **Identificar los procesos de negocio fundamentales en la empresa**.
+
 - **¿Se detectan entidades en las estructuras de datos que parecen nuevas?** En caso afirmativo, analizar si se trata de conjuntos de datos nuevos (que en el SI existente no se tratan porque la cobertura del área correspondiente es baja o nula), o por el contrario se trata de nuevas maneras de estructurar datos ya tratados por el SI existente. Este último caso es síntoma de que quizá los cambios en los planteamientos de negocio exigen nuevas maneras de organizar los datos, circunstancia que, si se da, puede implicar rediseños importantes no solo de la base de datos, sino también de subsistemas de información enteros.
+
 - **¿Se detectan procesos de información parecidos a otros ya sean existentes o nuevos?** En caso afirmativo, un conjunto de procesos parecidos puede dar pistas acerca de lo que puede convertirse en un subsistema de información con identidad más propia. Analizar si dicho subsistema tiene sentido, por ejemplo, en el esquema de la cadena de valor.
+
 - **Analizar las fronteras que se van configurando entre candidatos a subsistemas**: ¿Qué datos comparten? ¿Se trata de fronteras claramente definidas o, por el contrario, resultan difíciles de acotar? Tratar de evitar definiciones de subsistemas que interaccionen con otros de modo complejo o poco claro. Mantener la visión de los sistemas que corresponden a procesos de negocio.
+
 - **Identificar en especial los subsistemas que parecen aislados**: seguramente hacen referencia a procesos que pueden separarse de la estructura del SI central, simplificándola así.
+
 - **Catalogar las necesidades de información vagas o poco claras:** existe la posibilidad de que se refieran a procesos de toma de decisiones que en todo caso deberán apoyarse en subsistemas muy especializados.
 
 > 📝 **Apunte de clase:** en la cátedra se propone una matriz, la *matriz de alineamiento estratégico o de necesidades*, conformada por las Estrategias Organizacionales o Estrategias de la Empresa y los departamentos de la misma, realizando una identificación de las Necesidades de Información correspondientes a las funciones de negocio involucradas en los objetivos o acciones estratégicas identificadas. De estas últimas, **realizamos una integración de las necesidades de información (priorizadas o en su totalidad) y derivamos de ellas las Estrategias SI/TI** (a partir de la matriz de necesidades, y de las necesidades identificadas, derivo las estrategias de SI y de ellas las estrategias de TI), las cuales conformarán, en parte, el Plan de SI/TI. Estos planes deben estar avalados por el Comité de SI/TI y se traducen en un plan informático que tendrá que ver con *los proyectos a desarrollar en cuanto a aplicaciones en HW y SW y el plan de HW y SW de base.*
@@ -533,6 +591,7 @@ La estructura que acabe identificándose es casi siempre el resultado de sucesiv
 **La estructura elaborada debe ser validada** explícitamente mediante un proceso de dos fases:
 
 1. Reuniones departamentales.
+
 2. Una reunión del comité de TI/SI en pleno.
 
 Una vez acordada una arquitectura para el SI necesario, y especificados los procesos y estructuras de datos necesarios para la obtención de la información precisa, es **necesario evaluar los recursos** que harían falta para construir los distintos subsistemas integrantes del SI global.
@@ -550,16 +609,23 @@ Con las necesidades documentadas se deben formular propuestas de actuación que 
 **Pasos propuestos**:
 
 1. Preparación del equipo de trabajo para el análisis de necesidades. Posibles nuevas áreas.
+
 2. Necesidades de SI por áreas, funciones y procesos de negocio. Importancia y urgencia.
+
 3. Descripción sistemática de necesidades. Procesos y estructuras de datos.
+
 4. Integración. Centros de atención emergentes.
    **Responsables de elaborar esta primera parte de la fase III: Equipo de trabajo y los departamentos involucrados.**
+
 5. Validación de la estructura del SI emergente.
    **Aprueba la estructura: Comité de TI/SI**.
+
 6. Informe acerca de la estructura del SI necesario en el futuro.
    **Elabora el informe: Equipo de trabajo.**
+
 7. Elaboración de propuestas alternativas para el plan de TI/SI. Evaluación de los recursos necesarios.
    **Formula las propuestas: Personal técnico de Sistemas de Información.**
+
 8. Elaboración y aprobación del definitivo Plan de TI/SI.
    **Elabora: Personal de SI. Aprueba: Comité de Sistemas de Información.**
 
@@ -580,7 +646,9 @@ Se debe elaborar la lista de proyectos necesarios para implementar los sistemas 
 **Pasos propuestos**:
 
 1. Descripción detallada del Plan de TI/SI acordado. Calendario concreto para el primer año. Validación.
+
 2. Inclusión de proyectos en el presupuesto del período siguiente.
+
 3. Plan de evaluación y revisión.
    **Elabora: Personal de SI. Aprueba: Comité de TI/SI**.
 
@@ -603,7 +671,9 @@ La formulación de una estrategia de IS involucra la planificación de un modelo
 Llevar a la realidad la estrategia de los IS mediante la asignación de recursos requiere gestionar (management) tres conjuntos interrelacionados de cuestiones:
 
 - Cuestiones relacionadas con los costos de los IS.
+
 - Cuestiones relacionadas con los beneficios de los IS.
+
 - Cuestiones relacionadas con el balance entre los costos y los beneficios de los IS.
 
 En este contexto, el **costo** implica **renunciar a algún recurso o atributo que se considera importante**. Tales recursos incluirán el capital, pero también el esfuerzo, el entusiasmo, el poder, el compromiso, la certeza (no se sabe cuál será el verdadero resultado de la actividad), entre otros.
@@ -617,13 +687,18 @@ Debido a la índole de los atributos ganados o abandonados potencialmente, es ev
 Las inversiones de los SI son:
 
 1. **Según el impacto deseado** → **¿Para qué se hace la inversión? ¿Qué tipo de valor empresarial se busca obtener?**
+
    1. **Inversiones de valor operacional**: estos proyectos de mejora en la productividad son proyectos de inversiones en el proceso de transacción, con perspectivas de ganancia a corto plazo.
       📝 *Apunte de clase:* este tipo de inversiones también involucra aquellas que benefician la realización de los procesos de negocio. → *Hacer mejor lo que ya se hace.*
+
    2. **Inversiones de valor estratégico**: cuando un proyecto de mejora empresarial o de disminución de riesgo intenta aumentar el potencial para generar ingresos, el horizonte de ganancia (período anterior a la obtención de un beneficio determinado) probablemente será de largo plazo; el valor de este proyecto será directo pero muy difícil de cuantificar a pesar de que los índices de crecimiento de ingresos pueden proporcionar alguna aproximación.
       📝 *Apunte de clase:* cuando me ayuda a tomar decisiones estratégicas → *hacer cosas nuevas que generen crecimiento o diferenciación.*
+
 2. **Según la necesidad de inversión** → **¿Qué tan obligatoria o estructural es la inversión para la empresa?**
+
    1. **Inversión de umbral**: son las que debe hacer una empresa para operar dentro de la industria, **son las mínimas y necesarias**. Si bien los rendimientos no son fáciles de identificar, la inversión es efectivamente obligatoria.
       📝 *Apunte de clase:* es decir, cuando la aplicación es para **mantenerme** y estar al día con mis competidores. De lo contrario, me quedo atrás.
+
    2. **Inversiones de infraestructura**: estas inversiones tienen típicamente horizontes de ganancia de mediano plazo y no suelen generar beneficios directos, tales como ahorros en los costos de personal, pero contribuyen con muchos otros generadores de valor, como una mejora en la comunicación de management. Estos proyectos tienen el objetivo de crear una estructura para la empresa y por lo tanto pueden considerarse y evaluarse como activos.
       📝 *Apunte de clase:* este tipo de inversiones también involucra las que generan capacidad instalada. Por ejemplo, el hardware que necesito: **inversiones que tengo que hacer para mejorar mis tecnologías**.
 
@@ -642,14 +717,19 @@ Una manera alternativa de considerar las clases de valor de información provien
 
 - **Rendimiento de la inversión**: los análisis financieros de costo/beneficio evidencian una diferencia positiva entre el flujo de desarrollo y costo operativo, y la reducción de costos de negocio y el flujo creciente de ingresos.
   📝 *Apunte de clase:* cuánto gasto frente a cuánto ingreso o ahorro obtengo.
+
 - **Adecuación estratégica**: es el apoyo directo a una estrategia comercial declarado por un proyecto determinado.
   📝 *Apunte de clase:* aunque el beneficio no sea inmediato, **apoya un objetivo estratégico clave**.
+
 - **Ventaja competitiva**: el valor creado por una nueva empresa o producto, o un aumento en la participación del mercado.
   📝 *Apunte de clase:* no solo acompaña la estrategia, sino que **crea diferenciación real**.
+
 - **Apoyo de información para el management**: provee información sobre aspectos cruciales de la empresa. Esos aspectos deben llevarse a cabo correctamente para que la empresa tenga resultados favorables.
   📝 *Apunte de clase:* la información se vuelve una **herramienta de gestión clave**.
+
 - **Reacción competitiva**: las actividades informáticas que tienen como objetivo alcanzar la posición del competidor o aventajarla.
   📝 *Apunte de clase:* el valor radica en **mantenerse competitivo o nivelarse con el mercado**.
+
 - **Arquitectura estratégica de los SI**: una inversión básica y necesaria que posibilita la ocurrencia de otras aplicaciones estratégicas posteriores.
   📝 *Apunte de clase:* es como construir **los cimientos tecnológicos** para el futuro.
 
@@ -670,14 +750,23 @@ El problema en la estimación/pronóstico de los costos nace en primer lugar por
 Esta **lista de control para los costos de los IS** ayuda a las empresas a identificar, cuantificar y evaluar los costos de los IS. La lista contempla:
 
 - **Costos de hardware**: están compuestos por el hardware de procesamiento, por maquinarias tales como impresoras, soportes de almacenamiento, accesorios, etc.
+
 - **Costos de software**: la solución más barata está representada por los paquetes ya hechos, aunque involucran costos significativos de evaluación y especificación. Los desarrollos internos pueden implicar sumas enormes y desconocidas.
+
 - **Costos de instalación**: las instalaciones de sistemas varían en complejidad y, por lo tanto, en costos. Algunas pueden requerir de especialistas externos cuyo costo también debe incluirse, así como el costo de ingreso de datos o ***data entry*** cuando se convierten sistemas manuales, o el costo de conversión de datos en los sistemas ya computarizados.
+
 - **Costos de entorno**: se refiere al entorno físico de los sistemas de información: cableado, muebles, aire acondicionado, etc. Asimismo, deben incluirse los costos de entorno humano, tales como seguridad, salud y costos legales.
+
 - **Costos de funcionamiento**: los costos de energía eléctrica, de comunicación de datos para el trabajo remoto y de tarifas de suscripción para servicios externos de datos, tales como bases de datos online, etc.
+
 - **Costos de mantenimiento**: debe establecerse si estos costos serán realizados de manera planeada y previsible a través de contratos de servicio y mantenimiento, o bien de forma menos predecible mediante el personal interno.
+
 - **Costos de seguridad**: deben comprender la toma de medidas para reducir el peligro de daños accidentales o deliberados a elementos lógicos o físicos de los IS; también abarca el costo de los riesgos inevitables y de los planes de recuperación de desastres.
+
 - **Costos de red**: software, hardware y management de redes involucran costos adicionales a los de las aplicaciones que utilizan la red.
+
 - **Costos de capacitación**: son los más desestimados, y prácticamente está aceptado que el verdadero alcance de los costos de capacitación, de educación de fondo, de capacitación específica y de apoyo y actualización continua está indocumentado.
+
 - **Costos amplios organizacionales**: en este ítem globalizador se ubican los costos de incompatibilidad, las estructuras nuevas de salarios, los costos transicionales y los costos de management.
 
 ### Niveles de inversión en IS.
@@ -731,7 +820,9 @@ En el siguiente gráfico se ilustra el beneficio de los IS como resultado de un 
 📝 *Apunte de clase:*
 
 - La **curva de costo** sube a medida que se busca mejor calidad.
+
 - La **curva de valor** también sube, pero **llega un punto en que se aplana**.
+
 - El **punto óptimo** está donde la **diferencia entre valor y costo es máxima.**
 
 Se demuestra que ***generalmente*** existe un incremento en los costos cuando se mejora la calidad; esto origina la curva de costo para un sistema o proyecto determinado. Sin embargo, la curva de valor, que representa el beneficio para la empresa, sigue una línea diferente.
@@ -763,11 +854,13 @@ Es imposible mantener un grado de exactitud con relación a los beneficios, pero
 **Tangible**
 
 - Directo: los alumnos se inscriben más rápido → menor carga administrativa.
+
 - Indirecto: no es necesario ampliar personal de ventanilla.
 
 **Intangible**
 
 - Directo: los alumnos perciben una experiencia moderna y organizada.
+
 - Indirecto: mejora la imagen de la universidad ante nuevos aspirantes.
 
 > 📝 **Apunte de clase:** para justificar una inversión en SI, no alcanza con evaluar **los ahorros** (eficiencia), sino que hay que considerar también el **valor que agrega** a distintos niveles: táctico y estratégico. Esto implica **identificar claramente los beneficios tangibles e intangibles**, directos e indirectos, y reconocer que **muchos beneficios clave no se pueden medir fácilmente, pero son fundamentales para la competitividad**.
@@ -779,8 +872,11 @@ Es imposible mantener un grado de exactitud con relación a los beneficios, pero
 Hay muchas maneras de clasificar los sistemas de información. Hasta ahora, la mayoría de las clasificaciones se basaban en la forma en que se suministran los sistemas, en lugar de en la contribución que hacen al éxito de la empresa. Hay un esquema de clasificación desarrollado originalmente por **McFarlan** que es de gran utilidad: compara el papel de los SI/TI entre diferentes organizaciones y facilita el análisis del conjunto de sistemas, tanto los actuales como los planificados y los potenciales. Toma la forma de una matriz y clasifica una aplicación como:
 
 - **De alto potencial**.
+
 - **Estratégica**.
+
 - **Clave para las operaciones**.
+
 - **De apoyo**.
 
 > 📝 **Apunte de clase:** las apps de apoyo son aquellas que no tienen gran incidencia en las necesidades estratégicas de la organización y el impacto/esfuerzo tecnológico que hay que hacer no es muy importante. **Son valiosas**, pero **NO SON CRÍTICAS**. Ej.: todo el tema de las transacciones que hay que avisar a ARCA.
@@ -895,7 +991,9 @@ Estas estrategias son marcos generales que guían la identificación de las opor
 ## Planificación centralizada (aplicaciones estratégicas).
 
 - La estrategia de los SI/TI está totalmente integrada con la estrategia corporativa a través de una unidad centralizadora y especializada, a nivel de la alta dirección.
+
 - La planificación centralizada permite una mejor comprensión de las oportunidades y requisitos competitivos.
+
 - Permite una asignación óptima de los recursos y la realización de grandes inversiones, especialmente las que afectan a varias aplicaciones propuestas.
 
 Esta estrategia requiere mucha dedicación por parte de la alta dirección y puede, por tanto, ser difícil de implementar. También puede distanciarse de la realidad operativa de la empresa e inhibir la innovación.
@@ -923,7 +1021,9 @@ El hilo conductor (alto potencial) es un planteamiento de gestión orientado a l
 ## Mercado libre (aplicaciones de alto potencial y de apoyo).
 
 - Supone que los directivos, a la vez que son usuarios, saben qué es mejor para la empresa, incluyendo los SI/TI y, por lo tanto, pueden evaluar sus propias necesidades y satisfacerlas a voluntad.
+
 - Los servicios internos de TI deben competir con los proveedores externos, y pueden esperar muy poca atención o apoyo por parte de la alta dirección.
+
 - Por la misma razón, el servicio de TI puede intentar trabajar fuera de la organización y sentirse menos comprometido con las necesidades internas.
 
 Este planteamiento puede producir duplicidades en la inversión y tasas de desarrollo diferenciadas a lo largo de la organización; sin embargo, conducirá a una innovación en SI/TI dirigida por el usuario. Es una estrategia que produce sistemas aislados que no están integrados.
@@ -955,8 +1055,11 @@ El enfoque del monopolio puede dar lugar a que la innovación sea lenta y, por l
 ## Recurso escaso (aplicaciones de apoyo).
 
 - Se define un presupuesto con antelación y las aplicaciones compiten puramente para obtener una parte de los recursos disponibles.
+
 - Se trata de una estrategia muy popular que asegura una gestión cuidadosa de los recursos de TI, mediante el empleo de controles financieros.
+
 - Las inversiones han de justificarse en términos financieros.
+
 - Es frecuente utilizar la rentabilidad de la inversión a la hora de especificar las prioridades.
 
 Aquí se tratan los SI/TI como un **centro de costos** y el objetivo es su uso controlado y bien justificado. Esto no propicia la explotación de los SI y la TI como un arma empresarial. Esta estrategia no reconoce los cambios en la demanda, y la definición de prioridades será una cuestión importante en el proceso de planificación.
@@ -966,6 +1069,7 @@ El recurso escaso (aplicaciones de apoyo) es una estrategia de **gestión de la 
 ## Mal necesario (aplicaciones de apoyo).
 
 - Los SI/TI solamente se dedican a cumplir los requisitos legales y a realizar inversiones de alto rendimiento.
+
 - Los SI/TI se utilizan solamente donde no hay otra alternativa disponible.
 
 Esta estrategia tiene muchas desventajas. Puede llegarse a ella por error, por negligencia o por una excesiva escasez de recursos. A menos que los SI/TI sean casi totalmente irrelevantes para la empresa, la capacidad para competir eficazmente se irá degradando paulatinamente.
@@ -997,8 +1101,11 @@ Parsons examina la forma en que cada estrategia se ajusta a la cartera de aplica
 Obsérvese que:
 
 - La planificación centralizada (aplicaciones estratégicas) es una estrategia de gestión de la demanda impulsada por las necesidades del negocio, mientras que el monopolio (aplicaciones clave para las operaciones) es fundamentalmente un planteamiento de gestión de la oferta; ambas **implican una centralización de la toma de decisiones**.
+
 - El hilo conductor (alto potencial) es un planteamiento de gestión orientado a la demanda impulsado por la tecnología.
+
 - El recurso escaso (aplicaciones de apoyo) es una estrategia de gestión de la oferta basada en la limitación de los recursos financieros.
+
 - El mercado libre (aplicaciones de alto potencial y de apoyo) puede hacer posible que los usuarios determinen la demanda y también decidan la fuente de aprovisionamiento.
 
 **Estrategias para las aplicaciones de alto potencial**: una planificación excesiva de las aplicaciones de alto potencial puede ahogar la innovación. Las dos estrategias que mejor se adaptan son el **hilo conductor** y el **mercado libre**; ambas son arriesgadas, pero producirán innovación. Las cuestiones principales en este cuadrante tienen que ver con la evaluación de oportunidades y la identificación de la mejor forma de obtener beneficios.
@@ -1014,6 +1121,7 @@ Obsérvese que:
 **La utilización de las estrategias genéricas.** Las estrategias genéricas facilitan una adecuada gestión de los SI/TI de dos formas:
 
 - **Para el diagnóstico**: aportan una perspectiva para evaluar la situación actual y comprender cómo se están gestionando los SI/TI. Hay una fuerte relación causa-efecto entre las aplicaciones desarrolladas y las estrategias adoptadas.
+
 - **Para la formulación**: una vez identificada la futura cartera de aplicaciones y evaluados los puntos fuertes y débiles de las existentes, se pueden usar para identificar un plan de migración. Así se evita la **trampa de una sola estrategia universal**: decir "necesitamos la planificación centralizada" resulta atractivo, pero es imposible planificar todo de forma centralizada.
 
 ## Migraciones de un segmento a otro (Edwards).
@@ -1021,8 +1129,11 @@ Obsérvese que:
 La cartera de aplicaciones responde a la demanda de sistemas de información con los medios de abastecimiento más apropiados. Las aplicaciones de los cuatro cuadrantes vienen justificadas por diferentes razones y necesitan distintos enfoques para su desarrollo y gestión. El papel de los sistemas evolucionará también en el tiempo y será necesario migrar desde *un* segmento de la cartera a otro:
 
 - De alto potencial a estratégico, a medida que se logre el potencial.
+
 - De estratégico a clave para las operaciones, a medida que se pierde la ventaja competitiva y las desventajas amenazan, es decir, el sistema también se hará menos estable.
+
 - Las oportunidades de alto potencial pueden producir solamente beneficios locales limitados de la categoría de apoyo.
+
 - Los sistemas clave para las operaciones pueden llegar a ser menos críticos a medida que la empresa evoluciona, llegando a ser reclasificados como "de apoyo".
 
 Finalmente, algunas aplicaciones, principalmente los sistemas de apoyo, quedarán obsoletas y será preciso eliminarlas.
@@ -1073,17 +1184,29 @@ Un plan global de SI/TI debe desarrollarse con una secuencia lógica de priorida
 📝 **Apunte de clase — ¿Qué hago cuando quiero implementar un nuevo sistema o aplicación?**
 
 1. **Clasifico** la aplicación según su función en la empresa:
+
    - ¿Es **estratégica**? → ayuda a cumplir un objetivo clave del negocio.
+
    - ¿Es **clave para operar**? → si no funciona, la empresa se paraliza.
+
    - ¿Es de **alto potencial**? → una idea innovadora con futuro, pero incierta.
+
    - ¿Es de **apoyo**? → útil, pero no esencial.
+
 2. **Le asigno una estrategia genérica de gestión**:
+
    - ¿La va a coordinar la alta dirección? (Planificación centralizada)
+
    - ¿La impulsa un usuario o área concreta? (Mercado libre)
+
    - ¿Es una inversión innovadora pero riesgosa? (Hilo conductor)
+
    - ¿Requiere control total y proveedor único? (Monopolio)
+
    - ¿Hay pocos recursos y debe justificarse todo? (Recurso escaso)
+
    - ¿Se hace solo porque es obligatorio? (Mal necesario)
+
 3. **La priorizo**, según su tipo:
 
 | Tipo de aplicación | ¿Cómo se prioriza? |

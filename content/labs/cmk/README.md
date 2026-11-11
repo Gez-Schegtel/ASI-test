@@ -5,11 +5,17 @@ Este proyecto levanta una instancia de [Checkmk Raw Edition](https://checkmk.com
 ## 🚀 ¿Qué hace este `docker-compose.yml`?
 
 - Descarga la imagen oficial de Checkmk Raw 2.3.
+
 - Expone el puerto web en `localhost:8080`.
+
 - Expone el puerto del agente en `localhost:8000`.
+
 - Usa un volumen persistente (`checkmk_data/`) para guardar la configuración del sitio.
+
 - Monta correctamente un sistema de archivos temporal (`tmpfs`) para mejorar el rendimiento.
+
 - Crea automáticamente un contenedor llamado `monitoring`.
+
 - Mantiene la zona horaria del host montando `/etc/localtime`.
 
 ## ▶️ ¿Cómo se usa?
@@ -20,6 +26,7 @@ Este proyecto levanta una instancia de [Checkmk Raw Edition](https://checkmk.com
 ```bash
 docker-compose up
 ```
+
 - Para Windows
 ```bash
 docker compose up
@@ -39,6 +46,7 @@ Created new site cmk with version 2.3.0p1.cre.
 4. Inicia sesión con:
 
    * **Usuario:** `cmkadmin`
+
    * **Contraseña:** (la que aparece en los logs)
 
 ## 🔐 ¿Olvidaste la contraseña?
@@ -77,14 +85,18 @@ Este proyecto permite simular un "ping" a un servidor HTTP utilizando Python y u
 ## 📁 Archivos
 
 - `http_ping.py`: script principal que realiza peticiones HTTP periódicas al servidor.
+
 - `runtest.sh`: script Bash que inicia el servidor y ejecuta el ping.
+
 - `requirements.txt`: contiene las dependencias necesarias (por ejemplo, `pwntools`, `requests`).
 
 
 ## 🚀 Requisitos
 
 - Python 3
+
 - `pip`
+
 - Entorno virtual (`venv`) creado en la raíz del proyecto
 
 
@@ -119,8 +131,11 @@ chmod +x runtest.sh
 Este script:
 
 * Muestra un banner decorativo.
+
 * Inicia un servidor HTTP en el puerto `8081`.
+
 * Activa el entorno virtual.
+
 * Ejecuta `http_ping.py` para empezar a enviar peticiones al servidor.
 
 
@@ -132,5 +147,6 @@ Para detener la ejecución, simplemente presioná `Ctrl + C`. Ambos scripts est�
 ## 🧠 Notas
 
 * El intervalo entre peticiones HTTP está definido en `http_ping.py` (línea 10). Podés modificarlo si necesitás ajustar la frecuencia de los pings.
+
 * El servidor HTTP sirve el contenido del directorio actual.
 

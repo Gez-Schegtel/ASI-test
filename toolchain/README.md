@@ -95,21 +95,35 @@ Empaqueta el árbol generado en `build/` creando un `.zip` por cada Unidad/Traba
 
 ---
 
-## 5. Uso de `toolchain/bin/pdf2md` (Conversor Inverso PDF a Markdown)
+## 5. Uso de `toolchain/bin/pdf2md` (Herramienta de Ingesta Local PDF a Markdown)
 
-Convierte archivos `.pdf` a Markdown (`.md`), realizando el camino inverso de `md2pdf`. Reconstruye fielmente la cabecera YAML, títulos, listas, tablas (simples y multipágina), bloques de código con su lenguaje, código en línea, fórmulas LaTeX (`$...$` y `$$...$$`), citas, enlaces, emojis (`Noto Color Emoji`) e imágenes con sus clases y anchos (`{.derecha width=25%}`).
+> [!NOTE]
+> **Herramienta de uso local exclusivo**: `pdf2md` está diseñada para la ingesta, descompilación y migración de material docente en PDF hacia Markdown en el entorno local del autor. **No forma parte del pipeline automatizado de CI/CD** (GitHub Actions), lo que permite mantener la imagen Docker de compilación editorial sumamente liviana y enfocada exclusivamente en compilar `.md` a `.pdf`/`.epub`.
 
-Integración con `assets/` (Principio 4 de `GEMINI.md`):
-- Los emojis incrustados por LuaLaTeX se reconocen y vuelven a caracteres Unicode en el texto.
-- Si una imagen del PDF ya existe en `assets/` (o en la carpeta del PDF), se enlaza directamente sin duplicarla.
-- Si la imagen es nueva y el archivo pertenece al repositorio, se extrae dentro de `assets/` y se enlaza con su ruta relativa.
+Convierte archivos `.pdf` a Markdown (`.md`), realizando el camino inverso de `md2pdf`. Reconstruye fielmente la cabecera YAML, la jerarquía de títulos a partir de los *outlines* del PDF, listas anidadas, tablas complejas y cuadrículas (*grid tables* de Google Docs, Word, LibreOffice y Pandoc), bloques de código con su lenguaje, código en línea, fórmulas LaTeX (`$...$` y `$$...$$`), subíndices y superíndices (`~...~` y `^...^`), citas, notas al pie, enlaces, emojis (`Noto Color Emoji`) e imágenes con sus clases y anchos (`{.derecha width=25%}`). Además, inyecta `\needspace{...}` antes de bloques de imágenes para prevenir saltos de página huérfanos.
+
+### Integración con `assets/` y Resolución de Conflictos (Principio 4 de `GEMINI.md`):
+
+- **Extracción centralizada**: Si el PDF se convierte dentro del repositorio, las imágenes extraídas se guardan directamente en la carpeta raíz `assets/` y se enlazan con su ruta relativa correspondiente.
+
+- **Deduplicación por contenido (MD5 RGB)**: Si una imagen del PDF ya existe en `assets/` (o en la carpeta del PDF), se reutiliza el archivo existente sin duplicar espacio en disco.
+
+- **Prevención de colisiones de nombres**: Si ya existe una imagen con el mismo nombre base pero con contenido gráfico diferente, `pdf2md` añade un sufijo con el hash del contenido (`<nombre>_<hash[:6]>.png`) y emite una advertencia en la consola:
+  ```text
+  ⚠️ Colisión detectada: imagen guardada en la carpeta assets/ como 'apunte_img_1_3b38cb.png'
+  ```
+  De esta forma, nunca se sobrescriben imágenes preexistentes ni se rompen apuntes anteriores.
+
+- **Notificación en consola**: Cada imagen nueva incorporada a `assets/` se notifica con un mensaje: `📷 Imagen guardada en la carpeta assets/: <nombre>`.
+
+- **Detección de PDFs escaneados**: Si un PDF contiene páginas completas escaneadas o tipografías ilegibles, `pdf2md` avisa al usuario para evitar la generación de documentos defectuosos.
 
 ```bash
-# Convertir un PDF específico
-./toolchain/bin/pdf2md apunte.pdf
+# Convertir un PDF de cátedra específico
+./toolchain/bin/pdf2md apunte-catedra.pdf
 
 # Convertir sin pedir confirmación (-y / --yes)
-./toolchain/bin/pdf2md -y apunte.pdf
+./toolchain/bin/pdf2md -y apunte-catedra.pdf
 
 # Convertir todos los PDFs de la carpeta actual
 ./toolchain/bin/pdf2md -y
@@ -119,7 +133,9 @@ Integración con `assets/` (Principio 4 de `GEMINI.md`):
 
 ## 6. Dependencias del Sistema
 
-### Opción A: Usar la imagen Docker precompilada (CI/CD y uso local sin instalar TeX Live)
+### Dependencias para compilación (`mdnorm`, `md2pdf`, `mkrelease`)
+
+#### Opción A: Usar la imagen Docker precompilada (CI/CD y uso local sin instalar TeX Live)
 
 El repositorio cuenta con `toolchain/Dockerfile` y publica automáticamente la imagen `ghcr.io/gez-schegtel/asi-toolchain:latest` con Pandoc, LuaLaTeX y el caché de fuentes de `luaotfload` ya precalentado:
 
@@ -130,7 +146,7 @@ docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/workspace" -w /workspace \
   ./toolchain/bin/md2pdf -y --all "content/unidades/Unidad III/"*.md
 ```
 
-### Opción B: Instalación nativa en Debian / Ubuntu
+#### Opción B: Instalación nativa en Debian / Ubuntu
 
 ```bash
 sudo apt install bash perl pandoc \
@@ -139,7 +155,7 @@ sudo apt install bash perl pandoc \
   lmodern fonts-dejavu-core fonts-dejavu-mono fonts-noto-color-emoji
 ```
 
-### Opción C: Instalación nativa en Arch Linux
+#### Opción C: Instalación nativa en Arch Linux
 
 ```bash
 sudo pacman -S bash perl pandoc-cli \
@@ -147,5 +163,19 @@ sudo pacman -S bash perl pandoc-cli \
   texlive-fontsrecommended texlive-plaingeneric texlive-langspanish \
   otf-latin-modern ttf-dejavu noto-fonts-emoji
 ```
+
+### Dependencias adicionales para ingesta local con `pdf2md`
+
+Para utilizar la herramienta de descompilación e ingesta `toolchain/bin/pdf2md` en tu equipo local:
+
+* **Debian / Ubuntu**:
+  ```bash
+  sudo apt install mupdf-tools python3 python3-pdfminer python3-lxml python3-pil
+  ```
+
+* **Arch Linux**:
+  ```bash
+  sudo pacman -S mupdf-tools python python-pdfminer python-lxml python-pillow
+  ```
 
 *(Las fuentes tipográficas estándar del repositorio —**Libertinus Serif** para texto, **Inter** para títulos y **JetBrains Mono** para código— están incluidas directamente en `toolchain/pandoc/fonts/`, por lo que funcionan en cualquier distribución Linux sin necesidad de instalarlas desde el gestor de paquetes).*

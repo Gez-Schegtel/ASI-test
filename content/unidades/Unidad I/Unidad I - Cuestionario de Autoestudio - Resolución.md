@@ -41,8 +41,11 @@ Definición de **sistema de información** según Andreu, Ricart y Valor:
 **Función:** podemos distinguir cuatro funciones principales del SI.
 
 - **Coordinación entre actividades:** el SI recopila la información que generan unas actividades y la distribuye a las que la necesitan para operar o decidir. Coordina actividades básicas entre sí (por ejemplo, hacer llegar los pedidos a producción), básicas con soporte (cualquier actividad de control) y de soporte entre sí.
+
 - **Apoyo a la dirección y el control:** como subraya la definición, el SI no solo registra transacciones, sino que organiza la información para que los que deciden puedan planificar, controlar y diseñar acciones con el mayor conocimiento de causa posible.
+
 - **Explotación de los vínculos entre actividades:** el SI permite identificar y aprovechar las influencias mutuas entre eslabones de la cadena. Explotarlos con una visión global permite mejoras radicales, como la reingeniería de procesos, e incluso reconfigurar la cadena de valor para obtener ventajas competitivas.
+
 - **Soporte a la estrategia de negocio:** el SI está al servicio del enfoque de negocio. Su función es apoyar la ejecución de la estrategia, y puede llegar a ser un elemento activo de ella.
 
 # 2. Relación entre sistemas de información y tecnologías de información {-}
@@ -62,11 +65,17 @@ Integrar la planificación de los SI/TI con la estrategia empresarial asegura qu
 Edwards, Ward y Bytheway (cap. 4) muestran lo que pasa cuando falta una estrategia coherente de SI. Entre otros problemas:
 
 - Competidores, proveedores y clientes consiguen ventajas sobre la empresa.
+
 - Los objetivos empresariales se vuelven inalcanzables por las limitaciones de los sistemas.
+
 - Los sistemas no están integrados: duplicación de esfuerzos, datos inexactos, retrasos y mala gestión de la información.
+
 - Los proyectos se retrasan, exceden el presupuesto y no dan los beneficios esperados, porque no se definieron bien las necesidades del negocio.
+
 - Las prioridades y los planes cambian todo el tiempo, lo que genera conflictos entre usuarios y personal de SI.
+
 - Las tecnologías elegidas no se integran e incluso limitan a la empresa.
+
 - No hay forma de fijar niveles de recursos adecuados ni de priorizar las inversiones de manera coherente.
 
 En síntesis: sin alineación se gasta más de lo necesario para obtener menos beneficios de los esperados.
@@ -82,36 +91,55 @@ El procedimiento tiene cuatro fases:
 ## Fase I: Presentación y compromiso del equipo {-}
 
 - **Finalidad:** que la organización asuma la planificación como un proyecto de toda la empresa y no solo del área de sistemas. La alta dirección decide explícitamente elaborar el plan y se constituyen el Comité de TI/SI, el grupo base y el equipo de trabajo.
+
 - **Técnicas:** reuniones de la alta dirección para formalizar y comunicar el compromiso, conformación de equipos interdepartamentales (negocio y técnicos) e identificación preliminar de las áreas a analizar.
+
 - **Salida:** el equipo de trabajo constituido, con responsabilidades claras en todos los niveles, y el anuncio oficial del proyecto a la organización.
+
 - **Alimenta a:** la Fase II, a la que le da el marco organizativo, las personas y el respaldo de la dirección para empezar el trabajo de campo.
 
 ## Fase II: Descripción de la situación actual {-}
 
 - **Finalidad:** describir la situación desde dos dimensiones, el negocio (funciones y procesos) y los sistemas existentes, y hacer una crítica de esos sistemas desde el punto de vista técnico y desde su utilidad para el negocio.
+
 - **Técnicas:**
+
     - **Matrices** que relacionan procesos con colecciones de datos (qué procesos usan y generan qué datos).
+
     - **Diccionarios de datos**, con herramientas tipo CASE para registrar el inventario de datos y procesos.
+
     - **Entrevistas** con los usuarios (crítica de negocio) y con el personal de sistemas (crítica técnica).
+
 - **Salida:** un informe validado por los directores de área, con los procesos de negocio, la arquitectura actual de los sistemas y un diagnóstico de sus puntos fuertes, débiles y grado de cobertura.
+
 - **Alimenta a:** la Fase III, como punto de partida para detectar las necesidades de información no cubiertas.
 
 ## Fase III: Elaboración del Plan de TI/SI {-}
 
 - **Finalidad:** documentar las necesidades de información futuras, proponer actuaciones (sistemas nuevos o mejoras) que incidan en las líneas estratégicas, armar escenarios alternativos, evaluarlos y aprobar el plan definitivo.
+
 - **Técnicas:**
+
     - **Factores críticos de éxito (FCE)** en las entrevistas, para priorizar las necesidades vitales.
+
     - **Refinamiento iterativo** para consolidar las estructuras de datos y deducir la estructura global del futuro SI.
+
     - **Escenarios alternativos**, combinando subsistemas según distintos criterios estratégicos y restricciones de capacidad.
+
     - **Análisis costo-beneficio en dos partes:** los técnicos estiman el costo y los usuarios de negocio estiman los beneficios.
+
 - **Salida:** el **Plan de TI/SI aprobado**: estructura global del nuevo sistema, lista de proyectos a 3-5 años, sus prioridades y una estimación de los recursos necesarios.
+
 - **Alimenta a:** la Fase IV, a la que le da los proyectos concretos y las directrices.
 
 ## Fase IV: Programación de actividades {-}
 
 - **Finalidad:** detallar cómo se van a ejecutar a corto plazo las directrices del plan. Es una labor fundamentalmente técnica: se asignan calendarios, personas y fondos a proyectos concretos.
+
 - **Técnicas:** planificación y gestión de proyectos, integración con el ciclo anual de presupuestos y definición de hitos de seguimiento y control.
+
 - **Salida:** el calendario detallado del primer año, el presupuesto del período siguiente y un plan de evaluación y revisión.
+
 - **Alimenta a:** la ejecución (compras de hardware y software, desarrollo de aplicaciones) y el control de la dirección, que verifica que el SI se construya de acuerdo con la estrategia.
 
 # 5. Cartera de aplicaciones {-}
@@ -131,8 +159,11 @@ Es un esquema de clasificación, desarrollado originalmente por **McFarlan**, qu
 Así como una empresa gestiona una cartera de productos o de inversiones, este enfoque trata a las aplicaciones como activos que hay que gestionar según sus características y su valor presente y futuro. Las clasifica en cuatro categorías:
 
 - **Estratégicas:** críticas para ejecutar la estrategia futura de la empresa.
+
 - **De alto potencial:** pueden ser importantes para el éxito futuro.
+
 - **Clave para las operaciones:** de ellas depende actualmente el éxito de la organización.
+
 - **De apoyo:** valiosas, pero no críticas para el éxito.
 
 Su mayor fuerza no es dar una receta para clasificar sistemas, sino servir de **vehículo para una discusión informada**: permite que la alta dirección, los mandos medios, los usuarios y los profesionales de SI lleguen a una visión común para **optimizar el uso de los recursos, mejorar la contribución de los sistemas actuales y elegir el mejor enfoque para las nuevas inversiones**.
@@ -140,8 +171,11 @@ Su mayor fuerza no es dar una receta para clasificar sistemas, sino servir de **
 ## II. ¿Qué significa cada segmento respecto de su aporte a la organización en el contexto estratégico? {-}
 
 - **Estratégicas:** son críticas para ejecutar la estrategia futura y asegurar el éxito a largo plazo. Su aporte es **obtener o mantener una ventaja competitiva** o alcanzar los factores críticos de éxito fijados por la dirección. En la analogía con la BCG, son las **"estrellas"**.
+
 - **De alto potencial:** pueden llegar a ser vitales para el éxito futuro, pero su valor todavía tiene que demostrarse. Funcionan como el **I+D de los sistemas**: experimentan e innovan para detectar oportunidades. Son la fuente de las futuras aplicaciones estratégicas: si una idea se valida y la empresa apuesta por ella, pasa a ser estratégica. Equivalen al **"niño problema"**.
+
 - **Clave para las operaciones:** de ellas depende **hoy** el funcionamiento y la supervivencia de la organización. Su aporte es la estabilidad operativa: evitan que una falla deje a la empresa en **desventaja competitiva**. Son las **"vacas"**.
+
 - **De apoyo:** son útiles, pero no críticas ni para el éxito actual ni para la estrategia futura. Suelen ser sistemas estándar o administrativos. Su aporte no es la ventaja competitiva, sino **mejorar la eficiencia, cumplir requisitos legales y controlar costos**, sin consumir recursos que hacen falta en los otros cuadrantes. Se asemejan al **"perro"**.
 
 ## III. ¿Qué son y cuáles son las estrategias genéricas para la gestión de los SI/TI? {-}
@@ -153,13 +187,17 @@ Su mayor fuerza no es dar una receta para clasificar sistemas, sino servir de **
 Son seis:
 
 - **Planificación centralizada:** la estrategia de SI/TI está integrada con la estrategia corporativa mediante una unidad especializada en la alta dirección. Está impulsada por las necesidades globales del negocio. Es la adecuada para las **aplicaciones estratégicas**.
+
 - **Hilo conductor:** parte de que la TI dará ventaja competitiva y usa tecnología de punta para adelantarse a la competencia. Está impulsada por la innovación tecnológica. Ideal para las **aplicaciones de alto potencial**.
 
 > **Para recordar:** en la *planificación centralizada*, el **negocio** le dice a la tecnología qué hacer; en el *hilo conductor*, la **tecnología** le muestra al negocio qué podría hacer.
 
 - **Mercado libre:** los directivos, que a la vez son usuarios, saben qué es lo mejor para sus áreas y eligen libremente cómo satisfacer sus necesidades; el servicio interno de TI compite con proveedores externos. Útil para las **aplicaciones de alto potencial** y las **de apoyo**.
+
 - **Monopolio:** un único proveedor interno al que la organización debe recurrir siempre. Busca el control central de la oferta y soluciones de calidad que eviten riesgos operativos. Es la que mejor funciona para las **aplicaciones clave para las operaciones**.
+
 - **Recurso escaso:** se fija de antemano un presupuesto limitado y las aplicaciones compiten por él, justificando estrictamente su rentabilidad. Sirve para controlar el gasto en las **aplicaciones de apoyo**.
+
 - **Mal necesario:** los SI/TI solo se usan para cumplir requisitos legales e inversiones de alto rendimiento, o cuando no hay otra alternativa. Suele adoptarse por error, negligencia o extrema escasez de recursos, y tiene grandes desventajas: degrada la competitividad y la moral.
 
 ![](../../../assets/u1i34.png)
@@ -171,7 +209,9 @@ Son seis:
 Para optimizar el uso de los recursos y afrontar la incertidumbre (la probabilidad de que una aplicación fracase), hay que evaluar **tres factores** (Edwards, p. 120):
 
 - **Beneficios:** lo que es más importante conseguir.
+
 - **Recursos:** lo que la empresa puede hacer o dotar.
+
 - **Riesgos:** lo que probablemente va a ocurrir. Los principales factores de riesgo son el tamaño y la duración del proyecto, la inestabilidad de la empresa, la tasa de cambio de la organización, el número de partes que la componen y los factores técnicos de usar tecnologías nuevas.
 
 ## V. ¿Cuáles son las etapas propuestas por Edwards, Ward y Bytheway para determinar las prioridades? {-}
@@ -181,15 +221,21 @@ Para optimizar el uso de los recursos y afrontar la incertidumbre (la probabilid
 **Etapa 2. Definir prioridades dentro de cada segmento** de la cartera, porque cada tipo de aplicación se justifica con una lógica distinta (pp. 120-121):
 
 - **De apoyo:** primero las que den mayores beneficios económicos con menos recursos.
+
 - **Estratégicas:** primero las que más contribuyan a los objetivos de la empresa, expresados en los **factores críticos de éxito (FCE)** a los que conducen, con menos recursos.
+
 - **De alto potencial:** deben mostrar relación con los objetivos y los FCE, aunque sea con menos claridad. En la práctica, se autogestionan según **la energía y el entusiasmo de sus defensores**.
+
 - **Clave para las operaciones:** son las más complejas: se combinan consideraciones económicas, riesgos para el negocio actual, aporte a los FCE y mejoras de infraestructura.
 
 **Etapa 3. Definir las prioridades globales**, comparando entre segmentos (pp. 122-123). Es el mayor desafío, porque las estratégicas puntúan más en FCE, las de apoyo en economía y las clave en riesgos e infraestructura. La dirección decide cuánto pesa cada tipo de beneficio, según:
 
 - las **fortalezas o debilidades de la empresa** (defender la posición actual o innovar),
+
 - las **fortalezas o debilidades de los sistemas actuales** y la capacidad del área de SI/TI,
+
 - la **experiencia y competencia de los usuarios**,
+
 - la **confianza de la dirección en su propio criterio** frente a los argumentos puramente financieros.
 
 El plan global se ordena según la proporción:
@@ -203,11 +249,17 @@ Así, **los recursos pueden reasignarse desde las aplicaciones de prioridad más
 Ubicándola en las cuatro fases de la metodología de Andreu, Ricart y Valor:
 
 - **Fase I – Presentación y compromiso:** la matriz todavía no se usa, pero se sientan las bases para usarla. Al comprometer a la dirección y a los responsables de negocio, el juicio sobre qué es "estratégico" o "de apoyo" va a ser consensuado y de negocio, no solo técnico.
+
 - **Fase II – Situación actual:** primera gran aplicación, sobre la **cartera de aplicaciones actuales**. En la crítica de los sistemas existentes, ubicarlos en los cuadrantes sirve de **diagnóstico**: muestra si el esfuerzo y el presupuesto actuales tienen sentido (por ejemplo, si se gastan demasiados recursos en aplicaciones de apoyo) y revela debilidades de base antes de proponer desarrollos nuevos.
+
 - **Fase III – Elaboración del plan:** es donde más se aplica, sobre la **cartera futura**:
+
     - **Clasificación** de las necesidades y proyectos propuestos en los cuadrantes.
+
     - **Asignación de la estrategia genérica** más adecuada a cada uno, evitando una única regla para todos.
+
     - **Definición de prioridades** antes de que el Comité apruebe el plan, con la lógica de cada cuadrante (beneficios, recursos y riesgos).
+
 - **Fase IV – Programación:** la cartera define el **orden de ejecución**: el calendario del primer año y el presupuesto respetan las prioridades definidas en la fase anterior.
 
 # 6. Las tres cuestiones que requiere una estrategia de SI para implementarse {-}
@@ -217,7 +269,9 @@ Ubicándola en las cuatro fases de la metodología de Andreu, Ricart y Valor:
 Para que una estrategia de SI se haga realidad hay que **asignar recursos**, y eso exige gestionar **tres conjuntos interrelacionados de cuestiones** (Robson, cap. 7):
 
 1. **Los costos de los IS:** qué se resigna con la inversión. El costo no es solo financiero: incluye el capital, pero también **el esfuerzo, el tiempo, el entusiasmo, el poder, el compromiso y la certeza**, porque se abandona lo conocido sin saber cuál será el resultado.
+
 2. **Los beneficios de los IS:** qué recursos o atributos útiles gana la organización. Además del capital, incluyen **poder, estatus, conformidad y certeza** (mejor información para decidir).
+
 3. **El balance entre costos y beneficios:** evaluar cada decisión en función de lo que aporta frente a lo que exige. Para eso hay que **entender las direcciones estratégicas y los perfiles de riesgo, e identificar técnicas apropiadas para estimar el desempeño dentro de plazos adecuados**.
 
 El riesgo no es un aspecto separado, sino el **eje de toda asignación de recursos en IS**: toda inversión lleva a la empresa de lo conocido a lo desconocido. Solo se puede juzgar si vale la pena ese riesgo sabiendo hacia dónde quiere ir la empresa, y con técnicas que valoren también los beneficios intangibles, que las técnicas contables tradicionales no capturan. Concertar estos criterios de costo y beneficio es lo que permite equilibrar el riesgo.
@@ -229,14 +283,23 @@ Los costos de un SI no se limitan a la inversión de capital: incluyen elementos
 La lista de control de **Hochstrasser y Griffiths** (en Robson) los desglosa así:
 
 - **Hardware:** no solo el de procesamiento, sino también impresoras, almacenamiento y accesorios. Aunque son visibles, su dispersión hace que sean difíciles de localizar y auditar.
+
 - **Software:** los paquetes son la opción más barata, aunque implican costos de evaluación y especificación; los desarrollos internos pueden implicar sumas enormes y desconocidas, y los generadores de aplicaciones tienen costos de aprendizaje.
+
 - **Instalación:** varía con la complejidad; puede requerir especialistas externos, carga de datos (*data entry*) al reemplazar sistemas manuales o conversión de datos en los ya informatizados.
+
 - **Entorno:** el entorno físico (cableado, muebles, aire acondicionado) y el humano (seguridad, salud, costos legales).
+
 - **Funcionamiento:** energía, comunicaciones y suscripciones a servicios externos de datos.
+
 - **Mantenimiento:** planificado mediante contratos o menos predecible con personal interno. El software se "avería" tanto como el hardware.
+
 - **Seguridad:** medidas contra daños accidentales o deliberados, el costo de los riesgos inevitables y los planes de recuperación ante desastres.
+
 - **Red:** software, hardware y gestión de redes, además de los costos de gestión de datos (modelado, repositorios, almacenamiento), que son enormes y suelen no estar documentados.
+
 - **Capacitación:** los más subestimados; su verdadero alcance (formación de base, específica, apoyo y actualización continua) casi nunca está documentado.
+
 - **Costos organizacionales amplios:** incompatibilidades, nuevas estructuras salariales, costos de transición y de gestión del cambio organizacional.
 
 Un aspecto que suele pasarse por alto es que **la inversión inicial es solo una parte del costo total**: casi todo proyecto de IS inicia un compromiso permanente de recursos. Según **Keen** (en Robson), un desarrollo de software de 1 millón de dólares compromete a la empresa a invertir 4 millones en los cinco años siguientes, porque por cada dólar de desarrollo hay que agregar costos de operación y mantenimiento. Esos costos no son discrecionales y suelen ser los mayores costos "ocultos".
@@ -250,7 +313,9 @@ Los beneficios pueden ser **tangibles o intangibles**. Según una investigación
 Según el tipo de impacto esperado, **Parker et al.** distinguen tres tipos de aplicaciones (Edwards, cap. 6):
 
 - **Sustitutiva:** cambiar personas por máquinas; la economía es la fuerza principal y mejora la eficiencia. Se relaciona sobre todo con las aplicaciones **de apoyo** y **clave para las operaciones**.
+
 - **Complementaria:** aumenta la productividad y la eficacia del personal, al permitir que el trabajo se haga de otra forma. Se relaciona con las **clave para las operaciones** y las **estratégicas**.
+
 - **Innovadora:** busca obtener o mantener una ventaja competitiva, cambiando las prácticas comerciales o creando mercados nuevos. Se relaciona con las **estratégicas** y las **de alto potencial**.
 
 Para justificar estos beneficios, Edwards (siguiendo a Parker) propone, además del análisis costo-beneficio tradicional, técnicas como la **vinculación del valor** (coordinar mejor tareas de áreas distintas), la **aceleración del valor** (hacer antes las cosas y tener los datos con más antelación), la **reestructuración del valor** (racionalizar tareas y áreas) y la **valoración de la innovación**.
@@ -280,10 +345,15 @@ La **Economía de la información** (Parker y Benson) no reemplaza el análisis 
 **Categorías de valor en el uso de la información.** Robson menciona seis categorías que pueden servir de base para justificar una inversión:
 
 1. **Rendimiento de la inversión:** el análisis costo/beneficio clásico (ahorros e ingresos frente a costos de desarrollo y operación).
+
 2. **Adecuación estratégica:** apoyo directo a una estrategia comercial declarada.
+
 3. **Ventaja competitiva:** valor creado por un nuevo negocio o producto, o por más participación de mercado.
+
 4. **Apoyo de información para el management:** información sobre aspectos cruciales de la empresa.
+
 5. **Reacción competitiva:** alcanzar o superar la posición de un competidor.
+
 6. **Arquitectura estratégica de los IS:** inversión básica que posibilita futuras aplicaciones estratégicas.
 
 **Factores de evaluación, por dominio.** Los factores que no capturan las técnicas tradicionales se dividen en dos dominios, cada uno con factores **positivos** (aumentan el atractivo del proyecto) y **negativos** (riesgo o incertidumbre):
@@ -298,8 +368,11 @@ Con todos estos factores se arma la **ficha de evaluación** (Robson, Fig. 7.33)
 **Relación con el resto de la unidad.** La Economía de la información funciona como el engranaje entre la estrategia y la decisión de inversión:
 
 - Equilibra **costos y beneficios**, dándole peso a los intangibles.
+
 - Su factor de **adecuación estratégica** asegura que los recursos vayan a proyectos alineados con la estrategia.
+
 - Su factor de **ventaja competitiva** y la **vinculación del valor** se miden sobre la **cadena de valor**.
+
 - Da una forma estructurada de evaluar los **beneficios, recursos y riesgos** que se usan para priorizar la **cartera de aplicaciones**.
 
 # 11. ¿Qué es un Plan de SI/TI? {-}
@@ -311,10 +384,15 @@ Según Andreu, Ricart y Valor, su aporte central es que, además de listar los p
 Debe incluir:
 
 - Una **lista de proyectos** para los próximos 3 a 5 años.
+
 - El **punto de partida**: la situación actual de los SI/TI, con un juicio crítico técnico y de negocio.
+
 - La **prioridad de cada proyecto**, que combina la importancia para el negocio y los aspectos técnicos.
+
 - Para los proyectos del **primer año**, el detalle suficiente para evaluar sus recursos e incluirlos en el presupuesto anual.
+
 - **Mecanismos de evaluación y control**: un calendario y un presupuesto suficientemente detallados.
+
 - Una lista de **actividades de la empresa donde la TI pueda aumentar la eficacia o la eficiencia**.
 
 Su elaboración es **responsabilidad de la dirección**, con participación del área técnica y de todas las áreas de la empresa, y se lleva a cabo con el procedimiento de cuatro fases descrito en la pregunta 4.

@@ -454,6 +454,7 @@ operativas/técnicas
 
 2. Calendario de ejecución estricto (12 meses + proyección a 18
 meses)
+
 3. Asignación de recursos transparente: horas-hombre, infraestructura
 y presupuesto económico
 

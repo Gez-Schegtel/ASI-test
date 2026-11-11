@@ -7,6 +7,7 @@ La **Matriz de Necesidades** es el "traductor". Agarra los problemas de los jefe
 La tabla se lee **de izquierda a derecha** siguiendo esta lógica:
 
 1. **Dirección (¿Quién?):** El área de la empresa que tiene el problema.
+
 2. **Necesidad de Información (¿Qué le falta?):** El dato o control que hoy no tienen (o que hacen a mano en papel y es un caos).
 
 

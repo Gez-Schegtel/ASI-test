@@ -28,6 +28,7 @@ Cuestionario de Autoestudio
 1. Interpretar, teniendo en cuenta la definición de sistemas de información propuesta por
 Andreu, Ricart y Valor, la ubicación y función de los SI/TI en la cadena de valor de la
 organización.
+
 Definición de Sistemas de Información:
 «Conjunto formal de procesos que, operando sobre una colección de datos estructurada de
 acuerdo con las necesidades de una empresa, recopila, elabora y distribuye (parte de) la
@@ -63,6 +64,7 @@ incluso convertirse en un elemento activo de la misma para modificar la estructu
 competitiva de todo un sector.
 
 2. Explicar la relación entre Sistemas de Información y Tecnologías de Información.
+
 Los SI definen el qué, esto es, cuál es la información relevante o necesaria que necesita la
 organización para funcionar correctamente, cuál es verdaderamente significativa en el
 apoyo a la toma de decisiones y para la alineación con la estrategia de negocio.
@@ -79,6 +81,7 @@ motivo que se dice que la tecnología aporta su propia idiosincrasia.
 
 3. ¿Por qué deben alinearse los sistemas de información con las estrategias de la
 organización?
+
 Los sistemas de información deben alinearse con las estrategias de la organización porque
 son justamente estas estrategias las que deben llevarse a cabo para alcanzar los objetivos
 de la empresa. Los sistemas de información cumplen un rol muy importante en el apoyo de
@@ -105,6 +108,7 @@ necesita.
 4. De acuerdo con la metodología de alineamiento que describen Andrew Et al., interprete
 cada etapa (finalidad, posibles técnicas vistas o conozca que se puedan aplicar) y deduzca
 qué salida se obtiene de cada etapa, a qué alimenta. ¿Qué es un Plan de SI/TI?.
+
 Un Plan de Tecnologías y Sistemas de Información (TI/SI) es el resultado de un
 procedimiento sistemático de toma de decisiones que define qué debe hacer la
 organización en el futuro próximo respecto a sus sistemas de información.
@@ -520,6 +524,7 @@ valiosos.
 
 6. Sintetice las tres cuestiones principales que requiere una estrategia de SI para
 implementarse, en el contexto del “Valor de la inversión en IS”.
+
 En el contexto del "Valor de la información e inversión en IS", para que la visión representada
 en una estrategia de Sistemas de Información (SI) se haga realidad y logre implementarse,
 es indispensable llevar a cabo un proceso de asignación de recursos e inversiones.
@@ -545,6 +550,7 @@ precisamente a través de este proceso de concertar los criterios de costo y ben
 que se logra equilibrar el riesgo inherente a toda inversión en IS.
 
 7. ¿Cuáles son los costos de un SI?
+
 Los costos de un Sistema de Información (SI) no se limitan únicamente a la inversión
 financiera o de capital, sino que están compuestos por una compleja red de elementos
 tangibles e intangibles, a menudo denominados como costos "visibles" y "ocultos". En un
@@ -618,6 +624,7 @@ mantenimiento continuo. Estos gastos posteriores, al no ser discrecionales, suel
 mayores costos "ocultos" que enfrentan las empresas.
 
 8. ¿Cuáles son los beneficios de un SI?
+
 Los beneficios de un Sistema de Información (SI o IS, por sus siglas en inglés) son las
 diversas formas en las que una empresa puede mejorar su situación general como
 consecuencia de la manera en que maneja la información. Este valor se acumula y se
@@ -625,7 +632,9 @@ advierte al mejorar distintos atributos de la información y de los procesos, ta
 precisión, la calidad, la productividad, la velocidad, la confiabilidad y la flexibilidad.
 En la literatura proporcionada, los beneficios de los SI se explican y clasifican desde
 diferentes perspectivas analíticas:
+
 1. Según el tipo de impacto esperado en el trabajo (Parker et al.):
+
 ●​ Sustitutiva: Se obtienen beneficios al cambiar personas por máquinas, siendo la
 economía financiera la fuerza principal que produce una mejora directa en la
 eficiencia de la empresa (esto se relaciona principalmente con los sistemas de
@@ -637,6 +646,7 @@ personal, al hacer posible que el trabajo de las personas se ejecute de otra for
 cual se logra modificando las prácticas comerciales actuales o directamente
 creando mercados nuevos (esto se relaciona principalmente con las aplicaciones
 estratégicas y de alto potencial).
+
 2. Según el nivel organizacional en el que impactan (Silk):
 
 ---
@@ -651,6 +661,7 @@ Estos beneficios se conocen también como beneficios genéricos, los cuales se d
 en la siguiente pregunta.
 
 3. Según las categorías de valor de la "Economía de la información" (Parker y Benson):
+
 ●​ Rendimiento de la inversión: tal vez el tipo de valor más tradicional, en el que los
 análisis financieros de costo/beneficio evidencian una diferencia positiva entre el
 flujo de desarrollo y el costo operativo, y la reducción de costos del negocio y el flujo
@@ -667,11 +678,13 @@ alcanzar la posición del competidor o aventajarla, de manera que sea difícil d
 sobrepasar.
 ●​ Arquitectura estratégica de los IS: una inversión básica y necesaria que posibilita
 la ocurrencia de otras aplicaciones estratégicas posteriores.
+
 4. Beneficios Tangibles vs. Intangibles: Para comprender la totalidad de los beneficios de
 un SI, la empresa debe reconocer que estos superan el simple cálculo financiero. Las
 empresas descubren que los beneficios intangibles representan al menos el 30% del valor
 total resultante de sus inversiones en sistemas. Entre los beneficios intangibles de mayor
 importancia se destacan:
+
 ●​ La mejora en el servicio al cliente.
 ●​ La obtención de mayor ventaja competitiva o la exclusión de una desventaja frente a
 los rivales.
@@ -691,24 +704,29 @@ del valor (racionalizar tareas eliminando o combinando departamentos) o una vinc
 de valor (coordinar de forma más precisa las tareas entre diferentes áreas).
 
 9. ¿Cómo se clasifican los beneficios genéricos de los SI?
+
 Según el modelo de Silk (1991), detallado en el texto de Wendy Robson, los beneficios
 genéricos de los Sistemas de Información (IS) se relacionan directamente con el nivel de la
 organización que los experimenta. A su vez, estos beneficios se enmarcan dentro de las tres
 eras de la información, las cuales definen distintos objetivos y métricas para cada tipo de
 beneficio.
 La clasificación exacta, sustentada estrictamente por las fuentes, es la siguiente:
+
 1. Eficiencia
 ●​ Nivel organizacional: Se percibe en el nivel operacional.
+
 ●​ Orientación: Está orientado al ahorro de costos y es de carácter tangible.
 ●​ Técnica de justificación: Se justifica mediante técnicas "duras". La métrica de
 evaluación debe focalizarse explícitamente en el desplazamiento del costo y en
 evitar el costo.
 ●​ Propósito (Era de la información): Corresponde a la primera era (E1), cuyo objetivo
 principal es automatizar.
+
 2. Efectividad
 ●​ Nivel organizacional: Se percibe en el nivel táctico del management de la
 organización. Un ejemplo de este nivel es la implementación de un proyecto de
 sistema de apoyo de decisiones (DSS).
+
 ●​ Orientación: Está orientado a lograr un mayor RoA (Rendimiento sobre los Activos).
 ●​ Técnica de justificación: Utiliza una técnica de justificación que tiende hacia lo
 "blando", siendo la naturaleza del beneficio también de tipo blanda. Su métrica
@@ -722,6 +740,7 @@ investigaciones o encuestas.
 primordial es informar.
 
 3. Avance estratégico (Competitividad o Explotación)
+
 ●​ Nivel organizacional: Se percibe en el nivel estratégico de la empresa.
 ●​ Orientación: Está orientado al crecimiento del negocio y es, por definición, un
 beneficio de carácter intangible.
@@ -737,6 +756,7 @@ transformar el negocio, y su beneficio genérico asociado es la explotación.
 
 10. ¿Cómo se clasifican los factores generadores de valor de la información, según la
 Economía de la Información?
+
 Según la Economía de la Información, desarrollada por Parker y Benson, los factores
 generadores de valor que las técnicas contables tradicionales no logran capturar se
 clasifican en dos grandes áreas: el dominio empresarial y el dominio tecnológico.
@@ -744,8 +764,10 @@ Dentro de cada uno de estos dominios, los factores se subdividen en positivos (e
 de valor que aumentan el atractivo de un posible proyecto) y negativos (elementos de riesgo
 o incertidumbre que disminuyen su viabilidad).
 La clasificación detallada de estos factores es la siguiente:
+
 1. Factores del Dominio Empresarial Evalúan la factibilidad del proyecto desde la
 perspectiva del negocio.
+
 ●​ Factores positivos (Aumentan el atractivo):
 ○​ Adecuación estratégica: Cuantifica el grado de apoyo directo que el posible
 proyecto de sistemas de información brinda a las estrategias empresariales
@@ -764,8 +786,10 @@ para ponerse a la par del desarrollo estratégico de otras compañías).
 empresa para llevar a cabo la iniciativa. Cuanto mayor sea la brecha entre los
 conocimientos o recursos requeridos y los existentes, mayor será el riesgo
 asignado.
+
 2. Factores del Dominio Tecnológico Evalúan la viabilidad del proyecto desde la perspectiva
 técnica y de infraestructura de los sistemas de información (IS).
+
 ●​ Factores positivos (Aumentan el atractivo):
 ○​ Arquitectura estratégica de los IS: Califica el valor que se acumula al
 establecer y mantener una capacidad o infraestructura base (métodos,
@@ -792,6 +816,7 @@ otros generadores de valor: la vinculación del valor, la aceleración del valor
 reestructuración del valor y la valuación de la innovación.
 
 11. ¿Qué es un Plan de SI/TI?
+
 Aquí tienes las definiciones y los elementos del Plan de TI/SI citados de forma textual y
 exacta de las fuentes (el libro Estrategia y Sistemas de Información de Andreu, Ricart y Valor),
 tal como lo solicitas:
