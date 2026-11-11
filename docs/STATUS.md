@@ -129,6 +129,36 @@
 
 ## 5. Bitácora de Sesiones
 
+### `2026-11-11` — Ingesta de Trabajo Práctico Parte 1 y Optimización Gráfica de la Matriz de Necesidades
+
+* **Contexto**: Ingesta del documento oficial de `Trabajo Práctico - Parte 1.pdf` a Markdown editable y resolución del renderizado de la tabla de Matriz de Necesidades (Fase 3), cuya complejidad estructural y extensión (2 páginas densas con encabezados combinados verdes) desbordaban los límites del motor de tablas de LaTeX.
+
+* **Acciones ejecutadas**:
+
+  * **Ingesta con `toolchain/bin/pdf2md`**:
+
+    * Descompilación directa del PDF a `content/trabajo práctico/parte 1/Trabajo Práctico - Parte 1.md`.
+
+    * Deduplicación y enlace automático de figuras preexistentes en `assets/` (`Presentacion_img_1.png` y `Trabajo-Practico-Parte-1_img_1.png`).
+
+  * **Renderizado y extracción vectorial de la Matriz de Necesidades (Opción A)**:
+
+    * Rasterización a 300 DPI de las páginas 20 y 21 del PDF original mediante `mutool draw`.
+
+    * Recorte preciso de los límites de la tabla verde:
+
+      * `assets/TP1-Matriz-de-Necesidades_parte-1.png` (cuadro de Estrategia Organizacional y filas hasta Dir. de Logística y Mantenimiento).
+
+      * `assets/TP1-Matriz-de-Necesidades_parte-2.png` (filas de continuación hasta Asuntos Jurídicos).
+
+    * Sustitución en el Markdown por las dos imágenes al 100% de ancho (`{width=100%}`) separadas por `\newpage` para garantizar una paginación perfecta y máxima legibilidad en hojas A4.
+
+  * **Normalización y verificación**:
+
+    * Linteo con `toolchain/bin/mdnorm -y` y validación con `--check`.
+
+    * Compilación editorial exitosa a PDF mediante `toolchain/bin/md2pdf`, verificando que la tabla ocupa el ancho completo de las páginas 14 y 15 con nitidez absoluta.
+
 ### `2026-11-11` — Sincronización Integral de Mejoras en `md2pdf`, `mdnorm`, `pdf2md` y Estilos LaTeX (`enumitem`)
 
 * **Contexto**: Sincronización de las versiones más recientes de los scripts de autoría locales (`~/.mis-scripts/common/{md2pdf, mdnorm, pdf2md}`) y estilos de Pandoc (`~/.local/share/pandoc/defaults/estilo.tex`) dentro del toolchain autocontenido del repositorio, preservando intactas las reglas de autocontención, extracción centralizada en `assets/`, deduplicación por hash, resolución de colisiones y ejecución local exclusiva de `pdf2md`.
