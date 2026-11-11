@@ -32,7 +32,7 @@
 
 * **Imágenes Base64 incrustadas en Markdown**: **0**.
 
-* **Recursos gráficos centralizados en `assets/`**: **344 archivos**.
+* **Recursos gráficos centralizados en `assets/`**: **346 archivos**.
 
 * **Toolchain autocontenido (`toolchain/`)**:
 
@@ -55,7 +55,7 @@
 | Componente / Unidad | Tema Principal | Ubicación Actual | Estado Editorial |
 | :--- | :--- | :--- | :--- |
 | **Unidad 0** | Conceptos previos e introducción | `content/unidades/Unidad 0/` | **Completa** (`Conceptos Previos.md`) |
-| **Unidad I** | Los SI en la Empresa, Cadena de Valor y Planificación Estratégica SI/TI | `content/unidades/Unidad I/` | **Completa** (Apunte teórico + Temario en raíz; Cuestionario resuelto y 4 borradores en `Unidad I/borradores/`) |
+| **Unidad I** | Los SI en la Empresa, Cadena de Valor y Planificación Estratégica SI/TI | `content/unidades/Unidad I/` | **Completa** (Apunte teórico + Temario + Aclaraciones sobre la Unidad I en raíz; Cuestionario resuelto y 4 borradores en `Unidad I/borradores/`) |
 | **Unidad II** | Subsistema de Provisión (RRHH y SI/TI) *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u4/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64 y PDFs pasados a `.md`) |
 | **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `content/unidades/Unidad III/` | **Completa** (Apunte teórico + Temario + Cuestionario de autoestudio resuelto) |
 | **Unidad IV** | Mantenimiento y Desarrollo de RRHH *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u6/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64) |
