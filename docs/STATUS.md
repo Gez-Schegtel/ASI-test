@@ -62,7 +62,7 @@
 | **Unidad V** | Subsistema de Seguimiento / Control (Monitores, Benchmarking, Amdahl) | `legacy/archivo-2025/2025/par_1/u2/` | Fragmentado |
 | **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/Unidad VI/` | **Completa** (Apunte teórico + Temario + Cuestionario de autoestudio resuelto) |
 | **Trabajo Práctico Integrador (Parte 1)** | Alineamiento Estratégico y Caso DVP Parte 1 | `content/trabajo práctico/parte 1/` | **Completo en `.md`** (`Escenario.md`, `Trabajo Práctico - Parte 1.md`, `Explicación - Trabajo Práctico - Parte 1.md`) |
-| **Trabajo Práctico Integrador (Parte 2)** | Caso DVP Parte 2 (Organigrama, Competencias y Presentación) | `content/trabajo práctico/parte 2/` | **Completo en `.md`** (`Explicación del TPI.md`, `Nuevo Organigrama.pdf`, etc.) |
+| **Trabajo Práctico Integrador (Parte 2)** | Caso DVP Parte 2 (Organigrama, Competencias y Presentación) | `content/trabajo práctico/parte 2/` | **Completo en `.md`** (`Explicación del TPI.md`, `Trabajo Práctico - Parte 2.md`, `Nuevo Organigrama.md`, `Diccionario de Competencias.md`) |
 | **Lab Checkmk** | Monitoreo con Checkmk Raw 2.3 en Docker + `http_ping.py` | `content/labs/cmk/` y `content/labs/taller-1/` | **Migrado y funcional** |
 
 ---
@@ -128,6 +128,22 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-11` — Incorporación y Consolidación de Trabajo Práctico Integrador (Parte 2)
+
+* **Contexto**: Incorporación y normalización de los documentos de estudio de la Parte 2 del Trabajo Práctico Integrador (DVP), cubriendo la reestructuración jerárquica de Departamento a Dirección, la Gestión por Competencias de Martha Alles (competencias cardinales y niveles A-D) y el análisis integral de cargos.
+
+* **Acciones ejecutadas**:
+
+  * **Incorporación y normalización**:
+
+    * Linteo y verificación con `toolchain/bin/mdnorm --check` sobre `content/trabajo práctico/parte 2/Trabajo Práctico - Parte 2.md`, `Nuevo Organigrama.md` y `Diccionario de Competencias.md`.
+
+    * Vinculación de figuras en `assets/` y validación de cero Base64 y cero binarios.
+
+  * **Verificación de compilación editorial**:
+
+    * Compilación exitosa a PDF y EPUB con `toolchain/bin/md2pdf --all`, generando todos los artefactos en `build/Trabajo Práctico Integrador/parte 2/` y preservando la suite completa de estudio.
 
 ### `2026-11-11` — Implementación del Filtro Lua `tablas-listas.lua` (Listas Nativas en Celdas de Tablas)
 
