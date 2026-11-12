@@ -131,6 +131,16 @@
 
 ## 5. Bitácora de Sesiones
 
+### `2026-11-12` — Incorporación de Secciones de Toolchain y Estilo Editorial en `README.md`
+
+* **Contexto**: Mejora de la presentación del repositorio principal incorporando un resumen ejecutivo de las herramientas del toolchain (`mdnorm`, `md2pdf`, `pdf2md`, `mkrelease`) y de la arquitectura tipográfica y de diseño editorial (motor LuaLaTeX, fuentes embebidas, filtros Lua y callouts).
+
+* **Acciones ejecutadas**:
+
+  * **Actualización en `README.md`**: Inclusión de tablas síntesis y especificaciones tipográficas al pie del documento, manteniendo la jerarquía y derivando detalles avanzados a `toolchain/README.md`.
+
+  * **Verificación de linteo**: Normalización y comprobación con `toolchain/bin/mdnorm --check`.
+
 ### `2026-11-11` — Estandarización de Directorios al Estándar Unix (Spec 08)
 
 * **Contexto**: Migración estructural de toda la jerarquía de directorios bajo `content/` y `build/` hacia el estándar Unix clásico (todo en minúsculas, sin espacios, sin tildes y con números arábigos: `unidad-0` a `unidad-6`, `trabajo-practico/parte-1`, `parte-2`, `labs`), garantizando portabilidad absoluta entre sistemas de archivos y simplificando el uso en terminal y contenedores.

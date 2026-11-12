@@ -82,3 +82,46 @@ Si querés colaborar subiendo unidades nuevas, editar apuntes en Markdown o gene
   Consultá [`toolchain/README.md`](toolchain/README.md) para ver el detalle de dependencias y opciones.
 
 * **Estado del proyecto y hoja de ruta**: Consultá [`docs/STATUS.md`](docs/STATUS.md) para ver el avance de cada unidad y las especificaciones técnicas en [`docs/specs/`](docs/specs/).
+
+---
+
+## 🛠️ Herramientas del Toolchain Editorial
+
+El repositorio cuenta con una suite de herramientas en `toolchain/bin/` pensadas para mantener la calidad técnica y la automatización sin dependencias externas:
+
+| Herramienta | Propósito | Características clave |
+| :--- | :--- | :--- |
+| **`mdnorm`** | Linter y normalizador | Corrige espaciados, tablas rotas, listas anidadas, cabeceras YAML, caracteres matemáticos Unicode (`NFKC`) y rutas relativas a `assets/`. Modo auditoría con `--check`. |
+| **`md2pdf`** | Compilador universal | Compila a PDF (`LuaLaTeX`), EPUB3 o ambos (`--all`) en una pasada. Traduce al vuelo sintaxis de Obsidian (`![[...]]`, callouts, wikilinks) y organiza la salida limpia en `build/`. |
+| **`pdf2md`** | Descompilador inverso | Convierte PDFs de cátedra a Markdown editable reconstruyendo títulos, tablas con grilla, fórmulas LaTeX y deduplicando imágenes automáticamente en `assets/`. |
+| **`mkrelease`** | Publicador de Releases | Empaqueta por unidad en `.zip`, crea el índice dinámico en 1 clic y actualiza el release continuo (`apuntes-al-dia`) de forma atómica y sin enlaces caídos. |
+
+> 👉 *Para ver opciones avanzadas, parámetros y dependencias, consultá [`toolchain/README.md`](toolchain/README.md).*
+
+---
+
+## 🎨 Estilo Editorial y Tipografía (Pandoc + LuaLaTeX)
+
+El diseño visual está calibrado para garantizar legibilidad académica tanto en pantalla como impreso:
+
+* **Motor de composición**: **LuaLaTeX** vía Pandoc, con renderizado nativo de emojis a color (`Noto Color Emoji:mode=harf;`) y símbolos técnicos (`DejaVu Sans`).
+
+* **Tipografías embebidas** (100% autocontenido en `toolchain/pandoc/fonts/`):
+
+  * **Cuerpo de texto**: *Libertinus Serif* (10 pt con interlineado optimizado).
+
+  * **Títulos y encabezados**: *Inter* (clase KOMA-Script `scrartcl` con numeración `1.`, `1.1.`).
+
+  * **Código fuente**: *JetBrains Mono* con coloreado sintáctico *Tango* y corte inteligente de líneas (`fvextra`).
+
+* **Filtros Lua dinámicos** (`toolchain/pandoc/filters/`):
+
+  * **`tablas-listas.lua`**: Transforma viñetas en celdas de tablas a listas nativas (`\begin{itemize}` en LaTeX / `<ul><li>` en EPUB).
+
+  * **`preambulo.lua`**: Inyecta paquetes LaTeX y resuelve tipografías con respaldo de emojis sin romper personalizaciones de notas.
+
+  * **`centrar-imagenes.lua`**: Centra figuras y respeta clases de alineación (`{.derecha}`, `{.izquierda}`).
+
+  * **`cortar-formulas.lua`**: Divide ecuaciones display extensas para que nunca desborden los márgenes.
+
+* **Cajas de avisos (Callouts)**: Compatibilidad total con Obsidian (`> [!NOTE]`, `> [!WARNING]`, `> [!IMPORTANT]`, `> [!TIP]`) transformados en cajas estilizadas con `tcolorbox`.
