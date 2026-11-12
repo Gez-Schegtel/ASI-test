@@ -7,7 +7,7 @@
 
 * **Fase actual**: `Infraestructura Técnica, Sincronización de Toolchain (mdnorm, md2pdf, pdf2md, estilo.tex), Organización por Unidad, Imagen Docker GHCR y Publicación en Releases 100% Completadas -> En espera de material de estudio para Spec 03-Parte A`
 
-* **Rama activa**: `changes/juani` (`myfork` — `juani-b/ASI`)
+* **Rama activa**: `main` (`myfork` — `Gez-Schegtel/ASI-test`)
 
 ---
 
