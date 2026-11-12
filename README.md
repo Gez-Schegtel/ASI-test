@@ -37,8 +37,8 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 ```text
 ASI/
 ├── content/
-│   ├── unidades/                 <- Apuntes teóricos y cuestionarios resueltos por Unidad (Unidad 0 a VI)
-│   ├── trabajo práctico/         <- Guías, presentaciones y resoluciones del Trabajo Práctico Integrador (parte 1 y parte 2)
+│   ├── unidades/                 <- Apuntes teóricos y cuestionarios resueltos por unidad (unidad-0 a unidad-6)
+│   ├── trabajo-practico/         <- Guías, presentaciones y resoluciones del Trabajo Práctico Integrador (parte-1 y parte-2)
 │   └── labs/                     <- Laboratorios prácticos y talleres (Checkmk, monitoreo)
 ├── assets/                       <- Almacén único de imágenes, diagramas y recursos gráficos
 ├── toolchain/
@@ -68,16 +68,16 @@ Si querés colaborar subiendo unidades nuevas, editar apuntes en Markdown o gene
   ```bash
   docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/workspace" -w /workspace \
     ghcr.io/gez-schegtel/asi-toolchain:latest \
-    ./toolchain/bin/md2pdf -y --all "content/unidades/Unidad III/"*.md
+    ./toolchain/bin/md2pdf -y --all "content/unidades/unidad-3/"*.md
   ```
 
 * **Normalizar y compilar de forma nativa**:
   ```bash
   # Normalizar formato de un apunte
-  ./toolchain/bin/mdnorm "content/unidades/Unidad III/Unidad III - Subsistema de Aplicación.md"
+  ./toolchain/bin/mdnorm "content/unidades/unidad-3/Unidad III - Subsistema de Aplicación.md"
 
-  # Compilar una unidad completa a PDF y EPUB3 en build/Unidad III/
-  ./toolchain/bin/md2pdf -y --all "content/unidades/Unidad III/"*.md
+  # Compilar una unidad completa a PDF y EPUB3 en build/unidad-3/
+  ./toolchain/bin/md2pdf -y --all "content/unidades/unidad-3/"*.md
   ```
   Consultá [`toolchain/README.md`](toolchain/README.md) para ver el detalle de dependencias y opciones.
 

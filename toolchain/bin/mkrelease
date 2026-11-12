@@ -117,17 +117,17 @@ fi
 
 # Definición ordenada de bloques: "prefijo_slug|titulo_seccion|subcarpeta_build|nombre_zip"
 bloques=(
-  "U0|📘 Unidad 0 — Conceptos Previos e Introducción|Unidad 0|Unidad-0-Completa.zip"
-  "U1|📘 Unidad I — Los SI en la Empresa y Estrategia SI/TI|Unidad I|Unidad-I-Completa.zip"
-  "U2|📘 Unidad II — Subsistema de Provisión|Unidad II|Unidad-II-Completa.zip"
-  "U3|📘 Unidad III — Subsistema de Aplicación|Unidad III|Unidad-III-Completa.zip"
-  "U4|📘 Unidad IV — Mantenimiento y Desarrollo|Unidad IV|Unidad-IV-Completa.zip"
-  "U5|📘 Unidad V — Subsistema de Seguimiento y Control|Unidad V|Unidad-V-Completa.zip"
-  "U6|📘 Unidad VI — Seguridad y Auditoría de SI/TI|Unidad VI|Unidad-VI-Completa.zip"
-  "TP1|🛠️ Práctica — TP1: Alineamiento Estratégico de SI/TI|Practica/tp1-alineamiento|Practica-TP1-Alineamiento.zip"
-  "TPI|🛠️ Práctica — TPI: Vialidad Provincial (DVP)|Practica/tpi-dvp|Practica-TPI-DVP.zip"
-  "TPI1|🛠️ Trabajo Práctico Integrador — Parte 1: Alineación Estratégica de SI/TI (Caso DVP Chaco)|Trabajo Práctico Integrador/parte 1|TPI-Parte-1-Alineamiento.zip"
-  "TPI2|🛠️ Trabajo Práctico Integrador — Parte 2: Aplicación de Recursos de SI/TI (Caso DVP Chaco)|Trabajo Práctico Integrador/parte 2|TPI-Parte-2-DVP.zip"
+  "U0|📘 Unidad 0 — Conceptos Previos e Introducción|unidad-0|Unidad-0-Completa.zip"
+  "U1|📘 Unidad I — Los SI en la Empresa y Estrategia SI/TI|unidad-1|Unidad-I-Completa.zip"
+  "U2|📘 Unidad II — Subsistema de Provisión|unidad-2|Unidad-II-Completa.zip"
+  "U3|📘 Unidad III — Subsistema de Aplicación|unidad-3|Unidad-III-Completa.zip"
+  "U4|📘 Unidad IV — Mantenimiento y Desarrollo|unidad-4|Unidad-IV-Completa.zip"
+  "U5|📘 Unidad V — Subsistema de Seguimiento y Control|unidad-5|Unidad-V-Completa.zip"
+  "U6|📘 Unidad VI — Seguridad y Auditoría de SI/TI|unidad-6|Unidad-VI-Completa.zip"
+  "TP1|🛠️ Práctica — TP1: Alineamiento Estratégico de SI/TI|practica/tp1-alineamiento|Practica-TP1-Alineamiento.zip"
+  "TPI|🛠️ Práctica — TPI: Vialidad Provincial (DVP)|practica/tpi-dvp|Practica-TPI-DVP.zip"
+  "TPI1|🛠️ Trabajo Práctico Integrador — Parte 1: Alineación Estratégica de SI/TI (Caso DVP Chaco)|trabajo-practico/parte-1|TPI-Parte-1-Alineamiento.zip"
+  "TPI2|🛠️ Trabajo Práctico Integrador — Parte 2: Aplicación de Recursos de SI/TI (Caso DVP Chaco)|trabajo-practico/parte-2|TPI-Parte-2-DVP.zip"
 )
 
 total_bloques=0
@@ -136,15 +136,31 @@ for entrada in "${bloques[@]}"; do
   IFS='|' read -r prefijo titulo_sec rel_dir zip_name <<< "$entrada"
   carpeta="$BUILD_DIR/$rel_dir"
   if [[ ! -d "$carpeta" ]]; then
-    # Búsqueda con fallback de variantes de nombre (Trabajo Práctico Integrador <-> Práctica <-> Practica)
-    subparte="${rel_dir#*/}"
-    for dir_base in "Trabajo Práctico Integrador" "Práctica" "Practica"; do
-      posible="$BUILD_DIR/$dir_base/$subparte"
-      if [[ -d "$posible" ]]; then
-        carpeta="$posible"
-        break
-      fi
-    done
+    # Fallback para variantes de nombres de carpetas
+    if [[ "$rel_dir" == *"/"* ]]; then
+      subparte="${rel_dir#*/}"
+      for dir_base in "trabajo-practico" "Trabajo Práctico Integrador" "Práctica" "Practica" "trabajo práctico"; do
+        for sub_dir in "$subparte" "${subparte/-/ }"; do
+          posible="$BUILD_DIR/$dir_base/$sub_dir"
+          if [[ -d "$posible" ]]; then
+            carpeta="$posible"
+            break 2
+          fi
+        done
+      done
+    else
+      case "$rel_dir" in
+        unidad-0) posible="$BUILD_DIR/Unidad 0" ;;
+        unidad-1) posible="$BUILD_DIR/Unidad I" ;;
+        unidad-2) posible="$BUILD_DIR/Unidad II" ;;
+        unidad-3) posible="$BUILD_DIR/Unidad III" ;;
+        unidad-4) posible="$BUILD_DIR/Unidad IV" ;;
+        unidad-5) posible="$BUILD_DIR/Unidad V" ;;
+        unidad-6) posible="$BUILD_DIR/Unidad VI" ;;
+        *) posible="" ;;
+      esac
+      [[ -n "$posible" && -d "$posible" ]] && carpeta="$posible"
+    fi
   fi
   [[ -d "$carpeta" ]] || continue
 

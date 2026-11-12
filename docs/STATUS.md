@@ -18,8 +18,8 @@
 | Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
 | Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05, 06 y 07 implementadas** + Guía de subida lista; Spec 03-A a la espera de material |
 | Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `enunciados-cuestionarios/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
-| Apuntes y cuestionarios por Unidad | `content/unidades/` (`Unidad 0/`, `Unidad I/`, `Unidad III/`, `Unidad VI/`) | `content/unidades/<Unidad X>/` | **Organizado por Unidad y normalizado** |
-| Trabajos prácticos y guías | `content/trabajo práctico/` (`parte 1/`, `parte 2/`) | `content/trabajo práctico/` | **Migrado y 100% en `.md`** |
+| Apuntes y cuestionarios por Unidad | `content/unidades/` (`unidad-0/`, `unidad-1/`, `unidad-3/`, `unidad-6/`) | `content/unidades/<unidad-x>/` | **Organizado por Unidad (Unix standard) y normalizado** |
+| Trabajos prácticos y guías | `content/trabajo-practico/` (`parte-1/`, `parte-2/`) | `content/trabajo-practico/` | **Migrado y 100% en `.md` (Unix standard)** |
 | Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
 | Recursos gráficos | `assets/` (346 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
 | Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`, `mkrelease`, `pdf2md`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
@@ -54,15 +54,15 @@
 
 | Componente / Unidad | Tema Principal | Ubicación Actual | Estado Editorial |
 | :--- | :--- | :--- | :--- |
-| **Unidad 0** | Conceptos previos e introducción | `content/unidades/Unidad 0/` | **Completa** (`Conceptos Previos.md`) |
-| **Unidad I** | Los SI en la Empresa, Cadena de Valor y Planificación Estratégica SI/TI | `content/unidades/Unidad I/` | **Completa** (Apunte teórico + Temario + Aclaraciones sobre la Unidad I en raíz; Cuestionario resuelto y 4 borradores en `Unidad I/borradores/`) |
+| **Unidad 0** | Conceptos previos e introducción | `content/unidades/unidad-0/` | **Completa** (`Conceptos Previos.md`) |
+| **Unidad I** | Los SI en la Empresa, Cadena de Valor y Planificación Estratégica SI/TI | `content/unidades/unidad-1/` | **Completa** (Apunte teórico + Temario + Aclaraciones sobre la Unidad I en raíz; Cuestionario resuelto y 4 borradores en `unidad-1/borradores/`) |
 | **Unidad II** | Subsistema de Provisión (RRHH y SI/TI) *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u4/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64 y PDFs pasados a `.md`) |
-| **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `content/unidades/Unidad III/` | **Completa** (Apunte teórico + Temario + Cuestionario de autoestudio resuelto) |
+| **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `content/unidades/unidad-3/` | **Completa** (Apunte teórico + Temario + Cuestionario de autoestudio resuelto) |
 | **Unidad IV** | Mantenimiento y Desarrollo de RRHH *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u6/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64) |
 | **Unidad V** | Subsistema de Seguimiento / Control (Monitores, Benchmarking, Amdahl) | `legacy/archivo-2025/2025/par_1/u2/` | Fragmentado |
-| **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/Unidad VI/` | **Completa** (Apunte teórico + Temario + Cuestionario de autoestudio resuelto) |
-| **Trabajo Práctico Integrador (Parte 1)** | Alineación Estratégica de SI/TI (Caso DVP Chaco) | `content/trabajo práctico/parte 1/` | **Completo en `.md`** (`Escenario.md`, `Trabajo Práctico - Parte 1.md`, `Explicación - Trabajo Práctico - Parte 1.md`) |
-| **Trabajo Práctico Integrador (Parte 2)** | Aplicación de Recursos de SI/TI (Caso DVP Chaco) | `content/trabajo práctico/parte 2/` | **Completo en `.md`** (`Explicación del TPI.md`, `Trabajo Práctico - Parte 2.md`, `Nuevo Organigrama.md`, `Diccionario de Competencias.md`) |
+| **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/unidad-6/` | **Completa** (Apunte teórico + Temario + Cuestionario de autoestudio resuelto) |
+| **Trabajo Práctico Integrador (Parte 1)** | Alineación Estratégica de SI/TI (Caso DVP Chaco) | `content/trabajo-practico/parte-1/` | **Completo en `.md`** (`Escenario.md`, `Trabajo Práctico - Parte 1.md`, `Explicación - Trabajo Práctico - Parte 1.md`) |
+| **Trabajo Práctico Integrador (Parte 2)** | Aplicación de Recursos de SI/TI (Caso DVP Chaco) | `content/trabajo-practico/parte-2/` | **Completo en `.md`** (`Explicación - Trabajo Práctico - Parte 2.md`, `Trabajo Práctico - Parte 2.md`, `Nuevo Organigrama.md`, `Diccionario de Competencias.md`) |
 | **Lab Checkmk** | Monitoreo con Checkmk Raw 2.3 en Docker + `http_ping.py` | `content/labs/cmk/` y `content/labs/taller-1/` | **Migrado y funcional** |
 
 ---
@@ -82,6 +82,8 @@
 6. **[06-publicacion-ordenada-en-releases.md](specs/06-publicacion-ordenada-en-releases.md)** — *Estado: **Implementada** (2026-11-06)*. Arquitectura dual gestionada por `toolchain/bin/mkrelease`: un **único Release continuo principal (`apuntes-al-dia`, marcado como `Latest` en `/releases/latest`)** actualizado atómicamente en el lugar (`--clobber`) con tablas y paquetes `.zip` separados por Unidad/Práctica, más **Releases históricos inmutables** para tags `v*`.
 
 7. **[07-incorporacion-pdf2md-toolchain.md](specs/07-incorporacion-pdf2md-toolchain.md)** — *Estado: **Implementada y Sincronizada** (2026-11-11)*. Incorporación y actualización de `toolchain/bin/pdf2md` (Bash + Python 3 + `mutool`) con soporte de *grid tables*, títulos por *outlines*, `\needspace`, invocación por stdin y extracción/deduplicación/resolución de colisiones automática hacia `assets/`.
+
+8. **[08-estandarizacion-unix-carpetas.md](specs/08-estandarizacion-unix-carpetas.md)** — *Estado: **Implementada** (2026-11-11)*. Estandarización de todas las carpetas del repositorio al formato Unix clásico en minúsculas y sin espacios (`unidad-0` a `unidad-6`, `trabajo-practico/parte-1`, `parte-2`, `labs`), con compatibilidad hacia atrás en `md2pdf` y `mkrelease`.
 
 ---
 
@@ -128,6 +130,42 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-11` — Estandarización de Directorios al Estándar Unix (Spec 08)
+
+* **Contexto**: Migración estructural de toda la jerarquía de directorios bajo `content/` y `build/` hacia el estándar Unix clásico (todo en minúsculas, sin espacios, sin tildes y con números arábigos: `unidad-0` a `unidad-6`, `trabajo-practico/parte-1`, `parte-2`, `labs`), garantizando portabilidad absoluta entre sistemas de archivos y simplificando el uso en terminal y contenedores.
+
+* **Acciones ejecutadas**:
+
+  * **Redacción de Spec 08**: Creación de `docs/specs/08-estandarizacion-unix-carpetas.md`.
+
+  * **Renombrado atómico con `git mv`**:
+
+    * `content/unidades/Unidad 0` $\rightarrow$ `content/unidades/unidad-0/`
+
+    * `content/unidades/Unidad I` $\rightarrow$ `content/unidades/unidad-1/`
+
+    * `content/unidades/Unidad III` $\rightarrow$ `content/unidades/unidad-3/`
+
+    * `content/unidades/Unidad VI` $\rightarrow$ `content/unidades/unidad-6/`
+
+    * `content/trabajo práctico` $\rightarrow$ `content/trabajo-practico/`
+
+    * `content/trabajo-practico/parte 1` $\rightarrow$ `content/trabajo-practico/parte-1/`
+
+    * `content/trabajo-practico/parte 2` $\rightarrow$ `content/trabajo-practico/parte-2/`
+
+  * **Actualización del Toolchain**:
+
+    * `toolchain/bin/md2pdf`: Salida jerárquica dirigida a `build/unidad-X/` y `build/trabajo-practico/parte-X/`, manteniendo compatibilidad con nombres anteriores.
+
+    * `toolchain/bin/mkrelease`: Bloques de empaquetado actualizados a las nuevas rutas con búsqueda defensiva con fallback.
+
+  * **Actualización de CI/CD y Documentación**:
+
+    * `.github/workflows/editorial-ci.yml`, `GEMINI.md`, `README.md`, `toolchain/README.md` y `docs/GUIA_SUBIDA_APUNTES.md`.
+
+  * **Verificación**: Linteo limpio de todos los archivos con `mdnorm --check` y simulación exitosa de Releases con `mkrelease --dry-run`.
 
 ### `2026-11-11` — Actualización de Títulos de Release para Trabajo Práctico Integrador (Partes 1 y 2)
 

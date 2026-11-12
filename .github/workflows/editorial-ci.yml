@@ -119,7 +119,7 @@ jobs:
             bash -c '
               set -euo pipefail
               mapfile -d "" archivos_compilar < <(
-                find content/unidades content/practica "content/trabajo práctico" \
+                find content/unidades content/trabajo-practico content/labs \
                   -type f -name "*.md" ! -name "README.md" ! -path "*/borradores/*" -print0 2>/dev/null | sort -z
               )
               if (( ${#archivos_compilar[@]} == 0 )); then
