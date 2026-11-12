@@ -32,6 +32,8 @@
 
 > Los temas 12 y 13 están en el programa de la Unidad I, pero no en el cronograma de recursantes 2026. Igual conviene estudiarlos: el cuestionario de la cátedra les dedica la pregunta 5.
 
+\newpage
+
 ## Bibliografía por tema
 
 | Tema | Fuente | Dónde |

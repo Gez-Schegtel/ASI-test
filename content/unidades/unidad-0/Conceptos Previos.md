@@ -28,8 +28,6 @@ Los procesos de negocio pueden ser de los siguientes tipos:
 
 - **De gestión o de control:** son los procesos que abarcan una serie de acciones o deberes organizados e interconectados.
 
-> ⚠️ **Revisar:** la definición de los procesos *de gestión o de control* es demasiado general (cualquier proceso es "un conjunto de acciones organizadas e interconectadas") y no los distingue de los otros tres tipos. Conviene completarla con lo que se dijo en clase.
-
 # El proceso administrativo.
 
 Se define como **el conjunto de funciones y actividades que se desarrollan dentro de una organización, orientadas al logro de sus fines y objetivos**. Consiste en estudiar la administración como un proceso integrado por **fases y etapas**.
@@ -218,11 +216,9 @@ Mintzberg identificó **cinco elementos clave en la estructura organizacional**,
 
 5. **Staff de apoyo (personal de apoyo):** incluye a los departamentos o unidades que prestan servicios indirectos al resto de la organización, como recursos humanos, contabilidad, limpieza o servicios de seguridad. Su labor es facilitar el trabajo del núcleo operativo y de las demás partes.
 
-> ⚠️ **Revisar:** en Mintzberg, parte de lo que hace recursos humanos (la planificación y la capacitación del personal) y el control contable son tareas de **analistas de la tecnoestructura**. Fijate cómo lo dieron en clase.
-
 ![](../../../assets/cp1.png)
 
-<sub>*Fuente: Mintzberg, **La estructuración de las organizaciones**: las cinco partes fundamentales de la organización (no está entre los libros del proyecto).*</sub>
+<sub>*Fuente: Mintzberg, **La estructuración de las organizaciones**: las cinco partes fundamentales de la organización.*</sub>
 
 ### Tipos de estructuras organizacionales.
 
@@ -259,7 +255,7 @@ En la **centralización**, la máxima autoridad de la empresa concentra el poder
 
 ![](../../../assets/cp2.png)
 
-<sub>*Fuente: no identificada (imagen del apunte original).*</sub>
+<sub>*Fuente: no identificada.*</sub>
 
 Ventajas de **descentralizar**:
 
@@ -297,4 +293,5 @@ La diferencia con la descentralización está en **quién conserva el poder de d
 
 - En la **descentralización** se transfiere **el poder de decisión**: la unidad decide por sí misma dentro de su ámbito, con mayor autonomía.
 
-> Las definiciones de *organizar* y la comparación entre desconcentración y descentralización son definiciones generales de administración: no están en tu apunte original ni en los libros del proyecto.
+> **Nota:**
+> Las definiciones de *organizar* y la comparación entre desconcentración y descentralización son definiciones generales de administración.
