@@ -155,6 +155,8 @@
 
     * Generalización de rutas en `md2pdf`: soporte en `calcular_salida()` para que cualquier carpeta dentro de `content/` (como `content/programa/`) deposite sus artefactos en su subcarpeta correspondiente en `build/` (ej. `build/programa/`) sin requerir `-o` explícito.
 
+    * Publicación automática en GitHub Releases: incorporación de `content/programa` en el paso de compilación de `.github/workflows/editorial-ci.yml` y nuevo bloque `PROG` en `toolchain/bin/mkrelease` para empaquetar `Programa-Oficial-2026.zip` y publicar la tabla con enlaces directos (`[📄 PDF]` y `[📱 EPUB]`) en la cabecera de las notas del Release continuo `apuntes-al-dia`.
+
   * **Compilación y linteo**:
 
     * Verificación exitosa con `toolchain/bin/mdnorm --check` (cero avisos, imágenes verificadas).

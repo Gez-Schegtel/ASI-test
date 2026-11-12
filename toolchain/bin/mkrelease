@@ -119,6 +119,7 @@ fi
 
 # Definición ordenada de bloques: "prefijo_slug|titulo_seccion|subcarpeta_build|nombre_zip"
 bloques=(
+  "PROG|📋 Programa Oficial — Planificación Académica 2026|programa|Programa-Oficial-2026.zip"
   "U0|📘 Unidad 0 — Conceptos Previos e Introducción|unidad-0|Unidad-0-Completa.zip"
   "U1|📘 Unidad I — Los SI en la Empresa y Estrategia SI/TI|unidad-1|Unidad-I-Completa.zip"
   "U2|📘 Unidad II — Subsistema de Provisión|unidad-2|Unidad-II-Completa.zip"
