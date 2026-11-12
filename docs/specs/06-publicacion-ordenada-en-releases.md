@@ -59,3 +59,22 @@ En cada push a la rama principal (`main` / `master`):
 * En `push` y `workflow_dispatch` no se suben *Artifacts* redundantes en la pestaña *Actions* (solo se suben como vista previa temporal de 3 días en Pull Requests).
 
 * El `README.md` apunta directamente a `/releases/latest` y a los paquetes `.zip` de cada unidad mediante la ruta permanente `/releases/latest/download/<Unidad>.zip`.
+
+---
+
+### 2.4. Refinamiento de Trazabilidad Temporal (Estampado Dinámico de Fecha en Título y Encabezado)
+
+* **Diagnóstico**: La API REST de GitHub mantiene inmutable el campo `published_at` original cuando un Release existente se actualiza en el lugar mediante `gh release edit`. Como consecuencia, la interfaz web de GitHub mostraba un indicador temporal relativo estático basado en la fecha de creación del contenedor inicial (ej. *"last week"*), lo que podía suscitar dudas respecto a si los apuntes y trabajos prácticos descargables correspondían a la última compilación.
+
+* **Decisión de diseño (Opción B descartada — Anti-patrón de Draft)**: Se descartó deliberadamente forzar la actualización de `published_at` alternando la release entre `draft: true` y `draft: false`. Pasar una release a borrador la vuelve privada temporalmente; un fallo de red o tiempo de espera en GitHub Actions dejaría la release en borrador, rompiendo el enlace permanente `/releases/latest` con un error `404 Not Found` para estudiantes y visitantes anónimos.
+
+* **Solución arquitectónica adoptada**:
+
+  1. **Estampado dinámico en el título principal**: [`toolchain/bin/mkrelease`](../../toolchain/bin/mkrelease) obtiene la fecha del commit compilado o del día (`%d/%m/%Y`) y la incorpora de forma visible en el título del Release:
+     `TITULO="📚 Apuntes y Guías Prácticas — Última Versión (${FECHA_ACTUAL})"`
+
+  2. **Trazabilidad en el cuerpo Markdown**: La primera línea del índice declara explícitamente la fecha de actualización y el hash del commit:
+     `> ✅ **Versión actualizada automáticamente:** ${FECHA_ACTUAL} (commit \`${SHA:0:7}\`).`
+
+  3. **Disponibilidad 24/7 y cero regresiones**: La release permanece permanentemente pública, sin parpadeos ni ventanas de error, garantizando máxima claridad visual a cualquier usuario que ingrese al repositorio.
+

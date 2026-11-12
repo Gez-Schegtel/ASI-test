@@ -79,7 +79,7 @@
 
 5. **[05-imagen-docker-toolchain-ghcr.md](specs/05-imagen-docker-toolchain-ghcr.md)** — *Estado: **Implementada** (2026-11-06)*. Creación de `toolchain/Dockerfile` con Pandoc, LuaLaTeX y caché global de `luaotfload` (`/var/cache/texmf-var`) precalentado, e integración con GitHub Container Registry (`ghcr.io/gez-schegtel/asi-toolchain`) en `.github/workflows/editorial-ci.yml`.
 
-6. **[06-publicacion-ordenada-en-releases.md](specs/06-publicacion-ordenada-en-releases.md)** — *Estado: **Implementada** (2026-11-06)*. Arquitectura dual gestionada por `toolchain/bin/mkrelease`: un **único Release continuo principal (`apuntes-al-dia`, marcado como `Latest` en `/releases/latest`)** actualizado atómicamente en el lugar (`--clobber`) con tablas y paquetes `.zip` separados por Unidad/Práctica, más **Releases históricos inmutables** para tags `v*`.
+6. **[06-publicacion-ordenada-en-releases.md](specs/06-publicacion-ordenada-en-releases.md)** — *Estado: **Implementada y Refinada** (2026-11-06 / 2026-11-12)*. Arquitectura dual gestionada por `toolchain/bin/mkrelease`: un **único Release continuo principal (`apuntes-al-dia`, marcado como `Latest` en `/releases/latest`)** actualizado atómicamente en el lugar (`--clobber`) con estampado dinámico de fecha de compilación en título y encabezado, más **Releases históricos inmutables** para tags `v*`.
 
 7. **[07-incorporacion-pdf2md-toolchain.md](specs/07-incorporacion-pdf2md-toolchain.md)** — *Estado: **Implementada y Sincronizada** (2026-11-11)*. Incorporación y actualización de `toolchain/bin/pdf2md` (Bash + Python 3 + `mutool`) con soporte de *grid tables*, títulos por *outlines*, `\needspace`, invocación por stdin y extracción/deduplicación/resolución de colisiones automática hacia `assets/`.
 
@@ -130,6 +130,26 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-12` — Refinamiento de Spec 06: Trazabilidad Temporal Dinámica en GitHub Releases
+
+* **Contexto**: Diagnóstico de la inmutabilidad del metadato `published_at` en la API de GitHub al actualizar releases en el lugar (que mostraba un cartel relativo desactualizado, ej. *"last week"*). Se descartó forzar transiciones a `draft` por el riesgo de error `404` ante fallos de red en CI/CD, adoptando la mejor práctica de estampado visible directo.
+
+* **Acciones ejecutadas**:
+
+  * **Enmienda en especificación**:
+
+    * Incorporación de la Sección `2.4. Refinamiento de Trazabilidad Temporal (Estampado Dinámico de Fecha en Título y Encabezado)` en `docs/specs/06-publicacion-ordenada-en-releases.md`.
+
+  * **Actualización en `toolchain/bin/mkrelease`**:
+
+    * Inyección de fecha dinámica (`%d/%m/%Y`) derivada del commit o del día en el título del Release (`TITULO="📚 Apuntes y Guías Prácticas — Última Versión (${FECHA_ACTUAL})"`).
+
+    * Incorporación de la fecha explícita en el primer renglón del cuerpo Markdown (`> ✅ **Versión actualizada automáticamente:** ${FECHA_ACTUAL} (commit \`${SHA:0:7}\`).`).
+
+  * **Validación**:
+
+    * Verificación exitosa de sintaxis (`bash -n`) y simulación con `toolchain/bin/mkrelease --dry-run` comprobando la generación de títulos y notas con fecha dinámica.
 
 ### `2026-11-12` — Corrección de Tipografía en Nombre de Unidad I y Recompilación de Artefactos
 

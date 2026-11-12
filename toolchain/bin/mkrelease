@@ -99,7 +99,9 @@ if (( HISTORICAL )); then
   TITULO="📚 Snapshot Histórico de Apuntes — ${TAG}"
   LATEST_FLAG="false"
 else
-  TITULO="📚 Apuntes y Guías Prácticas — Última Versión"
+  FECHA_ACTUAL="$(git -C "$REPO_ROOT" log -1 --format='%cd' --date=format:'%d/%m/%Y' "$SHA" 2>/dev/null || true)"
+  [[ -z "$FECHA_ACTUAL" ]] && FECHA_ACTUAL="$(date +'%d/%m/%Y')"
+  TITULO="📚 Apuntes y Guías Prácticas — Última Versión (${FECHA_ACTUAL})"
   LATEST_FLAG="true"
 fi
 
@@ -109,7 +111,7 @@ fi
     echo "> 📌 **Versión histórica congelada (\`${TAG}\`)** a partir del commit \`${SHA:0:7}\`."
     echo "> Para descargar la versión más reciente en curso, visitá **[Última Versión (/releases/latest)](https://github.com/${REPO}/releases/latest)**."
   else
-    echo "> ✅ **Versión actualizada automáticamente** a partir del último cambio en el repositorio (commit \`${SHA:0:7}\`)."
+    echo "> ✅ **Versión actualizada automáticamente:** ${FECHA_ACTUAL} (commit \`${SHA:0:7}\`)."
     echo "> Hacé clic en **\`[📄 PDF]\`** o **\`[📱 EPUB]\`** para bajar un documento suelto en un clic, o descargá el **\`.zip\`** completo de la unidad que estés estudiando."
   fi
   echo ""
