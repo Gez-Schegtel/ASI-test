@@ -143,13 +143,13 @@
 
     * Condición de guarda: si una imagen no se puede escribir a disco, no se añade el enlace roto al AST.
 
-  * **Extracción limpia y normalización editorial**:
+  * **Extracción limpia, alineación literal y normalización editorial**:
 
     * Extracción exitosa de logos a `assets/Nivel-4-PA-2026-Administracion-de_img_1.png` y `2.png` (cero colisiones, deduplicación activa).
 
-    * Transformación editorial a Markdown en `content/programa/Planificación Académica 2026.md`: eliminación de encabezados y pies de página repetidos de Word, cabecera YAML editorial completa (`scrartcl`, `toc: true`, `numbersections: true`), tablas estructuradas para docentes, articulación curricular, programa analítico de las 6 unidades, régimen de aprobación y cronograma 2026.
+    * Fidelidad literal estricta al documento de cátedra: redacción 100% idéntica y sin paráfrasis en `content/programa/Planificación Académica 2026.md` respecto al original de la Prof. Claudia Soria Ojeda (Plan 2023 - Ord. 1877 C.S.U), manteniendo intactos los Resultados de Aprendizaje (Punto 4), las 6 Unidades Analíticas (Punto 5), la organización áulica con evaluación sumativa (Punto 6.II.d) y los códigos RA del cronograma oficial (Punto 6.III).
 
-    * Resguardo del PDF original de cátedra en `legacy/programa/`.
+    * Formato editorial adaptado a Markdown Pandoc: cabecera YAML (`scrartcl`, `toc: true`, `numbersections: true`), tablas estructuradas GFM y resguardo del PDF original de cátedra en `legacy/programa/`.
 
   * **Compilación y linteo**:
 

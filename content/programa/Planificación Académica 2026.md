@@ -1,7 +1,7 @@
 ---
-title: "Planificación Académica 2026"
-subtitle: "Administración de Sistemas de Información (Plan 2023 — Ord. 1877 C.S.U)"
-author: "Cátedra de Administración de Sistemas de Información — UTN FRRe"
+title: "Administración de Sistemas de Información"
+subtitle: "Planificación Anual - Ciclo 2026 (Plan 2023 - Ord. 1877 C.S.U)"
+author: "Prof. Claudia Alejandra Soria Ojeda (Titular) · Rosina Analía Ramírez (JTP) · Raúl Alejandro Montiel (Auxiliar 1ra)"
 date: "Ciclo Lectivo 2026"
 documentclass: scrartcl
 classoption: numbers=enddot
@@ -14,315 +14,250 @@ numbersections: true
 
 ![](../../assets/Nivel-4-PA-2026-Administracion-de_img_1.png){width=45%}
 
-# Datos Descriptivos
+# 1. Datos Descriptivos
 
 | Campo | Detalle |
 | :--- | :--- |
-| **Institución** | Universidad Tecnológica Nacional – Facultad Regional Resistencia |
-| **Carrera** | Ingeniería en Sistemas de Información |
-| **Departamento** | Ingeniería en Sistemas de Información |
-| **Área / Bloque** | Sistemas de Información / Tecnologías Aplicadas / Integradora |
-| **Asignatura** | Administración de Sistemas de Información |
-| **Nivel** | 4.º Año |
+| **Institución** | UNIVERSIDAD TECNOLÓGICA NACIONAL – FACULTAD REGIONAL RESISTENCIA |
+| **Carrera** | INGENIERÍA EN SISTEMAS DE INFORMACIÓN |
+| **Departamento** | INGENIERÍA EN SISTEMAS DE INFORMACIÓN |
+| **Área/Bloque** | SISTEMAS DE INFORMACIÓN/TECNOLOGÍAS APLICADAS/INTEGRADORA |
+| **Asignatura** | ADMINISTRACIÓN DE SISTEMAS DE INFORMACIÓN |
+| **Nivel** | 4TO |
 | **Ciclo Lectivo** | 2026 |
-| **Carga Horaria Total** | 192 hs cátedra / 144 hs reloj |
-| **Carga Horaria Semanal** | 6 hs cátedra / 4,5 hs reloj |
-| **Régimen de Cursado** | Anual |
+| **Carga Horaria Total** | 192 HS C / 144 HS R |
+| **Carga Horaria Semanal** | 6 HS C / 4,5 HS R |
+| **Cursado** | Anual ☒ · 1º Cuatrimestre ☐ · 2º Cuatrimestre ☐ |
 
 ---
 
-# Estructura de la Cátedra
+# 2. Estructura de la cátedra:
 
-| Docente | Categoría | Condición | Dedicación | Función Principal |
+| Nombre y Apellido del Profesor | Categoría | Situación de Revista y/o Condición (Concursado - Interino - Regular) | Dedicación | Tareas/funciones a desarrollar |
 | :--- | :--- | :--- | :--- | :--- |
-| **Claudia Alejandra Soria Ojeda** | Titular | Regular | 1,5 Simple | Según Art. 19.° del Estatuto de la UTN |
-| **Rosina Analía Ramírez** | JTP | Regular | 1 Simple | Según Inciso 2, Anexo II, Ord. N.° 1181 UTN |
-| **Raúl Alejandro Montiel** | Auxiliar 1.ª | Interino | 1 Simple | Según Inciso 4, Anexo II, Ord. N.° 1181 UTN |
+| **Claudia Alejandra Soria Ojeda** | Titular | Regular | 1,5 dedicación simple | Según lo establecido en el artículo 19° del Estatuto de la UTN |
+| **Rosina Analía Ramírez** | Jefe de Trabajos Prácticos | Regular | 1 dedicación simple | Según lo establecido en el inciso 2 de Anexo II de la Ordenanza N° 1181 UTN Reglamento Concurso Auxiliares de Docencia |
+| **Raúl Alejandro Montiel** | Auxiliar de 1ra interino | Interino | 1 dedicación simple | Según lo establecido en el inciso 4 de Anexo II de la Ordenanza N° 1181 UTN Reglamento Concurso Auxiliares de Docencia |
 
 ---
 
-# Fundamentación
+# 3. Fundamentación:
 
-La asignatura **Administración de Sistemas de Información (ASI)** es la materia del tronco integrador de 4.º nivel del Plan 2023 (Ordenanza N.° 1877 C.S.U.).
+La asignatura Administración de Sistemas de Información, es la materia del tronco integrador de 4° nivel de la ordenanza 1877 C.S.U,
 
-De acuerdo con su finalidad curricular, se proponen contenidos y prácticas que formen al estudiante en la comprensión del **enfoque estratégico corporativo** de la administración de recursos de Sistemas de Información y Tecnologías de la Información (**SI/TI**), adquiriendo una **visión holística de la gestión** y aplicando de manera articulada los conocimientos adquiridos en los niveles previos y en las asignaturas horizontales.
+De acuerdo con su finalidad curricular, se proponen contenidos y prácticas que formen al alumno en la comprensión del enfoque estratégico corporativo de la administración de recursos de Sistemas de Información y Tecnologías de la Información (a partir de aquí, SI/TI), adquiriendo una visión holística de la gestión, aplicando los conocimientos de las restantes áreas curriculares adquiridos por los alumnos en los niveles anteriores y asignaturas horizontales.
 
 ---
 
-# Articulación Curricular y Resultados de Aprendizaje
+# 4. Resultados de Aprendizajes previos requeridos para iniciar/ continuar el desarrollo de los Resultados de Aprendizaje de la asignatura en relación al nivel de aporte a las Sub-Competencias y Competencias.
 
-## Asignaturas Previas y Resultados Requeridos
-
-| Asignatura Previa | Resultados de Aprendizaje Requeridos |
+| Asignaturas Aprobadas y/o Regularizadas | Resultados de Aprendizaje Alcanzados |
 | :--- | :--- |
-| **Sistemas y Procesos de Negocio** *(1.º Nivel - Integradora)* | Identifica la estructura organizativa del escenario en estudio. Diferencia las planificaciones estratégica, táctica y operativa. Diferencia funciones y procesos de negocio para determinar la matriz de necesidades. Distingue procesos administrativos de procesos operativos. Identifica los tipos de sistemas de información existentes. |
-| **Análisis Numérico** *(3.º Nivel)* | Distingue variables y magnitudes, construyendo modelos numéricos y estadísticos básicos para determinar la carga de trabajo y el uso de recursos del sistema. |
-| **Análisis de Sistemas** *(2.º Nivel - Integradora)* | Aplica técnicas y metodologías de análisis de requerimientos para especificar la cartera de aplicaciones en una situación en estudio. |
-| **Diseño de Sistemas** *(3.º Nivel - Integradora)* | Aplica técnicas y metodologías de diseño de sistemas para definir la carga de trabajo representativa. |
-| **Economía** | Clasifica conceptualmente el impacto de las aplicaciones según tipos de beneficios, costos y valor de la inversión. |
+| **Integradora 1º Nivel - Sistemas y Procesos de Negocio**  Todos los conocimientos sobre Sistemas de Información y su aplicación a la gestión de las Organizaciones. | Identifica la estructura organizativa del escenario en estudio, describiendo en forma correcta y precisa los elementos claves de dicha estructura.  Identifica y diferencia las planificaciones estratégica, táctica y operativa, proponiendo objetivos, actividades y recursos respectivos cada tipo de planificación para una situación en estudio.  Identifica y diferencia las funciones y los procesos de negocios para determinar la matriz de necesidades de información.  Identifica y diferencia los procesos administrativos de los procesos operativos, en base a las características organizacionales de un escenario en estudio.  Identifica los tipos de sistemas de información existentes en una organización. |
+| **Análisis Numérico – 3er nivel** | Distingue variables y magnitudes, construyendo modelos numéricos y estadísticos básicos para la determinación de la carga de trabajo de la organización y del análisis del uso de los recursos de un sistema. |
+| **Integradora 2º Nivel - Análisis de Sistemas** | Determina las técnicas y metodologías de análisis de requerimientos para la especificación de la cartera de aplicaciones de una situación en estudio. |
+| **Integradora 3º Nivel - Diseño de Sistemas** | Determina las técnicas y metodologías de análisis de sistemas adecuadas para definir la carga de trabajo representativa en la situación en estudio. |
+| **Economía** | Clasifica a nivel conceptual el impacto de las aplicaciones en la organización en estudio en base a los tipos de beneficios, costos y valor de la inversión |
 
-## Asignaturas en Desarrollo Simultáneo (4.º Nivel)
-
-| Asignatura Simultánea | Articulación con ASI |
+| Asignaturas Aprobadas y/o Regularizadas | Resultados de Aprendizaje en desarrollo simultáneo |
 | :--- | :--- |
-| **Investigación Operativa** | Aplica técnicas de programación lineal para determinar la carga de trabajo representativa, minimizando costos y corridas según la cartera de aplicaciones. |
-| **Ingeniería y Calidad de Software** | Especifica la cartera de aplicaciones y elabora programas de auditoría de software con objetivos y alcances definidos. |
-| **Simulación** | Aplica técnicas de modelado de sistemas discretos/continuos para determinar carga futura y cuellos de botella; evalúa rendimiento y monitoreo de sistemas. |
-| **Redes de Datos** | Determina la plataforma tecnológica en la ubicación y gestión de SI/TI; aplica parámetros de rendimiento y herramientas de monitoreo de redes. |
-| **Legislación** *(1.º Cuatrimestre)* | Aplica legislación laboral vigente para proponer esquemas de provisión y aplicación de recursos humanos en áreas de SI/TI. |
-| **Técnicas de Desarrollo Ágil** *(2.º Cuatrimestre)* | Define equipos de trabajo por roles y actividades; establece pautas de trabajo y evaluación de desempeño en proyectos de SI/TI. |
+| **Investigación Operativa - 4to nivel** | Determina las técnicas de programación lineal para la determinación de carga de trabajo representativa, minimizando costos y corridas de programas de acuerdo con el tipo de carga en estudio y en el contexto de la cartera de aplicaciones desarrolladas para el caso en análisis. |
+| **Ingeniería y Calidad de Software – 4to nivel** | Determina las técnicas y metodologías de análisis de requerimientos para la especificación de la cartera de aplicaciones de una situación en estudio.  Comprende a los sistemas de información en desarrollo o en uso como objetos de audito, elaborando un programa de auditoría para los mismos de acuerdo con un objetivo y alcances definidos. |
+| **Simulación - 4to nivel** | Conoce las características de los sistemas Discretos, continuos, de las técnicas de modelado, para la determinación de la carga de trabajo futura, de cuellos de botella y los aplica en el estudio del comportamiento de la carga de los sistemas de información involucrados en la situación en análisis.  Identifica técnicas de simulación aplicables a evaluación del rendimiento y monitoreo de los sistemas, y las aplica para el estudio del comportamiento de la carga de los sistemas de información involucrados en la situación en análisis. |
+| **Redes de datos – 4to nivel** | Determina la índole de la plataforma tecnológica en la elaboración de la ubicación y gestión de los SI/TI para un caso de estudio.  Conoce los parámetros de rendimiento y control de una red, para modelizar la carga de trabajo en una situación en estudios.  Conoce los parámetros de rendimiento y control de una red, y los aplica en el estudio de herramientas de monitoreo de redes y en el seguimiento de un caso de estudio. |
+| **Legislación – 4to año – 1er cuatrimestre** | Interpreta la legislación positiva laboral, de acuerdo al código laboral y normativa específica vigente.  Identifica las características de las diferentes situaciones laborales y las aplica para proponer esquemas de provisión y de aplicación de recursos humanos en un área de SI/TI hipotética. |
+| **Técnicas de Desarrollo de Software Ágil – 4 Nivel – 2do cuatrimestre** | Determina un equipo efectivo de trabajo, en base a roles y actividades a asignar, determinando además pautas de trabajo y método de evaluación de desempeño que requiere un proyecto de SI/TI. |
 
-## Aporte a Asignaturas Posteriores
-
-| Asignatura Posterior | Resultados Aportados por ASI |
+| Asignaturas Aprobadas y/o Regularizadas | Resultados de Aprendizaje aportados |
 | :--- | :--- |
-| **Proyecto Final / Gestión Gerencial** *(5.º Nivel - Integradora)* | Comprende la gestión tecnológica de recursos alineada a estrategias de SI/TI y de negocio. Propone equipos de trabajo interdisciplinarios y asume compromisos de gestión compartida. |
+| **Integradora de 5° Nivel: Proyecto: Gestión Gerencial – 5to año** | Comprende la gestión tecnológica de los recursos en función a estrategias de SI/TI alineadas con la estrategia empresarial para determinar un proyecto de SI/TI.  Propone equipos de trabajo para el desarrollo de un proyecto de SI/TI.  Asume como propios los objetivos del grupo y actúa para alcanzarlos.  Trabaja de forma cooperativa en cada actividad curricular grupal, respeta los compromisos (tareas y plazos) contraídos con sus pares y asume los resultados y errores en forma compartida. |
 
 ---
 
-# Programa Analítico (Unidades Temáticas)
+# 5. Programa Analítico - Unidades Temáticas:
 
-## Unidad I: Planificación Estratégica de SI/TI
+## UNIDAD I: Planificación estratégica de SI/TI.
 
-* **El enfoque de Tavistock**: el sistema sociotécnico y la doble función técnica y social.
+**Contenidos:**
 
-* **Los recursos organizacionales**: clasificación y administración estratégica.
+El enfoque de TAVISTOCK. Los recursos organizacionales. La racionalidad de las organizaciones. Los sistemas de información en la empresa. El SI en el contexto de la cadena de valor. El rol de las tecnologías de la información. Valor de la Información e inversión en IS. Costos de los IS. Beneficios de los IS. Planificación de los SI/TI a partir de la estrategia del negocio. Esquema general del procedimiento de alineación de las estrategias de SI/TI con las estrategias organizacionales. Análisis de la cartera de aplicaciones. Las estrategias genéricas de gestión de SI/TI.
 
-* **La racionalidad de las organizaciones**: adecuación de medios a fines.
+## UNIDAD II: La Administración de Recursos de SI/TI – Subsistema de Provisión.
 
-* **Los sistemas de información en la empresa**: definición formal de Andreu, Ricart y Valor.
+**Contenidos:**
 
-* **El SI en el contexto de la cadena de valor**: ubicación en la infraestructura y explotación de vínculos.
+La ARH como proceso. Los objetivos de la ARH. Políticas de recursos humanos. La responsabilidad del gerente de SI/TI sobre los recursos humanos.
 
-* **El rol de las tecnologías de la información**: qué vs. cómo, no neutralidad e idiosincrasia de las TI.
+El subsistema de provisión de recursos humanos. El mercado de recursos humanos y el mercado laboral. Los procesos de provisión de personas. Reclutamiento. Técnicas, métodos, medios. Selección. Técnicas, métodos.
 
-* **Valor de la información e inversión en SI**: costos, niveles de inversión y auditoría (Robson).
+El subsistema de provisión de SW y HW. Características. Normas. La provisión de SW. Aspectos críticos. Técnicas de selección y evaluación. La provisión de HW. Aspectos críticos. Técnicas de selección y evaluación. La tercerización de los servicios de SI. Los procesos y aspectos contractuales.
 
-* **Beneficios de los SI**: clasificación genérica (eficiencia, efectividad, avance estratégico) y Economía de la Información (Parker y Benson).
+## UNIDAD III: La Administración de Recursos de SI/TI – Subsistema de Aplicación.
 
-* **Planificación de SI/TI a partir de la estrategia del negocio**: análisis de los cuatro entornos (Edwards).
+**Contenidos:**
 
-* **Procedimiento general de alineación estratégica**: Fases I a IV de Andreu, Ricart y Valor.
+El subsistema de aplicación de recursos humanos. Socialización organizacional. Diseño de cargos. Descripción y análisis de cargos. Equipos formales: Concepto, características y conformación. Evaluación del desempeño humano. El gerenciamiento de recursos de SI/TI: rol, ubicación y organización del área de SI/TI.
 
-* **Análisis de la cartera de aplicaciones**: matriz de McFarlan (alto potencial, estratégicas, clave para operaciones y apoyo).
+El proceso de aplicación de SW y HW. Evaluación del Rendimiento de un sistema informático. La evaluación de las prestaciones. Planificación de las capacidades de un SI/TI. Herramientas de medida. Caracterización de la carga. Modelo de administración de recursos: Políticas y normas.
 
-* **Estrategias genéricas de gestión de SI/TI**: las seis estrategias de Parsons/Edwards, prioridades y migraciones.
+## UNIDAD IV: La Administración de Recursos de SI/TI – Subsistema de Desarrollo y Mantenimiento de los recursos humanos.
 
-## Unidad II: Administración de Recursos de SI/TI — Subsistema de Provisión
+**Contenidos:**
 
-* **La ARH como proceso**: objetivos, políticas y responsabilidad del gerente de SI/TI sobre los recursos humanos.
+El subsistema de desarrollo de recursos humanos. Entrenamiento y desarrollo de personal. Inventario de necesidades. Medios. El ciclo de entrenamiento. Desarrollo organizacional. Concepto. Objetivos. Características.
 
-* **Subsistema de provisión de personas**: mercado de recursos humanos y mercado laboral; reclutamiento (técnicas, métodos, medios) y selección de personal.
+El subsistema de mantenimiento de recursos humanos. Recompensas. Castigos. La Administración de Salarios. El sistema de compensaciones. Beneficios sociales. Higiene y seguridad en el ámbito de los SI/TI. Las relaciones laborales.
 
-* **Subsistema de provisión de software y hardware**:
+### b) Emprendedorismo: contenidos generales.
 
-  * Provisión de software: aspectos críticos, normas, técnicas de selección y evaluación.
+De acuerdo con la cantidad real de clases y de alumnos previstos para el presente ciclo 2026, este contenido mínimo se implementará mediante en una actividad de aula invertida, en la fecha indicada en el cronograma.
 
-  * Provisión de hardware: aspectos críticos, técnicas de selección y dimensionamiento.
+## UNIDAD V: La Administración de Recursos de SI/TI – Subsistema de Seguimiento.
 
-  * Tercerización de servicios de SI/TI (*outsourcing*): procesos y aspectos contractuales.
+**Contenidos:**
 
-## Unidad III: Administración de Recursos de SI/TI — Subsistema de Aplicación
+El subsistema de seguimiento de recursos humanos. El proceso de control. Auditoría de Recursos Humanos.
 
-* **Subsistema de aplicación de personas**:
+El proceso de monitorización de SW y HW. Evaluación del Rendimiento de un sistema informático. La evaluación de las prestaciones. Herramientas.
 
-  * Socialización organizacional y cultura de empresa.
+Laboratorio asociado: Introducción al Benchmarking. Aplicaciones de benchmarking sencillas. Herramientas abiertas de Benchmarking. Monitoreo de redes. Introducción al análisis de performance de redes. Investigación sobre otras herramientas de benchmarking y monitoreo asignadas por la cátedra sobre plataformas Linux y Windows.
 
-  * Diseño, descripción y análisis de cargos.
+## UNIDAD VI: La Administración de Recursos de SI/TI – Seguridad y Auditoría de Sistemas de Información.
 
-  * Equipos formales: concepto, características y conformación.
+El manejo de la seguridad de los SI. Concepto de Seguridad. Políticas de seguridad. Concepto de auditoría. Planificación de la Auditoría.
 
-  * Evaluación del desempeño humano: métodos y modelos de competencias (Martha Alles).
+Laboratorio asociado: Diseño e implementación de esquemas de líneas preventivas, de detección y recuperación de accesos a recursos sobre la base de un análisis de riesgo para un caso de estudio.
 
-  * Gerenciamiento de recursos de SI/TI: rol, ubicación jerárquica y organización del área de sistemas.
-
-* **Proceso de aplicación de software y hardware**:
-
-  * Evaluación del rendimiento de sistemas informáticos: métricas y evaluación de prestaciones.
-
-  * Planificación de capacidades de SI/TI (Molero): caracterización de la carga de trabajo y técnicas de proyección.
-
-  * Modelo de administración de recursos: políticas, normas y explotación de sistemas.
-
-## Unidad IV: Administración de Recursos de SI/TI — Subsistema de Desarrollo y Mantenimiento de RRHH
-
-* **Subsistema de desarrollo de personas**:
-
-  * Entrenamiento y desarrollo de personal: inventario de necesidades, medios y ciclo de entrenamiento.
-
-  * Desarrollo Organizacional (DO): concepto, objetivos, características y gestión del cambio.
-
-* **Subsistema de mantenimiento de personas**:
-
-  * Administración de salarios y sistemas de compensación: recompensas y sanciones.
-
-  * Beneficios sociales y planes asistenciales.
-
-  * Higiene y seguridad laboral en ambientes de SI/TI (ergonomía, riesgos psicosociales).
-
-  * Relaciones laborales y marco sindical/profesional.
-
-* **Emprendedorismo**: contenidos generales implementados bajo modalidad de aula invertida.
-
-## Unidad V: Administración de Recursos de SI/TI — Subsistema de Seguimiento
-
-* **Subsistema de seguimiento de personas**: proceso de control y auditoría de recursos humanos.
-
-* **Monitorización de software y hardware**:
-
-  * Evaluación continua del rendimiento y de las prestaciones.
-
-  * Herramientas de medida y monitorización.
-
-* **Laboratorio asociado**:
-
-  * Introducción al *Benchmarking*: conceptos, metodologías y herramientas abiertas.
-
-  * Monitoreo de redes e infraestructura: análisis de *performance*.
-
-  * Investigación y despliegue de herramientas de monitoreo en plataformas Linux y Windows (ej. Checkmk).
-
-## Unidad VI: Administración de Recursos de SI/TI — Seguridad y Auditoría de Sistemas de Información
-
-* **Seguridad de los Sistemas de Información**:
-
-  * Conceptos fundamentales de seguridad y políticas de seguridad corporativas.
-
-  * Análisis y gestión de riesgos: cálculo de pérdida esperada (ALE) y matrices de riesgo.
-
-* **Auditoría de Sistemas de Información**:
-
-  * Concepto de auditoría y planificación del programa de auditoría (Lardent, Piattini).
-
-  * Auditoría de la función informática y auditoría de aplicaciones en producción.
-
-  * Técnicas de evaluación, control interno y pistas de auditoría.
-
-* **Laboratorio asociado**: diseño e implementación de esquemas preventivos, de detección y de recuperación ante incidentes sobre la base de un caso de estudio.
+Auditoria de Sistemas de Información Auditoría de la función informática. Auditoría de sistemas de aplicación instalados. Técnicas de evaluación y auditoria. (Este tema se dictará en forma coordinada con la asignatura Ingeniería de Software)
 
 ---
 
-# Plan de Cursado para Recursantes 2026
+# PLAN DE CURSADO PARA RECURSANTES 2026:
 
-## Alcance del Plan Especial
+## I. Contenido analítico.
 
-De acuerdo con la resolución de cátedra para el ciclo lectivo 2026, el plan de cursado para recursantes se enfoca en tres unidades nodales del programa analítico:
+Los recursantes 2026 tendrán un plan de cursado basado en la UNIDAD I: Planificación estratégica de SI/TI; UNIDAD III: La Administración de Recursos de SI/TI – Subsistema de Aplicación, y UNIDAD VI La Administración de Recursos de SI/TI – Seguridad y Auditoría de Sistemas de Información, del programa analítico de la asignatura obrante ut supra.
 
-* **Unidad I**: Planificación estratégica de SI/TI.
+Consistirá:
 
-* **Unidad III**: Subsistema de Aplicación (RRHH y Rendimiento/Capacidad).
+- Autogestión de estudios de las tres unidades. La Bibliografía y los cuestionarios de estudio estarán disponibles en el aula virtual
 
-* **Unidad VI**: Seguridad y Auditoría de SI/TI.
+- Dos (2) evaluaciones formativas (*): la primera sobre la Unidad temática I, y la segunda sobre las Unidades Temáticas III y VI.
 
-La metodología de trabajo comprende:
+- Dos (2) trabajos prácticos – Desarrollo Grupal : el primero sobre la Unidad Temática I. El segundo integrando las unidades I, III y VI. El escenario o caso de estudio deberá ser propuesto por los grupos.
 
-1. **Autogestión de estudio**: lectura y resolución de cuestionarios de autoestudio a partir de la bibliografía oficial disponible en el aula virtual.
+- Dos (2) Evaluaciones sumativas: consistentes en un examen individual – oral o escrito, modalidad a definir – sobre los contenidos teóricos prácticos de cada trabajo práctico desarrollado.
 
-2. **Dos (2) Evaluaciones Formativas individuales**:
+## II. Sistema de Acreditación
 
-   * Primera formativa: sobre la Unidad I.
+Según Resolución 785/2025, y atendiendo al plan particular:
 
-   * Segunda formativa: sobre las Unidades III y VI.
+- Dos (2) evaluaciones formativas (*): la primera sobre la Unidad temática I, y la segunda sobre las Unidades Temáticas III y VI. Individuales.
 
-3. **Dos (2) Trabajos Prácticos grupales**:
+- Dos (2) trabajos prácticos: el primero sobre la Unidad Temática I. El segundo integrando las unidades I, III y VI.
 
-   * **TP 1**: Planificación y alineación estratégica de SI/TI aplicada a un caso de estudio (Unidad I).
+- Dos (2) Evaluaciones sumativas: consistente en la exposición grupal sobre los TP's y en un examen individual – oral o escrito, modalidad a definir – sobre los contenidos teóricos prácticos de cada trabajo práctico desarrollado.
 
-   * **TP 2**: Integración de Recursos, Aplicación, Seguridad y Auditoría (Unidades I, III y VI).
+### a. Condiciones para la Aprobación directa.
 
-4. **Dos (2) Evaluaciones Sumativas**:
+- Cumplir con 6 de los 8 encuentros presenciales
 
-   * Instancia de defensa oral/exposición grupal de cada trabajo práctico.
+- Participar proactivamente en el desarrollo de los trabajos prácticos
 
-   * Examen individual (oral o escrito) sobre los contenidos teóricos y prácticos vinculados al proyecto.
+- Asistir a la instancia oficial de cada evaluación, sea formativa o sumativa
 
-## Sistema de Acreditación (Resolución N.° 785/2025 C.D.)
+- Aprobar la evaluación sumativa E1
 
-### Condiciones para la Aprobación Directa
+- Aprobar la evaluación sumativa E2
 
-* Cumplir con al menos **6 de los 8 encuentros presenciales**.
+- Aprobar las 2 evaluaciones formativas. la primera sobre la Unidad temática I, y la segunda sobre las Unidades Temáticas III y VI. Individuales.
 
-* Participar activamente en el desarrollo de los trabajos prácticos grupales.
+> [!IMPORTANT]
+> **IMPORTANTE:** Para mantenerse en este régimen, el alumno sólo podrá recuperar UNA única instancia de evaluación. El recuperatorio de una evaluación sumativa es sólo individual.
 
-* Asistir a la instancia oficial de cada evaluación (formativa y sumativa).
+### b. Condiciones para la Aprobación de la cursada.
 
-* **Aprobar las dos evaluaciones sumativas** (E1 y E2).
+- Cumplir con el 6 de los 8 encuentros presenciales
 
-* **Aprobar las dos evaluaciones formativas** (Formativa 1 y Formativa 2).
+- Participar proactivamente en el desarrollo de los trabajos prácticos
 
-* **Régimen de recuperación**: para mantener la aprobación directa, el estudiante solo puede recuperar **una única instancia** de evaluación. Los recuperatorios de evaluaciones sumativas son de carácter estrictamente individual.
+- Asistir a la instancia oficial de cada evaluación, sea formativa o sumativa
 
-### Condiciones para la Aprobación de la Cursada (Regularidad)
+- Aprobar una de las dos evaluaciones sumativas (1 de 2: E1 o E2)
 
-* Cumplir con al menos **6 de los 8 encuentros presenciales**.
+- Aprobar las 2 evaluaciones formativas
 
-* Participar activamente en el desarrollo de los trabajos prácticos grupales.
+### c. Evaluaciones formativas:
 
-* Asistir a la instancia oficial de cada evaluación.
+En el marco de la asignatura Administración de Sistemas de Información, se implementa una modalidad de evaluación formativa individual.
 
-* **Aprobar al menos una de las dos evaluaciones sumativas** (E1 o E2).
+La evaluación individual permite verificar que se han estudiado los contenidos conceptuales y metodológicos de cada unidad para el plan de recursado, la apropiación práctica y la comprensión integral de los contenidos por parte de cada estudiante. Asimismo, promueve la responsabilidad individual.
 
-* **Aprobar las dos evaluaciones formativas**.
+La finalidad de estas evaluaciones es implementar un enfoque de evaluación centrado en el proceso, orientado no solo a certificar aprendizajes sino a fortalecer la construcción significativa del conocimiento y la integración teórico-práctica.
 
-### Dinámica de la Organización Áulica
+Dado que son evaluaciones obligatorias a aprobar de acuerdo a lo establecido por la Resolución N° 785/2025 C.D FRRe, tienen sus respectivos recuperatorios de acuerdo con las instancias previstas en el cronograma de encuentros para recursantes del Ciclo 2026, detallado en el punto III siguiente.
 
-Cada encuentro presencial de trabajo se estructura en tres bloques:
+### d. Organización áulica
 
-1. **30 a 40 minutos**: espacio de consultas teóricas y evaluaciones formativas.
+La distribución de los encuentros será:
 
-2. **50 a 60 minutos**: revisión de consignas prácticas y seguimiento del estado de avance de los proyectos.
+* 30/40 minutos de consultas teóricas y luego la evaluación sumativa
 
-3. **60 minutos por grupo**: exposición del trabajo práctico (evaluación grupal) y evaluación sumativa individual sobre los fundamentos teóricos y decisiones técnicas tomadas.
+* 50/60 minutos de revisión de la consigna práctica de cada módulo.
 
----
-
-# Cronograma Oficial de Encuentros y Evaluaciones
-
-| Encuentro | Fecha | Unidad Temática | Actividad / Contenido Principal | Modalidad / Evaluación |
-| :---: | :---: | :---: | :--- | :--- |
-| **1.º** | 25/03/2026 | — | Presentación del plan de recursado y firma del acuerdo pedagógico. | Presencial (Biblioteca) |
-| — | 26/03 al 28/04 | **Unidad I** | Período de autogestión de estudio y elaboración del TP 1. | Aula Virtual |
-| **2.º** | 29/04/2026 | **Unidad I** | Consultas teóricas y **Evaluación Formativa 1**. | Presencial |
-| **3.º** | 06/05/2026 | **Unidad I** | 1.ª Corrección general de avance del TP 1. | Presencial |
-| **4.º** | 03/06/2026 | **Unidad I** | 2.ª Corrección y cierre de consignas del TP 1. | Presencial |
-| **5.º** | **08/07/2026** | **Unidad I** | **1.ª Evaluación Sumativa (E1)**: Exposición grupal del TP 1 y examen individual. | Presencial |
-| — | 09/07 al 15/09 | **Unidades III y VI** | Período de autogestión de estudio y elaboración del TP 2. | Aula Virtual |
-| **6.º** | 16/09/2026 | **Unidades III y VI** | Consultas teóricas y **Evaluación Formativa 2**. | Presencial |
-| **7.º** | 14/10/2026 | **Unidades III y VI** | Corrección general y revisión de avance del TP 2. | Presencial |
-| **8.º** | **04/11/2026** | **Unidades III y VI** | **2.ª Evaluación Sumativa (E2)**: Exposición grupal del TP 2 y examen individual. | Presencial |
-| **Recup. 1** | **18/11/2026** | **U1 / TP1** | 1.ª Instancia de Recuperatorios (Formativa 1 y Sumativa E1). | Presencial |
-| **Recup. 2** | **25/11/2026** | **U3 y U6 / TP2** | 2.ª Instancia de Recuperatorios (Formativa 2 y Sumativa E2). | Presencial |
+* 60 minutos por grupo para la exposición del TP de cada módulo (evaluación grupal) y la evaluación sumativa (evaluación individual oral o escrita sobre contenidos teóricos y prácticos relacionados con el TP correspondiente)
 
 ---
 
-# Bibliografía Oficial
+## III. Cronograma. Cronograma (según Calendario Académico Resolución 832/2025 CD).
 
-## Bibliografía Obligatoria
+| Unidad Temática | ENCUENTROS | Fecha | Contenidos/Actividades | Resultados de aprendizaje | LUGAR |
+| :---: | :---: | :---: | :--- | :---: | :--- |
+| **INICIO 1er. Cuatrimestre** | | | | | |
+| **-** | 1ER | **25/3/2026** | Presentación del plan de recursado. Registro de acuerdo. | - | BIBLIOTECA |
+| **I** | **2DO 2DO RO 3RO 4TO** | **AUTOGESTIÓN DEL CONOCIMIENTO DESDE EL 26/3/2026 Al 28/4/2026  29/4/2026 6/5/2026 3/6/2026** | El enfoque de Tavistock. Los recursos organizacionales. La racionalidad de las organizaciones. Los sistemas de información en la empresa. El SI en el contexto de la cadena de valor. El rol de las tecnologías de la información. Valor de la Información e inversión en IS. Costos de los IS. Beneficios de los IS. Planificación de los SI/TI a partir de la estrategia del negocio. Esquema general del procedimiento de alineación de las estrategias de SI/TI con las estrategias organizacionales.  **Evaluación Formativa 1**  **1RA CORRECCIÓN TP1** **2DA CORRECCIÓN TP1** | RA1, RA7 a RA9 | AULA FÍSICA ASIGNADA POR LA FACULTAD |
+| | **5TO** | **8/7/2026** | **1RA EVALUACIÓN SUMATIVA: EXPOSICIÓN TP 1 – EXAMEN INDIVIDUAL** | RA1, RA7 a RA9 | AULA FÍSICA ASIGNADA POR LA FACULTAD |
+| **III Y VI** | **6TO 7MO** | **AUTOGESTIÓN DEL CONOCIMIENTO DESDE EL 9/7/2026 al 15/9/2026  16/9/2026 14/10/2026** | **UNIDAD TEMÁTICA III** El subsistema de aplicación de recursos humanos. Socialización organizacional. Diseño de cargos. Descripción y análisis de cargos. Equipos formales: Concepto, características y conformación. Evaluación del desempeño humano. El gerenciamiento de recursos de SI/TI: rol, ubicación y organización del área de SI/TI. El proceso de aplicación de SW y HW. Caracterización de la carga y técnicas de determinación. Planificación de las capacidades de un SI/TI. Explotación de sistemas. Políticas y normas.  **UNIDAD TEMÁTICA VI** El manejo de la seguridad de los SI. Concepto de Seguridad. Políticas de seguridad Concepto de auditoría. Planificación de la Auditoría. Auditoria de Sistemas de Información. Auditoría de la función informática. Auditoría de sistemas de aplicación instalados. Técnicas de evaluación y auditoria.  **Evaluación Formativa 2**  **CORRECCIÓN TP2** | RA2, RA3 RA7 a RA9 | AULA FÍSICA ASIGNADA POR LA FACULTAD |
+| | **8VO** | **4/11/2026** | **2DA EVALUACIÓN SUMATIVA: EXPOSICIÓN TP 2 – EXAMEN INDIVIDUAL** | RA1, RA7 a RA9 | AULA FÍSICA ASIGNADA POR LA FACULTAD |
+| | | **18/11/2026** | **1RA INSTANCIA RECUPERATORIOS 1RA EVALUACIÓN FORMATIVA – 1RA EVALUACIÓN SUMATIVA** | | AULA FÍSICA ASIGNADA POR LA FACULTAD |
+| | | **25/11/2026** | **2DAA INSTANCIA RECUPERATORIOS 2DA EVALUACIÓN FORMATIVA – 2DA EVALUACIÓN SUMATIVA** | | AULA FÍSICA ASIGNADA POR LA FACULTAD |
 
-* **Andreu, R., Ricart, J. E. y Valor, J.** (1996). *Estrategia y sistemas de información* (2.ª ed.). Madrid: McGraw-Hill / Interamericana de España. Capítulos 2, 3 y 5.
+---
 
-* **Chiavenato, I.** (1999). *Administración de recursos humanos* (5.ª ed.). Colombia: McGraw-Hill.
+# 6. Bibliografía
 
-* **Edwards, C., Ward, J. y Bytheway, A.** (1998). *Fundamentos de los sistemas de información* (2.ª ed.). España: Prentice Hall. Capítulos 4, 5 y 6.
+## 6.1. Bibliografía. Obligatoria.
 
-* **Lardent, A. R.** (2001). *Sistemas de información para la gestión empresaria: procedimientos, seguridad y auditoría*. Brasil: Pearson Educación / Prentice Hall.
+- **ANDREU, Rafael, RICART, Joan y VALOR Josep.** (1996). *Estrategia y Sistemas de Información* (Ed. 2da). Capítulos 2,3 y 5. España McGraw Hill. 2 ejemplares en Biblioteca de la FRRe y disponible en formato digital en la Web.
 
-* **Molero, X., Juiz, C. y Rodeño, M.** (2004). *Evaluación y modelado del rendimiento de los sistemas informáticos*. Madrid: Pearson Prentice Hall.
+- **CHIAVENATO, Idalberto.** (1999). *Administración de Recursos Humanos.* (ed 5ta). Colombia. McGraw Hill. 4 ejemplares en Biblioteca de la FRRe y disponible en formato digital en la Web.
 
-* **Piattini, M. y Del Peso, E.** (2006). *Auditoría informática: un enfoque práctico* (2.ª ed. ampliada y revisada). México: Alfaomega / Ra-Ma.
+- **EDWARDS, Chris; WARD, John y BYTHEWAY, Andy.** (1998) *Fundamentos de los Sistemas de Información.* (ed. 2da). Capítulos 4,5 y 6. España. Prentice Hall. 1 ejemplar en Biblioteca de la FRRe y disponible en formato digital en la Web.
 
-* **Robson, W.** (1999). *Planteo de estrategias efectivas de sistemas de información* (2.ª ed.). Colección Management Estratégico de Sistemas de Información. Tomo 3 ("Decisiones estratégicas en SI I"), Tomo 4 ("Decisiones estratégicas en SI II") y Tomo 5. Capítulos 7, 9, 12 y 13. Argentina: MP Ediciones.
+- **LARDENT, Alberto R.** (2001) *Sistemas de Información para la Gestión Empresaria - Procedimientos, Seguridad y Auditoría.* Brasil. Prentice Hall Pearson Educación. 1 ejemplar en Biblioteca de la FRRe y disponible en formato digital en la Web.
 
-## Bibliografía Complementaria
+- **MOLERO, Xavier; JUIZ, Carlos y RODEÑO, Miguel.** (2004). *Evaluación y Modelado del Rendimiento de los Sistemas Informáticos.* Madrid, España Pearson Prentice Hall. 1 ejemplar en Biblioteca de la FRRe y disponible en formato digital en la Web.
 
-* **Rodríguez Bermúdez, J. R.** (2015). *Planificación y dirección estratégica de sistemas de información*. Barcelona: Editorial UOC.
+- **PIATTINI, Mario y DEL PESO, Emilio.** (2006) *Auditoría Informática- Un enfoque práctico - edición ampliada y revisada.* (Ed 2º). México, Alfaomega- RA-MA. 1 ejemplar en Biblioteca de la FRRe y disponible en formato digital en la Web.
 
-* **Lapiedra Alcamí, R., Devece Carañana, C. y Guiral Herrando, J.** (2016). *Introducción a la gestión de sistemas de información en la empresa*. Castellón de la Plana: Universitat Jaume I.
+- **ROBSON, Wendy.** (1999) *Planteo de Estrategias Efectivas de Sistemas de Información.* (ed. 2da). - Tomo 3. "Decisiones Estratégicas en Sistemas de Información I" - Tomo 4. "Decisiones Estratégicas en Sistemas de Información II" - Tomo 5. Colección Management Estratégico de Sistemas de Información. Capítulos 7, 9, 12 y 13. Argentina. MP Ediciones. Disponible en formato digital en el aula virtual asignada a la materia.
 
-## Recursos Digitales y Webgrafía
+## 6.2. Complementaria.
 
-* **CESSI** (2020). *Perfiles ocupacionales de la Industria TI*. Cámara de la Industria Argentina del Software.
+- **RODRÍGUEZ BERMÚDEZ, J. R.** (2015). *Planificación y dirección estratégica de sistemas de información.* Editorial UOC. Barcelona. España. Disponible en Elibro: <https://elibro.net/es/lc/utnfrre/titulos/57875>
 
-* **CPCE Córdoba** (2026). *Tabla referencial de honorarios profesionales de informática*.
+- **LAPIEDRA Alcamí, R. DEVECE CARAÑANA, C. & GUIRAL HERRANDO, J.** (2016). *Introducción a la gestión de sistemas de información en la empresa.* Universitat Jaume I. Servei de Comunicació i Publicacions. Castellón de la Plana. España. Disponible en Elibro: <https://elibro.net/es/lc/utnfrre/titulos/51689>
 
-* Conferencias seleccionadas sobre gestión y dinámica de equipos efectivos de trabajo (Saenz Ford, High Potential Forum).
+## 6.3. Webgrafía.
+
+- (2018-03-21). *7 Consejos Para Gestionar Equipos Efectivos.* <https://www.youtube.com/watch?v=-aWNO-kMh>
+
+- (2017-06-16) *Equipos Efectivos en la Organización.* <https://www.youtube.com/watch?v=Ei2-cEHP52M>
+
+- (2015-09-16) *ADN de la Gestión de Equipos - Fernando Saenz Ford - HIGH POTENTIAL FORUM 2014.* <https://www.youtube.com/watch?v=d9MVLvsg8ik>
+
+- (2020-02-01) *Perfiles ocupacionales Industria TI.* Argentina. Cámara de la Industria Argentina del Software. <https://www.cessi.org.ar/perfilesit/>
+
+- **(2026)** *Tabla de Honorarios (tabla referencial orientativa).* Consejo Profesional de Ciencias Informáticas de la Provincia de Córdoba. Enlace a indicar cuando esté la actualización en el año 2026.
+
+- Herramientas virtuales y material digital para formulación y evaluación de modelos de negocios recomendados por la cátedra Formación de emprendedores para el presente ciclo lectivo.
