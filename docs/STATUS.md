@@ -22,7 +22,7 @@
 | Trabajos prácticos y guías | `content/trabajo-practico/` (`parte-1/`, `parte-2/`) | `content/trabajo-practico/` | **Migrado y 100% en `.md` (Unix standard)** |
 | Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
 | Programa de la materia | `content/programa/` (`Planificación Académica 2026.md`) | `content/programa/` | **Descompilado, normalizado y compilado** |
-| Recursos gráficos | `assets/` (348 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
+| Recursos gráficos | `assets/` (353 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
 | Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`, `mkrelease`, `pdf2md`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
 | Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`), Release continuo (`apuntes-al-dia`) y snapshots históricos (`v*`) (Spec 06)** |
@@ -33,7 +33,7 @@
 
 * **Imágenes Base64 incrustadas en Markdown**: **0**.
 
-* **Recursos gráficos centralizados en `assets/`**: **347 archivos**.
+* **Recursos gráficos centralizados en `assets/`**: **353 archivos**.
 
 * **Toolchain autocontenido (`toolchain/`)**:
 
@@ -150,6 +150,8 @@
     * Fidelidad literal estricta al documento de cátedra: redacción 100% idéntica y sin paráfrasis en `content/programa/Planificación Académica 2026.md` respecto al original de la Prof. Claudia Soria Ojeda (Plan 2023 - Ord. 1877 C.S.U), manteniendo intactos los Resultados de Aprendizaje (Punto 4), las 6 Unidades Analíticas (Punto 5), la organización áulica con evaluación sumativa (Punto 6.II.d) y los códigos RA del cronograma oficial (Punto 6.III).
 
     * Formato editorial adaptado a Markdown Pandoc: cabecera YAML (`scrartcl`, `toc: true`, `numbersections: true`), tablas estructuradas GFM y resguardo del PDF original de cátedra en `legacy/programa/`.
+
+    * Renderizado visual óptimo del Cronograma: debido a que la tabla del Cronograma 2026 (Punto 6.III) fue diagramada horizontalmente en el original Word/PDF y resultaba excesivamente ancha para la caja tipográfica vertical estándar en PDF/EPUB, se recortó a 300 DPI (`assets/cronograma-recursantes-2026.png`) e incrustó con ancho completo (`{width=100%}`), garantizando legibilidad perfecta sin desbordes.
 
   * **Compilación y linteo**:
 

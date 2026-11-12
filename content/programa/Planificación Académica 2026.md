@@ -211,16 +211,7 @@ La distribución de los encuentros será:
 
 ## III. Cronograma. Cronograma (según Calendario Académico Resolución 832/2025 CD).
 
-| Unidad Temática | ENCUENTROS | Fecha | Contenidos/Actividades | Resultados de aprendizaje | LUGAR |
-| :---: | :---: | :---: | :--- | :---: | :--- |
-| **INICIO 1er. Cuatrimestre** | | | | | |
-| **-** | 1ER | **25/3/2026** | Presentación del plan de recursado. Registro de acuerdo. | - | BIBLIOTECA |
-| **I** | **2DO 2DO RO 3RO 4TO** | **AUTOGESTIÓN DEL CONOCIMIENTO DESDE EL 26/3/2026 Al 28/4/2026  29/4/2026 6/5/2026 3/6/2026** | El enfoque de Tavistock. Los recursos organizacionales. La racionalidad de las organizaciones. Los sistemas de información en la empresa. El SI en el contexto de la cadena de valor. El rol de las tecnologías de la información. Valor de la Información e inversión en IS. Costos de los IS. Beneficios de los IS. Planificación de los SI/TI a partir de la estrategia del negocio. Esquema general del procedimiento de alineación de las estrategias de SI/TI con las estrategias organizacionales.  **Evaluación Formativa 1**  **1RA CORRECCIÓN TP1** **2DA CORRECCIÓN TP1** | RA1, RA7 a RA9 | AULA FÍSICA ASIGNADA POR LA FACULTAD |
-| | **5TO** | **8/7/2026** | **1RA EVALUACIÓN SUMATIVA: EXPOSICIÓN TP 1 – EXAMEN INDIVIDUAL** | RA1, RA7 a RA9 | AULA FÍSICA ASIGNADA POR LA FACULTAD |
-| **III Y VI** | **6TO 7MO** | **AUTOGESTIÓN DEL CONOCIMIENTO DESDE EL 9/7/2026 al 15/9/2026  16/9/2026 14/10/2026** | **UNIDAD TEMÁTICA III** El subsistema de aplicación de recursos humanos. Socialización organizacional. Diseño de cargos. Descripción y análisis de cargos. Equipos formales: Concepto, características y conformación. Evaluación del desempeño humano. El gerenciamiento de recursos de SI/TI: rol, ubicación y organización del área de SI/TI. El proceso de aplicación de SW y HW. Caracterización de la carga y técnicas de determinación. Planificación de las capacidades de un SI/TI. Explotación de sistemas. Políticas y normas.  **UNIDAD TEMÁTICA VI** El manejo de la seguridad de los SI. Concepto de Seguridad. Políticas de seguridad Concepto de auditoría. Planificación de la Auditoría. Auditoria de Sistemas de Información. Auditoría de la función informática. Auditoría de sistemas de aplicación instalados. Técnicas de evaluación y auditoria.  **Evaluación Formativa 2**  **CORRECCIÓN TP2** | RA2, RA3 RA7 a RA9 | AULA FÍSICA ASIGNADA POR LA FACULTAD |
-| | **8VO** | **4/11/2026** | **2DA EVALUACIÓN SUMATIVA: EXPOSICIÓN TP 2 – EXAMEN INDIVIDUAL** | RA1, RA7 a RA9 | AULA FÍSICA ASIGNADA POR LA FACULTAD |
-| | | **18/11/2026** | **1RA INSTANCIA RECUPERATORIOS 1RA EVALUACIÓN FORMATIVA – 1RA EVALUACIÓN SUMATIVA** | | AULA FÍSICA ASIGNADA POR LA FACULTAD |
-| | | **25/11/2026** | **2DAA INSTANCIA RECUPERATORIOS 2DA EVALUACIÓN FORMATIVA – 2DA EVALUACIÓN SUMATIVA** | | AULA FÍSICA ASIGNADA POR LA FACULTAD |
+![](../../assets/cronograma-recursantes-2026.png){width=100%}
 
 ---
 
