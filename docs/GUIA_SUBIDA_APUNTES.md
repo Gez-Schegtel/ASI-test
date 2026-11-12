@@ -6,12 +6,15 @@ Esta guía explica paso a paso cómo agregar nuevas unidades teóricas, cuestion
 
 ## ⚡ Resumen Rápido (En 4 pasos)
 
-1. **Ubicá el archivo `.md`** en la carpeta de su unidad: `content/unidades/Unidad <Romano>/`.
+1. **Ubicá el archivo `.md`** en la carpeta de su unidad: `content/unidades/unidad-<número>/`.
+
 2. **Guardá todas las imágenes** únicamente dentro de la carpeta raíz `assets/`.
+
 3. **Pasale el normalizador** antes de hacer commit:
    ```bash
-   ./toolchain/bin/mdnorm -y "content/unidades/Unidad II/"*.md
+   ./toolchain/bin/mdnorm -y "content/unidades/unidad-2/"*.md
    ```
+
 4. **Hacé `git commit` y `git push`** (sin subir ningún `.pdf`, `.epub` ni `.docx`): GitHub Actions compilará los documentos y actualizará automáticamente el **Release principal (`/releases/latest`)** ordenando los archivos dentro de su unidad.
 
 ---
@@ -23,24 +26,29 @@ El pipeline de GitHub Actions ([`.github/workflows/editorial-ci.yml`](../.github
 ```text
 content/
 ├── unidades/
-│   ├── Unidad I/
-│   │   ├── Unidad I - Los SI en la Empresa y Estrategia SI-TI.md
-│   │   ├── Unidad I - Cuestionario de Autoestudio - Resolución.md
+│   ├── unidad-0/
+│   │   └── Conceptos Previos.md
+│   ├── unidad-1/
+│   │   ├── Unidad I - Panificación Estratégica de SI-TI.md
+│   │   ├── Aclaraciones - Unidad I.md
+│   │   ├── Unidad I - Temario.md
 │   │   └── borradores/                  <- Ignorada en Releases (para notas en preparación)
-│   ├── Unidad II/
+│   ├── unidad-2/
 │   │   ├── Unidad II - Subsistema de Provisión.md
 │   │   └── Unidad II - Cuestionario de Autoestudio - Resolución.md
-│   ├── Unidad III/
+│   ├── unidad-3/
 │   │   ├── Unidad III - Subsistema de Aplicación.md
+│   │   ├── Unidad III - Temario.md
 │   │   └── Unidad III - Cuestionario de Autoestudio - Resolución.md
-│   ├── Unidad IV/
-│   ├── Unidad V/
-│   └── Unidad VI/
+│   ├── unidad-4/
+│   ├── unidad-5/
+│   └── unidad-6/
 │       ├── Unidad VI - Seguridad y Auditoría.md
+│       ├── Unidad VI - Temario.md
 │       └── Unidad VI - Cuestionario de Autoestudio - Resolución.md
-└── practica/
-    ├── tp1-alineamiento/                <- Sección Práctica TP1 en /releases/latest
-    └── tpi-dvp/                         <- Sección Práctica TPI en /releases/latest
+└── trabajo-practico/
+    ├── parte-1/                         <- Sección Trabajo Práctico Integrador Parte 1 en /releases/latest
+    └── parte-2/                         <- Sección Trabajo Práctico Integrador Parte 2 en /releases/latest
 ```
 
 > [!TIP]
@@ -59,11 +67,32 @@ Para que la lista de archivos de cada Release quede limpia y uniforme:
 * **Apunte teórico consolidado**:
   `Unidad <I..VI> - <Título de la Unidad>.md`
   *(Ejemplo: `Unidad II - Subsistema de Provisión.md`)*
+
 * **Cuestionario de autoestudio resuelto**:
   `Unidad <I..VI> - Cuestionario de Autoestudio - Resolución.md`
   *(Ejemplo: `Unidad II - Cuestionario de Autoestudio - Resolución.md`)*
+
 * **Borradores o apuntes sin terminar**:
-  Ubicalos dentro de `content/unidades/Unidad <X>/borradores/`. El linter verifica que su sintaxis sea válida, pero **no se publican en GitHub Releases** hasta que los muevas a la carpeta principal `content/unidades/Unidad <X>/`.
+  Ubicalos dentro de `content/unidades/unidad-<X>/borradores/`. El linter verifica que su sintaxis sea válida, pero **no se publican en GitHub Releases** hasta que los muevas a la carpeta principal `content/unidades/unidad-<X>/`.
+
+### Descompilar material en PDF de la cátedra con `pdf2md` (Uso Local)
+
+Si disponés de diapositivas, enunciados o apuntes de la cátedra en formato PDF y querés convertirlos a Markdown editable para sumarlos al repositorio:
+
+```bash
+# Convertir localmente el PDF a Markdown
+./toolchain/bin/pdf2md material-catedra.pdf
+```
+
+`pdf2md` es una herramienta de uso local que:
+
+1. Reconstruye automáticamente títulos, listas, fórmulas LaTeX, notas al pie y tablas en Markdown.
+
+2. Extrae todas las imágenes directamente a la carpeta raíz `assets/` (cumpliendo la regla del repositorio).
+
+3. Deduplica imágenes existentes por hash y resuelve colisiones de nombre agregando un sufijo único sin romper archivos previos.
+
+4. Una vez generado el archivo `.md`, movelo a su carpeta en `content/unidades/unidad-<X>/` y ejecutá `./toolchain/bin/mdnorm -y <archivo.md>`.
 
 ---
 
@@ -139,8 +168,11 @@ header-includes:
 ### Imágenes (¡Muy importante!)
 
 1. **Ubicación única**: Guardá siempre los archivos `.png`, `.jpg` o `.svg` en la carpeta **`assets/`** de la raíz del repositorio.
+
    * ❌ **Prohibido** dejar imágenes sueltas dentro de `content/` (el CI rechazará el push).
+
    * ❌ **Prohibido** pegar imágenes codificadas en Base64 (`data:image/png;base64,...`) como exporta a veces Google Docs o Notion.
+
 2. **Cómo insertarlas en el `.md`**:
    Podés usar directamente la sintaxis de Obsidian o Markdown estándar (`mdnorm` y `md2pdf` resuelven ambos formatos automáticamente):
    ```markdown
@@ -173,12 +205,14 @@ Usá los callouts estándar de Obsidian/GitHub. En el PDF y en el EPUB se transf
 ### Fórmulas matemáticas y Tablas
 
 * **Matemática en línea**: `$RUO = \frac{T_{uso}}{T_{disponible}}$`
+
 * **Matemática en bloque**:
   ```markdown
   $$
   ALE = ARO \times SLE
   $$
   ```
+
 * **Tablas**: Usá tablas estándar de Markdown (GFM), dejando siempre una línea en blanco antes y después de la tabla. Evitá etiquetas HTML `<br>` adentro de celdas (`mdnorm` las limpia automáticamente).
 
 ---
@@ -191,7 +225,7 @@ Antes de hacer `git add` y `git commit`, **ejecutá siempre `mdnorm`** sobre los
 
 ```bash
 # Corrige automáticamente espaciados, listas, tablas, fórmulas y rutas a assets/
-./toolchain/bin/mdnorm -y "content/unidades/Unidad II/"*.md
+./toolchain/bin/mdnorm -y "content/unidades/unidad-2/"*.md
 ```
 
 *(Solo requiere tener `bash` y `perl`, que vienen instalados por defecto en cualquier distro Linux).*
@@ -204,21 +238,26 @@ No es obligatorio compilar localmente (GitHub Actions lo hace solo al pushear), 
   ```bash
   docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/workspace" -w /workspace \
     ghcr.io/gez-schegtel/asi-toolchain:latest \
-    ./toolchain/bin/md2pdf -y --all "content/unidades/Unidad II/"*.md
-  ```
-* **De forma nativa (si tenés Pandoc y TeX Live instalados)**:
-  ```bash
-  ./toolchain/bin/md2pdf -y --all "content/unidades/Unidad II/"*.md
+    ./toolchain/bin/md2pdf -y --all "content/unidades/unidad-2/"*.md
   ```
 
-Los archivos generados aparecerán en `build/Unidad II/` (esa carpeta está ignorada en `.gitignore`, por lo que nunca se subirá por error a Git).
+* **De forma nativa (si tenés Pandoc y TeX Live instalados)**:
+  ```bash
+  ./toolchain/bin/md2pdf -y --all "content/unidades/unidad-2/"*.md
+  ```
+
+Los archivos generados aparecerán en `build/unidad-2/` (esa carpeta está ignorada en `.gitignore`, por lo que nunca se subirá por error a Git).
 
 ---
 
 ## 5. Checklist Final antes de `git push`
 
-- [ ] El archivo `.md` está en `content/unidades/Unidad <X>/` con el nombre estándar.
+- [ ] El archivo `.md` está en `content/unidades/unidad-<X>/` con el nombre estándar.
+
 - [ ] Todas las imágenes nuevas están dentro de `assets/`.
+
 - [ ] Ejecuté `./toolchain/bin/mdnorm -y` sobre los archivos nuevos o modificados.
+
 - [ ] No agregué archivos `.pdf`, `.epub` ni `.docx` al repositorio.
+
 - [ ] Si agregué una unidad completa nueva, actualicé su estado en [`docs/STATUS.md`](STATUS.md) y agregué su enlace directo en [`README.md`](../README.md).

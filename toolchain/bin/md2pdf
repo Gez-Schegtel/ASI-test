@@ -129,12 +129,18 @@ fi
 
 # --- 1. Construir lista de archivos a convertir -------------------------------
 archivos=()
+saltados=0
 if (( ${#args[@]} > 0 )); then
   for archivo in "${args[@]}"; do
-    if [[ ! -f "$archivo" ]]; then
-      echo "⚠️ Saltando '$archivo': no existe."
+    if [[ -d "$archivo" ]]; then
+      echo "⚠️ Saltando '$archivo': es una carpeta, no un archivo." >&2
+      (( saltados++ ))
+    elif [[ ! -f "$archivo" ]]; then
+      echo "⚠️ Saltando '$archivo': no existe." >&2
+      (( saltados++ ))
     elif [[ ! "${archivo,,}" =~ \.(md|markdown)$ ]]; then
-      echo "⚠️ Saltando '$archivo': no es un archivo Markdown (.md)."
+      echo "⚠️ Saltando '$archivo': no es un archivo Markdown (.md)." >&2
+      (( saltados++ ))
     else
       archivos+=("$archivo")
     fi
@@ -149,6 +155,7 @@ fi
 
 if (( ${#archivos[@]} == 0 )); then
   echo "No se encontraron archivos Markdown para convertir."
+  (( saltados > 0 )) && exit 1
   exit 0
 fi
 
@@ -167,12 +174,18 @@ calcular_salida() {
     if [[ "$abs_dir" == "$REPO_ROOT/content/unidades/"* ]]; then
       rel_dir="${abs_dir#"$REPO_ROOT/content/unidades/"}"
       printf '%s/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
+    elif [[ "$abs_dir" == "$REPO_ROOT/content/trabajo-practico/"* ]]; then
+      rel_dir="${abs_dir#"$REPO_ROOT/content/trabajo-practico/"}"
+      printf '%s/trabajo-practico/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
     elif [[ "$abs_dir" == "$REPO_ROOT/content/practica/"* ]]; then
       rel_dir="${abs_dir#"$REPO_ROOT/content/practica/"}"
-      printf '%s/Practica/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
+      printf '%s/trabajo-practico/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
+    elif [[ "$abs_dir" == "$REPO_ROOT/content/trabajo práctico/"* ]]; then
+      rel_dir="${abs_dir#"$REPO_ROOT/content/trabajo práctico/"}"
+      printf '%s/trabajo-practico/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
     elif [[ "$abs_dir" == "$REPO_ROOT/content/labs/"* ]]; then
       rel_dir="${abs_dir#"$REPO_ROOT/content/labs/"}"
-      printf '%s/Labs/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
+      printf '%s/labs/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
     else
       printf '%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$base" "$ext"
     fi
@@ -319,9 +332,52 @@ my %TIPOS = (note => "Nota", info => "Información", tip => "Consejo", hint => "
 my $cerca = "";
 sub cierra { $_[0] =~ /^\s*(`+|~+)\s*$/ && substr($1, 0, 1) eq substr($_[1], 0, 1) && length($1) >= length($_[1]) }
 
+my $item_inicio = qr/^ {0,3}(?:[-*+]|\d{1,3}[.)])\s+\S/;
+my $item = qr/^\s*(?:[-*+]|\d{1,3}[.)])\s+\S/;
+my ($anterior, $en_lista, $nro, $en_yaml) = ("", 0, 0, 0);
+my ($en_sangrado, $quitar) = (0, 0);
+sub ancho { my $n = 0; for (split //, $_[0]) { $n = $_ eq "\t" ? $n + 4 - $n % 4 : $n + 1; } $n }
+sub sangria { my ($e) = $_[0] =~ /^([ \t]*)/; ancho($e) }
+sub quitar_sangria {
+  my ($l, $n) = @_;
+  my ($e, $resto) = $l =~ /^([ \t]*)(.*)$/s;
+  my $w = ancho($e);
+  return (" " x ($w > $n ? $w - $n : 0)) . $resto;
+}
+
 while (my $linea = <STDIN>) {
-  if ($cerca ne "") { print $linea; $cerca = "" if cierra($linea, $cerca); next; }
-  if ($linea =~ /^\s*(```+|~~~+)/) { $cerca = $1; print $linea; next; }
+  $nro++;
+  # Cabecera YAML: sus listas ("tags:" y abajo "- uno") no se tocan.
+  if ($nro == 1 && $linea =~ /^\x{FEFF}?---\s*$/) { $en_yaml = 1; print $linea; next; }
+  if ($en_yaml) { $en_yaml = 0 if $linea =~ /^(?:---|\.\.\.)\s*$/; print $linea; next; }
+  if ($cerca ne "") { print $linea; $cerca = "" if cierra($linea, $cerca); $anterior = $linea; next; }
+  if ($linea =~ /^\s*(```+|~~~+)/) { $cerca = $1; print $linea; $anterior = $linea; next; }
+
+  my $original = $linea;
+  if ($linea !~ /\S/) {
+    # Línea en blanco: no termina lista por sí sola
+  } elsif (sangria($linea) >= 4 && !$en_lista && ($en_sangrado || $anterior !~ /\S/)) {
+    # Bloque de código con sangría fuera de lista: no se toca
+    $en_sangrado = 1;
+  } elsif (!$en_lista && $linea =~ $item && sangria($linea) >= 4 && $anterior =~ /\S/
+           && $anterior !~ /^\s*(?:[#>|]|```|~~~)/) {
+    # Ítem con sangría pegado a párrafo: mover al margen
+    print $linea =~ /\r$/ ? "\r\n" : "\n";
+    $quitar = sangria($linea);
+    $en_lista = 1; $en_sangrado = 0;
+  } elsif ($linea =~ $item_inicio) {
+    print $linea =~ /\r$/ ? "\r\n" : "\n" if !$en_lista && $anterior =~ /\S/;
+    $en_lista = 1; $en_sangrado = 0;
+  } elsif ($linea =~ /^\S/ && $anterior !~ /\S/) {
+    $en_lista = 0; $en_sangrado = 0;
+  } elsif ($linea =~ /^#{1,6}\s/) {
+    $en_lista = 0; $en_sangrado = 0;
+  } elsif (sangria($linea) < 4) {
+    $en_sangrado = 0;
+  }
+  $quitar = 0 if !$en_lista;
+  $linea = quitar_sangria($linea, $quitar) if $quitar && $linea =~ /\S/;
+  $anterior = $original;
 
   # Avisos de GitHub y callouts de Obsidian: "> [!NOTE] Título"
   $linea =~ s{^(\s*(?:>\s*)+)\[!(\w+)\][-+]?[ \t]*(.*?)[ \t\r]*$}{
@@ -349,7 +405,7 @@ PERL
 # --- 5. Ejecutar pandoc para cada archivo -------------------------------------
 fallidos=()
 temporal=""
-trap 'rm -f -- ${temporal:+"$temporal"}' EXIT
+trap 'rm -f -- "${temporal:+"$temporal"}"' EXIT
 trap 'echo; echo "Cancelado."; exit 130' INT TERM HUP
 
 imagenes_nl="$(printf '%s\n' "${carpetas_imagenes[@]}")"
@@ -358,19 +414,34 @@ for archivo in "${archivos[@]}"; do
   dir_md="$(cd "$(dirname "$archivo")" && pwd -P)"
   base_dir="$(carpeta_de_busqueda "$dir_md")"
   nombre_base="$(basename "${archivo%.*}")"
+  entrada="$archivo"
+  temporal=""
 
-  temporal="$(mktemp --suffix=.md)"
-  if ! CARPETA_MD="$dir_md" BASE="$base_dir" IMAGENES="$imagenes_nl" \
-       perl -CSD -e "$TRADUCIR" < "$archivo" > "$temporal"; then
-    echo "❌ Error al traducir la sintaxis de: $archivo" >&2
-    fallidos+=("$archivo")
-    rm -f "$temporal"
-    continue
+  # Un .md que no está en UTF-8 no se traduce para evitar corromper caracteres
+  if ! iconv -f UTF-8 -t UTF-8 -- "$archivo" >/dev/null 2>&1; then
+    echo "⚠️ '$archivo' no está en UTF-8: se convierte sin traducir la sintaxis de Obsidian."
+    echo "   Para pasarlo a UTF-8: iconv -f latin1 -t utf-8 -- \"$archivo\" > nuevo.md"
+  else
+    temporal="$(mktemp --suffix=.md)"
+    if ! CARPETA_MD="$dir_md" BASE="$base_dir" IMAGENES="$imagenes_nl" \
+         perl -CSD -e "$TRADUCIR" < "$archivo" > "$temporal"; then
+      echo "❌ Error al traducir la sintaxis de: $archivo" >&2
+      fallidos+=("$archivo")
+      rm -f "$temporal"
+      temporal=""
+      continue
+    fi
+    if cmp -s -- "$archivo" "$temporal"; then
+      rm -f "$temporal"
+      temporal=""
+    else
+      entrada="$temporal"
+    fi
   fi
 
   # Si el documento no tiene "title:" en su frontmatter YAML, pasamos el nombre del archivo como fallback
   extra_meta=()
-  if ! awk 'NR==1 && /^---$/ {in_y=1; next} in_y && /^(---|\.\.\.)$/ {exit} in_y && /^title:/ {found=1; exit} END {exit !found}' "$temporal"; then
+  if ! awk 'NR==1 && /^---$/ {in_y=1; next} in_y && /^(---|\.\.\.)$/ {exit} in_y && /^title:/ {found=1; exit} END {exit !found}' "$entrada"; then
     extra_meta+=(--metadata="title=$nombre_base")
   fi
 
@@ -381,7 +452,7 @@ for archivo in "${archivos[@]}"; do
     salida_pdf="$(calcular_salida "$archivo" pdf)"
     mkdir -p "$(dirname "$salida_pdf")"
     if pandoc --defaults="$PDF_DEFAULTS" "${extra_meta[@]}" \
-         --resource-path="$resource_path" --output="$salida_pdf" -- "$temporal"; then
+         --resource-path="$resource_path" --output="$salida_pdf" -- "$entrada"; then
       echo "✔ PDF generado:  $salida_pdf"
     else
       echo "❌ Error al convertir a PDF: $archivo" >&2
@@ -393,7 +464,7 @@ for archivo in "${archivos[@]}"; do
     salida_epub="$(calcular_salida "$archivo" epub)"
     mkdir -p "$(dirname "$salida_epub")"
     if pandoc --defaults="$EPUB_DEFAULTS" "${extra_meta[@]}" \
-         --resource-path="$resource_path" --output="$salida_epub" -- "$temporal"; then
+         --resource-path="$resource_path" --output="$salida_epub" -- "$entrada"; then
       echo "✔ EPUB generado: $salida_epub"
     else
       echo "❌ Error al convertir a EPUB: $archivo" >&2
@@ -401,7 +472,10 @@ for archivo in "${archivos[@]}"; do
     fi
   fi
 
-  rm -f "$temporal"
+  if [[ -n "$temporal" ]]; then
+    rm -f "$temporal"
+    temporal=""
+  fi
 done
 
 if (( ${#fallidos[@]} > 0 )); then
@@ -409,3 +483,5 @@ if (( ${#fallidos[@]} > 0 )); then
   exit 1
 fi
 echo "✅ Conversión completa."
+(( saltados > 0 )) && exit 1
+exit 0

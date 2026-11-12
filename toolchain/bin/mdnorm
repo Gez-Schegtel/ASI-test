@@ -74,12 +74,18 @@ done
 
 # --- 1. Lista de archivos -----------------------------------------------------
 archivos=()
+saltados=0
 if (( ${#args[@]} > 0 )); then
   for archivo in "${args[@]}"; do
-    if [[ ! -f "$archivo" ]]; then
-      echo "⚠️ Saltando '$archivo': no existe."
+    if [[ -d "$archivo" ]]; then
+      echo "⚠️ Saltando '$archivo': es una carpeta, no un archivo." >&2
+      (( saltados++ ))
+    elif [[ ! -f "$archivo" ]]; then
+      echo "⚠️ Saltando '$archivo': no existe." >&2
+      (( saltados++ ))
     elif [[ ! "${archivo,,}" =~ \.(md|markdown)$ ]]; then
-      echo "⚠️ Saltando '$archivo': no es un archivo Markdown (.md)."
+      echo "⚠️ Saltando '$archivo': no es un archivo Markdown (.md)." >&2
+      (( saltados++ ))
     else
       archivos+=("$archivo")
     fi
@@ -94,6 +100,7 @@ fi
 
 if (( ${#archivos[@]} == 0 )); then
   echo "No se encontraron archivos Markdown para normalizar."
+  (( saltados > 0 )) && exit 1
   exit 0
 fi
 
@@ -416,8 +423,12 @@ my $en_lista = 0;
 my $en_cita  = 0;
 my ($cita_lista, $cita_previa) = (0, "");
 my $item  = qr/^\s*(?:[-*+]|\d+[.)])\s+\S/;
-my $item_inicio = qr/^\s{0,3}(?:[-*+]|\d{1,3}[.)])\s+\S/;
+my $item_inicio = qr/^ {0,3}(?:[-*+]|\d{1,3}[.)])\s+\S/;
 my $cita  = qr/^\s{0,3}>/;
+my $en_sangrado = 0;
+my $html_prof = 0;
+my $bloques_html = qr/div|details|summary|table|thead|tbody|tr|td|th|center|section|figure|figcaption|blockquote|ul|ol|li|dl|p|header|footer|nav|article|picture/;
+my $desplazo_cod = 0;
 
 my $vacia = (@in && $in[0] =~ /\r$/) ? "\r" : "";
 sub blanco_antes { push @out, $vacia if @out && $out[-1] =~ /\S/; }
@@ -440,6 +451,20 @@ sub sangrar_item {
   return $l if $nueva == $w;
   $l =~ s/^\s*/" " x $nueva/e;
   return $l;
+}
+
+sub desplazo_de {
+  my ($w) = @_;
+  for my $n (reverse @niveles) { return $n->[2] - $n->[1] if $w >= $n->[1]; }
+  return 0;
+}
+
+sub correr {
+  my ($l, $d) = @_;
+  return $l if !$d || $l !~ /\S/;
+  my ($e, $resto) = $l =~ /^([ \t]*)(.*)$/s;
+  my $w = ancho($e) + $d;
+  return (" " x ($w < 0 ? 0 : $w)) . $resto;
 }
 
 my $img_sola = qr/^\s{0,3}(?:!\[[^\]\n]*\]\([^)\n]*\)(?:\{[^}\n]*\})?|!\[\[[^\]\n]+\]\])\s*$/;
@@ -495,13 +520,29 @@ for (my $i = 0; $i < @in; $i++) {
   if ($en_yaml) { push @out, $l; $en_yaml = 0 if $l =~ /^(---|\.\.\.)\s*$/; next; }
 
   if ($en_codigo) {
-    push @out, $l;
     $en_codigo = 0 if $l =~ /^\s*(`+|~+)\s*$/ && substr($1, 0, 1) eq substr($cerca, 0, 1) && length($1) >= length($cerca);
+    push @out, correr($l, $desplazo_cod);
     next;
   }
-  if ($l =~ /^\s*(```+|~~~+)/) { $cerca = $1; $en_codigo = 1; push @out, $l; next; }
+  if ($l =~ /^(\s*)(```+|~~~+)/) {
+    my ($w, $marca) = (ancho($1), $2);
+    if ($en_lista) {
+      pop @niveles while @niveles && $niveles[-1][1] > $w;
+      if (!@niveles) { $en_lista = 0; }
+    }
+    my $col = ($en_lista && @niveles) ? $niveles[-1][1] : 0;
+    if (!$en_cita && $w != $col && ($out[-1] // "") =~ /\S/ && ($out[-1] // "") !~ /^\s*(?:```|~~~|#|\|)/) {
+      blanco_antes();
+    }
+    $desplazo_cod = $en_lista ? desplazo_de($w) : 0;
+    $cerca = $marca; $en_codigo = 1; push @out, correr($l, $desplazo_cod); next;
+  }
 
-  if ($l =~ /^(\s*)\\[\[\]]\s*$/) { my $cr = $l =~ /\r$/ ? "\r" : ""; $l = "$1\$\$$cr"; }
+  if ($en_lista && $l =~ /^\s/ && ($en_math || $en_latex || $l !~ $item)) {
+    $l = correr($l, desplazo_de(ancho(($l =~ /^(\s*)/)[0])));
+  }
+
+  if ($l =~ /^(\s*)\\[\[\]]\s*$/) { my $sang = $1; my $cr = $l =~ /\r$/ ? "\r" : ""; $l = "$sang\$\$$cr"; }
 
   if ($en_math) { push @out, $l; my $k = () = $l =~ /\$\$/g; $en_math = 0 if $k % 2; next; }
   if ($l =~ /^\s*\$\$/) { my $k = () = $l =~ /\$\$/g; $en_math = 1 if $k % 2; push @out, $l; next; }
@@ -510,6 +551,14 @@ for (my $i = 0; $i < @in; $i++) {
     $en_latex = (() = $l =~ /\\begin\{/g) - (() = $l =~ /\\end\{/g);
     $en_latex = 0 if $en_latex < 0;
     push @out, $l; next;
+  }
+
+  if ($l =~ /\S/) {
+    my ($ind) = $l =~ /^(\s*)/;
+    if (ancho($ind) >= 4 && !$en_lista && !$en_cita && ($en_sangrado || ($out[-1] // "") !~ /\S/)) {
+      $en_sangrado = 1; push @out, $l; next;
+    }
+    $en_sangrado = 0;
   }
 
   if (!$en_lista && $l =~ /^\s*<aside>\s*$/i) {
@@ -567,8 +616,15 @@ for (my $i = 0; $i < @in; $i++) {
   if ($es_titulo) {
     blanco_antes();
     $en_lista = 0; $en_cita = 0; @niveles = ();
+  } elsif (!$en_lista && !$en_cita && $l =~ $item && ancho(($l =~ /^(\s*)/)[0]) >= 4
+           && ($out[-1] // "") =~ /\S/ && ($out[-1] // "") !~ /^\s*(?:[#>|]|```|~~~)/) {
+    blanco_antes();
+    @niveles = ([-1, ancho(($l =~ /^(\s*)/)[0]), 0]);
+    $en_lista = 1; $en_cita = 0;
+    $l = sangrar_item($l);
   } elsif ($l =~ $item) {
     if (!$en_lista && $l =~ $item_inicio) { blanco_antes(); @niveles = (); }
+    blanco_antes() if $en_lista;
     $en_lista = 1 if $en_lista || $l =~ $item_inicio || ($out[-1] // "") !~ /\S/;
     $en_cita = 0;
     $l = sangrar_item($l) if $en_lista;
@@ -579,11 +635,17 @@ for (my $i = 0; $i < @in; $i++) {
     my ($pre, $dentro) = $l =~ /^(\s{0,3}>)\s?(.*)$/;
     if ($en_cita && $dentro =~ $item_inicio && !$cita_lista && $cita_previa =~ /\S/) {
       push @out, $pre . $vacia;
+    } elsif ($en_cita && $dentro =~ $item && $cita_lista && $cita_previa =~ /\S/) {
+      push @out, $pre . $vacia;
     }
     if    ($dentro =~ $item)                               { $cita_lista = 1; }
     elsif ($dentro =~ /\S/ && $dentro !~ /^\s/ && $cita_previa !~ /\S/) { $cita_lista = 0; }
     $cita_previa = $dentro;
     $en_cita = 1;
+  } elsif ($en_lista && $l =~ /^\S/ && $l !~ /^\p{Ll}/
+           && ($out[-1] // "") =~ /[.!?:;)\]"'»][*_`]*\s*\r?$/) {
+    blanco_antes();
+    $en_lista = 0; @niveles = ();
   } elsif ($l !~ /^\s/ && ($out[-1] // "") !~ /\S/) {
     $en_lista = 0; @niveles = ();
   }
@@ -592,6 +654,13 @@ for (my $i = 0; $i < @in; $i++) {
   }
 
   my $sigue_texto = $i + 1 < @in && $in[$i+1] =~ /\S/;
+  my $antes_html = $html_prof;
+  $html_prof += () = $l =~ /<(?:$bloques_html)\b[^>]*(?<!\/)>/gi;
+  $html_prof -= () = $l =~ /<\/(?:$bloques_html)\s*>/gi;
+  $html_prof = 0 if $html_prof < 0;
+  if ($antes_html > 0 || $html_prof > 0 || $l =~ /^\s*<(?:$bloques_html)\b/i) {
+    push @out, imagenes_en_linea($l); next;
+  }
   push @out, saltos_html(imagenes_en_linea($l), $sigue_texto, $es_titulo);
 }
 $out[0] = $bom . $out[0] if @out;
@@ -627,8 +696,14 @@ trap 'rm -f -- "$cuenta" ${temporal:+"$temporal"}' EXIT
 trap 'echo; echo "Cancelado."; exit 130' INT TERM HUP
 
 for archivo in "${archivos[@]}"; do
-  temporal="$(mktemp --suffix=.md)"
   echo "── $archivo"
+  if ! iconv -f UTF-8 -t UTF-8 -- "$archivo" >/dev/null 2>&1; then
+    echo "   ❌ No está en UTF-8, así que no lo toqué. Para convertirlo:"
+    echo "      iconv -f latin1 -t utf-8 -- \"$archivo\" > nuevo.md"
+    fallidos+=("$archivo")
+    continue
+  fi
+  temporal="$(mktemp --suffix=.md)"
   dir_md="$(cd "$(dirname "$archivo")" && pwd -P)"
   base_dir="$(carpeta_de_busqueda "$dir_md")"
   nombre_md="$(basename "$archivo")"
@@ -710,3 +785,5 @@ if (( ${#fallidos[@]} > 0 )); then
   echo "⚠️ Fallaron ${#fallidos[@]} archivo(s): $(IFS=', '; echo "${fallidos[*]}")"
 fi
 (( ${#fallidos[@]} + ${#con_faltantes[@]} + ${#pendientes_check[@]} == 0 )) || exit 1
+(( saltados > 0 )) && exit 1
+exit 0

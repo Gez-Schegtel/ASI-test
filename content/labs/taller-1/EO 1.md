@@ -1,7 +1,9 @@
 # Administracion de Sistemas - Equipo 5
 
 - falta organigrama
+
 - modelo de Porter
+
 - clasificacion de las apliccaciones resultantes de LE
 
 es una estrategia que tiene dos partes. El puerta a puerta y el desarrollo del personal, se podria haber orientado o buscado necesidades en esos dos aspectos.
@@ -54,7 +56,9 @@ otra cosa
 no puede existir un sistema que sea eficiente a nivel estrategiico ni tactico
 
 - **estrategico** -> no es eficiente, no es efectivo, es competitivo
+
 - **tactico** -> no es eficiente, es efectivo, no es competitivo
+
 - **operativo** -> es eficiente, no es efectivo, no es competitivo
 
 
