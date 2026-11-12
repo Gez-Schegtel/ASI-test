@@ -126,8 +126,8 @@ bloques=(
   "U6|📘 Unidad VI — Seguridad y Auditoría de SI/TI|Unidad VI|Unidad-VI-Completa.zip"
   "TP1|🛠️ Práctica — TP1: Alineamiento Estratégico de SI/TI|Practica/tp1-alineamiento|Practica-TP1-Alineamiento.zip"
   "TPI|🛠️ Práctica — TPI: Vialidad Provincial (DVP)|Practica/tpi-dvp|Practica-TPI-DVP.zip"
-  "TPI1|🛠️ Trabajo Práctico Integrador — Parte 1: Caso Vialidad Provincial (DVP) y Alineamiento|Trabajo Práctico Integrador/parte 1|TPI-Parte-1-Alineamiento.zip"
-  "TPI2|🛠️ Trabajo Práctico Integrador — Parte 2: Caso Vialidad Provincial (DVP)|Trabajo Práctico Integrador/parte 2|TPI-Parte-2-DVP.zip"
+  "TPI1|🛠️ Trabajo Práctico Integrador — Parte 1: Alineación Estratégica de SI/TI (Caso DVP Chaco)|Trabajo Práctico Integrador/parte 1|TPI-Parte-1-Alineamiento.zip"
+  "TPI2|🛠️ Trabajo Práctico Integrador — Parte 2: Aplicación de Recursos de SI/TI (Caso DVP Chaco)|Trabajo Práctico Integrador/parte 2|TPI-Parte-2-DVP.zip"
 )
 
 total_bloques=0

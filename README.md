@@ -24,9 +24,9 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 >
 > * 📘 **Unidad VI — Seguridad y Auditoría de SI/TI** — Apunte teórico completo, temario y cuestionario resuelto · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Unidad-VI-Completa.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
 >
-> * 🛠️ **Trabajo Práctico Integrador — Parte 1: Caso Vialidad Provincial (DVP) y Alineamiento** — Consigna, presentaciones y guías explicativas · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/TPI-Parte-1-Alineamiento.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
+> * 🛠️ **Trabajo Práctico Integrador — Parte 1: Alineación Estratégica de SI/TI (Caso DVP Chaco)** — Consigna, presentaciones y guías explicativas · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/TPI-Parte-1-Alineamiento.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
 >
-> * 🛠️ **Trabajo Práctico Integrador — Parte 2: Caso Vialidad Provincial (DVP)** — Organigrama, diccionario de competencias y presentación · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/TPI-Parte-2-DVP.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
+> * 🛠️ **Trabajo Práctico Integrador — Parte 2: Aplicación de Recursos de SI/TI (Caso DVP Chaco)** — Organigrama, diccionario de competencias y presentación · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/TPI-Parte-2-DVP.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
 >
 > 👉 **[Ir a la Última Versión con todos los PDFs y EPUBs individuales (`/releases/latest`)](https://github.com/Gez-Schegtel/ASI-test/releases/latest)** · [Ver versiones históricas](https://github.com/Gez-Schegtel/ASI-test/releases)
 

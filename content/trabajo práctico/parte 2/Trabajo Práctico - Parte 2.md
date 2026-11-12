@@ -38,6 +38,8 @@
 
 - Velazco Gez Schegtel, Juan Ignacio.
 
+\newpage
+
 ## 1. Aplicación de RRHH
 
 ### Punto A

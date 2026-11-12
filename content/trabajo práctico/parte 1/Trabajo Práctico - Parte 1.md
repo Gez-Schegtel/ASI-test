@@ -38,6 +38,8 @@
 
 - Velazco Gez Schegtel, Juan Ignacio.
 
+\newpage
+
 # Fase 1: Presentación y Compromiso del Equipo
 
 # Dirección de Vialidad Provincial del Chaco

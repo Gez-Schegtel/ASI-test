@@ -61,8 +61,8 @@
 | **Unidad IV** | Mantenimiento y Desarrollo de RRHH *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u6/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64) |
 | **Unidad V** | Subsistema de Seguimiento / Control (Monitores, Benchmarking, Amdahl) | `legacy/archivo-2025/2025/par_1/u2/` | Fragmentado |
 | **Unidad VI** | Seguridad y Auditoría de SI/TI (Riesgos, ALE, Control Interno) | `content/unidades/Unidad VI/` | **Completa** (Apunte teórico + Temario + Cuestionario de autoestudio resuelto) |
-| **Trabajo Práctico Integrador (Parte 1)** | Alineamiento Estratégico y Caso DVP Parte 1 | `content/trabajo práctico/parte 1/` | **Completo en `.md`** (`Escenario.md`, `Trabajo Práctico - Parte 1.md`, `Explicación - Trabajo Práctico - Parte 1.md`) |
-| **Trabajo Práctico Integrador (Parte 2)** | Caso DVP Parte 2 (Organigrama, Competencias y Presentación) | `content/trabajo práctico/parte 2/` | **Completo en `.md`** (`Explicación del TPI.md`, `Trabajo Práctico - Parte 2.md`, `Nuevo Organigrama.md`, `Diccionario de Competencias.md`) |
+| **Trabajo Práctico Integrador (Parte 1)** | Alineación Estratégica de SI/TI (Caso DVP Chaco) | `content/trabajo práctico/parte 1/` | **Completo en `.md`** (`Escenario.md`, `Trabajo Práctico - Parte 1.md`, `Explicación - Trabajo Práctico - Parte 1.md`) |
+| **Trabajo Práctico Integrador (Parte 2)** | Aplicación de Recursos de SI/TI (Caso DVP Chaco) | `content/trabajo práctico/parte 2/` | **Completo en `.md`** (`Explicación del TPI.md`, `Trabajo Práctico - Parte 2.md`, `Nuevo Organigrama.md`, `Diccionario de Competencias.md`) |
 | **Lab Checkmk** | Monitoreo con Checkmk Raw 2.3 en Docker + `http_ping.py` | `content/labs/cmk/` y `content/labs/taller-1/` | **Migrado y funcional** |
 
 ---
@@ -128,6 +128,26 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-11` — Actualización de Títulos de Release para Trabajo Práctico Integrador (Partes 1 y 2)
+
+* **Contexto**: Ajuste de la nomenclatura editorial de las secciones de GitHub Releases y enlaces directos para los trabajos prácticos integradores, reflejando con exactitud los ejes temáticos oficiales de la cátedra de ASI sobre el Caso DVP Chaco.
+
+* **Acciones ejecutadas**:
+
+  * **Actualización en `toolchain/bin/mkrelease`**:
+
+    * Bloque `TPI1`: `🛠️ Trabajo Práctico Integrador — Parte 1: Alineación Estratégica de SI/TI (Caso DVP Chaco)`.
+
+    * Bloque `TPI2`: `🛠️ Trabajo Práctico Integrador — Parte 2: Aplicación de Recursos de SI/TI (Caso DVP Chaco)`.
+
+  * **Actualización en `README.md`**:
+
+    * Sincronización de los títulos de los bloques en los atajos de descarga de la sección principal.
+
+  * **Validación con simulación**:
+
+    * Ejecución de `toolchain/bin/mkrelease --dry-run` comprobando la correcta generación de `notas.md` y las tablas de descarga en 1 clic.
 
 ### `2026-11-11` — Incorporación y Consolidación de Trabajo Práctico Integrador (Parte 2)
 
