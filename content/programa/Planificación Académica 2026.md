@@ -1,7 +1,7 @@
 ---
 title: "Administración de Sistemas de Información"
 subtitle: "Planificación Anual - Ciclo 2026 (Plan 2023 - Ord. 1877 C.S.U)"
-author: "Prof. Claudia Alejandra Soria Ojeda (Titular) · Rosina Analía Ramírez (JTP) · Raúl Alejandro Montiel (Auxiliar 1ra)"
+author: [ Prof. Claudia Alejandra Soria Ojeda (Titular), Rosina Analía Ramírez (JTP), Raúl Alejandro Montiel (Auxiliar 1ra) ]
 date: "Ciclo Lectivo 2026"
 documentclass: scrartcl
 classoption: numbers=enddot
@@ -14,7 +14,7 @@ numbersections: true
 
 ![](../../assets/Nivel-4-PA-2026-Administracion-de_img_1.png){width=45%}
 
-# 1. Datos Descriptivos
+# Datos Descriptivos
 
 | Campo | Detalle |
 | :--- | :--- |
@@ -31,7 +31,7 @@ numbersections: true
 
 ---
 
-# 2. Estructura de la cátedra:
+# Estructura de la cátedra:
 
 | Nombre y Apellido del Profesor | Categoría | Situación de Revista y/o Condición (Concursado - Interino - Regular) | Dedicación | Tareas/funciones a desarrollar |
 | :--- | :--- | :--- | :--- | :--- |
@@ -41,7 +41,7 @@ numbersections: true
 
 ---
 
-# 3. Fundamentación:
+# Fundamentación:
 
 La asignatura Administración de Sistemas de Información, es la materia del tronco integrador de 4° nivel de la ordenanza 1877 C.S.U,
 
@@ -49,7 +49,7 @@ De acuerdo con su finalidad curricular, se proponen contenidos y prácticas que 
 
 ---
 
-# 4. Resultados de Aprendizajes previos requeridos para iniciar/ continuar el desarrollo de los Resultados de Aprendizaje de la asignatura en relación al nivel de aporte a las Sub-Competencias y Competencias.
+# Resultados de Aprendizajes previos requeridos para iniciar/ continuar el desarrollo de los Resultados de Aprendizaje de la asignatura en relación al nivel de aporte a las Sub-Competencias y Competencias.
 
 | Asignaturas Aprobadas y/o Regularizadas | Resultados de Aprendizaje Alcanzados |
 | :--- | :--- |
@@ -74,7 +74,7 @@ De acuerdo con su finalidad curricular, se proponen contenidos y prácticas que 
 
 ---
 
-# 5. Programa Analítico - Unidades Temáticas:
+# Programa Analítico - Unidades Temáticas:
 
 ## UNIDAD I: Planificación estratégica de SI/TI.
 
@@ -215,9 +215,9 @@ La distribución de los encuentros será:
 
 ---
 
-# 6. Bibliografía
+# Bibliografía
 
-## 6.1. Bibliografía. Obligatoria.
+## Bibliografía. Obligatoria.
 
 - **ANDREU, Rafael, RICART, Joan y VALOR Josep.** (1996). *Estrategia y Sistemas de Información* (Ed. 2da). Capítulos 2,3 y 5. España McGraw Hill. 2 ejemplares en Biblioteca de la FRRe y disponible en formato digital en la Web.
 
@@ -233,13 +233,13 @@ La distribución de los encuentros será:
 
 - **ROBSON, Wendy.** (1999) *Planteo de Estrategias Efectivas de Sistemas de Información.* (ed. 2da). - Tomo 3. "Decisiones Estratégicas en Sistemas de Información I" - Tomo 4. "Decisiones Estratégicas en Sistemas de Información II" - Tomo 5. Colección Management Estratégico de Sistemas de Información. Capítulos 7, 9, 12 y 13. Argentina. MP Ediciones. Disponible en formato digital en el aula virtual asignada a la materia.
 
-## 6.2. Complementaria.
+## Complementaria.
 
 - **RODRÍGUEZ BERMÚDEZ, J. R.** (2015). *Planificación y dirección estratégica de sistemas de información.* Editorial UOC. Barcelona. España. Disponible en Elibro: <https://elibro.net/es/lc/utnfrre/titulos/57875>
 
 - **LAPIEDRA Alcamí, R. DEVECE CARAÑANA, C. & GUIRAL HERRANDO, J.** (2016). *Introducción a la gestión de sistemas de información en la empresa.* Universitat Jaume I. Servei de Comunicació i Publicacions. Castellón de la Plana. España. Disponible en Elibro: <https://elibro.net/es/lc/utnfrre/titulos/51689>
 
-## 6.3. Webgrafía.
+## Webgrafía.
 
 - (2018-03-21). *7 Consejos Para Gestionar Equipos Efectivos.* <https://www.youtube.com/watch?v=-aWNO-kMh>
 

@@ -186,6 +186,9 @@ calcular_salida() {
     elif [[ "$abs_dir" == "$REPO_ROOT/content/labs/"* ]]; then
       rel_dir="${abs_dir#"$REPO_ROOT/content/labs/"}"
       printf '%s/labs/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
+    elif [[ "$abs_dir" == "$REPO_ROOT/content/"* ]]; then
+      rel_dir="${abs_dir#"$REPO_ROOT/content/"}"
+      printf '%s/%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$rel_dir" "$base" "$ext"
     else
       printf '%s/%s.%s\n' "$DEFAULT_BUILD_DIR" "$base" "$ext"
     fi

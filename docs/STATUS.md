@@ -149,9 +149,11 @@
 
     * Fidelidad literal estricta al documento de cátedra: redacción 100% idéntica y sin paráfrasis en `content/programa/Planificación Académica 2026.md` respecto al original de la Prof. Claudia Soria Ojeda (Plan 2023 - Ord. 1877 C.S.U), manteniendo intactos los Resultados de Aprendizaje (Punto 4), las 6 Unidades Analíticas (Punto 5), la organización áulica con evaluación sumativa (Punto 6.II.d) y los códigos RA del cronograma oficial (Punto 6.III).
 
-    * Formato editorial adaptado a Markdown Pandoc: cabecera YAML (`scrartcl`, `toc: true`, `numbersections: true`), tablas estructuradas GFM y resguardo del PDF original de cátedra en `legacy/programa/`.
+    * Formato editorial adaptado a Markdown Pandoc: cabecera YAML (`scrartcl`, `toc: true`, `numbersections: true`), lista YAML de autores, limpieza de números manuales en títulos `#` para evitar colisiones con `numbersections: true`, tablas estructuradas GFM y resguardo del PDF original de cátedra en `legacy/programa/`.
 
     * Renderizado visual óptimo del Cronograma: debido a que la tabla del Cronograma 2026 (Punto 6.III) fue diagramada horizontalmente en el original Word/PDF y resultaba excesivamente ancha para la caja tipográfica vertical estándar en PDF/EPUB, se recortó a 300 DPI (`assets/cronograma-recursantes-2026.png`) e incrustó con ancho completo (`{width=100%}`), garantizando legibilidad perfecta sin desbordes.
+
+    * Generalización de rutas en `md2pdf`: soporte en `calcular_salida()` para que cualquier carpeta dentro de `content/` (como `content/programa/`) deposite sus artefactos en su subcarpeta correspondiente en `build/` (ej. `build/programa/`) sin requerir `-o` explícito.
 
   * **Compilación y linteo**:
 
