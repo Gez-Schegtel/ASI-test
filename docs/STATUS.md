@@ -21,7 +21,8 @@
 | Apuntes y cuestionarios por Unidad | `content/unidades/` (`unidad-0/`, `unidad-1/`, `unidad-3/`, `unidad-6/`) | `content/unidades/<unidad-x>/` | **Organizado por Unidad (Unix standard) y normalizado** |
 | Trabajos prácticos y guías | `content/trabajo-practico/` (`parte-1/`, `parte-2/`) | `content/trabajo-practico/` | **Migrado y 100% en `.md` (Unix standard)** |
 | Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
-| Recursos gráficos | `assets/` (346 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
+| Programa de la materia | `content/programa/` (`Planificación Académica 2026.md`) | `content/programa/` | **Descompilado, normalizado y compilado** |
+| Recursos gráficos | `assets/` (348 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
 | Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`, `mkrelease`, `pdf2md`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
 | Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`), Release continuo (`apuntes-al-dia`) y snapshots históricos (`v*`) (Spec 06)** |
@@ -55,6 +56,7 @@
 | Componente / Unidad | Tema Principal | Ubicación Actual | Estado Editorial |
 | :--- | :--- | :--- | :--- |
 | **Unidad 0** | Conceptos previos e introducción | `content/unidades/unidad-0/` | **Completa** (`Conceptos Previos.md`) |
+| **Programa Oficial** | Planificación Académica Anual 2026 (Plan 2023 — Ord. 1877 C.S.U) | `content/programa/` | **Completa** (`Planificación Académica 2026.md`) |
 | **Unidad I** | Los SI en la Empresa, Cadena de Valor y Planificación Estratégica SI/TI | `content/unidades/unidad-1/` | **Completa** (Apunte teórico + Temario + Aclaraciones sobre la Unidad I en raíz; Cuestionario resuelto y 4 borradores en `unidad-1/borradores/`) |
 | **Unidad II** | Subsistema de Provisión (RRHH y SI/TI) *(orden 2026 a confirmar)* | `legacy/archivo-2025/2025/u4/` + `legacy/archivo-2025/APUNTE 2 parcial.md` | En crudo (ya limpio de Base64 y PDFs pasados a `.md`) |
 | **Unidad III** | Subsistema de Aplicación (RRHH, RUO y Rendimiento/Capacidad) | `content/unidades/unidad-3/` | **Completa** (Apunte teórico + Temario + Cuestionario de autoestudio resuelto) |
@@ -105,9 +107,7 @@
 
 - [x] **Publicación segura y sin duplicados en GitHub Releases (Spec 06)**: Reemplazo de los múltiples releases móviles por un **único Release continuo principal (`apuntes-al-dia` / `/releases/latest`)** actualizado en el lugar mediante `toolchain/bin/mkrelease` (evitando enlaces `404` y copias repetidas por commit) junto con **Releases históricos inmutables (`v*`)** para resguardar cierres de parcial/cursada.
 
-### Decisiones pendientes (para Spec 03 - Parte A)
-
-- [ ] **Numeración oficial 2026 de Unidades II, IV y V (Spec 03)**: confirmar el orden exacto de *Provisión*, *Mantenimiento*, *Desarrollo* y *Seguimiento/Control* en el programa 2026.
+- [x] **Numeración y alcance oficial 2026 de Unidades II a VI**: Confirmado por la Planificación Académica 2026 (Ord. 1877 C.S.U): Unidad II = Provisión (RRHH + HW/SW), Unidad III = Aplicación (RRHH + Rendimiento/Capacidad Molero), Unidad IV = Desarrollo y Mantenimiento de RRHH, Unidad V = Seguimiento (Auditoría RRHH + Monitoreo y Benchmarking), Unidad VI = Seguridad y Auditoría de SI/TI. Se ratifica además que el plan de recursantes evalúa específicamente las Unidades I, III y VI.
 
 ### Próximas tareas técnicas en cola
 
@@ -130,6 +130,32 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-12` — Incorporación del Programa 2026 y Corrección de Imágenes JPEG en `pdf2md`
+
+* **Contexto**: Ingesta del programa oficial de la materia (`content/programa/Nivel 4 PA 2026 - Administración de Sistemas de Información - RECURSANTES 2026.pdf`). Detección y corrección de un bug en `toolchain/bin/pdf2md` y `~/.mis-scripts/common/pdf2md` donde flujos de imágenes comprimidos en JPEG (`DCTDecode`) fallaban silenciosamente al decodificarse con `Image.frombytes()`, dejando enlaces rotos que alertaba `mdnorm`.
+
+* **Acciones ejecutadas**:
+
+  * **Corrección de tooling (`pdf2md`)**:
+
+    * Soporte universal de decodificación en `toolchain/bin/pdf2md` y `~/.mis-scripts/common/pdf2md`: apertura directa de flujos comprimidos con `Image.open(io.BytesIO(raw_bytes))` y fallback para mapas de bits crudos (`frombytes`).
+
+    * Condición de guarda: si una imagen no se puede escribir a disco, no se añade el enlace roto al AST.
+
+  * **Extracción limpia y normalización editorial**:
+
+    * Extracción exitosa de logos a `assets/Nivel-4-PA-2026-Administracion-de_img_1.png` y `2.png` (cero colisiones, deduplicación activa).
+
+    * Transformación editorial a Markdown en `content/programa/Planificación Académica 2026.md`: eliminación de encabezados y pies de página repetidos de Word, cabecera YAML editorial completa (`scrartcl`, `toc: true`, `numbersections: true`), tablas estructuradas para docentes, articulación curricular, programa analítico de las 6 unidades, régimen de aprobación y cronograma 2026.
+
+    * Resguardo del PDF original de cátedra en `legacy/programa/`.
+
+  * **Compilación y linteo**:
+
+    * Verificación exitosa con `toolchain/bin/mdnorm --check` (cero avisos, imágenes verificadas).
+
+    * Compilación a PDF y EPUB en `build/programa/Planificación Académica 2026.pdf` y `.epub`.
 
 ### `2026-11-12` — Refinamiento de Spec 06: Trazabilidad Temporal Dinámica en GitHub Releases
 
