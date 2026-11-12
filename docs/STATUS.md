@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > Este archivo es la **fuente de verdad viva y bitácora histórica** del repositorio de **Administración de Sistemas de Información (ASI)** — UTN FRRe. Debe consultarse al inicio de cada sesión y mantenerse estrictamente actualizado tras cada cambio estructural, de contenido o de *tooling*.
 
-* **Última actualización**: `2026-11-11`
+* **Última actualización**: `2026-11-12`
 
 * **Fase actual**: `Infraestructura Técnica, Sincronización de Toolchain (mdnorm, md2pdf, pdf2md, estilo.tex), Organización por Unidad, Imagen Docker GHCR y Publicación en Releases 100% Completadas -> En espera de material de estudio para Spec 03-Parte A`
 
@@ -130,6 +130,30 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-12` — Corrección de Tipografía en Nombre de Unidad I y Recompilación de Artefactos
+
+* **Contexto**: Detección y corrección de una errata tipográfica en el nombre del archivo principal de la Unidad I (`Panificación` $\rightarrow$ `Planificación`), actualización de referencias cruzadas y regeneración de artefactos de lectura en `build/`.
+
+* **Acciones ejecutadas**:
+
+  * **Renombrado atómico en Git**:
+
+    * `content/unidades/unidad-1/Unidad I - Panificación Estratégica de SI-TI.md` $\rightarrow$ `content/unidades/unidad-1/Unidad I - Planificación Estratégica de SI-TI.md` mediante `git mv`.
+
+  * **Actualización de referencias documentales**:
+
+    * Sincronización en `docs/GUIA_SUBIDA_APUNTES.md` y `docs/specs/08-estandarizacion-unix-carpetas.md`.
+
+  * **Recompilación y limpieza de artefactos**:
+
+    * Purgado de los binarios obsoletos con la errata en `build/unidad-1/`.
+
+    * Recompilación limpia a PDF y EPUB mediante `toolchain/bin/md2pdf --all -o build/unidad-1/ "content/unidades/unidad-1/Unidad I - Planificación Estratégica de SI-TI.md"`.
+
+  * **Verificación de linteo**:
+
+    * Comprobación exitosa con `toolchain/bin/mdnorm --check` sobre todos los documentos modificados.
 
 ### `2026-11-12` — Incorporación de Secciones de Toolchain y Estilo Editorial en `README.md`
 

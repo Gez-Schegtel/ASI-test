@@ -29,7 +29,7 @@ content/
 │   ├── unidad-0/
 │   │   └── Conceptos Previos.md
 │   ├── unidad-1/
-│   │   ├── Unidad I - Panificación Estratégica de SI-TI.md
+│   │   ├── Unidad I - Planificación Estratégica de SI-TI.md
 │   │   ├── Aclaraciones - Unidad I.md
 │   │   ├── Unidad I - Temario.md
 │   │   └── borradores/                  <- Ignorada en Releases (para notas en preparación)

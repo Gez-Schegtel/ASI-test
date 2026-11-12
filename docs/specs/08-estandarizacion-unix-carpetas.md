@@ -59,7 +59,7 @@ Todos los directorios del repositorio se normalizan bajo el estándar Unix clás
 | **Labs** | `content/labs/cmk/`, `taller-1/` | `content/labs/cmk/`, `content/labs/taller-1/` *(sin cambios)* |
 
 > [!NOTE]
-> Los **nombres de los archivos Markdown** (ej. `Unidad I - Panificación Estratégica de SI-TI.md`, `Trabajo Práctico - Parte 1.md`) conservan su denominación formal y académica original, ya que Pandoc y la plantilla editorial los utilizan para deducir el título principal del documento compilado.
+> Los **nombres de los archivos Markdown** (ej. `Unidad I - Planificación Estratégica de SI-TI.md`, `Trabajo Práctico - Parte 1.md`) conservan su denominación formal y académica original, ya que Pandoc y la plantilla editorial los utilizan para deducir el título principal del documento compilado.
 
 ---
 
