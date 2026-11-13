@@ -135,9 +135,13 @@ En términos económicos, la eficacia de una organización se refiere a su capac
 Chiavenato explica que la racionalidad organizacional no es puramente técnica ni de un solo tipo; convive simultáneamente con cinco dimensiones que pueden entrar en conflicto entre sí:
 
 - **Económica:** coherencia con la teoría económica, reducción de costos y beneficio de la empresa.
+
 - **Legal:** adecuación estricta a las leyes y la jurisprudencia vigentes.
+
 - **Social:** coherencia con las normas y valores de la sociedad y condiciones laborales dignas.
+
 - **Política:** cálculo del poder y la influencia institucional que se desea alcanzar.
+
 - **Técnica:** utilización de métodos y evidencias científicas y tecnológicas.
 
 > 💡 **Regla de examen:** Cumplir una racionalidad al extremo suele perjudicar a las otras (por ejemplo, aplicar máxima racionalidad *técnica* o *económica* imponiendo condiciones inhumanas a los empleados destruye la racionalidad *social*; o maximizar la racionalidad *técnica* encareciendo excesivamente el producto perjudica la racionalidad *económica*).
@@ -163,7 +167,9 @@ Chiavenato explica que la racionalidad organizacional no es puramente técnica n
 > ⚠️ **Atención (Complemento fuera del temario):** En la página 38, Chiavenato cierra la idea explicando que las organizaciones se dividen en tres niveles justamente para poder aplicar la racionalidad sin que la incertidumbre externa paralice las operaciones:
 
 - **Nivel Institucional (Estratégico / Cúpula):** es el nivel más alto (directores, propietarios, altos ejecutivos). Funciona con lógica de **sistema abierto**, mira hacia el ambiente externo y lidia permanentemente con la **incertidumbre**, buscando alcanzar la **eficacia**.
+
 - **Nivel Intermedio (Táctico / Gerencial):** compuesto por los mandos medios (gerencias de departamento). Actúa como **amortiguador y articulador** entre la incertidumbre de arriba y la rutina de abajo, transformando las estrategias globales en planes y programas de acción.
+
 - **Nivel Operacional (Núcleo Técnico / Primera línea):** es el nivel interno e inferior de la empresa. Funciona con lógica de **sistema cerrado**, enfocado en la **certeza, previsibilidad y ejecución de rutinas** y procedimientos estandarizados, buscando la **eficiencia**.
 
 # Los sistemas de información en la empresa.
@@ -258,6 +264,7 @@ Es posible que las actividades precisen elaborar, tratar y utilizar volúmenes i
 ### La explotación de los «vínculos» y la reconfiguración de la cadena de valor.
 
 - Los **vínculos** son definidos por Andreu, Ricart y Valor como las ***«influencias mutuas y a veces indirectas entre distintas actividades de la cadena de valor»*** (por ejemplo, cómo el registro de quejas de los clientes en las actividades de Comercialización o Postventa influye para orientar y mejorar el control de calidad en la actividad de Operaciones).
+
 - El SI es la herramienta clave para coordinar y explotar estos vínculos adoptando una visión global de la empresa. En casos estratégicos, explotar estos vínculos mediante el SI trasciende la coordinación operativa y llega a **reconfigurar la propia cadena de valor**, cambiando el diseño de la estructura de la empresa, dando lugar a nuevos enfoques para el negocio y generando notables **ventajas competitivas**.
 
 > **Proceso de negocio** (Andreu): es un conjunto de actividades relacionadas a través de vínculos susceptibles de ser mejorados radicalmente, en particular con la ayuda de las TI.
@@ -309,8 +316,11 @@ Pueden darse dos situaciones:
 Desde una perspectiva histórica, la influencia de las TI en los SI ha tenido cuatro aportaciones sumamente positivas que enriquecieron la gestión empresarial:
 
 1. **El concepto de Base de Datos (BD):** aportó disciplina para estructurar, organizar y agrupar todos los datos relevantes de la empresa en un único lugar evitando redundancias, exigiendo además que los usuarios participen en su diseño.
+
 2. **El concepto de DSS (*Decision Support Systems*):** nació al comprender una limitación clave de las TI: aunque pueden automatizar *secuencias de procesos*, no pueden automatizar todas las decisiones humanas complejas (**intervalos de decisión**). Así, su rol pasó a enfocarse en *apoyar* al decisor humano con diseños flexibles y prototipos en vez de intentar reemplazarlo.
+
 3. **Impulso del aprendizaje organizativo:** enseñó que incorporar tecnología afecta simultáneamente a la estructura, el control, los incentivos y las personas, exigiendo un cambio armónico y gradual a través de etapas de madurez (como el modelo de **Gibson y Nolan**).
+
 4. **Innovación y reingeniería de procesos:** ayudó a identificar los procesos de negocio de la empresa susceptibles de ser rediseñados radicalmente con ayuda de las TI para lograr mejoras sustanciales.
 
 # Planificación de los SI/TI a partir de la estrategia del negocio.
@@ -328,15 +338,25 @@ Desde una perspectiva histórica, la influencia de las TI en los SI ha tenido cu
 > ⚠️ **Atención (Complemento fuera del temario):** *El modelo de Palom Izquierdo pertenece al material de Conceptos Previos y no figura explícitamente en la tabla bibliográfica del Temario de la Unidad I (que cita a Edwards y Andreu). Se incluye aquí como complemento porque explica cómo se formula la estrategia de negocio previa al alineamiento de SI/TI.*
 
 1. **Etapa Filosófica:** define la esencia de la empresa mediante:
+
    - **Principios empresariales:** el sistema de valores y convicciones que guía los actos de la organización frente a la sociedad.
+
    - **Misión:** el objetivo central que da razón de ser a la empresa; es dinámica, orientada al futuro y expresa el valor que aporta a la sociedad (no resultados económicos).
+
    - **Políticas generales:** acuerdos que canalizan y guían las decisiones y acciones hacia los objetivos.
+
 2. **Etapa Analítica:** diagnostica dónde está parada la empresa mediante dos frentes:
+
    - **Análisis interno:** identifica **Fortalezas** (ventajas diferenciales a explotar), **Debilidades** (desventajas actuales en las que hoy se falla) y **Carencias** (recursos o características que hoy no se tienen pero serán indispensables para competir en el futuro).
+
    - **Análisis externo:** estudia el entorno actual y futuro para identificar **Oportunidades**, **Problemas** (impacto negativo actual) y **Amenazas o Riesgos** (factores latentes de gran magnitud).
+
 3. **Etapa Operativa:** convierte el diagnóstico en camino a seguir mediante:
+
    - **Metas:** resultados específicos, cifrados y mesurables que se desean alcanzar.
+
    - **Estrategias:** el arte o manera de alcanzar los objetivos aprovechando los puntos fuertes (fortalezas) en las zonas de oportunidad.
+
 4. **Etapa de Acción y Desarrollo:** traduce las estrategias en **Programas de acción orientada a objetivos** (documentos detallados por escrito con qué tareas se harán, en qué orden, quién es el responsable, en qué plazos, con qué costos y qué resultados se esperan lograr), sirviendo de base para la organización y el control.
 
 ## El contexto de las estrategias de SI/TI.
@@ -350,11 +370,17 @@ La estrategia empresarial de una organización se formula mediante el análisis 
 **Consecuencias de no contar con una estrategia coherente de SI/TI (Edwards, cap. 4):**
 
 - Los competidores, proveedores y clientes consiguen ventajas sobre la empresa.
+
 - Los objetivos empresariales se vuelven inalcanzables por las limitaciones de los sistemas.
+
 - Los sistemas no están integrados: duplicación de esfuerzos, datos inexactos, retrasos y mala gestión de la información.
+
 - Los proyectos se retrasan, exceden el presupuesto y no dan los beneficios esperados porque no se definieron bien las necesidades del negocio.
+
 - Las prioridades y los planes cambian todo el tiempo, generando conflictos entre usuarios y personal de SI.
+
 - Las tecnologías elegidas no se integran e incluso limitan a la empresa.
+
 - No hay forma de fijar niveles de recursos adecuados ni de priorizar las inversiones de manera coherente (*en síntesis: se gasta más de lo necesario para obtener menos beneficios de los esperados*).
 
 ![](../../../assets/u1i13.png)
@@ -482,8 +508,11 @@ Es necesario determinar si la capacidad y la tecnología actuales de la organiza
 Para Andreu, Ricart y Valor, la planificación de SI es *«un procedimiento sistemático de toma de decisiones sobre qué hacer en el próximo futuro con los sistemas de información»*. Históricamente, la planificación en las empresas ha atravesado cuatro fases evolutivas (basadas en **Gibson y Nolan**, 1974):
 
 - **Fase I: La introducción de la informática en la organización:** comienza en los años sesenta con grandes ordenadores cuyo manejo era críptico para los no especialistas. El foco era reducir costos mecanizando tareas administrativas básicas (nómina, contabilidad, facturación). El área de «Proceso de Datos» (PD) dependía de administración y quedó progresivamente aislada, naciendo el **«muro» o pared de incomunicación** con la alta dirección.
+
 - **Fase II: «Expansión anárquica» de las aplicaciones informáticas (Contagio):** una vez resueltas las mecanizaciones básicas, proliferan solicitudes de aplicaciones más complejas pero desconectadas entre sí. Como sigue existiendo el «muro», el responsable de informática desconoce la estrategia de la empresa y asigna prioridades y recursos con **criterios erróneos**: *facilidad técnica de implementación, atractivo o novedad tecnológica para el área informática, poder o influencia política del departamento que hace el pedido, o costo de desarrollo*.
+
 - **Fase III: Coordinación SI-objetivos de empresa (Alineamiento pasivo):** la crisis por los altos costos y el descontento de los usuarios obliga a la alta dirección a intervenir e instaurar un procedimiento formal de planificación para **«derribar la pared»**. Los planes de $TI/SI$ pasan a alinearse con la estrategia de negocio (apoyándola), y el director de SI deja de decidir aisladamente para convertirse en el **coordinador de un equipo interdepartamental**.
+
 - **Fase IV: Interdependencia estrategia de la compañía-TI/SI (Alineamiento activo / Madurez):** etapa de máxima madurez organizativa, donde los planes de $TI/SI$ ya no van «detrás» del negocio, sino que **la estrategia de negocio y la de $TI/SI$ se formulan en paralelo y simultáneamente**, retroalimentándose para crear ventajas competitivas sostenibles.
 
 **La responsabilidad de desarrollar el Plan de TI/SI recae fundamentalmente en la dirección de la empresa, aunque en el proceso debe también participar el estamento técnico**. Además, debido a que el Plan de TI/SI abarca toda la organización, **el equipo que lo desarrolle debe representar efectivamente todas las áreas de la empresa**. De otro modo se obtendría un plan arbitrariamente sesgado.
@@ -652,6 +681,7 @@ En esta fase se lleva a cabo la planificación propiamente dicha. El primer paso
 En este relevamiento y descripción sistemática de necesidades (Pasos III.2 y III.3) se aplican dos técnicas específicas propuestas por los autores:
 
 - **Factores Críticos para el Éxito (FCE de Rockart):** se utiliza en las entrevistas con los referentes de cada área para priorizar y filtrar deseos irrelevantes, concentrándose en la información vital de la que depende el éxito de cada función de negocio.
+
 - **Atomización de necesidades e identificación «sobre la marcha»:** no se aceptan pedidos globales o vagos de subsistemas enteros, sino que se desglosan (*atomizan*) en procesos y entidades de datos concretas que el analista va identificando preliminarmente durante las reuniones.
 
 A partir de las necesidades documentadas hay que identificar la **estructura global del SI necesario** (sus subsistemas, procesos y estructuras de datos). Para tratar de ser un poco sistemático en esa identificación, pueden darse algunos consejos:
@@ -766,11 +796,17 @@ Se debe elaborar la lista de proyectos necesarios para implementar los sistemas 
 ### Consideraciones adicionales (Andreu 5.4) y las 5 características resumen (Andreu 5.5 y Cap. 6).
 
 - **Qué software usar para planificar (Sección 5.4):** se deben utilizar herramientas de documentación, catálogos, diccionarios de datos y matrices que crucen información con procesos de negocio, junto con procesadores de texto que mantengan la homogeneidad documental. **NO** se deben usar herramientas *CASE* (que sirven recién para programar los sistemas una vez aprobado el plan) ni herramientas clásicas de control de proyectos. Asimismo, en empresas pequeñas el procedimiento puede simplificarse fusionando roles, pero nunca pueden eliminarse el informe crítico inicial validado, el esquema global del nuevo SI ni el calendario y presupuesto del primer año.
+
 - **Las 5 reglas de oro del método de alineamiento (Sección 5.5 y Cap. 6):**
+
   1. **Propiedad interna:** el proceso debe ser dirigido y ejecutado por gente propia de la empresa; los consultores externos solo asesoran en aspectos metodológicos y de proceso o actúan como catalizadores.
+
   2. **Compromiso activo:** requiere la participación real y explícita de los máximos directivos de todas las áreas funcionales y del Director General.
+
   3. **Filtro estratégico al final:** las funciones y procesos de negocio (filas de la matriz) guían el relevamiento desde el día uno, pero el filtro estratégico (columnas) se aplica con fuerza recién hacia el final de la Fase III (al evaluar escenarios) para no descartar prematuramente necesidades operativas que luego resulten vitales para dar coherencia e integrar todo el sistema.
+
   4. **Análisis Coste-Beneficio «divorciado» (a dos bandas):** los técnicos del departamento de SI estiman y responden por el **coste**; los directivos y usuarios de negocio evalúan, justifican y responden por materializar el **beneficio**.
+
   5. **Aprendizaje organizativo:** el diálogo y la comunicación entre técnicos de TI y gerentes de negocio para «derribar la pared» constituyen un objetivo explícito en sí mismo.
 
 # Valor de la Información e inversión en SI.
@@ -868,6 +904,7 @@ Un costo, en el contexto de los SI, implica renunciar a algún tipo de recurso o
 Al igual que los beneficios, en la jerga de los negocios los costos suelen dividirse en **costos «visibles»** y **costos «ocultos»**:
 
 - El error más grave en el que caen las organizaciones es olvidar que casi todo proyecto de IS inicia un compromiso permanente de recursos: genera **«costos de continuidad» automáticos y no discrecionales** (operación y mantenimiento futuros obligatorios), que constituyen el principal ejemplo de **costos ocultos**.
+
 - Según **Keen (1991)** (en Robson), un proyecto de desarrollo de software de **$1\text{ millón de dólares}$** compromete a la empresa a invertir **$4\text{ millones adicionales}$** durante los siguientes cinco años (agregando anualmente $\$0,20$ para operación y $\$0,40$ para mantenimiento por cada dólar de desarrollo inicial).
 
 Es necesario predecir los costos y reducirlos cuando sea apropiado, si bien no a expensas del nivel de beneficios netos.
@@ -961,9 +998,13 @@ La eficiencia en la información consiste en bajar los costos tanto como sea pos
 ### Los 3 tipos de aplicaciones según sus beneficios (Parker et al.) y la regla del 30 %.
 
 - **La regla del $30\%$ de beneficios intangibles:** según investigaciones de Clarke McKee citadas por Robson, en más del $80\%$ de las empresas los beneficios **intangibles** representan al menos el **$30\%$ del valor total** resultante de sus inversiones en IS (tales como mejora del servicio al cliente, mayor ventaja competitiva o evitar una desventaja, información de gestión más oportuna, apoyo a funciones básicas y mejores comunicaciones).
+
 - **Clasificación de las aplicaciones según el impacto de sus beneficios (Parker et al.):**
+
   1. **Sustitutiva:** reemplaza personas por máquinas; la fuerza principal es la economía directa y la mejora en la eficiencia (se relaciona con las aplicaciones *clave para las operaciones* y *de apoyo*).
+
   2. **Complementaria:** aumenta la productividad y la eficacia del personal al permitir que el trabajo se ejecute de otra forma (se relaciona con las aplicaciones *clave para las operaciones* y *estratégicas*).
+
   3. **Innovadora:** busca obtener o mantener una ventaja competitiva cambiando las prácticas comerciales actuales o creando mercados nuevos (se relaciona con las aplicaciones *estratégicas* y *de alto potencial*).
 
 > ⚠️ **Atención (Complemento del Cuestionario de Autoestudio):** *Las siguientes técnicas adicionales de evaluación de Parker (Edwards cap. 6, págs. 114-115 / Robson cap. 7) superan la página 113 indicada en el Temario, pero se mencionan como complemento porque están en la Pregunta 8 del Cuestionario de Autoestudio y se aplicaron en el TP1.*
