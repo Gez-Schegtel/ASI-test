@@ -55,7 +55,11 @@ Este repositorio es la fuente de verdad canónica, colaborativa y versionada de 
 
 * `plantillas/`: Prompts base y guías de redacción/mejora de notas.
 
-* `.github/workflows/`: Pipelines de integración y entrega continua (CI/CD).
+* `.github/`: Gobernanza y automatización del repositorio.
+
+  * `.github/CODEOWNERS`: Exige aprobación del propietario (`@Gez-Schegtel`) en todo Pull Request hacia `main`.
+
+  * `.github/workflows/`: Pipelines de integración y entrega continua (CI/CD). La publicación en Releases y GHCR ocurre exclusivamente desde `main` (o tags `v*` descendientes de `main`) tras superar `lint` y `build`.
 
 ---
 

@@ -16,7 +16,7 @@
 | Dominio | Ubicación Actual (`AS-IS`) | Ubicación Canónica (`TO-BE`) | Estado Actual |
 | :--- | :--- | :--- | :--- |
 | Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
-| Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05, 06, 07 y 08 implementadas**; **Spec 09** en curso (archivos en repo listos, pendiente *Rulesets* en GitHub); Spec 03-A a la espera de material |
+| Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05, 06, 07, 08 y 09 implementadas** + Guía de subida actualizada; Spec 03-A a la espera de material |
 | Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `enunciados-cuestionarios/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
 | Apuntes y cuestionarios por Unidad | `content/unidades/` (`unidad-0/`, `unidad-1/`, `unidad-3/`, `unidad-6/`) | `content/unidades/<unidad-x>/` | **Organizado por Unidad (Unix standard) y normalizado** |
 | Trabajos prácticos y guías | `content/trabajo-practico/` (`parte-1/`, `parte-2/`) | `content/trabajo-practico/` | **Migrado y 100% en `.md` (Unix standard)** |
@@ -87,7 +87,7 @@
 
 8. **[08-estandarizacion-unix-carpetas.md](specs/08-estandarizacion-unix-carpetas.md)** — *Estado: **Implementada** (2026-11-11)*. Estandarización de todas las carpetas del repositorio al formato Unix clásico en minúsculas y sin espacios (`unidad-0` a `unidad-6`, `trabajo-practico/parte-1`, `parte-2`, `labs`), con compatibilidad hacia atrás en `md2pdf` y `mkrelease`.
 
-9. **[09-gobernanza-ramas-pr-y-releases.md](specs/09-gobernanza-ramas-pr-y-releases.md)** — *Estado: **Parcialmente implementada en el repo** (2026-11-14; pendiente activación de Rulesets en GitHub)*. Incorporación de `.github/CODEOWNERS` (`* @Gez-Schegtel`), mínimo privilegio por job y validación en CI de que los tags `v*` pertenezcan a `main`, junto con el diseño de *Repository Rulesets* para proteger `main` y tags `v*`.
+9. **[09-gobernanza-ramas-pr-y-releases.md](specs/09-gobernanza-ramas-pr-y-releases.md)** — *Estado: **Implementada** (2026-11-14)*. Incorporación de `.github/CODEOWNERS` (`* @Gez-Schegtel`), mínimo privilegio por job, validación en CI de que los tags `v*` pertenezcan a `main` y *Repository Rulesets* activos en `Gez-Schegtel/ASI-test` para `main` y tags `v*`.
 
 ---
 
@@ -129,7 +129,7 @@
 
 - [ ] Implementar **Spec 03 (Parte A)**: consolidar las unidades teóricas faltantes cuando esté listo el material de estudio.
 
-- [ ] Completar **Spec 09 (en GitHub)**: pushear los cambios a `myfork/main` y activar los *Repository Rulesets* de `main` y tags `v*` en `Gez-Schegtel/ASI-test`.
+- [x] Completar **Spec 09 (en GitHub y documentación)**: pusheado a `myfork/main`, activados los *Repository Rulesets* de `main` (`ruleset_id: 27256751`) y tags `v*` en `Gez-Schegtel/ASI-test`, y documentado el flujo de colaboración en `README.md`, `GEMINI.md` y `docs/GUIA_SUBIDA_APUNTES.md`.
 
 ---
 
@@ -141,7 +141,7 @@
 
 * **Acciones ejecutadas**:
 
-  * **Redacción de Spec 09**: Creación de `docs/specs/09-gobernanza-ramas-pr-y-releases.md`.
+  * **Redacción e implementación de Spec 09**: Creación de `docs/specs/09-gobernanza-ramas-pr-y-releases.md`.
 
   * **Creación de `.github/CODEOWNERS`**: Definición de `* @Gez-Schegtel` para exigir revisión obligatoria del propietario en Pull Requests.
 
@@ -151,7 +151,11 @@
 
     * Verificación obligatoria para tags `v*` (`fetch-depth: 0` + `git merge-base --is-ancestor "${GITHUB_SHA}" refs/remotes/origin/main`) impidiendo publicar Releases o imágenes GHCR desde commits que no pertenezcan a `main`.
 
-* **Pendiente**: Push a `myfork/main` y configuración de los *Repository Rulesets* en GitHub (`Settings → Rules → Rulesets`).
+  * **Activación de *Repository Rulesets* en `Gez-Schegtel/ASI-test`**:
+
+    * Verificado vía API de GitHub (`branches/main` con `"protected": true` y `ruleset_id: 27256751`): bloqueo de borrado y *force-push*, PR obligatorio con 1 aprobación, *dismiss stale reviews*, revisión obligatoria de *Code Owners* (`@Gez-Schegtel`), ramas al día y checks obligatorios `Lint Markdown & Reglas del Repositorio` y `Compilar Apuntes (PDF & EPUB)`, además del *Tag Ruleset* sobre `refs/tags/v*`.
+
+  * **Documentación del flujo de colaboración**: Actualización de `docs/GUIA_SUBIDA_APUNTES.md` (Sección 5 sobre flujo Git/PRs, checks y vista previa), `README.md` y `GEMINI.md`.
 
 ### `2026-11-14` — Publicación de Releases y GHCR Exclusiva para `main` (y Tags `v*`) + Sincronización Documental
 

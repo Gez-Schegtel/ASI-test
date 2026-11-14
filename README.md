@@ -63,7 +63,9 @@ ASI/
 
 Si querés colaborar subiendo unidades nuevas, editar apuntes en Markdown o generar tus propios PDFs/EPUBs en tu máquina:
 
-* **📝 Subir o editar apuntes**: Leé la **[Guía paso a paso para subir apuntes (`docs/GUIA_SUBIDA_APUNTES.md`)](docs/GUIA_SUBIDA_APUNTES.md)** (incluye las plantillas de portada, reglas de imágenes en `assets/` y el comando de normalización).
+* **📝 Subir o editar apuntes**: Leé la **[Guía paso a paso para subir apuntes (`docs/GUIA_SUBIDA_APUNTES.md`)](docs/GUIA_SUBIDA_APUNTES.md)** (incluye plantillas de portada, reglas de `assets/`, uso de `mdnorm` y el flujo de trabajo obligatorio).
+
+* **🔒 Flujo de colaboración (Pull Requests)**: La rama `main` y los tags `v*` están protegidos. Los colaboradores deben subir sus cambios en una rama auxiliar (`changes/**`) o *fork* y abrir un **Pull Request hacia `main`**. Solo se permite el merge (y la consecuente publicación en Releases) si pasan los dos checks de CI (`Lint Markdown & Reglas del Repositorio` y `Compilar Apuntes (PDF & EPUB)`) y cuenta con la aprobación del propietario (`@Gez-Schegtel` vía `.github/CODEOWNERS`).
 
 * **En Obsidian**: Abrí la raíz del repositorio como bóveda (*vault*) para que todas las imágenes de [`assets/`](assets/) se resuelvan automáticamente. Tema sugerido: *Blue Topaz*.
 
@@ -77,7 +79,7 @@ Si querés colaborar subiendo unidades nuevas, editar apuntes en Markdown o gene
 * **Normalizar y compilar de forma nativa**:
   ```bash
   # Normalizar formato de un apunte
-  ./toolchain/bin/mdnorm "content/unidades/unidad-3/Unidad III - Subsistema de Aplicación.md"
+  ./toolchain/bin/mdnorm -y "content/unidades/unidad-3/Unidad III - Subsistema de Aplicación.md"
 
   # Compilar una unidad completa a PDF y EPUB3 en build/unidad-3/
   ./toolchain/bin/md2pdf -y --all "content/unidades/unidad-3/"*.md

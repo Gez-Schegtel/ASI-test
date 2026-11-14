@@ -1,6 +1,6 @@
 # Spec 09 — Gobernanza de Ramas, Pull Requests y Publicación Protegida
 
-* **Estado**: Parcialmente implementada en el repositorio (pendiente de activación de *Rulesets* en GitHub)
+* **Estado**: Implementada (2026-11-14 — `.github/CODEOWNERS`, validación de tags `v*` en CI y *Rulesets* activos en `Gez-Schegtel/ASI-test`)
 
 * **Fecha**: 2026-11-14
 

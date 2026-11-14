@@ -15,7 +15,7 @@ Esta guía explica paso a paso cómo agregar nuevas unidades teóricas, cuestion
    ./toolchain/bin/mdnorm -y "content/unidades/unidad-2/"*.md
    ```
 
-4. **Hacé `git commit` y `git push`** (sin subir ningún `.pdf`, `.epub` ni `.docx`): si pusheás a una rama auxiliar (`changes/**`) o abrís un Pull Request, GitHub Actions verificará el formato y la compilación de prueba; al integrarse en **`main`**, actualizará automáticamente el **Release principal (`/releases/latest`)** ordenando los archivos dentro de su unidad.
+4. **Trabajá en una rama auxiliar y abrí un Pull Request hacia `main`** (sin subir ningún `.pdf`, `.epub` ni `.docx`): la rama `main` está protegida. Creá una rama `changes/<tema>` (o usá un *fork*), hacé `git commit` + `git push` y abrí un **Pull Request** hacia `main`. GitHub Actions ejecutará las pruebas de formato y compilación; una vez que pasen los checks y el propietario (`@Gez-Schegtel`) apruebe el PR, los cambios se integrarán a `main` y se actualizará automáticamente el **Release principal (`/releases/latest`)**.
 
 ---
 
@@ -54,13 +54,13 @@ content/
 ```
 
 > [!TIP]
-> **¿Cómo guardar una foto fija (versión histórica) antes de un parcial o cierre de año?**
-> El Release principal (`apuntes-al-dia`) se mantiene siempre al día con el último commit sin llenar la página de copias repetidas. Si antes de un examen o al terminar la cursada quieren dejar congelada una versión histórica inmutable de todos los PDFs y EPUBs, basta con crear y subir un tag que empiece con `v`:
+> **¿Cómo guardar una foto fija (versión histórica) antes de un parcial o cierre de año? *(Solo propietario)***
+> El Release principal (`apuntes-al-dia`) se mantiene siempre al día con el último commit sin llenar la página de copias repetidas. Cuando el propietario del repositorio (`@Gez-Schegtel`) desee congelar una versión histórica inmutable de todos los PDFs y EPUBs antes de un examen o al terminar la cursada, basta con crear y subir un tag que empiece con `v` sobre un commit de `main`:
 > ```bash
 > git tag v2026-parcial1
-> git push myfork v2026-parcial1
+> git push origin v2026-parcial1
 > ```
-> GitHub Actions creará automáticamente un Release histórico separado (`📚 Snapshot Histórico de Apuntes — v2026-parcial1`) que **nunca se sobrescribe ni se borra**, dejando siempre arriba a `apuntes-al-dia` como `Latest`.
+> Los tags `v*` están protegidos por *Ruleset* (solo el propietario puede crearlos, moverlos o borrarlos) y el pipeline valida además que el commit pertenezca a `main`. GitHub Actions creará automáticamente un Release histórico separado (`📚 Snapshot Histórico de Apuntes — v2026-parcial1`) que **nunca se sobrescribe ni se borra**, dejando siempre arriba a `apuntes-al-dia` como `Latest`.
 
 ### Convención de nombres recomendada
 
@@ -252,7 +252,54 @@ Los archivos generados aparecerán en `build/unidad-2/` (esa carpeta está ignor
 
 ---
 
-## 5. Checklist Final antes de `git push`
+## 5. Flujo de Colaboración en Git (Ramas, Pull Requests y Reglas)
+
+Para garantizar que la rama `main` y los PDFs/EPUBs publicados en **GitHub Releases** nunca se rompan:
+
+1. **Rama `main` protegida**:
+
+   - Solo el propietario del repositorio (`@Gez-Schegtel`) puede hacer `push` directo a `main`.
+
+   - Cualquier colaborador debe trabajar en una rama auxiliar (por ejemplo `changes/unidad-2` o desde su propio *fork*) y proponer sus cambios mediante un **Pull Request (PR) hacia `main`**.
+
+2. **Paso a paso para colaborar**:
+   ```bash
+   # 1. Partir desde main actualizado
+   git checkout main
+   git pull origin main
+
+   # 2. Crear una rama auxiliar para tu cambio
+   git checkout -b changes/unidad-2
+
+   # 3. Editar/agregar archivos, normalizar y verificar
+   ./toolchain/bin/mdnorm -y "content/unidades/unidad-2/"*.md
+
+   # 4. Commitear y subir tu rama (nunca a main)
+   git add <archivos>
+   git commit -m "feat(unidad-2): agregar apunte de provisión"
+   git push -u origin changes/unidad-2
+   ```
+   Luego abrí un **Pull Request** en GitHub desde `changes/unidad-2` hacia `main`.
+
+3. **Requisitos obligatorios para que el PR pueda mergearse**:
+
+   - **Pruebas en verde**: deben aprobar los dos *checks* automáticos de GitHub Actions con la rama actualizada respecto a `main`:
+
+     - `Lint Markdown & Reglas del Repositorio` (cero binarios `.pdf`/`.epub`/`.docx`, cero imágenes fuera de `assets/`, cero Base64 y `mdnorm --check` limpio).
+
+     - `Compilar Apuntes (PDF & EPUB)` (compilación real completa en Docker con `md2pdf -y --all`).
+
+   - **Aprobación del propietario (`CODEOWNERS`)**: según [`.github/CODEOWNERS`](../.github/CODEOWNERS), todo PR requiere al menos **1 aprobación explícita de `@Gez-Schegtel`**. Si subís nuevos commits después de una aprobación, esta se descarta automáticamente y requiere nueva revisión.
+
+4. **Vista previa y publicación**:
+
+   - En cada PR, el workflow sube temporalmente (por 3 días) el paquete `preview-pr-pdf-epub` dentro del resumen de la ejecución en **Actions**, para que vos y el revisor puedan descargar y revisar los PDFs/EPUBs generados antes de mergear.
+
+   - El **Release principal (`apuntes-al-dia`)** y la imagen Docker en GHCR **no se modifican desde ramas auxiliares ni desde PRs**: se actualizan únicamente cuando el PR es aprobado, pasa todas las pruebas y se integra en `main`.
+
+---
+
+## 6. Checklist Final antes de Abrir el Pull Request
 
 - [ ] El archivo `.md` está en `content/unidades/unidad-<X>/` con el nombre estándar.
 
