@@ -28,13 +28,14 @@ Se implementa una estrategia **dual (Rolling Release + Snapshots Históricos)** 
 flowchart LR
     A["Compilación en Docker (build/)"] --> B["toolchain/bin/mkrelease"]
     B --> C{"¿Evento del Workflow?"}
-    C -- "Push normal (main / master)" --> D["Actualiza en el lugar 'apuntes-al-dia' (Latest)"]
+    C -- "Push normal (solo main)" --> D["Actualiza en el lugar 'apuntes-al-dia' (Latest)"]
     C -- "Push de tag 'v*' (ej. v2026.1)" --> E["Crea Release Histórico Inmutable 'v2026.1'"]
+    C -- "Rama auxiliar (changes/**) o PR" --> F["Solo verifica lint y compilación (sin publicar)"]
 ```
 
 ### 2.1. Un Único Release Principal Continuo (`tag: apuntes-al-dia` / `/releases/latest`)
 
-En cada push a la rama principal (`main` / `master`):
+En cada push a la rama principal (`main`):
 
 1. **Actualización en el lugar sin caída de enlaces (`--clobber`)**:
 
@@ -44,7 +45,7 @@ En cada push a la rama principal (`main` / `master`):
 
 2. **Organización interna por Unidad y Trabajo Práctico**:
 
-   * El cuerpo del Release presenta un **índice ordenado por Unidad** con tablas y enlaces de descarga directa en **1 clic** tanto al paquete `.zip` completo de cada unidad (`Unidad-I-Completa.zip`, `Unidad-III-Completa.zip`, `Unidad-VI-Completa.zip`, `Practica-TPI-DVP.zip`, `Practica-TP1-Alineamiento.zip`) como a cada archivo `.pdf` y `.epub` individual.
+   * El cuerpo del Release presenta un **índice ordenado por Unidad** con tablas y enlaces de descarga directa en **1 clic** tanto al paquete `.zip` completo de cada módulo (`Programa-Oficial-2026.zip`, `Unidad-0-Completa.zip`, `Unidad-I-Completa.zip`, `Unidad-III-Completa.zip`, `Unidad-VI-Completa.zip`, `TPI-Parte-1-Alineamiento.zip`, `TPI-Parte-2-DVP.zip`) como a cada archivo `.pdf` y `.epub` individual.
 
    * Al preparar los archivos individuales para GitHub Releases, `mkrelease` translitera tildes y espacios a nombres ASCII limpios (ej. `Unidad-III_-_Subsistema-de-Aplicacion.pdf`) para evitar que GitHub reemplace caracteres acentuados por puntos (`Aplicaci.n.pdf`), mientras que dentro de cada `.zip` se conservan los nombres originales completos con tildes y espacios.
 
@@ -77,4 +78,16 @@ En cada push a la rama principal (`main` / `master`):
      `> ✅ **Versión actualizada automáticamente:** ${FECHA_ACTUAL} (commit \`${SHA:0:7}\`).`
 
   3. **Disponibilidad 24/7 y cero regresiones**: La release permanece permanentemente pública, sin parpadeos ni ventanas de error, garantizando máxima claridad visual a cualquier usuario que ingrese al repositorio.
+
+---
+
+### 2.5. Restricción de Publicación Exclusiva a `main` (y Tags Históricos `v*`)
+
+* **Diagnóstico**: El workflow [`.github/workflows/editorial-ci.yml`](../../.github/workflows/editorial-ci.yml) se dispara tanto en `main` como en ramas auxiliares (`changes/**`, `master`) para validar cambios antes del merge, pero la condición `if: github.event_name != 'pull_request'` permitía que un `push` en `changes/**` publicara sobre el Release continuo `apuntes-al-dia` (y sobre el tag `:latest` de GHCR).
+
+* **Regla aplicada**:
+
+  * Las ramas auxiliares (`changes/**`, `master`, y cualquier Pull Request) ejecutan íntegramente `lint` y la compilación de verificación con `md2pdf --all` dentro de Docker, pero **no publican Releases** ni empujan imágenes a GHCR.
+
+  * La publicación en GitHub Releases (`apuntes-al-dia` o snapshots `v*`) y el push de la imagen Docker a GHCR quedan estrictamente restringidos a eventos que no sean `pull_request` sobre `refs/heads/main` o tags `refs/tags/v*`, y siempre condicionados a que `lint` y la compilación finalicen con éxito.
 

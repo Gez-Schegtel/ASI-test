@@ -16,6 +16,8 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 > ### Atajos directos por Unidad y Trabajo Práctico Integrador
 > En el **[Índice de la Última Versión (`/releases/latest`)](https://github.com/Gez-Schegtel/ASI-test/releases/latest)** podés bajar cualquier `.pdf` o `.epub` individual en un clic, o usar estos enlaces permanentes para bajar el paquete `.zip` completo de cada unidad:
 >
+> * 📋 **Programa Oficial — Planificación Académica 2026** — Programa analítico, régimen de aprobación y cronograma · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Programa-Oficial-2026.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
+>
 > * 📘 **Unidad 0 — Conceptos Previos e Introducción** — Apunte introductorio completo y temario · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Unidad-0-Completa.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
 >
 > * 📘 **Unidad I — Los SI en la Empresa y Estrategia SI/TI** — Apunte teórico completo, aclaraciones de cátedra, temario y cuestionario resuelto · **[`[📥 Descargar ZIP]`](https://github.com/Gez-Schegtel/ASI-test/releases/latest/download/Unidad-I-Completa.zip)** · [PDF/EPUB sueltos](https://github.com/Gez-Schegtel/ASI-test/releases/latest)
@@ -37,6 +39,7 @@ Mantenido como bóveda de **Obsidian** y con compilación editorial **100 % auto
 ```text
 ASI/
 ├── content/
+│   ├── programa/                 <- Planificación Académica Oficial 2026 (programa, régimen y cronograma)
 │   ├── unidades/                 <- Apuntes teóricos y cuestionarios resueltos por unidad (unidad-0 a unidad-6)
 │   ├── trabajo-practico/         <- Guías, presentaciones y resoluciones del Trabajo Práctico Integrador (parte-1 y parte-2)
 │   └── labs/                     <- Laboratorios prácticos y talleres (Checkmk, monitoreo)

@@ -27,6 +27,8 @@ Este repositorio es la fuente de verdad canónica, colaborativa y versionada de 
 
 * `content/`: Material de estudio editable.
 
+  * `content/programa/`: Planificación académica oficial de la asignatura (programa analítico, régimen y cronograma).
+
   * `content/unidades/`: Apuntes teóricos consolidados y cuestionarios de autoestudio resueltos agrupados por Unidad (`unidad-0/` a `unidad-6/`).
 
   * `content/trabajo-practico/`: TPI (Vialidad Provincial - DVP) y guías de trabajos prácticos (`parte-1/` y `parte-2/`).

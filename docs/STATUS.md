@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > Este archivo es la **fuente de verdad viva y bitácora histórica** del repositorio de **Administración de Sistemas de Información (ASI)** — UTN FRRe. Debe consultarse al inicio de cada sesión y mantenerse estrictamente actualizado tras cada cambio estructural, de contenido o de *tooling*.
 
-* **Última actualización**: `2026-11-12`
+* **Última actualización**: `2026-11-14`
 
 * **Fase actual**: `Infraestructura Técnica, Sincronización de Toolchain (mdnorm, md2pdf, pdf2md, estilo.tex), Organización por Unidad, Imagen Docker GHCR y Publicación en Releases 100% Completadas -> En espera de material de estudio para Spec 03-Parte A`
 
@@ -16,13 +16,13 @@
 | Dominio | Ubicación Actual (`AS-IS`) | Ubicación Canónica (`TO-BE`) | Estado Actual |
 | :--- | :--- | :--- | :--- |
 | Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
-| Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05, 06 y 07 implementadas** + Guía de subida lista; Spec 03-A a la espera de material |
+| Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05, 06, 07 y 08 implementadas** + Guía de subida lista; Spec 03-A a la espera de material |
 | Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `enunciados-cuestionarios/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
 | Apuntes y cuestionarios por Unidad | `content/unidades/` (`unidad-0/`, `unidad-1/`, `unidad-3/`, `unidad-6/`) | `content/unidades/<unidad-x>/` | **Organizado por Unidad (Unix standard) y normalizado** |
 | Trabajos prácticos y guías | `content/trabajo-practico/` (`parte-1/`, `parte-2/`) | `content/trabajo-practico/` | **Migrado y 100% en `.md` (Unix standard)** |
 | Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
 | Programa de la materia | `content/programa/` (`Planificación Académica 2026.md`) | `content/programa/` | **Descompilado, normalizado y compilado** |
-| Recursos gráficos | `assets/` (353 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
+| Recursos gráficos | `assets/` (354 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
 | Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`, `mkrelease`, `pdf2md`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
 | Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`), Release continuo (`apuntes-al-dia`) y snapshots históricos (`v*`) (Spec 06)** |
@@ -33,7 +33,7 @@
 
 * **Imágenes Base64 incrustadas en Markdown**: **0**.
 
-* **Recursos gráficos centralizados en `assets/`**: **353 archivos**.
+* **Recursos gráficos centralizados en `assets/`**: **354 archivos**.
 
 * **Toolchain autocontenido (`toolchain/`)**:
 
@@ -81,7 +81,7 @@
 
 5. **[05-imagen-docker-toolchain-ghcr.md](specs/05-imagen-docker-toolchain-ghcr.md)** — *Estado: **Implementada** (2026-11-06)*. Creación de `toolchain/Dockerfile` con Pandoc, LuaLaTeX y caché global de `luaotfload` (`/var/cache/texmf-var`) precalentado, e integración con GitHub Container Registry (`ghcr.io/gez-schegtel/asi-toolchain`) en `.github/workflows/editorial-ci.yml`.
 
-6. **[06-publicacion-ordenada-en-releases.md](specs/06-publicacion-ordenada-en-releases.md)** — *Estado: **Implementada y Refinada** (2026-11-06 / 2026-11-12)*. Arquitectura dual gestionada por `toolchain/bin/mkrelease`: un **único Release continuo principal (`apuntes-al-dia`, marcado como `Latest` en `/releases/latest`)** actualizado atómicamente en el lugar (`--clobber`) con estampado dinámico de fecha de compilación en título y encabezado, más **Releases históricos inmutables** para tags `v*`.
+6. **[06-publicacion-ordenada-en-releases.md](specs/06-publicacion-ordenada-en-releases.md)** — *Estado: **Implementada y Refinada** (2026-11-06 / 2026-11-12 / 2026-11-14)*. Arquitectura dual gestionada por `toolchain/bin/mkrelease`: un **único Release continuo principal (`apuntes-al-dia`, marcado como `Latest` en `/releases/latest`)** actualizado atómicamente en el lugar (`--clobber`) con estampado dinámico de fecha de compilación en título y encabezado, publicado exclusivamente desde `main` tras superar `lint` y compilación, más **Releases históricos inmutables** para tags `v*`.
 
 7. **[07-incorporacion-pdf2md-toolchain.md](specs/07-incorporacion-pdf2md-toolchain.md)** — *Estado: **Implementada y Sincronizada** (2026-11-11)*. Incorporación y actualización de `toolchain/bin/pdf2md` (Bash + Python 3 + `mutool`) con soporte de *grid tables*, títulos por *outlines*, `\needspace`, invocación por stdin y extracción/deduplicación/resolución de colisiones automática hacia `assets/`.
 
@@ -130,6 +130,22 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-14` — Publicación de Releases y GHCR Exclusiva para `main` (y Tags `v*`) + Sincronización Documental
+
+* **Contexto**: Revisión del pipeline `.github/workflows/editorial-ci.yml`: el workflow se dispara en `main`, `master` y `changes/**`, pero la condición `if: github.event_name != 'pull_request'` permitía que un `push` en ramas auxiliares como `changes/**` sobrescribiera el Release continuo `apuntes-al-dia` y el tag `:latest` de GHCR antes de mergearse a `main`.
+
+* **Acciones ejecutadas**:
+
+  * **Enmienda en especificación**: Incorporación de la Sección `2.5. Restricción de Publicación Exclusiva a main (y Tags Históricos v*)` y actualización del diagrama y listas en `docs/specs/06-publicacion-ordenada-en-releases.md`.
+
+  * **Actualización en `.github/workflows/editorial-ci.yml`**:
+
+    * Restricción del paso `Publicar Release en GitHub` a `github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))`.
+
+    * Restricción análoga en el push de la imagen Docker a GHCR para que ramas `changes/**` o `master` solo ejecuten `lint` y compilación de prueba en Docker (`md2pdf --all`) sin publicar artefactos en Releases ni en `ghcr.io`.
+
+  * **Sincronización de documentación**: Actualización de `README.md` (atajo directo a `Programa-Oficial-2026.zip` y estructura de `content/programa/`), `docs/GUIA_SUBIDA_APUNTES.md` (aclaración del flujo `changes/**`/PR vs. `main` y árbol con `programa/`), `GEMINI.md` (mapa de arquitectura con `content/programa/`) y `toolchain/README.md` (inclusión de `tablas-listas.lua` en el árbol de filtros).
 
 ### `2026-11-12` — Incorporación del Programa 2026 y Corrección de Imágenes JPEG en `pdf2md`
 

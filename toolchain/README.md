@@ -33,7 +33,8 @@ toolchain/
     └── filters/
         ├── preambulo.lua            <- Inyecta templates/estilo.tex respetando mainfont y header-includes
         ├── cortar-formulas.lua      <- Parte ecuaciones en bloque ($$ ... $$) que exceden el ancho de página
-        └── centrar-imagenes.lua     <- Centra figuras sueltas y soporta {.izquierda}, {.derecha} y anchos
+        ├── centrar-imagenes.lua     <- Centra figuras sueltas y soporta {.izquierda}, {.derecha} y anchos
+        └── tablas-listas.lua        <- Convierte viñetas en celdas de tablas a listas nativas (LaTeX/EPUB)
 ```
 
 ---

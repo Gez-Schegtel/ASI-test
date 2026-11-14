@@ -15,7 +15,7 @@ Esta guía explica paso a paso cómo agregar nuevas unidades teóricas, cuestion
    ./toolchain/bin/mdnorm -y "content/unidades/unidad-2/"*.md
    ```
 
-4. **Hacé `git commit` y `git push`** (sin subir ningún `.pdf`, `.epub` ni `.docx`): GitHub Actions compilará los documentos y actualizará automáticamente el **Release principal (`/releases/latest`)** ordenando los archivos dentro de su unidad.
+4. **Hacé `git commit` y `git push`** (sin subir ningún `.pdf`, `.epub` ni `.docx`): si pusheás a una rama auxiliar (`changes/**`) o abrís un Pull Request, GitHub Actions verificará el formato y la compilación de prueba; al integrarse en **`main`**, actualizará automáticamente el **Release principal (`/releases/latest`)** ordenando los archivos dentro de su unidad.
 
 ---
 
@@ -25,6 +25,8 @@ El pipeline de GitHub Actions ([`.github/workflows/editorial-ci.yml`](../.github
 
 ```text
 content/
+├── programa/
+│   └── Planificación Académica 2026.md
 ├── unidades/
 │   ├── unidad-0/
 │   │   └── Conceptos Previos.md
