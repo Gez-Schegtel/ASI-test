@@ -784,6 +784,8 @@ Se debe elaborar la lista de proyectos necesarios para implementar los sistemas 
 
 > Aun cuando dicha estructura aparece como estrictamente secuencial en la figura, **siempre son necesarias iteraciones** en la aplicación del procedimiento.
 
+\newpage
+
 📝 **Cuadro resumen integrador de las 4 fases:**
 
 | **Fase** | **Responsables principales** | **Resultados / Entregables clave** |
@@ -914,24 +916,34 @@ El problema en la estimación/pronóstico de los costos nace en primer lugar por
 Esta **lista de control para los costos de los IS** ayuda a las empresas a identificar, cuantificar y evaluar los costos de los IS. La lista contempla:
 
 - **Costos de hardware**: están compuestos por el hardware de procesamiento, por maquinarias tales como impresoras, soportes de almacenamiento, accesorios, etc.
+  *Ejemplos (Robson): servidores centrales, PCs distribuidas, impresoras, discos de almacenamiento y accesorios (cuya dispersión física dificulta auditarlos).*
 
 - **Costos de software**: la solución más barata está representada por los paquetes ya hechos, aunque involucran costos significativos de evaluación y especificación. Los desarrollos internos pueden implicar sumas enormes y desconocidas.
+  *Ejemplos (Robson): compra de paquetes enlatados (más el costo de evaluarlos), programación interna a medida y curva de aprendizaje inicial de generadores de aplicaciones.*
 
 - **Costos de instalación**: las instalaciones de sistemas varían en complejidad y, por lo tanto, en costos. Algunas pueden requerir de especialistas externos cuyo costo también debe incluirse, así como el costo de ingreso de datos o ***data entry*** cuando se convierten sistemas manuales, o el costo de conversión de datos en los sistemas ya computarizados.
+  *Ejemplos (Robson): honorarios de consultores/instaladores externos, tipeo inicial de archivos manuales en papel (data entry) y migración/conversión de bases de datos viejas.*
 
 - **Costos de entorno**: se refiere al entorno físico de los sistemas de información: cableado, muebles, aire acondicionado, etc. Asimismo, deben incluirse los costos de entorno humano, tales como seguridad, salud y costos legales.
+  *Ejemplos (Robson): cableado, mobiliario, refrigeración/aire acondicionado y pisos falsos (entorno físico); ergonomía, higiene laboral y cumplimiento de normativas legales (entorno humano).*
 
 - **Costos de funcionamiento**: los costos de energía eléctrica, de comunicación de datos para el trabajo remoto y de tarifas de suscripción para servicios externos de datos, tales como bases de datos online, etc.
+  *Ejemplos (Robson): facturas de electricidad, líneas telefónicas/enlaces para trabajo remoto, insumos de impresión y abonos a bases de datos online o bulletin boards.*
 
 - **Costos de mantenimiento**: debe establecerse si estos costos serán realizados de manera planeada y previsible a través de contratos de servicio y mantenimiento, o bien de forma menos predecible mediante el personal interno.
+  *Ejemplos (Robson): abonos anuales de soporte técnico con proveedores externos (previsibles) o horas del personal técnico interno reparando fallas de hardware y «averías» o actualizaciones de software.*
 
 - **Costos de seguridad**: deben comprender la toma de medidas para reducir el peligro de daños accidentales o deliberados a elementos lógicos o físicos de los IS; también abarca el costo de los riesgos inevitables y de los planes de recuperación de desastres.
+  *Ejemplos (Robson): backups externos (off-site), controles de acceso y contraseñas, antivirus, sistemas contra incendios no contaminantes, seguros de equipos/datos y planes de contingencia.*
 
 - **Costos de red**: software, hardware y management de redes involucran costos adicionales a los de las aplicaciones que utilizan la red.
+  *Ejemplos (Robson): equipos y software de conectividad para enlazar PCs en red, además de los costos de administración de datos (modelado de datos corporativos, planificación de repositorios y gestión de almacenamiento).*
 
 - **Costos de capacitación**: son los más desestimados, y prácticamente está aceptado que el verdadero alcance de los costos de capacitación, de educación de fondo, de capacitación específica y de apoyo y actualización continua está indocumentado.
+  *Ejemplos (Robson): cursos de formación general para el personal, entrenamiento específico en el nuevo software para usuarios finales y capacitación continua de los técnicos en nuevas metodologías.*
 
 - **Costos amplios organizacionales**: en este ítem globalizador se ubican los costos de incompatibilidad, las estructuras nuevas de salarios, los costos transicionales y los costos de management.
+  *Ejemplos (Robson): costos de gestión del cambio organizacional, recategorización salarial para retener especialistas, pérdida temporal de ritmo o doble trabajo mientras se pasa de la operatoria vieja a la nueva (costos transicionales) y tiempo gerencial dedicado a negociar y reorganizar tareas.*
 
 ### Niveles de inversión en IS.
 
@@ -1031,13 +1043,19 @@ Según el modelo de **Silk (1991)** y las **tres eras de la información** (Silk
 | **Efectividad** | Táctico (ej. un DSS) | Mayor rendimiento de los activos (**RoA**) | **Tiende a "blanda":** incluye algo de capital y mide intangibles con encuestas | **E2: Informar** |
 | **Avance estratégico (Competitividad)** | Estratégico | Crecimiento del negocio (intangible) | Técnicas complejas de largo plazo; como los efectos reales solo se ven después, Silk habla de justificación por **"acto de fe"** | **E3: Transformar** (su beneficio genérico es la explotación) |
 
+- **$E_1$ — Automatizar (Eficiencia):** reemplaza trabajo manual rutinario en el nivel operacional. Su beneficio es **«duro» (tangible)** y se evalúa con métricas contables tradicionales (VAN, flujo de fondos) midiendo el desplazamiento o la evitación de costos (escala base $B_1$).
+
+- **$E_2$ — Informar (Efectividad):** provee información a los mandos tácticos (ej. sistemas DSS) para decidir mejor y elevar el **RoA**. Su beneficio es **«blando»** (combina algo de $E_1$ con beneficios intangibles medidos mediante encuestas o investigaciones) y su impacto potencial es mayor ($B_2 = B_1 \times 10$).
+
+- **$E_3$ — Transformar (Explotación / Avance estratégico):** utiliza los SI/TI a nivel estratégico para transformar el negocio y ganar competitividad. Es una inversión de largo plazo sin probabilidades conocidas a priori pero de altísimo impacto potencial ($B_3 = B_1 \times 100$), por lo que se justifica mediante **«acto de fe»** (*«si apoya nuestra dirección estratégica, debemos hacerlo»*).
+
 > ⚠️ **Atención (Complemento integrador):** *El siguiente cuadro resume el cruce entre los 3 niveles de Chiavenato, los beneficios de Silk/Robson y los estilos de Management de Robson para facilitar preguntas de relación de columnas en los exámenes.*
 
-| **Nivel Jerárquico (Chiavenato)** | **Entorno y Foco** | **Tipo de Beneficio (Silk/Robson)** | **Orientación / Medición** | **Enfoque del Management** |
+| **Nivel Jerárquico (Chiavenato)** | **Entorno y Foco** | **Tipo de Beneficio (Silk/Robson)** | **Orientación / Medición** | **Enfoque del Management (Robson 6.1.2)** |
 | --- | --- | --- | --- | --- |
-| **3. Institucional (Alta Dirección)** | Sistema Abierto / Incertidumbre | Competitividad (Avance Estratégico) | Crecimiento / Intangible (*Acto de fe*) | **Administración de la Información** (Inversión de capital) |
-| **2. Intermedio (Táctico / Mandos Medios)** | Amortiguador / Articulador | Efectividad | Mayor RoA / Técnicas blandas (Ej.: Sistemas DSS) | **Administración del uso de los SI** |
-| **1. Operacional (Núcleo Técnico)** | Sistema Cerrado / Certeza y Rutinas | Eficiencia | Ahorro de Costos / Tangible (Técnicas duras) | **Administración de la Tecnología / Computación** (Gasto operativo) |
+| **3. Institucional (Alta Dirección)** | Sistema Abierto / Incertidumbre | Competitividad (Avance Estratégico) | Crecimiento / Intangible (*Acto de fe*) | **Management de información** (ve al SI como **inversión de capital**) |
+| **2. Intermedio (Táctico / Mandos Medios)** | Amortiguador / Articulador | Efectividad | Mayor RoA / Técnicas blandas (Ej.: Sistemas DSS) | *Transición crítica entre ambos* (del control del gasto a la concreción de beneficios por el uso de la información) |
+| **1. Operacional (Núcleo Técnico)** | Sistema Cerrado / Certeza y Rutinas | Eficiencia | Ahorro de Costos / Tangible (Técnicas duras) | **Management de computación** (ve al SI como **gasto operativo**) |
 
 Así como involucraban costos tangibles e intangibles, las inversiones en los IS también involucran **beneficios tangibles e intangibles**. Uno de los grandes problemas al juzgar el valor de la información consiste en reconocer la diferencia entre beneficios tangibles e intangibles, y en tener algún método para estimar el valor de los beneficios intangibles.
 
