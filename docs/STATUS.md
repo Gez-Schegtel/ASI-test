@@ -16,7 +16,7 @@
 | Dominio | Ubicación Actual (`AS-IS`) | Ubicación Canónica (`TO-BE`) | Estado Actual |
 | :--- | :--- | :--- | :--- |
 | Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
-| Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05, 06, 07 y 08 implementadas** + Guía de subida lista; Spec 03-A a la espera de material |
+| Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05, 06, 07 y 08 implementadas**; **Spec 09** en curso (archivos en repo listos, pendiente *Rulesets* en GitHub); Spec 03-A a la espera de material |
 | Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `enunciados-cuestionarios/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
 | Apuntes y cuestionarios por Unidad | `content/unidades/` (`unidad-0/`, `unidad-1/`, `unidad-3/`, `unidad-6/`) | `content/unidades/<unidad-x>/` | **Organizado por Unidad (Unix standard) y normalizado** |
 | Trabajos prácticos y guías | `content/trabajo-practico/` (`parte-1/`, `parte-2/`) | `content/trabajo-practico/` | **Migrado y 100% en `.md` (Unix standard)** |
@@ -25,7 +25,7 @@
 | Recursos gráficos | `assets/` (354 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
 | Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`, `mkrelease`, `pdf2md`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
-| Pipelines CI/CD | `.github/workflows/editorial-ci.yml` | `.github/workflows/` | **Implementado con imagen GHCR (`asi-toolchain`), Release continuo (`apuntes-al-dia`) y snapshots históricos (`v*`) (Spec 06)** |
+| Pipelines CI/CD y gobernanza | `.github/workflows/editorial-ci.yml` + `.github/CODEOWNERS` | `.github/` | **Implementado con imagen GHCR (`asi-toolchain`), Release continuo (`apuntes-al-dia`), snapshots históricos (`v*`) validados contra `main` y `CODEOWNERS` (`@Gez-Schegtel`)** |
 
 ### Métricas Auditadas del Árbol Actual (Post-Spec 06)
 
@@ -87,6 +87,8 @@
 
 8. **[08-estandarizacion-unix-carpetas.md](specs/08-estandarizacion-unix-carpetas.md)** — *Estado: **Implementada** (2026-11-11)*. Estandarización de todas las carpetas del repositorio al formato Unix clásico en minúsculas y sin espacios (`unidad-0` a `unidad-6`, `trabajo-practico/parte-1`, `parte-2`, `labs`), con compatibilidad hacia atrás en `md2pdf` y `mkrelease`.
 
+9. **[09-gobernanza-ramas-pr-y-releases.md](specs/09-gobernanza-ramas-pr-y-releases.md)** — *Estado: **Parcialmente implementada en el repo** (2026-11-14; pendiente activación de Rulesets en GitHub)*. Incorporación de `.github/CODEOWNERS` (`* @Gez-Schegtel`), mínimo privilegio por job y validación en CI de que los tags `v*` pertenezcan a `main`, junto con el diseño de *Repository Rulesets* para proteger `main` y tags `v*`.
+
 ---
 
 ## 4. Tablero de Pendientes y Decisiones Abiertas
@@ -127,9 +129,29 @@
 
 - [ ] Implementar **Spec 03 (Parte A)**: consolidar las unidades teóricas faltantes cuando esté listo el material de estudio.
 
+- [ ] Completar **Spec 09 (en GitHub)**: pushear los cambios a `myfork/main` y activar los *Repository Rulesets* de `main` y tags `v*` en `Gez-Schegtel/ASI-test`.
+
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-14` — Gobernanza de `main`, `CODEOWNERS` y Blindaje de Tags `v*` (Spec 09)
+
+* **Contexto**: Relevamiento del estado de protección de `Gez-Schegtel/ASI-test` (`branches/main` sin protección y `rules/branches/main` vacío) y diseño de controles para garantizar que solo el propietario pueda hacer `push` directo a `main`, que los colaboradores integren cambios vía PR aprobada por el propietario con pruebas exitosas, y que ninguna Release se publique fuera de `main` o sin pasar `lint` y `build`.
+
+* **Acciones ejecutadas**:
+
+  * **Redacción de Spec 09**: Creación de `docs/specs/09-gobernanza-ramas-pr-y-releases.md`.
+
+  * **Creación de `.github/CODEOWNERS`**: Definición de `* @Gez-Schegtel` para exigir revisión obligatoria del propietario en Pull Requests.
+
+  * **Refuerzo en `.github/workflows/editorial-ci.yml`**:
+
+    * Separación de permisos mínimos por job (`lint`: `contents: read`; `build`: `contents: write`, `packages: write`).
+
+    * Verificación obligatoria para tags `v*` (`fetch-depth: 0` + `git merge-base --is-ancestor "${GITHUB_SHA}" refs/remotes/origin/main`) impidiendo publicar Releases o imágenes GHCR desde commits que no pertenezcan a `main`.
+
+* **Pendiente**: Push a `myfork/main` y configuración de los *Repository Rulesets* en GitHub (`Settings → Rules → Rulesets`).
 
 ### `2026-11-14` — Publicación de Releases y GHCR Exclusiva para `main` (y Tags `v*`) + Sincronización Documental
 

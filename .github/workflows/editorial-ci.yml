@@ -14,14 +14,12 @@ on:
       - master
   workflow_dispatch:
 
-permissions:
-  contents: write
-  packages: write
-
 jobs:
   lint:
     name: Lint Markdown & Reglas del Repositorio
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v7
@@ -73,9 +71,26 @@ jobs:
     name: Compilar Apuntes (PDF & EPUB)
     needs: lint
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      packages: write
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v7
+        with:
+          fetch-depth: ${{ startsWith(github.ref, 'refs/tags/v') && 0 || 1 }}
+
+      - name: Verificar que el tag v* pertenezca a la rama main
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin +refs/heads/main:refs/remotes/origin/main
+          if ! git merge-base --is-ancestor "${GITHUB_SHA}" refs/remotes/origin/main; then
+            echo "❌ El tag ${GITHUB_REF_NAME} (${GITHUB_SHA}) no pertenece a la rama main. Publicación rechazada."
+            exit 1
+          fi
+          echo "✔ Tag ${GITHUB_REF_NAME} verificado como descendiente de main."
 
       - name: Obtener o construir imagen Docker del toolchain (ghcr.io)
         shell: bash
