@@ -24,9 +24,7 @@ numbersections: true
 
 > La cátedra pide que los puntos **1, 3, 4, 5-b-II, 5-b-VI y 11** sean respuestas y conclusiones **elaboradas por el alumno** a partir del material.
 
-# 1. Ubicación y función de los SI/TI en la cadena de valor {-}
-
-> *Interpretar, teniendo en cuenta la definición de sistemas de información propuesta por Andreu, Ricart y Valor, la ubicación y función de los SI/TI en la cadena de valor de la organización.*
+# 1. Interpretar, teniendo en cuenta la definición de sistemas de información propuesta por Andreu, Ricart y Valor, la ubicación y función de los SI/TI en la cadena de valor de la organización. {-}
 
 Definición de **sistema de información** según Andreu, Ricart y Valor:
 
@@ -48,7 +46,7 @@ Definición de **sistema de información** según Andreu, Ricart y Valor:
 
 - **Soporte a la estrategia de negocio:** el SI está al servicio del enfoque de negocio. Su función es apoyar la ejecución de la estrategia, y puede llegar a ser un elemento activo de ella.
 
-# 2. Relación entre sistemas de información y tecnologías de información {-}
+# 2. Explicar la relación entre Sistemas de Información y Tecnologías de Información. {-}
 
 Los **SI** definen el **qué**: cuál es la información que la organización necesita para funcionar, cuál es realmente significativa para la toma de decisiones y cuál sirve para alinearse con la estrategia de negocio.
 
@@ -56,7 +54,7 @@ Las **TI** se enfocan en el **cómo**: en qué tecnologías nos apoyamos para ll
 
 Además, la tecnología **no es neutral**: tiene su propia idiosincrasia e influye sobre el SI. Puede ofrecer mejores maneras de hacer las cosas, pero también puede obligar a la empresa a cambiar su forma de trabajar. Por eso no alcanza con "hacer lo mismo de siempre con otra tecnología"; hay que conocer lo que la tecnología puede aportar al SI.
 
-# 3. ¿Por qué deben alinearse los SI con las estrategias de la organización? {-}
+# 3. ¿Por qué deben alinearse los sistemas de información con las estrategias de la organización? {-}
 
 Porque **el SI no es un elemento independiente: su propósito es contribuir a poner en práctica la estrategia del negocio**. Si las estrategias son lo que la empresa tiene que llevar a cabo para lograr sus objetivos, el SI tiene que ser coherente con ellas en su estructura y en sus funciones; de lo contrario, apoya cosas que no son prioritarias o deja sin apoyo las que sí lo son.
 
@@ -80,9 +78,7 @@ Edwards, Ward y Bytheway (cap. 4) muestran lo que pasa cuando falta una estrateg
 
 En síntesis: sin alineación se gasta más de lo necesario para obtener menos beneficios de los esperados.
 
-# 4. Metodología de alineamiento de Andreu, Ricart y Valor {-}
-
-> *Interprete cada etapa (finalidad, posibles técnicas) y deduzca qué salida se obtiene de cada etapa y a qué alimenta. ¿Qué es un Plan de SI/TI?*
+# 4. De acuerdo con la metodología de alineamiento que describen Andrew Et al., interprete cada etapa (finalidad, posibles técnicas vistas o conozca que se puedan aplicar) y deduzca qué salida se obtiene de cada etapa, a qué alimenta. ¿Qué es un Plan de SI/TI?. {-}
 
 El **Plan de TI/SI** es el resultado de un procedimiento sistemático de toma de decisiones que define qué debe hacer la organización en el futuro próximo con sus sistemas de información (ver la pregunta 11). Se elabora **desde una perspectiva de negocio y no puramente tecnológica**, por eso es responsabilidad de la dirección y deben participar todas las áreas de la empresa. Los detalles técnicos quedan para las fases posteriores, a cargo de especialistas.
 
@@ -142,17 +138,19 @@ El procedimiento tiene cuatro fases:
 
 - **Alimenta a:** la ejecución (compras de hardware y software, desarrollo de aplicaciones) y el control de la dirección, que verifica que el SI se construya de acuerdo con la estrategia.
 
-# 5. Cartera de aplicaciones {-}
+# 5. Cartera de aplicaciones: {-}
 
-**a)** Antes de leer este tema en Edwards, Ward y Bytheway hay que conocer la **matriz BCG**, para entender cómo los autores la trasladan a la clasificación de aplicaciones. Ver el video [Conceptos previos para la cartera de aplicaciones](https://www.youtube.com/watch?v=k5VDNqOUPSw).
+## a) Previo a la lectura en Edwards at all de este tema, es indispensable conocer antes la matriz BCG para luego entender la extrapolación que proponen estos autores de esta herramienta para clasificar las aplicaciones en un contexto de alineamiento estratégico y, por consecuencia, qué significa una aplicación de una clase determinada. Para ello, hay que acceder al aula virtual y ver el video etiqueta como CONCEPTOS PREVIOS PARA LA CARTERA DE APLICACIONES {-}
 
-**b)** Preguntas sobre la cartera de aplicaciones:
+Ver el video [Conceptos previos para la cartera de aplicaciones](https://www.youtube.com/watch?v=k5VDNqOUPSw).
+
+## b) Preguntas sobre la cartera de aplicaciones {-}
 
 ![](../../../assets/u1i31.png)
 
 <sub>*Fuente: Edwards, Ward y Bytheway, **Fundamentos de sistemas de información** (2.ª ed.), Fig. 6.1: La cartera de aplicaciones de sistemas de información.*</sub>
 
-## I. ¿Qué es el análisis de la cartera de aplicaciones? {-}
+### I. ¿Qué es el análisis de la cartera de aplicaciones? {-}
 
 Es un esquema de clasificación, desarrollado originalmente por **McFarlan**, que permite evaluar y administrar el conjunto de sistemas de información de una empresa (actuales, planificados y potenciales) según **la contribución que hacen al éxito del negocio**, y no según la forma en que se suministran.
 
@@ -168,7 +166,7 @@ Así como una empresa gestiona una cartera de productos o de inversiones, este e
 
 Su mayor fuerza no es dar una receta para clasificar sistemas, sino servir de **vehículo para una discusión informada**: permite que la alta dirección, los mandos medios, los usuarios y los profesionales de SI lleguen a una visión común para **optimizar el uso de los recursos, mejorar la contribución de los sistemas actuales y elegir el mejor enfoque para las nuevas inversiones**.
 
-## II. ¿Qué significa cada segmento respecto de su aporte a la organización en el contexto estratégico? {-}
+### II. ¿Qué significa cada segmento respecto de su aporte a la organización en el contexto estratégico? {-}
 
 - **Estratégicas:** son críticas para ejecutar la estrategia futura y asegurar el éxito a largo plazo. Su aporte es **obtener o mantener una ventaja competitiva** o alcanzar los factores críticos de éxito fijados por la dirección. En la analogía con la BCG, son las **"estrellas"**.
 
@@ -178,7 +176,7 @@ Su mayor fuerza no es dar una receta para clasificar sistemas, sino servir de **
 
 - **De apoyo:** son útiles, pero no críticas ni para el éxito actual ni para la estrategia futura. Suelen ser sistemas estándar o administrativos. Su aporte no es la ventaja competitiva, sino **mejorar la eficiencia, cumplir requisitos legales y controlar costos**, sin consumir recursos que hacen falta en los otros cuadrantes. Se asemejan al **"perro"**.
 
-## III. ¿Qué son y cuáles son las estrategias genéricas para la gestión de los SI/TI? {-}
+### III. ¿Qué son y cuáles son las estrategias genéricas para la gestión de los SI/TI.? {-}
 
 **¿Qué son?** Son **marcos generales que guían cómo una organización vincula la gestión de los SI/TI con la dirección general de la empresa**: cómo identifica las oportunidades de la TI, cómo asigna recursos, a qué ritmo adopta nuevas tecnologías y qué impacto espera de la TI.
 
@@ -204,7 +202,7 @@ Son seis:
 
 <sub>*Fuente: Edwards, Ward y Bytheway, **Fundamentos de sistemas de información** (2.ª ed.), Fig. 6.3: Relación entre las estrategias genéricas y la cartera de aplicaciones.*</sub>
 
-## IV. ¿Cuáles son los factores para la evaluación de las prioridades de las aplicaciones? {-}
+### IV. ¿Cuáles son los factores para la evaluación de las prioridades de las aplicaciones? {-}
 
 Para optimizar el uso de los recursos y afrontar la incertidumbre (la probabilidad de que una aplicación fracase), hay que evaluar **tres factores** (Edwards, p. 120):
 
@@ -214,7 +212,7 @@ Para optimizar el uso de los recursos y afrontar la incertidumbre (la probabilid
 
 - **Riesgos:** lo que probablemente va a ocurrir. Los principales factores de riesgo son el tamaño y la duración del proyecto, la inestabilidad de la empresa, la tasa de cambio de la organización, el número de partes que la componen y los factores técnicos de usar tecnologías nuevas.
 
-## V. ¿Cuáles son las etapas propuestas por Edwards, Ward y Bytheway para determinar las prioridades? {-}
+### V. ¿Cuáles son las etapas propuestas por Edwards, Ward y Bytheway para determinar las prioridades? {-}
 
 **Etapa 1. Evaluar cada aplicación según los tres factores** de la pregunta anterior: beneficios, recursos y riesgos (p. 120).
 
@@ -244,7 +242,7 @@ El plan global se ordena según la proporción:
 
 Así, **los recursos pueden reasignarse desde las aplicaciones de prioridad más baja hacia las de prioridad más alta**, con una base lógica y el acuerdo de los usuarios, y se pueden fijar los niveles de recursos necesarios para el futuro.
 
-## VI. ¿Dónde aplicaría la cartera de aplicaciones en el alineamiento estratégico? {-}
+### VI. ¿Dónde aplicaría la cartera de aplicaciones en el alineamiento estratégico? {-}
 
 Ubicándola en las cuatro fases de la metodología de Andreu, Ricart y Valor:
 
@@ -262,9 +260,7 @@ Ubicándola en las cuatro fases de la metodología de Andreu, Ricart y Valor:
 
 - **Fase IV – Programación:** la cartera define el **orden de ejecución**: el calendario del primer año y el presupuesto respetan las prioridades definidas en la fase anterior.
 
-# 6. Las tres cuestiones que requiere una estrategia de SI para implementarse {-}
-
-> *Sintetice las tres cuestiones principales que requiere una estrategia de SI para implementarse, en el contexto del "Valor de la inversión en IS".*
+# 6. Sintetice las tres cuestiones principales que requiere una estrategia de SI para implementarse, en el contexto del “Valor de la inversión en IS”. {-}
 
 Para que una estrategia de SI se haga realidad hay que **asignar recursos**, y eso exige gestionar **tres conjuntos interrelacionados de cuestiones** (Robson, cap. 7):
 
@@ -375,7 +371,7 @@ Con todos estos factores se arma la **ficha de evaluación** (Robson, Fig. 7.33)
 
 - Da una forma estructurada de evaluar los **beneficios, recursos y riesgos** que se usan para priorizar la **cartera de aplicaciones**.
 
-# 11. ¿Qué es un Plan de SI/TI? {-}
+# 11. ¿Qué es un Plan de SI/TI?. {-}
 
 El Plan de SI/TI es **el documento que traduce la estrategia de la empresa en decisiones concretas sobre sus sistemas de información**: qué proyectos se van a desarrollar en los próximos años, en qué orden y con qué recursos. No es un plan técnico sino de negocio, porque parte de las necesidades de información que surgen de cruzar las estrategias con las funciones y procesos de la empresa.
 

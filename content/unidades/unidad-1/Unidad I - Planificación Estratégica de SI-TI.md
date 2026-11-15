@@ -1081,8 +1081,6 @@ Es imposible mantener un grado de exactitud con relación a los beneficios, pero
 
 # Análisis de la cartera de aplicaciones.
 
-> 📝 **Apunte de clase:** esta parte está relacionada con las fases III y IV.
-
 Hay muchas maneras de clasificar los sistemas de información. Hasta ahora, la mayoría de las clasificaciones se basaban en la forma en que se suministran los sistemas, en lugar de en la contribución que hacen al éxito de la empresa. Hay un esquema de clasificación desarrollado originalmente por **McFarlan** que es de gran utilidad: compara el papel de los SI/TI entre diferentes organizaciones y facilita el análisis del conjunto de sistemas, tanto los actuales como los planificados y los potenciales. Toma la forma de una matriz y clasifica una aplicación como:
 
 - **De alto potencial**.
@@ -1101,11 +1099,7 @@ Esta clasificación se hace según sus contribuciones presentes y futuras, y tal
 
 <sub>*Fuente: Edwards, Ward y Bytheway, **Fundamentos de sistemas de información** (2.ª ed.), Fig. 6.1: La cartera de aplicaciones de sistemas de información.*</sub>
 
-> 📝 **Apunte de clase:** todas son aplicaciones estratégicas (si lo queremos ver) porque todas salen del alineamiento. La app estratégica posee una crítica competitiva.
-> ¿Por qué es estratégica la app estratégica? Va a apoyar altamente a la ejecución y estructura de la estrategia, la acompaña.
-> Pienso en los procesos de negocio que tengo (estrategias).
-
-> 📝 **Apunte de clase:** la cartera de aplicaciones es una HERRAMIENTA para clasificar las aplicaciones, en función de los beneficios y los recursos utilizados en ellas. Se agregaría el uso de la herramienta al plan de SI/TI.
+> 💡 «La cartera de aplicaciones funciona con una doble condición: es un resultado central del Plan de SI/TI (el catálogo priorizado de aplicaciones que satisfará las necesidades del negocio) y, al mismo tiempo, una herramienta analítica (matriz de McFarlan/Edwards) que clasifica los sistemas en cuatro cuadrantes según su contribución presente y futura al éxito de la empresa. El uso de esta herramienta se integra al Plan de SI/TI para auditar la situación actual (Fase II), balancear la asignación de recursos y definir las estrategias genéricas de gestión para los proyectos futuros (Fase III)».
 
 Algunos sistemas pueden existir ya, otros pueden estar en desarrollo, y otros pueden ser solamente una idea, pero todos ellos deben estar situados en la matriz según la contribución actual y futura, real o potencial, que ofrecen. La posición de una aplicación puede variar de una empresa a otra, según la madurez de la empresa y sus objetivos estratégicos. La fuerza del modelo de cartera no radica en que proporcione una receta para clasificar los sistemas, sino en que es un **vehículo para llevar a cabo una discusión constructiva e informada y alcanzar acuerdos**.
 
@@ -1115,11 +1109,13 @@ El modelo de cartera nos permite ver el equilibrio de las inversiones en términ
 
 <sub>*📝 Apunte de clase: Gráfica N.º 1, Matriz BCG.*</sub>
 
+\newpage 
+
 **Ejemplos de cartera de aplicaciones**
 
 ![](../../../assets/u1i33.png)
 
-<sub>*📝 Apunte de clase: ejemplos de cartera. Se basa en Edwards, Ward y Bytheway, **Fundamentos de sistemas de información** (2.ª ed.), Fig. 6.2, pero no coincide del todo (el libro ubica *Base de datos de personal* en apoyo).*</sub>
+<sub>*📝 Ejemplos de cartera. Edwards, Ward y Bytheway, **Fundamentos de sistemas de información** (2.ª ed.), Fig. 6.2.*</sub>
 
 ## Aplicaciones de alto potencial.
 
@@ -1145,7 +1141,7 @@ El enfoque predominante para las aplicaciones estratégicas es la orientación a
 
 > 📝 **Apunte de clase:** una aplicación será de índole estratégica cuando me coloque en una **posición ventajosa con respecto a la competencia**.
 
-| **Fuerzas motrices** | **Requisitos** |
+| 💥 **Fuerzas motrices** | ✅ **Requisitos** |
 | --- | --- |
 | Necesidades del mercado y/o presiones competitivas provocadas esencialmente desde el exterior. | Desarrollo rápido para alcanzar los objetivos de la empresa y hacer realidad los beneficios comerciales que ofrezca el marco de oportunidades. |
 | Objetivos empresariales, factores de éxito y visión de la dirección sobre cómo lograrlos. | Una solución flexible que se pueda adaptar aún más para responder a los cambios en el entorno empresarial. |
@@ -1157,7 +1153,7 @@ Este es el dominio tradicional de los SI/TI, para el que se han desarrollado her
 
 > 📝 **Apunte de clase:** una aplicación será clave para la operación cuando la **agilice**, por ejemplo, el sistema de cajas y control de stock de un supermercado. Implica todo lo que haga un uso **eficiente** de los recursos.
 
-| **Fuerzas motrices** | **Requisitos** |
+| 💥 **Fuerzas motrices** | ✅ **Requisitos** |
 | --- | --- |
 | Mejorar el rendimiento de las actividades existentes en términos de velocidad, exactitud, eficacia y economía. | Soluciones de alta calidad y gestión eficiente de los datos para garantizar estabilidad y reducir costos de modificaciones. |
 | Integrar los sistemas y datos para evitar errores y duplicaciones, y minimizar riesgos de ejecución inconsistente o ineficaz. | Equilibrar los costos con los beneficios y riesgos del negocio para encontrar la mejor solución al problema. |
@@ -1177,7 +1173,7 @@ Por ejemplo, un sistema de contabilidad general puede estar desfasado y ser inef
 
 > 📝 **Apunte de clase:** no tienen gran incidencia en las estrategias; me hacen estar presente en el mercado. Por ahí conviene comprar algo que esté hecho. Ejemplo: la aplicación fiscal de ARCA, impuesta por una norma jurídica que hay que cumplir (los requisitos legales figuran entre las fuerzas motrices de estas aplicaciones, ver tabla).
 
-| **Fuerzas motrices** | **Requisitos** |
+| 💥 **Fuerzas motrices** | ✅ **Requisitos** |
 | --- | --- |
 | Mejora en la productividad y la eficiencia de tareas específicas ya existentes. | Coste ínfimo, soluciones a largo plazo que muchas veces conducen a paquetes de software que sacrifican las necesidades del usuario frente a las soluciones disponibles. |
 | Requisitos legales que hay que cumplir para evitar delitos. | Evitar la obsolescencia adaptándose a la evolución constante de la industria de SI/TI. |
@@ -1213,8 +1209,6 @@ Estas estrategias son marcos generales que guían la identificación de las opor
 Esta estrategia requiere mucha dedicación por parte de la alta dirección y puede, por tanto, ser difícil de implementar. También puede distanciarse de la realidad operativa de la empresa e inhibir la innovación.
 
 La planificación central es esencialmente una estrategia de gestión ***orientada a la demanda***, ya que se centra en responder a las necesidades de la organización, mediante la cual la empresa y los directivos de TI planifican en conjunto la mejor forma de responder a todas las peticiones de aplicaciones prioritarias.
-
-> 📝 **Apunte de clase:** interviene la alta gerencia y el comité de SI/TI. Un estado, para su funcionamiento, podría utilizarlo.
 
 ## Hilo conductor (alto potencial).
 
@@ -1260,6 +1254,8 @@ Los SI/TI los proporciona un único proveedor dentro de la organización, al que
 
 Será necesaria una cierta capacidad ociosa para responder rápidamente a todas las demandas del usuario.
 
+> 🫟 En la estrategia de Monopolio (donde un único departamento de TI atiende obligatoriamente a toda la empresa), la capacidad ociosa significa mantener deliberadamente recursos desocupados o «en reposo» (servidores que no están al límite de su uso y programadores con horas libres no asignadas). Si no existiera esa capacidad ociosa y el área operara al 100% todo el tiempo, cualquier pedido imprevisto o urgente del usuario quedaría atrapado en una larga cola de espera (backlog), provocando demoras y quejas.
+
 La medida principal de la efectividad de este planteamiento es la satisfacción del usuario con los servicios centralizados; también será importante la magnitud de la cartera de peticiones de sistemas pendientes.
 
 El gasto global en SI/TI es fácil de identificar y controlar.
@@ -1294,13 +1290,15 @@ Los síntomas son los mismos en muchas industrias: alta rotación del staff y di
 
 ## Resumen de las estrategias genéricas.
 
-![](../../../assets/u1i36.png)
+![](../../../assets/u1i36.png){width=100%}
 
 <sub>*Fuente: Edwards, Ward y Bytheway, **Fundamentos de sistemas de información** (2.ª ed.), Tabla 6.5: Las estrategias genéricas (según Parsons), parte 1.*</sub>
 
-![](../../../assets/u1i37.png)
+![](../../../assets/u1i37.png){width=100%}
 
 <sub>*Fuente: Edwards, Ward y Bytheway, **Fundamentos de sistemas de información** (2.ª ed.), Tabla 6.5: Las estrategias genéricas (según Parsons), parte 2.*</sub>
+
+\newpage 
 
 ## Proyectando las estrategias genéricas sobre el modelo cartera.
 
@@ -1316,6 +1314,8 @@ Obsérvese que:
 
 - La planificación centralizada (aplicaciones estratégicas) es una estrategia de gestión de la demanda impulsada por las necesidades del negocio, mientras que el monopolio (aplicaciones clave para las operaciones) es fundamentalmente un planteamiento de gestión de la oferta; ambas **implican una centralización de la toma de decisiones**.
 
+    > ✴️ Mientras que la **Planificación Centralizada** centraliza las decisiones en la **cúpula directiva para definir *qué demandas de negocio* son prioritarias** para el futuro, el **Monopolio** centraliza las decisiones en el **área de informática para controlar *cómo se abastece la oferta técnica*** y garantizar la estabilidad diaria del núcleo operativo.
+
 - El hilo conductor (alto potencial) es un planteamiento de gestión orientado a la demanda impulsado por la tecnología.
 
 - El recurso escaso (aplicaciones de apoyo) es una estrategia de gestión de la oferta basada en la limitación de los recursos financieros.
@@ -1324,33 +1324,51 @@ Obsérvese que:
 
 **Estrategias para las aplicaciones de alto potencial**: una planificación excesiva de las aplicaciones de alto potencial puede ahogar la innovación. Las dos estrategias que mejor se adaptan son el **hilo conductor** y el **mercado libre**; ambas son arriesgadas, pero producirán innovación. Las cuestiones principales en este cuadrante tienen que ver con la evaluación de oportunidades y la identificación de la mejor forma de obtener beneficios.
 
-**Estrategias para las aplicaciones estratégicas**: las aplicaciones estratégicas precisan un enfoque de planificación centralizada para garantizar que sea la orientación hacia el negocio la que determine los requisitos y el planteamiento más apropiados para la implantación. También resuelve el nivel de riesgo que merece la pena correr para alcanzar los beneficios. Los sistemas estratégicos solamente tendrán éxito cuando llegan a tiempo, es decir, cuando están bien formulados y estrechamente integrados con las necesidades específicas de la empresa.
+**Estrategias para las aplicaciones estratégicas**: las aplicaciones estratégicas precisan un enfoque de **planificación centralizada** para garantizar que sea la orientación hacia el negocio la que determine los requisitos y el planteamiento más apropiados para la implantación. También resuelve el nivel de riesgo que merece la pena correr para alcanzar los beneficios. Los sistemas estratégicos solamente tendrán éxito cuando llegan a tiempo, es decir, cuando están bien formulados y estrechamente integrados con las necesidades específicas de la empresa.
 
-**Estrategias para las aplicaciones clave para las operaciones**: el monopolio es potencialmente restrictivo, aunque es ideal para reducir riesgos. Proporciona soluciones de calidad a largo plazo, una necesidad de los sistemas clave para las operaciones. El planteamiento altamente centralizado y controlador permite resolver las cuestiones críticas sobre la integración de funciones y de datos, de modo que se satisfacen todas las necesidades básicas de la empresa de la forma más eficaz y sin riesgo de error. Es esencial un enfoque muy estructurado.
+**Estrategias para las aplicaciones clave para las operaciones**: el **monopolio** es potencialmente restrictivo, aunque es ideal para reducir riesgos. Proporciona soluciones de calidad a largo plazo, una necesidad de los sistemas clave para las operaciones. El planteamiento altamente centralizado y controlador permite resolver las cuestiones críticas sobre la integración de funciones y de datos, de modo que se satisfacen todas las necesidades básicas de la empresa de la forma más eficaz y sin riesgo de error. Es esencial un enfoque muy estructurado.
 
-**Estrategias para las aplicaciones de apoyo**: la escasez de recursos (recurso escaso) es ideal para controlar las inversiones en sistemas de apoyo, porque obliga a realizar una clara evaluación de los resultados esperados antes de que suceda nada en absoluto. **También se puede aplicar mercado libre siempre que se permita a los usuarios utilizar sus propios fondos**. Esto puede funcionar bien, puesto que la integración no va a ser normalmente una cuestión crítica; incluso reduce el riesgo mediante una paulatina evolución de las ideas acerca de los sistemas, al tiempo que permite al usuario cierta autonomía y control financiero.
+**Estrategias para las aplicaciones de apoyo**: la escasez de recursos (**recurso escaso**) es ideal para controlar las inversiones en sistemas de apoyo, porque obliga a realizar una clara evaluación de los resultados esperados antes de que suceda nada en absoluto. **También se puede aplicar mercado libre siempre que se permita a los usuarios utilizar sus propios fondos**. Esto puede funcionar bien, puesto que la integración no va a ser normalmente una cuestión crítica; incluso reduce el riesgo mediante una paulatina evolución de las ideas acerca de los sistemas, al tiempo que permite al usuario cierta autonomía y control financiero.
 
-> 📝 **Apunte de clase:** hay varias estrategias acá por el hecho de que son de apoyo: no hay plata.
+**La utilización de las estrategias genéricas.** En el **Capítulo 6 de Edwards, Ward y Bytheway**, los autores explican que las estrategias genéricas no son recetas aisladas, sino un **marco de doble utilidad** para el administrador de sistemas, por lo que facilitan una adecuada gestión de los SI/TI de dos formas:
 
-**La utilización de las estrategias genéricas.** Las estrategias genéricas facilitan una adecuada gestión de los SI/TI de dos formas:
+**1. Para el diagnóstico (Evaluar el presente):**
 
-- **Para el diagnóstico**: aportan una perspectiva para evaluar la situación actual y comprender cómo se están gestionando los SI/TI. Hay una fuerte relación causa-efecto entre las aplicaciones desarrolladas y las estrategias adoptadas.
+* **Comprende la relación causa-efecto:** Los sistemas que una empresa tiene hoy no son fruto del azar; son la consecuencia directa de cómo se gestionó la informática en el pasado. 
 
-- **Para la formulación**: una vez identificada la futura cartera de aplicaciones y evaluados los puntos fuertes y débiles de las existentes, se pueden usar para identificar un plan de migración. Así se evita la **trampa de una sola estrategia universal**: decir "necesitamos la planificación centralizada" resulta atractivo, pero es imposible planificar todo de forma centralizada.
+* **Identifica el origen de los problemas:** Si una organización tiene sistemas aislados e incompatibles, la causa fue operar bajo un *Mercado Libre* descontrolado; si carece de innovación estratégica, la causa fue aplicar un *Recurso Escaso* que solo aprobaba proyectos con retorno financiero inmediato. El diagnóstico permite ponerle nombre al síntoma organizativo.
+
+**2. Para la formulación (Planificar el futuro y el camino de migración):**
+
+* **Diseña un plan de migración equilibrado:** Conociendo las debilidades actuales y las aplicaciones que se necesitan a futuro, se define qué estilo de gestión se aplicará a cada cuadrante de la cartera.
+
+* **Evita la «trampa de la estrategia universal»:** Históricamente, las empresas cometieron el error de buscar una única estrategia para toda la informática. Decir *«ahora todo se planificará de forma centralizada»* suena ordenado, pero en la práctica resulta imposible y asfixia la agilidad del negocio. 
+
+* **Gestión simultánea y diferenciada:** La verdadera formulación estratégica exige **combinar distintas estrategias al mismo tiempo**:
+
+  * Aplicar **control presupuestario estricto (*Recurso Escaso*)** sobre los sistemas de apoyo rutinarios para liberar dinero.
+
+  * Canalizar esos fondos hacia la **Planificación Centralizada** de los proyectos estratégicos de alto impacto corporativo.
+
+  * Mantener un **Monopolio riguroso** sobre las aplicaciones clave para que el núcleo operativo no falle.
+
+  * Dar **autonomía y flexibilidad (*Hilo Conductor* o *Mercado Libre*)** en las iniciativas de alto potencial para incentivar la innovación sin burocracia.
+
+> 💡 *«En síntesis, las estrategias genéricas sirven como **herramienta de diagnóstico** para entender por qué los sistemas actuales están como están (causa-efecto), y como **herramienta de formulación** para trazar la migración futura combinando distintos estilos de gestión según el cuadrante, evitando el error de intentar gobernar toda la tecnología con una única regla universal».*
 
 ## Migraciones de un segmento a otro (Edwards).
 
-La cartera de aplicaciones responde a la demanda de sistemas de información con los medios de abastecimiento más apropiados. Las aplicaciones de los cuatro cuadrantes vienen justificadas por diferentes razones y necesitan distintos enfoques para su desarrollo y gestión. El papel de los sistemas evolucionará también en el tiempo y será necesario migrar desde *un* segmento de la cartera a otro:
+La cartera de aplicaciones responde a la demanda de sistemas de información con los medios de abastecimiento más apropiados. Las aplicaciones de los cuatro cuadrantes vienen justificadas por diferentes razones y necesitan distintos enfoques para su desarrollo y gestión. El papel de los sistemas evolucionará también en el tiempo y será necesario migrar desde un segmento de la cartera a otro:
 
 - De alto potencial a estratégico, a medida que se logre el potencial.
 
-- De estratégico a clave para las operaciones, a medida que se pierde la ventaja competitiva y las desventajas amenazan, es decir, el sistema también se hará menos estable.
+- De estratégico a clave para las operaciones: a medida que los competidores imitan la innovación, se pierde la ventaja competitiva y el sistema pasa a ser un estándar necesario para evitar desventajas en el mercado (requiriendo mayor estabilidad y robustez para sostener la operatoria diaria).
 
-- Las oportunidades de alto potencial pueden producir solamente beneficios locales limitados de la categoría de apoyo.
+- De alto potencial a de apoyo: cuando al evaluar un prototipo se descubre que no logra impacto competitivo en el negocio, pero sí aporta mejoras operativas locales en un departamento puntual (por lo que se conserva como aplicación de apoyo sin pasar por estratégica).
 
 - Los sistemas clave para las operaciones pueden llegar a ser menos críticos a medida que la empresa evoluciona, llegando a ser reclasificados como "de apoyo".
 
-Finalmente, algunas aplicaciones, principalmente los sistemas de apoyo, quedarán obsoletas y será preciso eliminarlas.
+- Finalmente, algunas aplicaciones, principalmente los sistemas de apoyo, quedarán obsoletas y será preciso eliminarlas.
 
 Esta evolución refleja la de los productos en la cartera comercial de una empresa: los productos de éxito se desplazan con el tiempo de "niño problema" a "estrella naciente", luego a "vaca" y a "perro", antes de ser eliminados. En cada etapa precisan una gestión diferente y más o menos recursos. Del mismo modo, a medida que una aplicación pasa de un cuadrante a otro debe cambiar el enfoque de su desarrollo y gestión; si no, se produce un uso excesivo y desequilibrado de recursos.
 
@@ -1374,7 +1392,7 @@ Al igual que las aplicaciones estratégicas, las de alto potencial han de mostra
 Dado que tiene que ver con la energía y el entusiasmo de sus defensores, la priorización y la utilización de recursos por una aplicación de alto potencial son, en efecto, autogestionadas, aunque los recursos secundarios esenciales pueden ser un problema. Los resultados dependerán no solamente del valor de la idea, sino también de la fuerza con la que se persiga.
 
 **Clave para las operaciones**
-La definición de prioridades para los sistemas clave para las operaciones es más problemática que para los sistemas de apoyo o los estratégicos, porque la lógica es más compleja. Los argumentos para los sistemas clave para las operaciones serán básicamente consideraciones económicas, riesgos para el negocio actual, FCE y mejoras de infraestructura.
+La definición de prioridades para los sistemas clave para las operaciones es más problemática que para los sistemas de apoyo o los estratégicos, porque la lógica es más compleja. Los argumentos para los sistemas clave para las operaciones serán básicamente 1) consideraciones económicas, 2) riesgos para el negocio actual, 3) FCE y 4) mejoras de infraestructura.
 
 Debe compararse el costo y los recursos empleados por el proyecto con su importancia en cada una de las cuatro categorías para establecer las prioridades globales.
 
@@ -1385,6 +1403,8 @@ Esta tarea es compleja porque **cada tipo de aplicación** (estratégica, de apo
 **La dirección debe decidir qué tipo de beneficio será prioritario**: **si se enfocará en el retorno económico, en la generación de ventajas competitivas o en la reducción de riesgos**. Esta decisión se verá influida por varios factores: la *estrategia general de la empresa* (por ejemplo, si busca liderazgo o eficiencia), las *capacidades internas del área de SI/TI* (especialmente su nivel de servicio y recursos), y *la experiencia de los usuarios para identificar necesidades y adoptar soluciones con éxito.*
 
 Un plan global de SI/TI debe desarrollarse con una secuencia lógica de prioridades basada en una relación entre los beneficios esperados (ajustados por el riesgo) y el consumo de los recursos limitados. Esto permite asignar los recursos de forma más racional, establecer niveles adecuados de captación futura y tener previsibilidad para realizar inversiones sostenidas.
+
+> 💭 La expresión **«establecer niveles adecuados de captación futura»** (o *«niveles de captación de recursos adecuados para el futuro»*) se refiere a **dimensionar con anticipación cuánto talento humano, qué infraestructura técnica y qué presupuesto financiero necesitará incorporar o «captar» la organización del entorno en los próximos años para poder hacer realidad los proyectos planificados**.
 
 📝 **Apunte de clase — resumen:**
 
@@ -1429,15 +1449,3 @@ Un plan global de SI/TI debe desarrollarse con una secuencia lógica de priorida
 | **Estratégica** | Más contribución a los objetivos del negocio (FCE) |
 | **Alto potencial** | Por el impulso del defensor y viabilidad |
 | **Clave para operaciones** | Por riesgo, costo, impacto en infraestructura y continuidad |
-
----
-
-# Modelo de Administración de Recursos de SI/TI.
-
-> ⚠️ **Atención (Sección en borrador / fuera del temario de la Unidad I):** *Este apartado quedó inconcluso en el apunte original porque el tema «Management de los Recursos de IS» (Robson, cap. 9) fue excluido de la planificación de la Unidad I y se evalúa en unidades posteriores.*
-
-📝 **Apunte de clase.**
-
-![](../../../assets/u1i35.png)
-
-<sub>*📝 Apunte de clase.*</sub>
