@@ -153,6 +153,8 @@
 
   * **Validación**: `mdnorm --check` sin observaciones en los 35 archivos de `content/` y documentación modificada; compilación completa (`md2pdf --all`) de los 20 documentos publicables (20 PDF + 20 EPUB), los 14 borradores (14 PDF + 14 EPUB), `content/labs/cmk/README.md` y casos borde (`<!-- matriz-2x2 -->` y `<!-- cuadricula -->`); verificación píxel a píxel contra `6f2d073` confirmando 19/20 PDFs y 19/20 EPUBs intactos sin regresiones y renderizado visual verificado en `Trabajo Práctico - Parte 1.pdf`.
 
+  * **Carátula de `Trabajo Práctico - Parte 1.md` en una hoja**: Incorporación de cabecera YAML (`title` + `\renewcommand{\maketitle}{}` vía `header-includes`) para evitar el título automático redundante de Pandoc arriba de la portada y compactar toda la carátula (UTN FRRe, logo, título, docentes y los 8 integrantes) en la página 1 (bajando de 26 a 25 páginas totales).
+
 ### `2026-11-14` — Gobernanza de `main`, `CODEOWNERS` y Blindaje de Tags `v*` (Spec 09)
 
 * **Contexto**: Relevamiento del estado de protección de `Gez-Schegtel/ASI-test` (`branches/main` sin protección y `rules/branches/main` vacío) y diseño de controles para garantizar que solo el propietario pueda hacer `push` directo a `main`, que los colaboradores integren cambios vía PR aprobada por el propietario con pruebas exitosas, y que ninguna Release se publique fuera de `main` o sin pasar `lint` y `build`.

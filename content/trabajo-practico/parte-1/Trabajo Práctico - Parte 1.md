@@ -1,3 +1,12 @@
+---
+title: "Trabajo Práctico Nº1 — Alineación del Plan Estratégico de SI/TI"
+header-includes:
+  - |
+    ```{=latex}
+    \renewcommand{\maketitle}{}
+    ```
+---
+
 \begin{center}
 {\huge\bfseries Universidad Tecnológica Nacional\par}
 \end{center}
