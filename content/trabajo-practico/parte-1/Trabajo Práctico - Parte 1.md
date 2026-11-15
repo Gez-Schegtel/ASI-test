@@ -81,13 +81,13 @@ A nivel operativo, trabaja en:
 
 ---
 
-### ADMINISTRADOR Y SUBADMINISTRADOR GENERAL
+### Administrador y Subadministrador General
 
 La administración de la Dirección de Vialidad Provincial estará a cargo de un Administrador y un Subadministrador General, quienes tendrán además, la representación legal del Organismo. El Administrador y Subadministrador General serán designados por el Poder Ejecutivo y durarán cuatro años en sus funciones.
 
 El Subadministrador General reemplazará al Administrador General en casos de ausencia, impedimento o enfermedad. Asimismo, lo asesorará y asistirá de conformidad con lo que determine la reglamentación.
 
-### INGENIERO JEFE
+### Ingeniero Jefe
 
 Su responsabilidad primaria es asistir al Administrador General y al Sub-Administrador General en todas las acciones y aspectos técnicos que hacen al cumplimiento del objetivo de la Dirección de Vialidad Provincial.
 
@@ -117,7 +117,7 @@ En general, todas estas tareas se realizan por Administración con profesionales
 
 La Dirección está compuesta por el Departamento de Estudios y Proyectos; el Departamento de Obras Hidráulicas, y el Departamento de Tierra y Contribución de Mejoras.
 
-### Direccion de Planificacion Vial
+### Dirección de Planificación Vial
 
 Esta Dirección se encarga, principalmente, de la planificación y coordinación del desarrollo del sistema vial provincial, de acuerdo con las necesidades sociales y económicas de los 25 departamentos que conforman la provincia y de la región. Además, promueve el desarrollo tecnológico para mejorar la calidad de las obras y servicios viales. Por otra parte, tiene a su cargo la supervisión de las tareas que se realizan en su ámbito, como planeamiento y evaluación de resultados, evaluación ambiental, inventario vial, censos de tránsito, control de cargas (pesos y dimensiones), educación y seguridad vial, accidentología, entre otras.
 

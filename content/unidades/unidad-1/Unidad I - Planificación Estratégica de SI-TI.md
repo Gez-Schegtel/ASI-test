@@ -383,7 +383,7 @@ La estrategia empresarial de una organización se formula mediante el análisis 
 
 - No hay forma de fijar niveles de recursos adecuados ni de priorizar las inversiones de manera coherente (*en síntesis: se gasta más de lo necesario para obtener menos beneficios de los esperados*).
 
-![](../../../assets/u1i13.png)
+![](../../../assets/u1i13.png){width=50%}
 
 <sub>*Fuente: Edwards, Ward y Bytheway, **Fundamentos de sistemas de información** (2.ª ed.), Fig. 4.1: La estrategia de SI y TI.*</sub>
 
@@ -391,7 +391,7 @@ El impacto potencial de los SI/TI sobre la empresa y en su entorno dependerá no
 
 Los SI/TI pueden y deben ser tenidos en cuenta en el proceso de la formulación de la estrategia empresarial, por cuanto pueden hacer que la estrategia de la empresa sea una realidad.
 
-![](../../../assets/u1i14.png)
+![](../../../assets/u1i14.png){width=100%}
 
 <sub>*Fuente: Edwards, Ward y Bytheway, **Fundamentos de sistemas de información** (2.ª ed.), Fig. 4.2: Entradas y salidas de la estrategia de SI/TI.*</sub>
 
