@@ -1079,6 +1079,50 @@ Es imposible mantener un grado de exactitud con relación a los beneficios, pero
 
 > 📝 **Apunte de clase:** para justificar una inversión en SI, no alcanza con evaluar **los ahorros** (eficiencia), sino que hay que considerar también el **valor que agrega** a distintos niveles: táctico y estratégico. Esto implica **identificar claramente los beneficios tangibles e intangibles**, directos e indirectos, y reconocer que **muchos beneficios clave no se pueden medir fácilmente, pero son fundamentales para la competitividad**.
 
+### Cómo clasificar un caso de beneficio genérico.
+
+**Criterio de la cátedra (correspondencia uno a uno):** en clase, la profesora establece una correspondencia directa entre el **nivel organizacional** que percibe el beneficio y el **tipo de beneficio genérico** (Robson, Fig. 7.17):
+
+- **Nivel Operacional** $\rightarrow$ **Eficiencia**
+
+- **Nivel Táctico** $\rightarrow$ **Efectividad**
+
+- **Nivel Estratégico** $\rightarrow$ **Competitividad** *(Avance estratégico)*
+
+*(Aclaración teórica: si bien el texto de Robson señala que en la práctica forman una matriz de $3 \times 3$ sin correspondencia estricta uno a uno —por ejemplo, sistemas estratégicos usados en gestión operacional—, para resolver casos de examen en la cátedra conviene aplicar la correspondencia uno a uno de arriba y confirmar qué es lo que mejora el SI).*
+
+| **Nivel (criterio 1 a 1)** | **Si el enunciado destaca…** | **Beneficio** | **Idea clave** |
+| --- | --- | --- | --- |
+| **Operacional** | Menos **tiempo, costo o errores** en una tarea que ya se hacía, casi siempre con una **cifra** (ej. «reduce 35 % el tiempo») | **Eficiencia** | **Hacer bien las cosas:** mismo resultado con menos recursos. Ahorro, tangible, justificación «dura» |
+| **Táctico** | Mejor **información, pronósticos, decisiones, coordinación entre áreas** o **calidad del proceso**, sin foco en el ahorro aislado | **Efectividad** | **Hacer lo que está bien:** mejora el rendimiento y el resultado del negocio. Mayor RoA, más intangible, justificación «blanda» |
+| **Estratégico** | **Ventaja frente a competidores**, mercados o productos nuevos, diferenciación, barreras de entrada, participación de mercado | **Competitividad** | **Avance estratégico:** crecimiento y posición frente al entorno. Intangible, de largo plazo, «acto de fe» |
+
+**Pistas para distinguirlos:**
+
+- **Eficiencia (Nivel Operacional):** el beneficio **se mide en un ahorro** (tiempo, dinero, personas) sobre **una tarea o proceso** operativo que ya existía.
+
+- **Efectividad (Nivel Táctico):** el SI ayuda a los mandos medios a **decidir, anticipar, coordinar o controlar mejor**; la mejora es de calidad o de resultado (puede venir acompañada de un porcentaje —como una suba del RoA o una reducción de tiempos entre departamentos—, siempre que la causa sea coordinar o decidir mejor y no simplemente abaratar una tarea aislada).
+
+- **Competitividad (Nivel Estratégico):** el enunciado apunta a la alta dirección y habla **del afuera** (competidores, mercado, clientes nuevos). Si no aparece nada de eso, no es competitividad.
+
+- Regla rápida: la eficiencia y la efectividad **miran hacia adentro** de la organización; la competitividad **mira hacia afuera**.
+
+> ⚠️ **Atención:** un **ahorro de tiempo no siempre es eficiencia**. Si el tiempo se reduce porque el SI **coordina o integra áreas distintas** (por ejemplo, ventas y depósito), pasa al plano táctico/de gestión y el beneficio es de **efectividad**. En Edwards (cap. 6), esto se vincula con las técnicas de Parker de **vinculación del valor** (coordinar mejor tareas de áreas diferentes) y **aceleración del valor** (acelerar las operaciones entre departamentos mediante la mejora de los sistemas).
+
+> 🕵🏼 **Nota:** Estas pautas se dedujeron a partir de preguntas que tomaron en exámenes.
+
+**Casos resueltos:**
+
+| **Caso** | **Nivel / Beneficio** | **Por qué** |
+| --- | --- | --- |
+| Un SI provee **ajustes entre los pedidos del cliente y las órdenes de almacenamiento**, con una mejora del 60 % en los tiempos entre ambos | **Táctico $\rightarrow$ Efectividad** | Coordina y acelera el flujo entre dos áreas distintas; no es solo ahorro de tiempo en una tarea aislada |
+| **Sistemas predictivos con IA** en la cadena de suministro: anticipan la demanda, optimizan el inventario y previenen disrupciones (de reactivo a proactivo) | **Táctico $\rightarrow$ Efectividad** | Mejora las decisiones, la anticipación y el rendimiento del inventario (RoA); no habla de competidores ni de ahorro puntual |
+| Un SI de control de contratistas que **reduce 35 % el tiempo de control** | **Operacional $\rightarrow$ Eficiencia** | La misma tarea operativa de control, en menos tiempo y con una cifra de ahorro |
+| Un SI que **mejora el proceso de control de contratistas** (sin cifra) | **Táctico $\rightarrow$ Efectividad** | Mejora la calidad del proceso de control y su resultado, de forma cualitativa |
+| **Pronósticos de ventas cada vez más precisos** que se usan en los planes de ventas | **Táctico $\rightarrow$ Efectividad** | Información para decidir mejor, usada por el nivel táctico (como el DSS de Robson) |
+
+> 📝 **Nota personal:** para pasar un caso a **competitividad**, el enunciado tendría que agregar algo como «ofrece entregas que ningún competidor logra», «capta clientes de la competencia», «abre un mercado nuevo» o «crea una barrera de entrada».
+
 # Análisis de la cartera de aplicaciones.
 
 Hay muchas maneras de clasificar los sistemas de información. Hasta ahora, la mayoría de las clasificaciones se basaban en la forma en que se suministran los sistemas, en lugar de en la contribución que hacen al éxito de la empresa. Hay un esquema de clasificación desarrollado originalmente por **McFarlan** que es de gran utilidad: compara el papel de los SI/TI entre diferentes organizaciones y facilita el análisis del conjunto de sistemas, tanto los actuales como los planificados y los potenciales. Toma la forma de una matriz y clasifica una aplicación como:
