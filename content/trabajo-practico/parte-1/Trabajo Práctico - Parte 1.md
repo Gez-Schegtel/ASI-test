@@ -373,22 +373,13 @@ Por lo tanto, se hace necesaria una transformación tecnológica que permita int
 
 ### Cartera de aplicaciones actuales:
 
-+----------------------------------------------------+----------------------------------------------------+
-| **Estrategia organizacional**                      | **Alto Potencial**                                 |
-+====================================================+====================================================+
-| - Mapa Vial Interactivo                            | - Asistentes de Inteligencia Artificial y Chatbots |
-| - Inteligencia de Negocios (BI) y Dashboards       | - Herramientas Mobile (Trabajo en terreno)         |
-| - GesTaller (Integración Interinstitucional)       |                                                    |
-+----------------------------------------------------+----------------------------------------------------+
-| **Clave para las operaciones**                     | **Apoyo**                                          |
-+----------------------------------------------------+----------------------------------------------------+
-| - StockDVP                                         | - Viaticar                                         |
-| - TallerDLM                                        | - RopasDVP                                         |
-| - OrdenesDVP                                       | - RRHH                                             |
-| - Consorcio                                        | - Calificaciones                                   |
-| - GesTaller                                        | - LexDoctor                                        |
-| - SiCC                                             |                                                    |
-+----------------------------------------------------+----------------------------------------------------+
+<!-- matriz-2x2 -->
+
+| **Estrategia organizacional** | **Alto Potencial** |
+| --- | --- |
+| • Mapa Vial Interactivo • Inteligencia de Negocios (BI) y Dashboards • GesTaller (Integración Interinstitucional) | • Asistentes de Inteligencia Artificial y Chatbots • Herramientas Mobile (Trabajo en terreno) |
+| **Clave para las operaciones** | **Apoyo** |
+| • StockDVP • TallerDLM • OrdenesDVP • Consorcio • GesTaller • SiCC | • Viaticar • RopasDVP • RRHH • Calificaciones • LexDoctor |
 
 En Clave para las operaciones, si bien poseen una buena estructura de sistemas, el siguiente paso para seguir creciendo, mirando hacia el futuro sería realizar la integración de sus sistemas como ser StockDVP, TallerDLM, OrdenesDVP, para evitar cruces manuales y duplicidad. A su vez en el SiCC eliminar el papel en el control de combustible para un mejor control sólido.
 
