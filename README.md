@@ -123,6 +123,8 @@ El diseño visual está calibrado para garantizar legibilidad académica tanto e
 
   * **`tablas-listas.lua`**: Transforma viñetas en celdas de tablas a listas nativas (`\begin{itemize}` en LaTeX / `<ul><li>` en EPUB).
 
+  * **`tablas-matriz.lua`**: Dibuja matrices 2×2 de 4 cuadrantes (`<!-- matriz-2x2 -->`) y tablas con bordes completos y encabezados sombreados (`<!-- cuadricula -->`).
+
   * **`preambulo.lua`**: Inyecta paquetes LaTeX y resuelve tipografías con respaldo de emojis sin romper personalizaciones de notas.
 
   * **`centrar-imagenes.lua`**: Centra figuras y respeta clases de alineación (`{.derecha}`, `{.izquierda}`).
