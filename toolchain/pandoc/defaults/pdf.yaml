@@ -20,3 +20,4 @@ filters:
   - ${.}/../filters/cortar-formulas.lua
   - ${.}/../filters/centrar-imagenes.lua
   - ${.}/../filters/tablas-listas.lua
+  - ${.}/../filters/tablas-matriz.lua

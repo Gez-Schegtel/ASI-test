@@ -170,13 +170,16 @@
 
 
 % ------------------------------------------------------------------------------
-% 2) Tablas con más aire entre filas
+% 2) Tablas con más aire entre filas (y sombreado en matrices 2x2)
 %
 %    \arraystretch multiplica la altura de las filas (el valor por defecto es
 %    1; acá 1,5). Se aplica solo dentro de las tablas ("longtable", que es lo
 %    que genera pandoc). Si se pusiera global, también ensancharía las líneas
 %    de autor y fecha del título.
+%    colortbl permite sombrear encabezados en tablas marcadas con
+%    <!-- matriz-2x2 --> o <!-- cuadricula --> (filtro tablas-matriz.lua).
 % ------------------------------------------------------------------------------
+\usepackage{colortbl}
 \AddToHook{env/longtable/begin}{\renewcommand{\arraystretch}{1.5}}
 
 

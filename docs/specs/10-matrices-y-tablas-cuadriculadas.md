@@ -4,7 +4,7 @@
 
 * **Fecha**: 2026-11-15
 
-* **Alcance**: Soporte editorial en `toolchain/pandoc/` (`tablas-matriz.lua`, `estilo.tex`, `estilo-epub.css`, `pdf.yaml`, `epub.yaml`) y actualización de las matrices 2×2 de McFarlan en `content/trabajo-practico/parte-1/Trabajo Práctico - Parte 1.md`.
+* **Alcance**: Soporte editorial en `toolchain/pandoc/` (`tablas-matriz.lua`, `estilo.tex`, `estilo-epub.css`, `pdf.yaml`, `epub.yaml`) y actualización de la matriz 2×2 de *Cartera de aplicaciones actuales* en `content/trabajo-practico/parte-1/Trabajo Práctico - Parte 1.md`.
 
 ---
 

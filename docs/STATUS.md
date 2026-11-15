@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > Este archivo es la **fuente de verdad viva y bitácora histórica** del repositorio de **Administración de Sistemas de Información (ASI)** — UTN FRRe. Debe consultarse al inicio de cada sesión y mantenerse estrictamente actualizado tras cada cambio estructural, de contenido o de *tooling*.
 
-* **Última actualización**: `2026-11-14`
+* **Última actualización**: `2026-11-15`
 
 * **Fase actual**: `Infraestructura Técnica, Sincronización de Toolchain (mdnorm, md2pdf, pdf2md, estilo.tex), Organización por Unidad, Imagen Docker GHCR y Publicación en Releases 100% Completadas -> En espera de material de estudio para Spec 03-Parte A`
 
@@ -16,13 +16,13 @@
 | Dominio | Ubicación Actual (`AS-IS`) | Ubicación Canónica (`TO-BE`) | Estado Actual |
 | :--- | :--- | :--- | :--- |
 | Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
-| Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05, 06, 07, 08 y 09 implementadas** + Guía de subida actualizada; Spec 03-A a la espera de material |
+| Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05, 06, 07, 08, 09 y 10 implementadas** + Guía de subida actualizada; Spec 03-A a la espera de material |
 | Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `enunciados-cuestionarios/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
 | Apuntes y cuestionarios por Unidad | `content/unidades/` (`unidad-0/`, `unidad-1/`, `unidad-3/`, `unidad-6/`) | `content/unidades/<unidad-x>/` | **Organizado por Unidad (Unix standard) y normalizado** |
 | Trabajos prácticos y guías | `content/trabajo-practico/` (`parte-1/`, `parte-2/`) | `content/trabajo-practico/` | **Migrado y 100% en `.md` (Unix standard)** |
 | Laboratorios y talleres | `content/labs/` (`cmk/`, `taller-1/`) | `content/labs/` | **Migrado** |
 | Programa de la materia | `content/programa/` (`Planificación Académica 2026.md`) | `content/programa/` | **Descompilado, normalizado y compilado** |
-| Recursos gráficos | `assets/` (354 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
+| Recursos gráficos | `assets/` (355 archivos, cero Base64) | `assets/` (único almacén sin Base64) | **Unificado al 100%** |
 | Toolchain editorial | `toolchain/Dockerfile`, `toolchain/bin/` (`mdnorm`, `md2pdf`, `mkrelease`, `pdf2md`) y `toolchain/pandoc/` | `toolchain/` | **Implementado y validado** (salida jerárquica en `build/` + imagen en `ghcr.io`) |
 | Plantillas y prompts | `plantillas/` | `plantillas/` | **En su lugar** |
 | Pipelines CI/CD y gobernanza | `.github/workflows/editorial-ci.yml` + `.github/CODEOWNERS` | `.github/` | **Implementado con imagen GHCR (`asi-toolchain`), Release continuo (`apuntes-al-dia`), snapshots históricos (`v*`) validados contra `main` y `CODEOWNERS` (`@Gez-Schegtel`)** |
@@ -33,7 +33,7 @@
 
 * **Imágenes Base64 incrustadas en Markdown**: **0**.
 
-* **Recursos gráficos centralizados en `assets/`**: **354 archivos**.
+* **Recursos gráficos centralizados en `assets/`**: **355 archivos**.
 
 * **Toolchain autocontenido (`toolchain/`)**:
 
@@ -47,7 +47,7 @@
 
   * `toolchain/bin/pdf2md`: Conversor inverso de PDF a Markdown en Bash + Python 3 + `mutool` con recuperación de cabecera YAML, tablas, fórmulas, citas, bloques de código, emojis y deduplicación/extracción hacia `assets/`.
 
-  * `toolchain/pandoc/`: `defaults/pdf.yaml`, `defaults/epub.yaml`, `defaults/metadatos.yaml` (`scrartcl` por defecto), `fonts/` (`Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en el repositorio), `templates/estilo.tex`, `templates/estilo-epub.css` y los 4 filtros Lua (`preambulo.lua`, `cortar-formulas.lua`, `centrar-imagenes.lua`, `tablas-listas.lua`).
+  * `toolchain/pandoc/`: `defaults/pdf.yaml`, `defaults/epub.yaml`, `defaults/metadatos.yaml` (`scrartcl` por defecto), `fonts/` (`Libertinus Serif`, `Inter` y `JetBrains Mono` embebidas en el repositorio), `templates/estilo.tex`, `templates/estilo-epub.css` y los 5 filtros Lua (`preambulo.lua`, `cortar-formulas.lua`, `centrar-imagenes.lua`, `tablas-listas.lua`, `tablas-matriz.lua`).
 
 ---
 
@@ -88,6 +88,8 @@
 8. **[08-estandarizacion-unix-carpetas.md](specs/08-estandarizacion-unix-carpetas.md)** — *Estado: **Implementada** (2026-11-11)*. Estandarización de todas las carpetas del repositorio al formato Unix clásico en minúsculas y sin espacios (`unidad-0` a `unidad-6`, `trabajo-practico/parte-1`, `parte-2`, `labs`), con compatibilidad hacia atrás en `md2pdf` y `mkrelease`.
 
 9. **[09-gobernanza-ramas-pr-y-releases.md](specs/09-gobernanza-ramas-pr-y-releases.md)** — *Estado: **Implementada** (2026-11-14)*. Incorporación de `.github/CODEOWNERS` (`* @Gez-Schegtel`), mínimo privilegio por job, validación en CI de que los tags `v*` pertenezcan a `main` y *Repository Rulesets* activos en `Gez-Schegtel/ASI-test` para `main` y tags `v*`.
+
+10. **[10-matrices-y-tablas-cuadriculadas.md](specs/10-matrices-y-tablas-cuadriculadas.md)** — *Estado: **Implementada** (2026-11-15)*. Filtro Lua `tablas-matriz.lua` (`<!-- matriz-2x2 -->` y `<!-- cuadricula -->`), soporte de `colortbl` en `estilo.tex` y estilos `.matriz-2x2` en `estilo-epub.css` para renderizar matrices de 4 cuadrantes con bordes completos y migración a GFM en `Trabajo Práctico - Parte 1.md`.
 
 ---
 
@@ -134,6 +136,22 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-15` — Matrices 2×2 con 4 Cuadrantes y Cuadrículas (`tablas-matriz.lua` / Spec 10)
+
+* **Contexto**: Las matrices 2×2 de la *Cartera de Aplicaciones* (McFarlan) en `content/trabajo-practico/parte-1/Trabajo Práctico - Parte 1.md` estaban escritas como *grid tables* (`+---+`) incompatibles con Obsidian y se compilaban en LaTeX con `booktabs` (`longtable`) sin barra vertical central ni divisiones horizontales en los cuadrantes inferiores.
+
+* **Acciones ejecutadas**:
+
+  * **Redacción de Spec 10**: Creación de `docs/specs/10-matrices-y-tablas-cuadriculadas.md`.
+
+  * **Desarrollo de `toolchain/pandoc/filters/tablas-matriz.lua`**: Soporte para `<!-- matriz-2x2 -->` (y `<!-- cuadricula -->`) en PDF y EPUB, convirtiendo la tabla en un `tabular` de columnas iguales (`0.5\linewidth`) con bordes `barcolor`, títulos de cuadrantes sombreados con `fondocolor` en filas 1 y 3, y listas nativas de `tablas-listas.lua`.
+
+  * **Actualización de plantillas y defaults**: Carga de `\usepackage{colortbl}` en `toolchain/pandoc/templates/estilo.tex`, reglas CSS `.matriz-2x2`/`.cuadricula` en `toolchain/pandoc/templates/estilo-epub.css` y registro en `pdf.yaml` y `epub.yaml`.
+
+  * **Normalización en `Trabajo Práctico - Parte 1.md`**: Conversión de *Cartera de aplicaciones actuales* a tabla GFM estándar con `<!-- matriz-2x2 -->` y viñetas `•` (conservando el diagrama `assets/cartera_dvp.png` incorporado para *Cartera de aplicaciones futuras*).
+
+  * **Validación**: `mdnorm --check` sin observaciones en los 35 archivos de `content/` y documentación modificada; compilación completa (`md2pdf --all`) de los 20 documentos publicables (20 PDF + 20 EPUB), los 14 borradores (14 PDF + 14 EPUB), `content/labs/cmk/README.md` y casos borde (`<!-- matriz-2x2 -->` y `<!-- cuadricula -->`); verificación píxel a píxel contra `6f2d073` confirmando 19/20 PDFs y 19/20 EPUBs intactos sin regresiones y renderizado visual verificado en `Trabajo Práctico - Parte 1.pdf`.
 
 ### `2026-11-14` — Gobernanza de `main`, `CODEOWNERS` y Blindaje de Tags `v*` (Spec 09)
 

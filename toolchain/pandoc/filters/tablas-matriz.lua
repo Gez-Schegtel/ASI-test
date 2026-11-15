@@ -84,12 +84,22 @@ local function build_latex_grid(tbl, kind)
   end
 
   local col_specs = {}
+  local sum_w = 0
   for idx = 1, ncols do
     local w = tbl.colspecs[idx][2]
-    local frac = (w and w > 0) and w or (1 / ncols)
-    -- Si Pandoc no asignó anchos explícitos o quedaron muy desbalanceados en matriz-2x2, usar 50/50
+    if w and w > 0 then
+      sum_w = sum_w + w
+    end
+  end
+  for idx = 1, ncols do
+    local w = tbl.colspecs[idx][2]
+    local frac
     if kind == 'matriz-2x2' then
       frac = 0.5
+    elseif sum_w > 0 and w and w > 0 then
+      frac = w / sum_w
+    else
+      frac = 1 / ncols
     end
     local col = string.format(
       'p{\\dimexpr%.4f\\linewidth-2\\tabcolsep-%.4f\\arrayrulewidth\\relax}',
@@ -109,6 +119,11 @@ local function build_latex_grid(tbl, kind)
   }
 
   local header_count = #tbl.head.rows
+  for _, row in ipairs(rows) do
+    if #row.cells ~= ncols then
+      return nil
+    end
+  end
   for r_idx, row in ipairs(rows) do
     local is_header = (r_idx <= header_count) or (kind == 'matriz-2x2' and r_idx == 3)
     if is_header then

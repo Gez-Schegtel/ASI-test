@@ -25,3 +25,4 @@ metadata-files:
 
 filters:
   - ${.}/../filters/tablas-listas.lua
+  - ${.}/../filters/tablas-matriz.lua

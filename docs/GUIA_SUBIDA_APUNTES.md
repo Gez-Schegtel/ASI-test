@@ -215,7 +215,7 @@ Usá los callouts estándar de Obsidian/GitHub. En el PDF y en el EPUB se transf
   $$
   ```
 
-* **Tablas**: Usá tablas estándar de Markdown (GFM), dejando siempre una línea en blanco antes y después de la tabla. Evitá etiquetas HTML `<br>` adentro de celdas (`mdnorm` las limpia automáticamente).
+* **Tablas**: Usá tablas estándar de Markdown (GFM), dejando siempre una línea en blanco antes y después de la tabla. Evitá etiquetas HTML `<br>` adentro de celdas (`mdnorm` las limpia automáticamente); para listas dentro de una celda usá viñetas `•`. Si necesitás una **matriz 2×2 de 4 cuadrantes** (como la Matriz de McFarlan) o una tabla con bordes completos, colocá `<!-- matriz-2x2 -->` (o `<!-- cuadricula -->`) en la línea anterior a la tabla GFM.
 
 ---
 

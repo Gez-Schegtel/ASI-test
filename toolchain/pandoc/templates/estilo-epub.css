@@ -70,4 +70,35 @@ th, td {
 
 th { background: #eee; }
 
+table.matriz-2x2 {
+  border: 2px solid #4a6fa5;
+  table-layout: fixed;
+}
+
+table.cuadricula {
+  border: 2px solid #4a6fa5;
+}
+
+table.matriz-2x2 th, table.matriz-2x2 td,
+table.cuadricula th, table.cuadricula td {
+  border: 1px solid #4a6fa5;
+}
+
+table.matriz-2x2 th, table.matriz-2x2 td { width: 50%; }
+
+table.matriz-2x2 thead th,
+table.matriz-2x2 tbody tr:nth-child(2) td {
+  background: #e8f1fb;
+  font-weight: normal;
+}
+
+table.cuadricula thead th {
+  background: #e8f1fb;
+}
+
+table.matriz-2x2 ul, table.cuadricula ul {
+  margin: 0.2em 0;
+  padding-left: 1.2em;
+}
+
 a { color: #1a3d7c; text-decoration: none; }
