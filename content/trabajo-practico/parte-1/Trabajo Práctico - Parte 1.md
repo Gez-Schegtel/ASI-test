@@ -288,10 +288,6 @@ Actualmente, la Dirección de Vialidad Provincial del Chaco cuenta con una serie
   Se encarga del diseño, adecuación hidráulica y elaboración de pliegos para pavimentos urbanos, además de la ejecución, control y certificación de obras realizadas dentro de los ejidos urbanos. También tiene bajo su órbita tareas de mantenimiento edilicio.
   **Función de negocio principal:** Planificación, ejecución y mantenimiento de infraestructura vial urbana.
 
-- **Dirección de Vialidad Urbana**
-  Se encarga de planificar y construir el pavimento de las calles que están **dentro de las ciudades y pueblos**. Esto incluye hacer los planos, calcular los desagües (para que no se inunden las calles) y preparar todos los documentos técnicos. Además, construyen estas calles con personal y maquinaria propia, vigilan que el trabajo se haga bien y, como tarea extra, se ocupan de mantener y arreglar los edificios de Vialidad.
-  **Función de negocio principal:** Diseñar, construir y controlar las obras de asfalto y desagües dentro de las ciudades.
-
 - **Dirección de Secretaría General (RRHH)**
   Se encarga de coordinar las tramitaciones de orden administrativo, el registro de expedientes y el despacho general de la institución. Además, concentra y administra de manera centralizada toda la información relacionada con el capital humano de la repartición, abarcando el control de asistencia, liquidación de viáticos, entrega de indumentaria, calificaciones de desempeño, y programas de higiene y seguridad laboral.
   **Función de negocio principal:** Gestión integral del personal.
@@ -372,6 +368,8 @@ Por otra parte, la falta de integración entre sistemas genera fragmentación de
 En este contexto, se evidencia una brecha significativa entre la situación actual de los sistemas de información y el modelo de gestión requerido para mejorar la eficiencia, la transparencia y la calidad de los servicios brindados. Los sistemas existentes, si bien cumplen su función operativa, resultan insuficientes para acompañar un modelo de gestión moderno basado en información.
 
 Por lo tanto, se hace necesaria una transformación tecnológica que permita integrar los sistemas actuales, incorporar herramientas de análisis y evolucionar hacia un esquema de gestión orientado a datos, alineado con las necesidades presentes y futuras de la Dirección de Vialidad Provincial del Chaco.
+
+\newpage
 
 ### Cartera de aplicaciones actuales:
 
@@ -582,20 +580,9 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
   - **LexDoctor:** Solución de umbral para la gestión procesal obligatoria y el seguimiento de expedientes jurídicos, amparos y expropiaciones bajo estándares legales vigentes.
 
-+-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| **Estratégicos** *Aseguran el cumplimiento de la misión institucional a futuro.*        | **De Alto Potencial** *Innovaciones tecnológicas que pueden transformar la operación.*   |
-+=========================================================================================+==========================================================================================+
-| - **ERP Vial Integral** (In-House)                                                      | - **GeoVial** (GIS DVP)                                                                  |
-| - **DVP-BI** (Data Warehouse y Tableros de Control)                                     |                                                                                          |
-+-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| **Clave Para las Operaciones** *De ellos depende el funcionamiento diario de Vialidad.* | **De Apoyo** *Mejoran la eficiencia administrativa, pero no son el "core" del negocio.*  |
-+-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| - **Sistemas logísticos integrados**                                                    | - **Legajo Digital Único** (Sistemas integrados RRHH)                                    |
-| - **Órdenes DVP**                                                                       | - **LexDoctor**                                                                          |
-| - **GesTaller**                                                                         |                                                                                          |
-| - **SiCC Móvil**                                                                        |                                                                                          |
-| - **LabVial**                                                                           |                                                                                          |
-+-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+\newpage
+
+![*Cartera de Aplicaciones*](../../../assets/cartera_dvp.png){width=100%}
 
 **Tipos de inversiones (Según las categorías puras de Robson):** Analizar la naturaleza de los desembolsos financieros en SI/TI bajo el marco conceptual de Robson.
 
