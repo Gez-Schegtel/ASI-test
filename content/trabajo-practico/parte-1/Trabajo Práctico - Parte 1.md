@@ -51,7 +51,7 @@ header-includes:
 
 # Fase 1: Presentación y Compromiso del Equipo
 
-# Dirección de Vialidad Provincial del Chaco
+## Dirección de Vialidad Provincial del Chaco
 
 Es un organismo público encargado de la planificación, construcción, mantenimiento y administración de la red vial provincial, con impacto directo en la conectividad, producción y desarrollo social.
 
@@ -217,7 +217,7 @@ Para llevar a cabo con éxito el procedimiento de alineamiento estratégico y as
 
 Actualmente, la Dirección de Vialidad Provincial del Chaco cuenta con una serie de Sistemas de Información en funcionamiento que permiten sostener la operatoria diaria en áreas clave como mantenimiento, logística, administración, recursos humanos y gestión de obras. Sin embargo, se evidencia que los sistemas existentes resultan insuficientes e incluso, en algunos casos, obsoletos como soporte para la gestión integral del organismo. Esta situación se da en el marco de una estructura organizacional consolidada, con procesos tradicionales que deben adaptarse a un entorno cada vez más demandante, donde la disponibilidad de información oportuna, la capacidad de análisis y el uso de tecnologías digitales se vuelven factores críticos para una gestión eficiente, transparente y alineada con las necesidades actuales de la sociedad.
 
-### Análisis FODA
+## Análisis FODA
 
 **FORTALEZAS (Factores Internos Positivos)**
 
@@ -265,7 +265,7 @@ Actualmente, la Dirección de Vialidad Provincial del Chaco cuenta con una serie
 
 - **Limitaciones presupuestarias:** Los proyectos de TI dentro del Estado pueden sufrir recortes o retrasos si no se demuestra rápidamente el Retorno de Inversión (ROI), por ejemplo, demostrando que un nuevo sistema ahorra "X" millones en repuestos y viáticos.
 
-### Identificación de las principales funciones y procesos de negocio por área
+## Identificación de las principales funciones y procesos de negocio por área
 
 - **Dirección de Ingeniería Vial**
   Se encarga de la **planificación técnica y diseño de obras viales**, incluyendo estudios previos, relevamientos topográficos, análisis de alternativas de trazado y elaboración de proyectos integrales. También gestiona presupuestos, cómputos métricos y pliegos licitatorios, además de supervisar proyectos desarrollados por terceros.
@@ -305,7 +305,7 @@ Actualmente, la Dirección de Vialidad Provincial del Chaco cuenta con una serie
   Es responsable de sistematizar y gestionar toda la información jurídica y legal de la repartición. Asesora a la institución mediante la emisión de dictámenes, interviene en las contiendas jurisdiccionales de las delegaciones zonales y lleva el seguimiento procesal estricto de amparos, juicios, expropiaciones de terrenos y liberación de trazas necesarias para el desarrollo de las obras viales.
   **Función de negocio principal:** Gestión de expedientes legales, expropiaciones y liberación de trazas.
 
-### Sistemas de Información Existentes
+## Sistemas de Información Existentes
 
 - Viaticar
 
@@ -364,7 +364,7 @@ Sistema destinado a la gestión integral de procesos judiciales y extrajudiciale
 
 El sistema digitaliza un proceso que anteriormente se realizaba de forma manual en papel o mediante planillas dispersas, permitiendo gestionar el circuito completo de la procuración (seguimiento de expedientes, control de plazos y vencimientos, agenda de audiencias y redacción automatizada de escritos), además de calcular automáticamente tasas, intereses y honorarios. Esta información se incorpora al historial de cada caso y constituye un insumo clave para la toma de decisiones estratégicas, la optimización del tiempo de los profesionales y la auditoría del estado de los litigios.
 
-### Síntesis de la situación actual
+## Síntesis de la situación actual
 
 A partir del relevamiento realizado en la Dirección de Vialidad Provincial del Chaco, se observa que la organización dispone de múltiples sistemas informáticos que acompañan la operatoria diaria de distintas áreas. Sin embargo, estos sistemas funcionan de manera aislada, sin integración ni explotación de la información generada, lo que limita significativamente la capacidad de análisis y la toma de decisiones basada en datos.
 
@@ -380,7 +380,7 @@ Por lo tanto, se hace necesaria una transformación tecnológica que permita int
 
 \newpage
 
-### Cartera de aplicaciones actuales:
+## Cartera de aplicaciones actuales:
 
 <!-- matriz-2x2 -->
 
@@ -396,7 +396,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 # Fase 3: Elaboración del plan SI/TI
 
-### Matriz de Necesidades (Negocio vs. Sistemas de Información)
+## Matriz de Necesidades (Negocio vs. Sistemas de Información)
 
 ![](../../../assets/TP1-Matriz-de-Necesidades_parte-1.png){width=100%}
 
@@ -404,9 +404,9 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 ![](../../../assets/TP1-Matriz-de-Necesidades_parte-2.png){width=100%}
 
-### Listado de Necesidades y Alineación Estratégica (SI/TI)
+## Listado de Necesidades y Alineación Estratégica (SI/TI)
 
-## 1. Control de Gestión Institucional (Alta Dirección)
+### 1. Control de Gestión Institucional (Alta Dirección)
 
 - **Necesidad de Información:**
 
@@ -420,7 +420,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 - **Estrategia de TI (El Cómo):** Implementar una solución de Inteligencia de Negocios (**DVP-BI**) basada en un **Data Warehouse** que centralice la extracción de datos de todas las áreas para la generación de **Dashboards** y **KPIs** en tiempo real.
 
-## 2. Planificación y Análisis Territorial (Ingeniería Vial)
+### 2. Planificación y Análisis Territorial (Ingeniería Vial)
 
 - **Necesidad de Información:**
 
@@ -434,7 +434,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 - **Estrategia de TI (El Cómo):** Implementar el sistema **GeoVial (GIS)** como un entorno geográfico avanzado que centralice la visualización y el análisis espacial de la red vial. El sistema debe permitir la integración de capas de datos estadísticos dinámicas, herramientas de mapeo del inventario físico y módulos de análisis de accidentología, proporcionando a las áreas técnicas una plataforma interactiva para la planificación territorial.
 
-## 3. Gestión Misional y Soberanía Tecnológica (Ingeniería y Construcciones)
+### 3. Gestión Misional y Soberanía Tecnológica (Ingeniería y Construcciones)
 
 - **Necesidad de Información:**
 
@@ -446,7 +446,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 - **Estrategia de TI (El Cómo):** Desarrollar de forma evolutiva un **ERP Vial Integral propio (In-House)** para eliminar la dependencia tecnológica de terceros y centralizar la operación de las Direcciones en módulos específicos para la gestión de licitaciones, certificación de obras y administración de Consorcios.
 
-## 4. Control de Recursos en Terreno (Combustible)
+### 4. Control de Recursos en Terreno (Combustible)
 
 - **Necesidad de Información:**
 
@@ -458,7 +458,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 - **Estrategia de TI (El Cómo):** Implementar la aplicación móvil **"SiCC Móvil"** para reemplazar el circuito de papel. La herramienta debe permitir el registro digital y la validación *in situ* de cada carga, integrando un motor de alertas que detecte consumos atípicos en tiempo real.
 
-## 5. Trazabilidad del Gasto Operativo (Logística y Administración)
+### 5. Trazabilidad del Gasto Operativo (Logística y Administración)
 
 - **Necesidad de Información:**
 
@@ -472,7 +472,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 - **Estrategia de TI (El Cómo):** Implementar una arquitectura de interoperabilidad basada en **APIs** que integre los sistemas **TallerDLM, StockDVP** y **OrdenesDVP**, erradicando los silos de datos para automatizar el flujo de información desde el consumo hasta el presupuesto.
 
-## 6. Visión Integral del Capital Humano (Secretaría General / RRHH)
+### 6. Visión Integral del Capital Humano (Secretaría General / RRHH)
 
 - **Necesidad de Información:**
 
@@ -482,7 +482,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 - **Estrategia de TI (El Cómo):** Desarrollar un ecosistema de integración mediante **APIs** que unifique los sistemas de **RRHH, Calificaciones, Viaticar** y **RopasDVP** para conformar un **Legajo Digital Único** con visión 360° del empleado.
 
-## 7. Control de Calidad (Dirección de Tecnología Vial)
+### 7. Control de Calidad (Dirección de Tecnología Vial)
 
 - **Necesidad de Información:**
 
@@ -492,7 +492,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 - **Estrategia de TI (El Cómo):** Desarrollar e implementar el sistema "LabVial" como una base de datos centralizada para el registro, consulta y resguardo digital de todos los resultados de laboratorios de suelos y materiales, eliminando la dependencia de registros informales en cuadernos o archivos PDF aislados.
 
-## 8. Retención Legal (Dirección de Asuntos Jurídicos)
+### 8. Retención Legal (Dirección de Asuntos Jurídicos)
 
 - **Necesidad de Información:**
 
@@ -510,9 +510,9 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 **Valor de la Inversión:** Identificar los tipos de beneficios y los tipos de inversiones implicados en las estrategias de SI/TI.
 
-### Tipos de beneficios
+## Tipos de beneficios
 
-## 1. Beneficios de Eficiencia (Nivel Operacional)
+### 1. Beneficios de Eficiencia (Nivel Operacional)
 
 *Estos beneficios corresponden a la **Primera Era de la Información (E1 - Automatizar)**. Son de carácter estrictamente **tangible** y se justifican mediante técnicas "duras" enfocadas en el **desplazamiento de costos** (eliminar un gasto actual sustituyendo recursos por tecnología) y en la **evitación de costos** futuros.*
 
@@ -524,7 +524,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 - **Evitación de costos de reconstrucción vial mediante control de calidad auditable (LabVial):** Centralización y disponibilidad inmediata de la trazabilidad de los ensayos de asfalto y hormigón, permitiendo una **evitación de costos del 8%** en presupuestos de bacheo y reparación vial prematura. Al contar con un respaldo técnico rápido e indiscutible, el organismo puede exigir el cumplimiento de las garantías de obra a las contratistas antes del vencimiento de los plazos legales, evitando que el Estado asuma el costo financiero de reconstruir calzadas defectuosas.
 
-## 2. Beneficios de Efectividad (Nivel Táctico)
+### 2. Beneficios de Efectividad (Nivel Táctico)
 
 *Estos beneficios se perciben en el **nivel táctico (mandos medios y gerencias de departamento)**, corresponden a la **Segunda Era de la Información (E2 - Informar)** y su foco es cualitativo, orientado a optimizar el **Rendimiento sobre los Activos (RoA)** del organismo. Su técnica de justificación es "blanda" y se asocia a la mejora en la toma de decisiones.*
 
@@ -534,7 +534,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 - **Alineamiento y desarrollo del capital intelectual (Legajo Digital Único):** El sistema unifica de manera integral la evaluación del desempeño, los antecedentes y las capacidades de los agentes de las distintas delegaciones zonales. Esto dota a las direcciones de una herramienta analítica confiable para tomar decisiones efectivas de promoción y ascensos basadas en el mérito real, incrementando la motivación, reduciendo el favoritismo subjetivo y fomentando el "sentido de propiedad" de los empleados públicos hacia la organización.
 
-## 3. Beneficios de Avance Estratégico (Nivel Estratégico)
+### 3. Beneficios de Avance Estratégico (Nivel Estratégico)
 
 *Estos beneficios impactan directamente en la **alta dirección (nivel institucional)**, corresponden a la **Tercera Era de la Información (E3 - Transformar)** y están orientados al crecimiento y a la competitividad del organismo. Son, por definición, intangibles y de largo plazo, justificándose mediante lo que la teoría define como un **"acto de fe"**.*
 
@@ -542,7 +542,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 - **Transformación de la planificación territorial basada en datos (GeoVial GIS DVP):** El sistema transforma el rol del organismo de un ente meramente reactivo (reparador de baches) a un actor estratégico de planificación territorial. Al cruzar de forma georreferenciada el inventario de las calzadas con los índices de accidentología, se introduce una innovación disruptiva en el sector público que permite predecir el impacto social de las intervenciones antes de pavimentar, alineando la tecnología de forma directa con el Factor Crítico de Éxito (FCE) de reducción de la mortalidad vial.
 
-### Cartera de Aplicaciones y Estilos de Gestión de TI
+## Cartera de Aplicaciones y Estilos de Gestión de TI
 
 **ESTRATÉGICOS** *(Aseguran el cumplimiento de la misión institucional a futuro)*
 
