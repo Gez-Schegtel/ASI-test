@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > Este archivo es la **fuente de verdad viva y bitácora histórica** del repositorio de **Administración de Sistemas de Información (ASI)** — UTN FRRe. Debe consultarse al inicio de cada sesión y mantenerse estrictamente actualizado tras cada cambio estructural, de contenido o de *tooling*.
 
-* **Última actualización**: `2026-11-15`
+* **Última actualización**: `2026-11-16`
 
 * **Fase actual**: `Infraestructura Técnica, Sincronización de Toolchain (mdnorm, md2pdf, pdf2md, estilo.tex), Organización por Unidad, Imagen Docker GHCR y Publicación en Releases 100% Completadas -> En espera de material de estudio para Spec 03-Parte A`
 
@@ -136,6 +136,18 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-16` — Soporte de Alineación Horizontal en `tablas-matriz.lua` (Spec 10)
+
+* **Contexto**: `toolchain/pandoc/filters/tablas-matriz.lua` forzaba `\raggedright` fijo en todas las celdas de tablas marcadas con `<!-- matriz-2x2 -->` y `<!-- cuadricula -->`, ignorando la alineación GFM por columna (`:---`, `:---:`, `---:`) que sí funcionaba en Obsidian, EPUB y tablas comunes.
+
+* **Acciones ejecutadas**:
+
+  * **Filtro Lua (`toolchain/pandoc/filters/tablas-matriz.lua`)**: Mapeo de `cell.alignment` / `tbl.colspecs[idx][1]` (`AlignCenter` → `\centering`, `AlignRight` → `\raggedleft`, `AlignLeft`/`AlignDefault` → `\raggedright`) y validación estricta de anchos completos (`has_all_widths`) para columnas proporcionales.
+
+  * **Estilos EPUB (`toolchain/pandoc/templates/estilo-epub.css`)**: Regla `text-align: left;` en `table.matriz-2x2 ul, table.cuadricula ul` para preservar las listas con viñetas alineadas a la izquierda dentro de columnas centradas o alineadas a la derecha, igualando el comportamiento de LaTeX.
+
+  * **Documentación**: Sincronización de `docs/specs/10-matrices-y-tablas-cuadriculadas.md`, `docs/GUIA_SUBIDA_APUNTES.md` y `docs/STATUS.md`.
 
 ### `2026-11-15` — Matrices 2×2 con 4 Cuadrantes y Cuadrículas (`tablas-matriz.lua` / Spec 10)
 

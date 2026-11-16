@@ -51,7 +51,22 @@ local function collect_rows(tbl)
   return rows
 end
 
-local function render_cell_latex(cell, is_header)
+local ALIGN_CMD = {
+  AlignCenter = '\\centering',
+  AlignRight = '\\raggedleft',
+  AlignLeft = '\\raggedright',
+  AlignDefault = '\\raggedright',
+}
+
+local function latex_align_cmd(cell, col_spec)
+  local align = (cell.alignment and cell.alignment ~= 'AlignDefault')
+    and cell.alignment
+    or (col_spec and col_spec[1])
+    or 'AlignDefault'
+  return ALIGN_CMD[align] or '\\raggedright'
+end
+
+local function render_cell_latex(cell, col_spec, is_header)
   local tex = pandoc.write(pandoc.Pandoc(cell.contents), 'latex')
   tex = tex:gsub('^%s+', ''):gsub('%s+$', '')
   if tex == '' then
@@ -59,16 +74,17 @@ local function render_cell_latex(cell, is_header)
   end
   local top_pad = is_header and '1pt' or '0pt'
   local bot_pad = is_header and '4pt' or '6pt'
+  local align_cmd = latex_align_cmd(cell, col_spec)
   return string.format(
-    '\\begin{minipage}[t]{\\linewidth}\\raggedright\\vspace*{%s}%%\n%s\\par\\vspace*{%s}\\kern0pt\\end{minipage}',
-    top_pad, tex, bot_pad
+    '\\begin{minipage}[t]{\\linewidth}%s\\vspace*{%s}%%\n%s\\par\\vspace*{%s}\\kern0pt\\end{minipage}',
+    align_cmd, top_pad, tex, bot_pad
   )
 end
 
-local function render_row_latex(row, ncols, is_header)
+local function render_row_latex(row, colspecs, ncols, is_header)
   local parts = {}
   for idx = 1, ncols do
-    parts[idx] = render_cell_latex(row.cells[idx], is_header)
+    parts[idx] = render_cell_latex(row.cells[idx], colspecs[idx], is_header)
   end
   return table.concat(parts, ' &\n') .. ' \\\\'
 end
@@ -85,10 +101,13 @@ local function build_latex_grid(tbl, kind)
 
   local col_specs = {}
   local sum_w = 0
+  local has_all_widths = true
   for idx = 1, ncols do
     local w = tbl.colspecs[idx][2]
     if w and w > 0 then
       sum_w = sum_w + w
+    else
+      has_all_widths = false
     end
   end
   for idx = 1, ncols do
@@ -96,7 +115,7 @@ local function build_latex_grid(tbl, kind)
     local frac
     if kind == 'matriz-2x2' then
       frac = 0.5
-    elseif sum_w > 0 and w and w > 0 then
+    elseif has_all_widths and sum_w > 0 then
       frac = w / sum_w
     else
       frac = 1 / ncols
@@ -129,7 +148,7 @@ local function build_latex_grid(tbl, kind)
     if is_header then
       table.insert(lines, '\\rowcolor{fondocolor}%')
     end
-    table.insert(lines, render_row_latex(row, ncols, is_header))
+    table.insert(lines, render_row_latex(row, tbl.colspecs, ncols, is_header))
     table.insert(lines, '\\hline')
   end
 

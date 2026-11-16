@@ -99,6 +99,7 @@ table.cuadricula thead th {
 table.matriz-2x2 ul, table.cuadricula ul {
   margin: 0.2em 0;
   padding-left: 1.2em;
+  text-align: left;
 }
 
 a { color: #1a3d7c; text-decoration: none; }

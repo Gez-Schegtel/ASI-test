@@ -36,8 +36,8 @@ Las matrices de 4 cuadrantes se escriben en **formato estándar GFM (*pipe table
 
 Se ejecuta inmediatamente después de `tablas-listas.lua` tanto en `pdf.yaml` como en `epub.yaml`:
 
-* **En PDF (`LaTeX`)**: Convierte la tabla 2×4 marcada con `<!-- matriz-2x2 -->` en un entorno `tabular` de dos columnas iguales (`0.5\linewidth` cada una) con bordes completos (`|` y `\hline`) en `barcolor`, sombreado `fondocolor` en ambas filas de títulos de cuadrante (filas 1 y 3) y alineación superior uniforme mediante `minipage[t]` (usando `colortbl` cargado desde `estilo.tex`).
+* **En PDF (`LaTeX`)**: Convierte la tabla 2×4 marcada con `<!-- matriz-2x2 -->` en un entorno `tabular` de dos columnas iguales (`0.5\linewidth` cada una) con bordes completos (`|` y `\hline`) en `barcolor`, sombreado `fondocolor` en ambas filas de títulos de cuadrante (filas 1 y 3), alineación horizontal respetando `:---` (`\raggedright`), `:---:` (`\centering`) y `---:` (`\raggedleft`), y alineación superior uniforme mediante `minipage[t]` (usando `colortbl` cargado desde `estilo.tex`).
 
-* **En EPUB3 (`HTML/CSS`)**: Consume el comentario marcador, añade la clase `.matriz-2x2` a la tabla y aplica estilos dedicados en `estilo-epub.css` para sombrear y enmarcar los 4 cuadrantes de forma equivalente al PDF.
+* **En EPUB3 (`HTML/CSS`)**: Consume el comentario marcador, añade la clase `.matriz-2x2` a la tabla y aplica estilos dedicados en `estilo-epub.css` para sombrear y enmarcar los 4 cuadrantes de forma equivalente al PDF, respetando la alineación por columna (`:---`, `:---:`, `---:`) y manteniendo las listas `<ul>` alineadas a la izquierda.
 
-* *(Soporte general adicional)*: Admite también `<!-- cuadricula -->` sobre cualquier tabla NxM para dibujarla en PDF/EPUB con bordes completos en todas sus celdas.
+* *(Soporte general adicional)*: Admite también `<!-- cuadricula -->` sobre cualquier tabla NxM para dibujarla en PDF/EPUB con bordes completos en todas sus celdas y alineación horizontal por columna.
