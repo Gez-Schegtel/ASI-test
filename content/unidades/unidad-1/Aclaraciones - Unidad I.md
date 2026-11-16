@@ -287,7 +287,7 @@ Con este resumen, tienes dominada toda la parte teórica del Capítulo. Tienes l
 
 Como tu profesor, primero te voy a dar la visión general del Anexo y luego vamos a desglosar la Fase I con nivel de detalle de examen, respondiendo a todas tus preguntas.
 
-#### 1. ¿De qué trata el Anexo en general (A5.1)? {-}
+#### ¿De qué trata el Anexo en general (A5.1)? {-}
 
 El Anexo es la descripción detallada y operativa del procedimiento que los autores introdujeron de forma teórica en la sección 5.3. Su objetivo es explicar exactamente qué actividades hay que hacer, en qué orden, quién es el responsable de cada una y qué herramientas o documentos se recomiendan utilizar. Para ello, estructura todo el trabajo en las **cuatro fases** que ya conocemos, pero subdividiéndolas en pasos muy específicos (con numeración del estilo I.1, I.2, II.1, etc.).
 
