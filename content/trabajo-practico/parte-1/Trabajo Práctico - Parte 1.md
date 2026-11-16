@@ -219,7 +219,7 @@ Actualmente, la Dirección de Vialidad Provincial del Chaco cuenta con una serie
 
 ## Análisis FODA
 
-**FORTALEZAS (Factores Internos Positivos)**
+### **FORTALEZAS (Factores Internos Positivos)**
 
 - **Sistemas de información y bases de datos preexistentes:** La DVP no parte desde cero. Ya dispone de múltiples sistemas en funcionamiento (como Viaticar, RopasDVP, TallerDLM, StockDVP y OrdenesDVP) que permiten registrar operaciones clave de viáticos, provisión de insumos, stock y mantenimiento de equipos.
 
@@ -229,7 +229,7 @@ Actualmente, la Dirección de Vialidad Provincial del Chaco cuenta con una serie
 
 - **Capacidad de alcance provincial:** El sistema *GesTaller* ya gestiona información no solo de la DVP, sino de vehículos de distintas reparticiones públicas, posicionando a la DVP como referente técnico en la provincia.
 
-**DEBILIDADES (Factores Internos Negativos)**
+### **DEBILIDADES (Factores Internos Negativos)**
 
 - **Sistemas "Silos" (Aislamiento de la información):** Los sistemas actuales no se comunican entre sí. Logística, Stock, Presupuesto (Ordenes DVP) y Talleres funcionan como islas, obligando a cruces manuales.
 
@@ -241,7 +241,7 @@ Actualmente, la Dirección de Vialidad Provincial del Chaco cuenta con una serie
 
 - **Deficiencias tecnológicas para la interacción ciudadana y el control operativo:** La institución carece de canales digitales modernos, como un mapa vial interactivo para que los habitantes puedan denunciar y georreferenciar el estado de rutas y puentes, y tampoco cuenta con un sistema específico para registrar y hacer seguimiento de las infracciones en el sector de balanzas
 
-**OPORTUNIDADES (Factores Externos o a Futuro Positivos)**
+### **OPORTUNIDADES (Factores Externos o a Futuro Positivos)**
 
 - **Implementación de Inteligencia de Negocios (BI):** Con herramientas modernas y accesibles, se puede extraer un valor inmenso de los datos que los sistemas actuales ya tienen guardados (ej. predecir cuándo fallará una máquina, optimizar rutas).
 
@@ -257,7 +257,7 @@ Actualmente, la Dirección de Vialidad Provincial del Chaco cuenta con una serie
 
 - **Incorporación de tecnologías emergentes:** El contexto tecnológico actual ofrece a la DVP la oportunidad de dar un salto cualitativo integrando herramientas innovadoras de vanguardia, como asistentes basados en inteligencia artificial, chatbots y sistemas avanzados de georreferenciación**.**
 
-**AMENAZAS (Factores Externos Negativos)**
+### **AMENAZAS (Factores Externos Negativos)**
 
 - **Dependencia de proveedores externos (Vendor Lock-in):** El sistema de *Consorcios* es cerrado y tercerizado. Al no tener acceso al código fuente, la DVP queda rehén de los costos, tiempos y la voluntad del proveedor para hacer mejoras o extraer datos vitales de las certificaciones de obras.
 
@@ -267,98 +267,98 @@ Actualmente, la Dirección de Vialidad Provincial del Chaco cuenta con una serie
 
 ## Identificación de las principales funciones y procesos de negocio por área
 
-- **Dirección de Ingeniería Vial**
-  Se encarga de la **planificación técnica y diseño de obras viales**, incluyendo estudios previos, relevamientos topográficos, análisis de alternativas de trazado y elaboración de proyectos integrales. También gestiona presupuestos, cómputos métricos y pliegos licitatorios, además de supervisar proyectos desarrollados por terceros.
-  **Función de negocio principal:** Generación de proyectos viales y base técnica para la ejecución de obras.
+### **Dirección de Ingeniería Vial**
+Se encarga de la **planificación técnica y diseño de obras viales**, incluyendo estudios previos, relevamientos topográficos, análisis de alternativas de trazado y elaboración de proyectos integrales. También gestiona presupuestos, cómputos métricos y pliegos licitatorios, además de supervisar proyectos desarrollados por terceros.
+**Función de negocio principal:** Generación de proyectos viales y base técnica para la ejecución de obras.
 
-- **Dirección de Planificación Vial**
-  Responsable de la **planificación estratégica del sistema vial provincial**, considerando aspectos sociales, económicos y territoriales. Realiza evaluación de resultados, estudios ambientales, censos de tránsito, control de cargas y acciones de seguridad vial.
-  **Función de negocio principal:** Definición de políticas viales y análisis del sistema en su conjunto.
+### **Dirección de Planificación Vial**
+Responsable de la **planificación estratégica del sistema vial provincial**, considerando aspectos sociales, económicos y territoriales. Realiza evaluación de resultados, estudios ambientales, censos de tránsito, control de cargas y acciones de seguridad vial.
+**Función de negocio principal:** Definición de políticas viales y análisis del sistema en su conjunto.
 
-- **Dirección de Tecnología Vial**
-  Supervisa la **calidad de los materiales y procesos constructivos**, mediante ensayos físicos, químicos y mecánicos. También realiza investigaciones y evaluaciones de pavimentos.
-  **Función de negocio principal:** Control de calidad de materiales, evaluación de pavimentos y relevamiento técnico de fallas en terreno.
+### **Dirección de Tecnología Vial**
+Supervisa la **calidad de los materiales y procesos constructivos**, mediante ensayos físicos, químicos y mecánicos. También realiza investigaciones y evaluaciones de pavimentos.
+**Función de negocio principal:** Control de calidad de materiales, evaluación de pavimentos y relevamiento técnico de fallas en terreno.
 
-- **Dirección de Construcciones**
-  Encargada de la **ejecución y control de obras viales por contrato**, incluyendo inspección, certificación de avances, control de plazos y relación con contratistas. **Función de negocio principal:** Ejecución efectiva de obras y control contractual.
+### **Dirección de Construcciones**
+Encargada de la **ejecución y control de obras viales por contrato**, incluyendo inspección, certificación de avances, control de plazos y relación con contratistas. **Función de negocio principal:** Ejecución efectiva de obras y control contractual.
 
-- **Dirección de Conservación**
-  Se ocupa de la **conservación y mantenimiento de la red vial**, tanto por administración directa como mediante consorcios camineros o terceros. Incluye trabajos sobre caminos, rutas, puentes y alcantarillas.
-  **Función de negocio principal:** Mantenimiento continuo de la infraestructura vial.
+### **Dirección de Conservación**
+Se ocupa de la **conservación y mantenimiento de la red vial**, tanto por administración directa como mediante consorcios camineros o terceros. Incluye trabajos sobre caminos, rutas, puentes y alcantarillas.
+**Función de negocio principal:** Mantenimiento continuo de la infraestructura vial.
 
-- **Dirección de Logística y Mantenimiento** Responsable del **mantenimiento y reparación del parque automotor**, tanto en taller central como en delegaciones. Gestiona recursos técnicos y operativos para garantizar la disponibilidad de equipos.
-  **Función de negocio principal:** Mantenimiento de flota e insumos, despacho y control de combustible.
+### **Dirección de Logística y Mantenimiento** Responsable del **mantenimiento y reparación del parque automotor**, tanto en taller central como en delegaciones. Gestiona recursos técnicos y operativos para garantizar la disponibilidad de equipos.
+**Función de negocio principal:** Mantenimiento de flota e insumos, despacho y control de combustible.
 
-- **Dirección de Administración**
-  Gestiona los **recursos financieros, presupuestarios y contables** del organismo. Incluye la elaboración y ejecución del presupuesto, pagos, contrataciones, liquidación de sueldos y rendiciones de cuentas.
-  **Función de negocio principal:** Sostén económico y control financiero de toda la organización.
+### **Dirección de Administración**
+Gestiona los **recursos financieros, presupuestarios y contables** del organismo. Incluye la elaboración y ejecución del presupuesto, pagos, contrataciones, liquidación de sueldos y rendiciones de cuentas.
+**Función de negocio principal:** Sostén económico y control financiero de toda la organización.
 
-- **Dirección de Vialidad Urbana**
-  Se encarga del diseño, adecuación hidráulica y elaboración de pliegos para pavimentos urbanos, además de la ejecución, control y certificación de obras realizadas dentro de los ejidos urbanos. También tiene bajo su órbita tareas de mantenimiento edilicio.
-  **Función de negocio principal:** Planificación, ejecución y mantenimiento de infraestructura vial urbana.
+### **Dirección de Vialidad Urbana**
+Se encarga del diseño, adecuación hidráulica y elaboración de pliegos para pavimentos urbanos, además de la ejecución, control y certificación de obras realizadas dentro de los ejidos urbanos. También tiene bajo su órbita tareas de mantenimiento edilicio.
+**Función de negocio principal:** Planificación, ejecución y mantenimiento de infraestructura vial urbana.
 
-- **Dirección de Secretaría General (RRHH)**
-  Se encarga de coordinar las tramitaciones de orden administrativo, el registro de expedientes y el despacho general de la institución. Además, concentra y administra de manera centralizada toda la información relacionada con el capital humano de la repartición, abarcando el control de asistencia, liquidación de viáticos, entrega de indumentaria, calificaciones de desempeño, y programas de higiene y seguridad laboral.
-  **Función de negocio principal:** Gestión integral del personal.
+### **Dirección de Secretaría General (RRHH)**
+Se encarga de coordinar las tramitaciones de orden administrativo, el registro de expedientes y el despacho general de la institución. Además, concentra y administra de manera centralizada toda la información relacionada con el capital humano de la repartición, abarcando el control de asistencia, liquidación de viáticos, entrega de indumentaria, calificaciones de desempeño, y programas de higiene y seguridad laboral.
+**Función de negocio principal:** Gestión integral del personal.
 
-- **Dirección de Asuntos Jurídicos**
-  Es responsable de sistematizar y gestionar toda la información jurídica y legal de la repartición. Asesora a la institución mediante la emisión de dictámenes, interviene en las contiendas jurisdiccionales de las delegaciones zonales y lleva el seguimiento procesal estricto de amparos, juicios, expropiaciones de terrenos y liberación de trazas necesarias para el desarrollo de las obras viales.
-  **Función de negocio principal:** Gestión de expedientes legales, expropiaciones y liberación de trazas.
+### **Dirección de Asuntos Jurídicos**
+Es responsable de sistematizar y gestionar toda la información jurídica y legal de la repartición. Asesora a la institución mediante la emisión de dictámenes, interviene en las contiendas jurisdiccionales de las delegaciones zonales y lleva el seguimiento procesal estricto de amparos, juicios, expropiaciones de terrenos y liberación de trazas necesarias para el desarrollo de las obras viales.
+**Función de negocio principal:** Gestión de expedientes legales, expropiaciones y liberación de trazas.
 
 ## Sistemas de Información Existentes
 
-- Viaticar
+### Viaticar
 
 Sistema destinado a la gestión de solicitudes de viáticos y sus respectivas rendiciones.
 
 El sistema cumple adecuadamente su función operativa, pero presenta limitaciones en el análisis de la información.
 
-- RopasDVP
+### RopasDVP
 
 Sistema encargado de gestionar los pedidos de indumentaria laboral para el personal.
 No dispone de herramientas de análisis sobre los gastos realizados.
 
-- TallerDLM
+### TallerDLM
 
 Sistema utilizado para la gestión de pedidos de insumos y órdenes de trabajo del área de mecánica.
 Carece de reportes analíticos que permitan evaluar el rendimiento y costos asociados.
 
-- StockDVP
+### StockDVP
 
 Sistema que administra los movimientos de stock (cubiertas, repuestos, aceites, envíos a delegaciones, etc.).
 El sistema se enfoca en la registración operativa, sin explotar la información disponible.
 
-- OrdenesDVP
+### OrdenesDVP
 
 Sistema que gestiona las órdenes de provisión y órdenes de compra, generadas a partir de pedidos internos.
 Permite administrar el uso de partidas presupuestarias por dirección, pero con escasa capacidad analítica.
 
-- SiCC
+### SiCC
 
 Sistema encargado de la gestión de cargas de combustible de toda la repartición, incluyendo el control de los distintos tanques ubicados tanto en zonas operativas como en la sede central.
 El proceso se basa en la generación de planillas que luego se completan manualmente a medida que se realizan los despachos de combustible. Si bien permite registrar las operaciones, presenta limitaciones en cuanto a la explotación de la información.
 
-- GesTaller
+### GesTaller
 
 Sistema destinado al registro de constataciones y servicios realizados sobre el parque automotor de la provincia, abarcando vehículos pertenecientes a distintas reparticiones públicas.
 El sistema cumple una función clave en la registración de intervenciones mecánicas y controles, pero se encuentra limitado al plano operativo.
 
-- RRHH
+### RRHH
 
 Sistema orientado a la gestión integral del personal de la repartición.
 Permite administrar la información de los agentes, incluyendo sus cargos (planta permanente, subrogancias, contratos), así como el registro de inasistencias, licencias, certificados médicos, permisos y otras novedades relacionadas. Constituye una herramienta central para la administración del capital humano.
 
-- Calificaciones
+### Calificaciones
 
 Sistema destinado a la evaluación del desempeño del personal, utilizado por los jefes de cada dirección y departamento para calificar a sus agentes.
 El sistema digitaliza un proceso que anteriormente se realizaba de forma manual, permitiendo gestionar el circuito completo de calificación (pendiente, evaluado, validado por el área de personal), además de calcular automáticamente el puntaje obtenido por cada agente. Esta información se incorpora al legajo del empleado y constituye un insumo clave para la definición de ascensos de categoría.
 
-- Consorcio
+### Consorcio
 
 Sistema tercerizado utilizado para la gestión de los consorcios camineros.
 Se trata de una solución externa, sin acceso al código fuente, lo que limita la capacidad de adaptación y evolución interna. El sistema gestiona las certificaciones de obras de los consorcios camineros, así como su administración contable, siendo una herramienta clave para la operatoria del área.
 
-- LexDoctor
+### LexDoctor
 
 Sistema destinado a la gestión integral de procesos judiciales y extrajudiciales, utilizado por el departamento de asuntos jurídicos.
 
@@ -382,10 +382,10 @@ Por lo tanto, se hace necesaria una transformación tecnológica que permita int
 
 ## Cartera de aplicaciones actuales:
 
-<!-- matriz-2x2 -->
+<!-- matriz-2x2 valign=middle -->
 
 | **Estrategia organizacional** | **Alto Potencial** |
-| --- | --- |
+| :---: | :---: |
 | • Mapa Vial Interactivo • Inteligencia de Negocios (BI) y Dashboards • GesTaller (Integración Interinstitucional) | • Asistentes de Inteligencia Artificial y Chatbots • Herramientas Mobile (Trabajo en terreno) |
 | **Clave para las operaciones** | **Apoyo** |
 | • StockDVP • TallerDLM • OrdenesDVP • Consorcio • GesTaller • SiCC | • Viaticar • RopasDVP • RRHH • Calificaciones • LexDoctor |
@@ -544,7 +544,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 ## Cartera de Aplicaciones y Estilos de Gestión de TI
 
-**ESTRATÉGICOS** *(Aseguran el cumplimiento de la misión institucional a futuro)*
+### **ESTRATÉGICOS** *(Aseguran el cumplimiento de la misión institucional a futuro)*
 
 - **Estrategia de Gestión (Andreu, Ricart y Valor): PLANIFICACIÓN CENTRALIZADA.** Informática trabaja codo a codo con la Alta Dirección, controlando estrictamente las inversiones para asegurar que los sistemas cumplan con los objetivos institucionales.
 
@@ -552,13 +552,13 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
   - **DVP-BI (Data Warehouse y Tableros de Control):** Implementación de un ecosistema analítico basado en un almacén de datos centralizado para el monitoreo en tiempo real del Fondo Vial y el soporte a la toma de decisiones estratégicas.
 
-**DE ALTO POTENCIAL** *(Innovaciones tecnológicas que pueden transformar la operación)*
+### **DE ALTO POTENCIAL** *(Innovaciones tecnológicas que pueden transformar la operación)*
 
 - **Estrategia de Gestión (Andreu, Ricart y Valor): HILO CONDUCTOR.** El departamento de Sistemas actúa como guía y facilitador, dando cierta libertad descentralizada a los ingenieros para que innoven sin asfixiarlos con burocracia.
 
   - **GeoVial (GIS DVP):** Adopción de un entorno geográfico avanzado para la planificación estratégica del territorio mediante la integración del inventario vial y el análisis geoespacial de índices de accidentología.
 
-**CLAVE PARA LAS OPERACIONES** *(De ellos depende el funcionamiento diario de Vialidad)*
+### **CLAVE PARA LAS OPERACIONES** *(De ellos depende el funcionamiento diario de Vialidad)*
 
 - **Estrategia de Gestión (Andreu, Ricart y Valor): MONOPOLIO.** Informática ejerce un control absoluto y centralizado sobre estos sistemas para garantizar su estabilidad, seguridad y evitar que la operatoria diaria se paralice.
 
@@ -572,7 +572,7 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
   - **LabVial:** Base de datos centralizada para el registro auditable e histórico de ensayos de materiales, garantizando el respaldo técnico para exigir el cumplimiento de garantías a empresas contratistas.
 
-**DE APOYO** *(Mejoran la eficiencia administrativa, pero no son el Core del negocio)*
+### **DE APOYO** *(Mejoran la eficiencia administrativa, pero no son el Core del negocio)*
 
 - **Estrategia de Gestión (Andreu, Ricart y Valor): RECURSO ESCASO.** Se invierte lo mínimo e indispensable para mantener la eficiencia administrativa de estas áreas operando correctamente, priorizando el flujo de dinero hacia el Core del negocio.
 
@@ -584,41 +584,41 @@ En Estrategia organizacional con el sistema actual de GesTaller se considera rea
 
 ![*Cartera de Aplicaciones*](../../../assets/cartera_dvp.png){width=100%}
 
-**Tipos de inversiones (Según las categorías puras de Robson):** Analizar la naturaleza de los desembolsos financieros en SI/TI bajo el marco conceptual de Robson.
+## **Tipos de inversiones (Según las categorías puras de Robson):** Analizar la naturaleza de los desembolsos financieros en SI/TI bajo el marco conceptual de Robson.
 
-1. **Inversiones de Valor Operacional (Eficiencia Transaccional):**
+### 1. **Inversiones de Valor Operacional (Eficiencia Transaccional):**
 
-    - **Fundamentación teórica:** Proyectos orientados a la productividad operativa con retornos a corto plazo, enfocados en la reducción de costos y optimización de tareas administrativas recurrentes.
+- **Fundamentación teórica:** Proyectos orientados a la productividad operativa con retornos a corto plazo, enfocados en la reducción de costos y optimización de tareas administrativas recurrentes.
 
-    - **SiCC Móvil:** Mejora inmediata en el control de combustible in situ, erradicando errores de carga manual y previniendo desvíos de fondos mediante la digitalización del registro.
+- **SiCC Móvil:** Mejora inmediata en el control de combustible in situ, erradicando errores de carga manual y previniendo desvíos de fondos mediante la digitalización del registro.
 
-    - **Sistemas logísticos integrados (TallerDLM, StockDVP, OrdenesDVP):** Eliminación de silos y redundancia de datos mediante APIs, automatizando la trazabilidad del gasto operativo y resolviendo cuellos de botella administrativos.
+- **Sistemas logísticos integrados (TallerDLM, StockDVP, OrdenesDVP):** Eliminación de silos y redundancia de datos mediante APIs, automatizando la trazabilidad del gasto operativo y resolviendo cuellos de botella administrativos.
 
-    - **Legajo Digital Único:** Consolidación de información del capital humano para agilizar la gestión diaria de RRHH, permitiendo una visualización rápida y centralizada del perfil del agente.
+- **Legajo Digital Único:** Consolidación de información del capital humano para agilizar la gestión diaria de RRHH, permitiendo una visualización rápida y centralizada del perfil del agente.
 
-    - **LabVial:** Centralización de ensayos técnicos para asegurar la calidad de las obras, proporcionando evidencia auditable para el cumplimiento de garantías contractuales.
+- **LabVial:** Centralización de ensayos técnicos para asegurar la calidad de las obras, proporcionando evidencia auditable para el cumplimiento de garantías contractuales.
 
-2. **Inversiones de Valor Estratégico (Misión e Innovación):**
+### 2. **Inversiones de Valor Estratégico (Misión e Innovación):**
 
-    - **Fundamentación teórica:** Iniciativas destinadas a fortalecer el cumplimiento de la misión institucional a largo plazo, con beneficios directos pero complejos de cuantificar económicamente en etapas iniciales.
+- **Fundamentación teórica:** Iniciativas destinadas a fortalecer el cumplimiento de la misión institucional a largo plazo, con beneficios directos pero complejos de cuantificar económicamente en etapas iniciales.
 
-    - **ERP Vial Integral (In-House):** Garantiza la soberanía tecnológica del organismo sobre sus procesos misionales, transformando la administración de certificaciones de obra y licitaciones.
+- **ERP Vial Integral (In-House):** Garantiza la soberanía tecnológica del organismo sobre sus procesos misionales, transformando la administración de certificaciones de obra y licitaciones.
 
-    - **GeoVial (GIS DVP):** Herramienta de planificación territorial avanzada que permite priorizar obras de infraestructura mediante el análisis geoespacial del inventario y la accidentología.
+- **GeoVial (GIS DVP):** Herramienta de planificación territorial avanzada que permite priorizar obras de infraestructura mediante el análisis geoespacial del inventario y la accidentología.
 
-    - **DVP-BI (Analítica Gerencial):** Ecosistema analítico para la transición hacia una gestión proactiva, facilitando el monitoreo en tiempo real de la ejecución presupuestaria del Fondo Vial.
+- **DVP-BI (Analítica Gerencial):** Ecosistema analítico para la transición hacia una gestión proactiva, facilitando el monitoreo en tiempo real de la ejecución presupuestaria del Fondo Vial.
 
-3. **Inversiones de Umbral (Operatividad Obligatoria):**
+### 3. **Inversiones de Umbral (Operatividad Obligatoria):**
 
-    - **Fundamentación teórica:** Desembolsos ineludibles para la supervivencia operativa del organismo y el cumplimiento de marcos normativos, mitigando riesgos legales y patrimoniales.
+- **Fundamentación teórica:** Desembolsos ineludibles para la supervivencia operativa del organismo y el cumplimiento de marcos normativos, mitigando riesgos legales y patrimoniales.
 
-    - **LexDoctor:** Adopción del estándar legal nacional para asegurar el seguimiento de plazos procesales y expropiaciones, manteniendo la operatividad básica del área jurídica.
+- **LexDoctor:** Adopción del estándar legal nacional para asegurar el seguimiento de plazos procesales y expropiaciones, manteniendo la operatividad básica del área jurídica.
 
-4. **Inversiones de Infraestructura (Cimiento Tecnológico):**
+### 4. **Inversiones de Infraestructura (Cimiento Tecnológico):**
 
-    - **Fundamentación teórica:** Inversiones a mediano plazo que habilitan el desarrollo de sistemas futuros mediante la creación de una arquitectura base robusta e integrada.
+- **Fundamentación teórica:** Inversiones a mediano plazo que habilitan el desarrollo de sistemas futuros mediante la creación de una arquitectura base robusta e integrada.
 
-    - **Arquitectura de Interoperabilidad (APIs):** Constituye el "cableado" lógico institucional que permite la comunicación fluida entre el ERP y los sistemas periféricos, sustentando la expansión tecnológica de la DVP.
+- **Arquitectura de Interoperabilidad (APIs):** Constituye el "cableado" lógico institucional que permite la comunicación fluida entre el ERP y los sistemas periféricos, sustentando la expansión tecnológica de la DVP.
 
 # Fase 4: Programación de Actividades
 
