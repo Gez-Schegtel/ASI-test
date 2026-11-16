@@ -77,7 +77,7 @@ Para garantizar compatibilidad simultánea entre Obsidian y el motor Pandoc/LuaL
 
   * Nunca usar strings Base64 gigantes dentro de los `.md`.
 
-* **Tablas**: Estrictamente en formato GFM (GitHub Flavored Markdown). No partir filas con tags HTML `<br>` si se puede evitar; para listas dentro de celdas usar viñetas `•`. Para matrices 2×2 de 4 cuadrantes o tablas NxM con bordes completos y sombreado, anteponer `<!-- matriz-2x2 -->` o `<!-- cuadricula -->` (procesado por `toolchain/pandoc/filters/tablas-matriz.lua`).
+* **Tablas**: Estrictamente en formato GFM (GitHub Flavored Markdown). No partir filas con tags HTML `<br>` si se puede evitar; para listas dentro de celdas usar viñetas `•`. Para matrices 2×2 de 4 cuadrantes, cuadrículas con bordes completos o control de alineación vertical, anteponer `<!-- matriz-2x2 -->`, `<!-- cuadricula -->` o `valign=top|middle|bottom` / `hvalign=...` (procesado por `toolchain/pandoc/filters/tablas-matriz.lua`).
 
 * **Codificación y caracteres**: Texto en UTF-8 con normalización NFC. Evitar emojis en encabezados `#` para prevenir roturas en el motor LaTeX (o verificar que Noto Color Emoji esté activo).
 

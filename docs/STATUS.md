@@ -89,7 +89,7 @@
 
 9. **[09-gobernanza-ramas-pr-y-releases.md](specs/09-gobernanza-ramas-pr-y-releases.md)** — *Estado: **Implementada** (2026-11-14)*. Incorporación de `.github/CODEOWNERS` (`* @Gez-Schegtel`), mínimo privilegio por job, validación en CI de que los tags `v*` pertenezcan a `main` y *Repository Rulesets* activos en `Gez-Schegtel/ASI-test` para `main` y tags `v*`.
 
-10. **[10-matrices-y-tablas-cuadriculadas.md](specs/10-matrices-y-tablas-cuadriculadas.md)** — *Estado: **Implementada** (2026-11-15)*. Filtro Lua `tablas-matriz.lua` (`<!-- matriz-2x2 -->` y `<!-- cuadricula -->`), soporte de `colortbl` en `estilo.tex` y estilos `.matriz-2x2` en `estilo-epub.css` para renderizar matrices de 4 cuadrantes con bordes completos y migración a GFM en `Trabajo Práctico - Parte 1.md`.
+10. **[10-matrices-y-tablas-cuadriculadas.md](specs/10-matrices-y-tablas-cuadriculadas.md)** — *Estado: **Implementada y Ampliada** (2026-11-15 / 2026-11-16)*. Filtro Lua `tablas-matriz.lua` (`<!-- matriz-2x2 -->`, `<!-- cuadricula -->` y modificadores `valign` / `hvalign` también en tablas `booktabs`), soporte de `colortbl` en `estilo.tex` y estilos `.matriz-2x2`/`.valign-*` en `estilo-epub.css`, junto con la migración a GFM en `Trabajo Práctico - Parte 1.md`.
 
 ---
 
@@ -136,6 +136,18 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-16` — Control de Alineación Vertical en Tablas (`valign` / `hvalign`)
+
+* **Contexto**: Markdown GFM carece de sintaxis para alineación vertical (`top`, `middle`, `bottom`). Siguiendo el criterio tipográfico de mantener `top` como estándar por defecto para texto largo y listas, se extendió `tablas-matriz.lua` para controlar opcionalmente la alineación vertical mediante comentarios HTML invisibles en Obsidian/GitHub.
+
+* **Acciones ejecutadas**:
+
+  * **Filtro Lua (`toolchain/pandoc/filters/tablas-matriz.lua`)**: Parser unificado de marcadores (`matriz-2x2`, `cuadricula`, `tabla`, `valign=top|middle|bottom` / aliases `arriba|medio|centro|abajo`, `hvalign=...` para encabezados), renderizado nativo con columnas `p{}`/`m{}`/`b{}` de `array` en `tabular` y reescritura de `longtable` (`booktabs`) para tablas comunes (incluyendo encabezados multipágina `\endfirsthead`/`\endhead` y tablas con `\caption`), conservando intactas las tablas sin marcador y comentarios HTML informativos.
+
+  * **Estilos EPUB (`toolchain/pandoc/templates/estilo-epub.css`)**: Reglas `.valign-{top,middle,bottom}` y `.hvalign-{top,middle,bottom}` (con soporte para la segunda fila de encabezado de `.matriz-2x2`).
+
+  * **Documentación y aplicación en TP1**: Actualización de `docs/specs/10-matrices-y-tablas-cuadriculadas.md` (con tabla de referencia rápida), `docs/GUIA_SUBIDA_APUNTES.md` (ejemplos listos para copiar), `README.md`, `GEMINI.md`, `toolchain/README.md` y `docs/STATUS.md`; y actualización de la matriz *Cartera de aplicaciones actuales* en `content/trabajo-practico/parte-1/Trabajo Práctico - Parte 1.md` con `<!-- matriz-2x2 valign=middle -->` y `| :---: | :---: |`.
 
 ### `2026-11-16` — Soporte de Alineación Horizontal en `tablas-matriz.lua` (Spec 10)
 

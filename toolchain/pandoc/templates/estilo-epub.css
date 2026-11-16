@@ -102,4 +102,16 @@ table.matriz-2x2 ul, table.cuadricula ul {
   text-align: left;
 }
 
+table.valign-top th, table.valign-top td { vertical-align: top; }
+table.valign-middle th, table.valign-middle td { vertical-align: middle; }
+table.valign-bottom th, table.valign-bottom td { vertical-align: bottom; }
+
+table.hvalign-top thead th { vertical-align: top; }
+table.hvalign-middle thead th { vertical-align: middle; }
+table.hvalign-bottom thead th { vertical-align: bottom; }
+
+table.matriz-2x2.hvalign-top tbody tr:nth-child(2) td { vertical-align: top; }
+table.matriz-2x2.hvalign-middle tbody tr:nth-child(2) td { vertical-align: middle; }
+table.matriz-2x2.hvalign-bottom tbody tr:nth-child(2) td { vertical-align: bottom; }
+
 a { color: #1a3d7c; text-decoration: none; }

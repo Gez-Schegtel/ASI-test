@@ -204,7 +204,7 @@ Usá los callouts estándar de Obsidian/GitHub. En el PDF y en el EPUB se transf
 > Caso práctico o ejemplo aplicado (ej. Dirección de Vialidad Provincial).
 ```
 
-### Fórmulas matemáticas y Tablas
+### Fórmulas matemáticas
 
 * **Matemática en línea**: `$RUO = \frac{T_{uso}}{T_{disponible}}$`
 
@@ -215,7 +215,49 @@ Usá los callouts estándar de Obsidian/GitHub. En el PDF y en el EPUB se transf
   $$
   ```
 
-* **Tablas**: Usá tablas estándar de Markdown (GFM), dejando siempre una línea en blanco antes y después de la tabla. Podés alinear columnas con `:---` (izquierda), `:---:` (centro) o `---:` (derecha). Evitá etiquetas HTML `<br>` adentro de celdas (`mdnorm` las limpia automáticamente); para listas dentro de una celda usá viñetas `•`. Si necesitás una **matriz 2×2 de 4 cuadrantes** (como la Matriz de McFarlan) o una tabla con bordes completos, colocá `<!-- matriz-2x2 -->` (o `<!-- cuadricula -->`) en la línea anterior a la tabla GFM.
+### Tablas, Matrices 2×2 y Alineación (`tablas-matriz.lua`)
+
+Usá siempre tablas estándar de Markdown (**GFM**), dejando **una línea en blanco antes y después** de la tabla y evitando etiquetas `<br>` adentro de las celdas (`mdnorm` las limpia). Si necesitás viñetas dentro de una celda, separalas con `•` (`• Ítem 1 • Ítem 2`).
+
+1. **Alineación horizontal (nativa en Markdown GFM)**:
+   Controlá columna por columna en la fila separadora con `:---` (izquierda), `:---:` (centro) o `---:` (derecha). Funciona en tablas comunes, cuadrículas y matrices 2×2.
+
+2. **Bordes completos, Matrices 2×2 y Alineación vertical (`<!-- ... -->`)**:
+   Como Markdown no tiene sintaxis para bordes de cuadrícula ni alineación vertical, anteponé un **comentario HTML invisible** en Obsidian/GitHub justo antes de la tabla:
+
+   * **`<!-- matriz-2x2 -->`**: Tabla de 2 columnas × 4 filas donde las filas 1 y 3 son títulos sombreados de cuadrantes (ej. Matriz de McFarlan).
+
+   * **`<!-- cuadricula -->`**: Cualquier tabla NxM con todos los bordes verticales/horizontales y encabezado sombreado.
+
+   * **`valign=top|middle|bottom`** *(aliases en español: `arriba`, `medio`/`centro`, `abajo`)*: alineación vertical de toda la tabla (**por defecto `top`**). Funciona tanto en matrices/cuadrículas como en tablas `booktabs` comunes (`<!-- valign=middle -->`).
+
+   * **`hvalign=top|middle|bottom`**: alineación vertical exclusiva para los encabezados (útil para centrar títulos manteniendo el cuerpo arriba: `<!-- cuadricula hvalign=middle -->`).
+
+```markdown
+<!-- matriz-2x2 valign=middle -->
+
+| **Estratégicos** | **Alto Potencial** |
+| :---: | :---: |
+| • Sistema A • Sistema B | • Sistema C |
+| **Clave para las operaciones** | **De Apoyo** |
+| • Sistema D | • Sistema E |
+```
+
+```markdown
+<!-- cuadricula valign=middle -->
+
+| Dimensión | Estado | Costo anual |
+| :--- | :---: | ---: |
+| Disponibilidad | Óptimo | \$ 12.500 |
+```
+
+```markdown
+<!-- valign=middle -->
+
+| Riesgo | Descripción extensa | Nivel |
+| :--- | :--- | :---: |
+| Ransomware | Cifrado de bases de datos... | Crítico |
+```
 
 ---
 

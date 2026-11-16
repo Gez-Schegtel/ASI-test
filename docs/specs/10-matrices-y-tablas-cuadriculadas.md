@@ -41,3 +41,29 @@ Se ejecuta inmediatamente después de `tablas-listas.lua` tanto en `pdf.yaml` co
 * **En EPUB3 (`HTML/CSS`)**: Consume el comentario marcador, añade la clase `.matriz-2x2` a la tabla y aplica estilos dedicados en `estilo-epub.css` para sombrear y enmarcar los 4 cuadrantes de forma equivalente al PDF, respetando la alineación por columna (`:---`, `:---:`, `---:`) y manteniendo las listas `<ul>` alineadas a la izquierda.
 
 * *(Soporte general adicional)*: Admite también `<!-- cuadricula -->` sobre cualquier tabla NxM para dibujarla en PDF/EPUB con bordes completos en todas sus celdas y alineación horizontal por columna.
+
+### 2.3. Control de Alineación Vertical (`valign` y `hvalign`)
+
+Sobre cualquier tabla (`<!-- matriz-2x2 ... -->`, `<!-- cuadricula ... -->` o tablas `booktabs` comunes mediante `<!-- valign=... -->` / `<!-- tabla valign=... -->`) se puede elegir la alineación vertical manteniendo `top` (`arriba`) como estándar por defecto:
+
+* **Modificadores admitidos**: `valign=top|middle|bottom` (aliases en español: `arriba`, `medio`/`centro`, `abajo`) para toda la tabla y `hvalign=top|middle|bottom` opcional para alinear el encabezado de forma independiente (por ejemplo `<!-- cuadricula hvalign=middle -->` o `<!-- valign=bottom hvalign=middle -->`).
+
+* **En PDF (`LaTeX`)**: En cuadrículas y matrices (`tabular`) usa columnas nativas `p{}`, `m{}` o `b{}` del paquete `array` (con `\multicolumn{1}` en encabezados cuando `hvalign` difiere de `valign`); en tablas `booktabs` (`longtable`) reemplaza `p{...}` por `m{...}`/`b{...}` en las columnas declaradas y ajusta `[t]`/`[c]`/`[b]` en los bloques de encabezado.
+
+* **En EPUB3 (`HTML/CSS`)**: Añade las clases `.valign-{top,middle,bottom}` y `.hvalign-{top,middle,bottom}` sobre `<table>`, con soporte en `estilo-epub.css` (incluyendo la segunda fila de encabezado de `.matriz-2x2`).
+
+---
+
+## 3. Referencia Rápida de Uso en Markdown
+
+| Objetivo visual | Comentario HTML antes de la tabla | Ejemplo / Notas |
+| :--- | :--- | :--- |
+| Matriz de 4 cuadrantes (arriba por defecto) | `<!-- matriz-2x2 -->` | Tabla 2×4 (filas 1 y 3 sombreadas como títulos) |
+| Matriz 2×2 centrada | `<!-- matriz-2x2 valign=middle -->` | Combinar con `\| :---: \| :---: \|` para centrar títulos horizontalmente |
+| Cuadrícula NxM con bordes | `<!-- cuadricula -->` | Acepta `valign=...` y `hvalign=...` |
+| Tabla `booktabs` estándar alineada al medio/abajo | `<!-- valign=middle -->` o `<!-- valign=bottom -->` | También admite `<!-- tabla valign=abajo hvalign=centro -->` |
+| Solo encabezados centrados y cuerpo arriba | `<!-- cuadricula hvalign=middle -->` o `<!-- hvalign=middle -->` | Mantiene el estándar `top` para párrafos largos en el cuerpo |
+
+* **Alineación horizontal**: se define siempre con el separador GFM (`:---` izquierda, `:---:` centro, `---:` derecha). En celdas con listas (`•`), las viñetas se mantienen alineadas a la izquierda en PDF (`itemize`) y EPUB (`ul { text-align: left; }`).
+
+* **Aliases admitidos en `valign` / `hvalign`**: `top`/`arriba`, `middle`/`center`/`medio`/`centro`, `bottom`/`abajo` (separables por `=`, `:` o `-`, por ej. `valign=medio` o `hvalign-centro`). Los comentarios HTML informativos que no coincidan con estas directivas se dejan intactos.

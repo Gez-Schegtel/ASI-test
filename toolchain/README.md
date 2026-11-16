@@ -35,7 +35,7 @@ toolchain/
         ├── cortar-formulas.lua      <- Parte ecuaciones en bloque ($$ ... $$) que exceden el ancho de página
         ├── centrar-imagenes.lua     <- Centra figuras sueltas y soporta {.izquierda}, {.derecha} y anchos
         ├── tablas-listas.lua        <- Convierte viñetas en celdas de tablas a listas nativas (LaTeX/EPUB)
-        └── tablas-matriz.lua        <- Dibuja matrices 2x2 (<!-- matriz-2x2 -->) y cuadrículas con bordes completos
+        └── tablas-matriz.lua        <- Matrices 2x2 (<!-- matriz-2x2 -->), cuadrículas (<!-- cuadricula -->) y alineación vertical (valign/hvalign)
 ```
 
 ---

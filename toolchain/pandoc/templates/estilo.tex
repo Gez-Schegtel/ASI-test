@@ -177,9 +177,11 @@
 %    que genera pandoc). Si se pusiera global, también ensancharía las líneas
 %    de autor y fecha del título.
 %    colortbl permite sombrear encabezados en tablas marcadas con
-%    <!-- matriz-2x2 --> o <!-- cuadricula --> (filtro tablas-matriz.lua).
+%    <!-- matriz-2x2 --> o <!-- cuadricula --> (filtro tablas-matriz.lua),
+%    y longtable/booktabs/calc aseguran tablas marcadas con <!-- valign=... -->
+%    incluso si son la única tabla del documento.
 % ------------------------------------------------------------------------------
-\usepackage{colortbl}
+\usepackage{longtable,booktabs,calc,colortbl}
 \AddToHook{env/longtable/begin}{\renewcommand{\arraystretch}{1.5}}
 
 
