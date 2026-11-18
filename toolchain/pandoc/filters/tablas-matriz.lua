@@ -453,6 +453,39 @@ local function apply_epub_classes(tbl, opts)
   return tbl
 end
 
+local EPUB_ARROWS = {
+  ['\\rightarrow']         = '→',
+  ['\\to']                 = '→',
+  ['\\longrightarrow']     = '→',
+  ['\\leftarrow']          = '←',
+  ['\\gets']               = '←',
+  ['\\longleftarrow']      = '←',
+  ['\\leftrightarrow']     = '↔',
+  ['\\longleftrightarrow'] = '↔',
+  ['\\updownarrow']        = '↕',
+  ['\\uparrow']            = '↑',
+  ['\\downarrow']          = '↓',
+  ['\\Rightarrow']         = '⇒',
+  ['\\Longrightarrow']     = '⇒',
+  ['\\Leftarrow']          = '⇐',
+  ['\\Longleftarrow']      = '⇐',
+  ['\\Leftrightarrow']     = '⇔',
+  ['\\Longleftrightarrow'] = '⇔',
+  ['\\iff']                = '⇔',
+}
+
+function Math(el)
+  if FORMAT:match('latex') or FORMAT:match('beamer') then
+    return nil
+  end
+  local trimmed = el.text:match('^%s*(.-)%s*$')
+  local arrow = EPUB_ARROWS[trimmed]
+  if arrow then
+    return pandoc.Str(arrow)
+  end
+  return nil
+end
+
 function Blocks(blocks)
   local out = pandoc.List()
   local i = 1

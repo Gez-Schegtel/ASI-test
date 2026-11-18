@@ -115,3 +115,7 @@ table.matriz-2x2.hvalign-middle tbody tr:nth-child(2) td { vertical-align: middl
 table.matriz-2x2.hvalign-bottom tbody tr:nth-child(2) td { vertical-align: bottom; }
 
 a { color: #1a3d7c; text-decoration: none; }
+
+annotation, annotation-xml {
+  display: none;
+}
