@@ -180,20 +180,20 @@ En el cierre de la Fase 2, el TP ubica los sistemas actuales y las oportunidades
 
 - **Sistema de Información Básico (Sistemas Transversales e Infraestructura):** Son el cimiento tecnológico que coordina a múltiples direcciones mediante bases de datos integradas: **ERP Vial Integral (In-House)**, **DVP-BI**, **OrdenesDVP** y **RRHH**.
 
-## Valor de la Inversión: Los 3 Tipos de Beneficios (Relación 1 a 1 por Nivel)
+## Valor de la Inversión: Los 3 Tipos de Beneficios y las 3 Eras (Relación 1 a 1)
 
 > [!TIP]
-> **Regla 1 a 1 de la cátedra (Nivel $\leftrightarrow$ Beneficio Genérico):**
+> **Regla 1 a 1 de la cátedra y del TP (Nivel $\leftrightarrow$ Beneficio Genérico $\leftrightarrow$ Era de la Información):**
 >
-> - **Nivel Operativo $\longleftrightarrow$ Eficiencia** *(hacer lo mismo más rápido y gastando menos — tangible / justificación «dura»)*.
+> - **Nivel Operativo $\longleftrightarrow$ Eficiencia $\longleftrightarrow$ Primera Era (E1 — Automatizar)** *(tangible / justificación «dura»)*.
 >
-> - **Nivel Táctico $\longleftrightarrow$ Efectividad** *(tomar mejores decisiones gerenciales y mejorar el RoA — cualitativo / justificación «blanda»)*.
+> - **Nivel Táctico $\longleftrightarrow$ Efectividad $\longleftrightarrow$ Segunda Era (E2 — Informar)** *(cualitativo, mejora el RoA / justificación «blanda»)*.
 >
-> - **Nivel Estratégico $\longleftrightarrow$ Avance Estratégico o Competitividad** *(transformar el organismo y cumplir la misión a largo plazo — intangible / justificado por «acto de fe»)*.
+> - **Nivel Estratégico $\longleftrightarrow$ Avance Estratégico o Competitividad $\longleftrightarrow$ Tercera Era (E3 — Transformar)** *(intangible y de largo plazo / justificado por «acto de fe»)*.
 
-1. **Nivel Operativo $\longleftrightarrow$ Beneficios de Eficiencia:**
+1. **Nivel Operativo $\longleftrightarrow$ Beneficios de Eficiencia (Primera Era de la Información: E1 — Automatizar):**
 
-   - *Características:* Son estrictamente **tangibles** y se justifican mediante técnicas **"duras"** enfocadas en el **desplazamiento de costos** (eliminar un gasto actual reemplazándolo por tecnología) y la **evitación de costos** futuros.
+   - *Características:* Corresponden a la **Primera Era de la Información (E1 — Automatizar)**. Son estrictamente **tangibles** y se justifican mediante técnicas **"duras"** enfocadas en el **desplazamiento de costos** (eliminar un gasto actual reemplazándolo por tecnología) y la **evitación de costos** futuros.
 
    - *En el TP:*
 
@@ -205,9 +205,9 @@ En el cierre de la Fase 2, el TP ubica los sistemas actuales y las oportunidades
 
      - **LabVial:** **Evitación de costos del 8 %** en bacheo y reparación prematura al exigir en término las garantías de obra a las contratistas con ensayos auditables.
 
-2. **Nivel Táctico $\longleftrightarrow$ Beneficios de Efectividad:**
+2. **Nivel Táctico $\longleftrightarrow$ Beneficios de Efectividad (Segunda Era de la Información: E2 — Informar):**
 
-   - *Características:* Se perciben en **mandos medios y gerencias de departamento**, con foco cualitativo orientado a optimizar el **Rendimiento sobre los Activos (RoA)**. Su justificación es **"blanda"**, asociada a mejorar la toma de decisiones.
+   - *Características:* Se perciben en **mandos medios y gerencias de departamento**, corresponden a la **Segunda Era de la Información (E2 — Informar)** y su foco es cualitativo, orientado a optimizar el **Rendimiento sobre los Activos (RoA)**. Su justificación es **"blanda"**, asociada a mejorar la toma de decisiones.
 
    - *En el TP:*
 
@@ -217,9 +217,9 @@ En el cierre de la Fase 2, el TP ubica los sistemas actuales y las oportunidades
 
      - **Legajo Digital Único:** Permite decidir promociones y ascensos basados en el **mérito real**, subiendo la motivación, reduciendo el favoritismo subjetivo y fomentando el *"sentido de propiedad"*.
 
-3. **Nivel Estratégico $\longleftrightarrow$ Beneficios de Avance Estratégico (o Competitividad):**
+3. **Nivel Estratégico $\longleftrightarrow$ Beneficios de Avance Estratégico o Competitividad (Tercera Era de la Información: E3 — Transformar):**
 
-   - *Características:* Impactan en la **alta dirección (nivel institucional)**, orientados al crecimiento y competitividad. Son **intangibles y de largo plazo**, y se justifican mediante un **"acto de fe"**.
+   - *Características:* Impactan en la **alta dirección (nivel institucional)**, corresponden a la **Tercera Era de la Información (E3 — Transformar)** y están orientados al crecimiento y competitividad. Son **intangibles y de largo plazo**, y se justifican mediante un **"acto de fe"**.
 
    - *En el TP:*
 
@@ -312,12 +312,12 @@ Tras la validación de las Direcciones de Construcciones y de Conservación, el 
 
 <!-- cuadricula -->
 
-| Opción a elegir | 1. Esquema Sintético (`Estrategia Empresarial` $\rightarrow$ `SI` $\rightarrow$ `TI`) | 2. Ubicación en Cartera y Estilo de Gestión | 3. Tipo de Inversión y Beneficio 1 a 1 |
+| Opción a elegir | 1. Esquema Sintético (`Estrategia Empresarial` $\rightarrow$ `SI` $\rightarrow$ `TI`) | 2. Ubicación en Cartera y Estilo de Gestión | 3. Tipo de Inversión, Beneficio 1 a 1 y Era |
 | :--- | :--- | :--- | :--- |
-| **Opción 1: ERP Vial Integral (In-House)** *(Nivel Estratégico)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Plataforma unificada con soberanía tecnológica para auditar obras y certificaciones. $\rightarrow$ **TI (El Cómo):** Desarrollar el **ERP Vial Integral (In-House)**. | **Estratégico** *(alto impacto en estrategia futura)* — Gestión: **Planificación Centralizada** (Informatiza el *Core* de obras y elimina la dependencia de *Consorcio*). | **Inversión de Valor Estratégico** (largo plazo). **Relación 1 a 1:** Nivel **Estratégico** $\rightarrow$ **Avance Estratégico o Competitividad** (reconfigura el poder de negociación frente a contratistas, justificado por «acto de fe»). |
-| **Opción 2: GeoVial (GIS DVP)** *(Nivel Estratégico)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Visión integral y georreferenciada que cruce inventario vial con índices de accidentología. $\rightarrow$ **TI (El Cómo):** Implementar **GeoVial (GIS)**. | **De Alto Potencial** *(innovación que puede transformar la operación)* — Gestión: **Hilo Conductor** (Sistemas guía dando libertad técnica para innovar). | **Inversión de Valor Estratégico** (largo plazo). **Relación 1 a 1:** Nivel **Estratégico** $\rightarrow$ **Avance Estratégico o Competitividad** (pasa de reparar baches reactivamente a planificar según el **FCE** de reducir muertes viales). |
-| **Opción 3: SiCC Móvil** *(Nivel Operativo)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Optimizar el control en terreno y transparencia en despachos de combustible sin papel. $\rightarrow$ **TI (El Cómo):** Implementar la app **SiCC Móvil** con validación *in situ* y alertas. | **Clave para las Operaciones** *(de él depende el funcionamiento diario)* — Gestión: **Monopolio** (control centralizado de Informática para que no se paralice la flota). | **Inversión de Valor Operacional** (corto plazo). **Relación 1 a 1:** Nivel **Operativo** $\rightarrow$ **Eficiencia** tangible (ahorra **USD 18.000/año** en papel y baja **45 %** el tiempo = **120 hs-hombre/mes**). |
-| **Opción 4: DVP-BI (Tableros)** *(Nivel Táctico / Directivo)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Acceso a datos consolidados y en tiempo real de ejecución presupuestaria y costos operativos. $\rightarrow$ **TI (El Cómo):** Implementar **DVP-BI** (*Data Warehouse* + *Dashboards* y *KPIs*). | **Estratégico** *(alto impacto en estrategia futura)* — Gestión: **Planificación Centralizada** (Informática y Alta Dirección controlan juntos la inversión). | **Inversión de Valor Estratégico** (largo plazo). **Relación 1 a 1 en Nivel Táctico:** genera **Efectividad** (actúa como **DSS** con justificación «blanda» para detectar desvíos del Fondo Vial en vivo y cuidar el **RoA**). |
+| **Opción 1: ERP Vial Integral (In-House)** *(Nivel Estratégico)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Plataforma unificada con soberanía tecnológica para auditar obras y certificaciones. $\rightarrow$ **TI (El Cómo):** Desarrollar el **ERP Vial Integral (In-House)**. | **Estratégico** *(alto impacto en estrategia futura)* — Gestión: **Planificación Centralizada** (Informatiza el *Core* de obras y elimina la dependencia de *Consorcio*). | **Inversión de Valor Estratégico** (largo plazo). **Relación 1 a 1:** Nivel **Estratégico** $\rightarrow$ **Avance Estratégico o Competitividad (Tercera Era: E3 — Transformar)**, justificado por «acto de fe». |
+| **Opción 2: GeoVial (GIS DVP)** *(Nivel Estratégico)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Visión integral y georreferenciada que cruce inventario vial con índices de accidentología. $\rightarrow$ **TI (El Cómo):** Implementar **GeoVial (GIS)**. | **De Alto Potencial** *(innovación que puede transformar la operación)* — Gestión: **Hilo Conductor** (Sistemas guía dando libertad técnica para innovar). | **Inversión de Valor Estratégico** (largo plazo). **Relación 1 a 1:** Nivel **Estratégico** $\rightarrow$ **Avance Estratégico o Competitividad (Tercera Era: E3 — Transformar)** (planifica según el **FCE** de reducir muertes viales). |
+| **Opción 3: SiCC Móvil** *(Nivel Operativo)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Optimizar el control en terreno y transparencia en despachos de combustible sin papel. $\rightarrow$ **TI (El Cómo):** Implementar la app **SiCC Móvil** con validación *in situ* y alertas. | **Clave para las Operaciones** *(de él depende el funcionamiento diario)* — Gestión: **Monopolio** (control centralizado de Informática para que no se paralice la flota). | **Inversión de Valor Operacional** (corto plazo). **Relación 1 a 1:** Nivel **Operativo** $\rightarrow$ **Eficiencia (Primera Era: E1 — Automatizar)** tangible: ahorra **USD 18.000/año** y baja **45 %** el tiempo (**120 hs-hombre/mes**). |
+| **Opción 4: DVP-BI (Tableros)** *(Nivel Táctico / Directivo)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Acceso a datos consolidados y en tiempo real de ejecución presupuestaria y costos operativos. $\rightarrow$ **TI (El Cómo):** Implementar **DVP-BI** (*Data Warehouse* + *Dashboards* y *KPIs*). | **Estratégico** *(alto impacto en estrategia futura)* — Gestión: **Planificación Centralizada** (Informática y Alta Dirección controlan juntos la inversión). | **Inversión de Valor Estratégico** (largo plazo). **Relación 1 a 1 en Nivel Táctico:** genera **Efectividad (Segunda Era: E2 — Informar)**: actúa como **DSS** con justificación «blanda» para cuidar el **RoA**. |
 
 ---
 
@@ -341,7 +341,7 @@ Tras la validación de las Direcciones de Construcciones y de Conservación, el 
 
    - **Clasificación:** Es una **Inversión de Valor Estratégico (Misión e Innovación)** según las categorías puras de **Robson**.
 
-   - **Fundamentación (Relación 1 a 1: Nivel Estratégico $\longleftrightarrow$ Avance Estratégico o Competitividad):** Es una iniciativa destinada a fortalecer el cumplimiento de la misión institucional a **largo plazo**, cuyos beneficios son intangibles y complejos de cuantificar económicamente al inicio, justificándose por un **«acto de fe»**. En la relación 1 a 1 por nivel, al ser de **Nivel Estratégico** busca un beneficio de **Avance Estratégico o Competitividad**: permite recuperar el control total del ciclo de obra pública, reconfigurando la cadena de valor y el poder de negociación frente a las empresas contratistas externas al romper las asimetrías de información en las certificaciones de obra y auditar con base científica costos y plazos.
+   - **Fundamentación (Relación 1 a 1: Nivel Estratégico $\longleftrightarrow$ Avance Estratégico o Competitividad $\longleftrightarrow$ Tercera Era: E3 — Transformar):** Es una iniciativa destinada a fortalecer el cumplimiento de la misión institucional a **largo plazo**, cuyos beneficios corresponden a la **Tercera Era de la Información (E3 — Transformar)**: son intangibles y complejos de cuantificar económicamente al inicio, justificándose por un **«acto de fe»**. En la relación 1 a 1 por nivel, al ser de **Nivel Estratégico** busca un beneficio de **Avance Estratégico o Competitividad**: permite recuperar el control total del ciclo de obra pública, reconfigurando la cadena de valor y el poder de negociación frente a las empresas contratistas externas al romper las asimetrías de información en las certificaciones de obra y auditar con base científica costos y plazos.
 
 ---
 
@@ -365,7 +365,7 @@ Tras la validación de las Direcciones de Construcciones y de Conservación, el 
 
    - **Clasificación:** Es una **Inversión de Valor Estratégico (Misión e Innovación)** según las categorías puras de **Robson**.
 
-   - **Fundamentación (Relación 1 a 1: Nivel Estratégico $\longleftrightarrow$ Avance Estratégico o Competitividad):** Fortalece el cumplimiento de la misión institucional a **largo plazo** priorizando obras mediante análisis geoespacial. Por la relación 1 a 1 del **Nivel Estratégico**, genera un beneficio de **Avance Estratégico o Competitividad** (intangible y de largo plazo, justificado por **«acto de fe»**): transforma a la DVP de un organismo meramente reactivo (reparador de baches) a un actor estratégico de planificación territorial, alineando la tecnología con el **Factor Crítico de Éxito (FCE)** de reducir la mortalidad vial antes de pavimentar.
+   - **Fundamentación (Relación 1 a 1: Nivel Estratégico $\longleftrightarrow$ Avance Estratégico o Competitividad $\longleftrightarrow$ Tercera Era: E3 — Transformar):** Fortalece el cumplimiento de la misión institucional a **largo plazo** priorizando obras mediante análisis geoespacial. Por la relación 1 a 1 del **Nivel Estratégico**, genera un beneficio de **Avance Estratégico o Competitividad** correspondiente a la **Tercera Era de la Información (E3 — Transformar)** (intangible y de largo plazo, justificado por **«acto de fe»**): transforma a la DVP de un organismo meramente reactivo (reparador de baches) a un actor estratégico de planificación territorial, alineando la tecnología con el **Factor Crítico de Éxito (FCE)** de reducir la mortalidad vial antes de pavimentar.
 
 ---
 
@@ -389,7 +389,7 @@ Tras la validación de las Direcciones de Construcciones y de Conservación, el 
 
    - **Clasificación:** Es una **Inversión de Valor Operacional (Eficiencia Transaccional)** según las categorías puras de **Robson**.
 
-   - **Fundamentación (Relación 1 a 1: Nivel Operativo $\longleftrightarrow$ Eficiencia):** Es un proyecto orientado a la productividad operativa con **retornos a corto plazo**, enfocado en la **reducción de costos** y en optimizar tareas administrativas recurrentes erradicando errores de carga manual y desvíos de fondos. Por la relación 1 a 1 del **Nivel Operativo**, genera un beneficio de **Eficiencia** de carácter estrictamente **tangible** y con **justificación «dura»**: logra un **desplazamiento de costos** directos con un ahorro neto estimado de **USD 18.000 anuales** en papelería, impresión y distribución física, y una **reducción del 45 % en el tiempo de procesamiento y carga**, liberando **120 horas-hombre mensuales** del personal técnico en terreno.
+   - **Fundamentación (Relación 1 a 1: Nivel Operativo $\longleftrightarrow$ Eficiencia $\longleftrightarrow$ Primera Era: E1 — Automatizar):** Es un proyecto orientado a la productividad operativa con **retornos a corto plazo**, enfocado en la **reducción de costos** y en optimizar tareas administrativas recurrentes erradicando errores de carga manual y desvíos de fondos. Por la relación 1 a 1 del **Nivel Operativo**, genera un beneficio de **Eficiencia** correspondiente a la **Primera Era de la Información (E1 — Automatizar)**, de carácter estrictamente **tangible** y con **justificación «dura»**: logra un **desplazamiento de costos** directos con un ahorro neto estimado de **USD 18.000 anuales** en papelería, impresión y distribución física, y una **reducción del 45 % en el tiempo de procesamiento y carga**, liberando **120 horas-hombre mensuales** del personal técnico en terreno.
 
 ---
 
@@ -413,4 +413,4 @@ Tras la validación de las Direcciones de Construcciones y de Conservación, el 
 
    - **Clasificación:** Es una **Inversión de Valor Estratégico (Misión e Innovación)** según las categorías puras de **Robson**.
 
-   - **Fundamentación (Relación 1 a 1 en Nivel Táctico $\longleftrightarrow$ Efectividad):** Apunta al **largo plazo** para lograr la transición de Vialidad hacia una gestión proactiva basada en datos. Por la relación 1 a 1 del **Nivel Táctico** (mandos medios y directores de área), su beneficio genérico en el TP es la **Efectividad** (de foco cualitativo y **justificación «blanda»**, orientada a optimizar el **Rendimiento sobre los Activos, RoA**): funciona como un **Sistema de Soporte a las Decisiones (DSS)** que entrega información gerencial oportuna, precisa y concisa para monitorear desvíos del Fondo Provincial de Vialidad en tiempo real y corregir las partidas presupuestarias de forma proactiva.
+   - **Fundamentación (Relación 1 a 1 en Nivel Táctico $\longleftrightarrow$ Efectividad $\longleftrightarrow$ Segunda Era: E2 — Informar):** Apunta al **largo plazo** para lograr la transición de Vialidad hacia una gestión proactiva basada en datos. Por la relación 1 a 1 del **Nivel Táctico** (mandos medios y directores de área), su beneficio genérico en el TP es la **Efectividad**, correspondiente a la **Segunda Era de la Información (E2 — Informar)** (de foco cualitativo y **justificación «blanda»**, orientada a optimizar el **Rendimiento sobre los Activos, RoA**): funciona como un **Sistema de Soporte a las Decisiones (DSS)** que entrega información gerencial oportuna, precisa y concisa para monitorear desvíos del Fondo Provincial de Vialidad en tiempo real y corregir las partidas presupuestarias de forma proactiva.
