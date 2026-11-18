@@ -32,7 +32,7 @@ numbersections: true
 
 - **5.3. Un procedimiento de planificación de TI/SI a partir de la estrategia del negocio**
 
-  - 5.3.1. Esquema general del procedimiento *(Nota: en tu texto figura con un error de tipeo como 3.3.1)*
+  - 5.3.1. Esquema general del procedimiento
 
 - **5.4. Algunas consideraciones adicionales**
 
@@ -287,7 +287,7 @@ Con este resumen, tienes dominada toda la parte teórica del Capítulo. Tienes l
 
 Como tu profesor, primero te voy a dar la visión general del Anexo y luego vamos a desglosar la Fase I con nivel de detalle de examen, respondiendo a todas tus preguntas.
 
-#### ¿De qué trata el Anexo en general (A5.1)? {-}
+**¿De qué trata el Anexo en general (A5.1)?**
 
 El Anexo es la descripción detallada y operativa del procedimiento que los autores introdujeron de forma teórica en la sección 5.3. Su objetivo es explicar exactamente qué actividades hay que hacer, en qué orden, quién es el responsable de cada una y qué herramientas o documentos se recomiendan utilizar. Para ello, estructura todo el trabajo en las **cuatro fases** que ya conocemos, pero subdividiéndolas en pasos muy específicos (con numeración del estilo I.1, I.2, II.1, etc.).
 
@@ -307,7 +307,7 @@ El texto menciona un detalle brillante para tu examen: normalmente, la direcció
 
 Esta fase recae bajo la responsabilidad de los altos mandos **(el Comité de TI/SI y el Grupo Base)**. Se ejecuta en los siguientes cuatro pasos exactos:
 
-**Paso I.1: La decisión de obtener un Plan de TI/SI y el Comité**
+#### **Paso I.1: La decisión de obtener un Plan de TI/SI y el Comité** {-}
 
 - Todo empieza con el Director General. Él debe exigir la elaboración del plan y convencer a sus colaboradores más directos (los Subdirectores o responsables de cada área) de que necesitan este proyecto.
 
@@ -315,17 +315,17 @@ Esta fase recae bajo la responsabilidad de los altos mandos **(el Comité de TI/
 
 - *¿Quiénes participan aquí?* El Director General, los Subdirectores generales de las distintas áreas (Comercial, Finanzas, etc.) y el Director de Sistemas de Información.
 
-**Paso I.2: Formación del Grupo Base**
+#### **Paso I.2: Formación del Grupo Base** {-}
 
 - Se crea un grupo más pequeño y táctico que funcionará como el "embrión" del equipo de trabajo final.
 
 - *¿Quiénes participan aquí?* El Subdirector general a cargo de Sistemas, el Director de Sistemas, el Director Operativo del Proyecto (DOP) y, en muchas ocasiones, **consultores externos** expertos en planificación que vienen a guiar la metodología.
 
-**Paso I.3: Identificación de áreas de análisis**
+#### **Paso I.3: Identificación de áreas de análisis** {-}
 
 - Antes de salir a investigar a ciegas, el Grupo Base debe definir cómo van a dividir a la empresa para poder estudiar los sistemas de información que ya existen. Es decir, se establecen las "parcelas" o áreas (por ejemplo: Producción, Marketing, Recursos Humanos) sobre las cuales los analistas van a trabajar en la Fase II.
 
-**Paso I.4: Formación del equipo de trabajo definitivo y Presentación del proyecto**
+#### **Paso I.4: Formación del equipo de trabajo definitivo y Presentación del proyecto** {-}
 
 - Se termina de armar el equipo operativo sumando a la gente que va a hacer el trabajo de campo.
 
@@ -347,7 +347,7 @@ El documento establece que la situación actual se analiza siempre desde **dos d
 
 Vamos a desglosar exhaustivamente los cuatro pasos internos de esta fase para tu examen:
 
-**Paso II.1: Identificación de las principales funciones y procesos de negocio por área**
+#### **Paso II.1: Identificación de las principales funciones y procesos de negocio por área** {-}
 
 A diferencia de lo que muchos creen, no se empieza haciendo un inventario de computadoras. Se empieza entendiendo **qué hace la empresa**.
 
@@ -359,25 +359,25 @@ A diferencia de lo que muchos creen, no se empieza haciendo un inventario de com
 
 - **Hito clave:** Esta lista debe ser **validada explícitamente por los directores funcionales** de cada área para asegurar que el equipo informático entendió bien a qué se dedica el departamento.
 
-**Paso II.2: Descripción de los sistemas existentes (Procesos y estructuras de datos)**
+#### **Paso II.2: Descripción de los sistemas existentes (Procesos y estructuras de datos)** {-}
 
 Una vez que sabemos qué hace el negocio, mapeamos la tecnología actual desde dos dimensiones: **los procesos y los datos**.
 
-1. **¿Qué se analiza exactamente?** Para cada proceso informático actual, se debe documentar:
+**¿Qué se analiza exactamente?** Para cada proceso informático actual, se debe documentar:
 
-2. A qué subsistema pertenece.
+1. A qué subsistema pertenece.
 
-3. Los **inputs**: Qué datos necesita usar el proceso.
+2. Los **inputs**: Qué datos necesita usar el proceso.
 
-4. Los **outputs**: Qué datos nuevos crea o modifica.
+3. Los **outputs**: Qué datos nuevos crea o modifica.
 
-5. Cómo procesa esa información (búsquedas, cálculos, etc.) y cómo está implementado (ej. si es un sistema corporativo o un Excel armado por un empleado).
+4. Cómo procesa esa información (búsquedas, cálculos, etc.) y cómo está implementado (ej. si es un sistema corporativo o un Excel armado por un empleado).
 
-6. **Herramientas recomendadas:** El autor sugiere usar **matrices** para cruzar los procesos con los datos, y destaca que si la empresa tiene un **Diccionario de Datos**, este es el momento ideal para usarlo o empezar a armarlo.
+**Herramientas recomendadas:** El autor sugiere usar **matrices** para cruzar los procesos con los datos, y destaca que si la empresa tiene un **Diccionario de Datos**, este es el momento ideal para usarlo o empezar a armarlo.
 
-7. *Nota para destacar en el examen:* Se debe documentar cuidadosamente cualquier **"intervalo de decisión"**. Estos son los baches en un sistema donde el software no puede actuar solo y necesita que un humano tome una decisión (por ejemplo, el sistema lista los clientes morosos, pero un empleado debe decidir si se les envía o no la carta de intimación).
+*Nota para destacar en el examen:* Se debe documentar cuidadosamente cualquier **"intervalo de decisión"**. Estos son los baches en un sistema donde el software no puede actuar solo y necesita que un humano tome una decisión (por ejemplo, el sistema lista los clientes morosos, pero un empleado debe decidir si se les envía o no la carta de intimación).
 
-**Paso II.3: Crítica de los sistemas existentes (técnica y de negocio)**
+#### **Paso II.3: Crítica de los sistemas existentes (técnica y de negocio)** {-}
 
 No alcanza con hacer un inventario descriptivo; ahora hay que evaluarlo con ojo crítico. Esta es la parte más rica porque se levanta información cualitativa a través de **entrevistas a los usuarios y al personal de Sistemas (SI)**. Esta crítica se divide en dos enfoques:
 
@@ -385,7 +385,7 @@ No alcanza con hacer un inventario descriptivo; ahora hay que evaluarlo con ojo 
 
 - **La crítica de Negocio (La más vital):** Es la que suele faltarle a las empresas. Se analiza el **grado de soporte real** que el software le da a las funciones de negocio relevadas en el paso II.1. Aquí se documentan las quejas: si la estructura de datos es incómoda para el trabajo diario de los empleados, cuáles son los puntos fuertes y débiles percibidos, y qué áreas exigen mejoras urgentes.
 
-**Paso II.4: Elaboración del informe acerca de los sistemas existentes**
+#### **Paso II.4: Elaboración del informe acerca de los sistemas existentes** {-}
 
 Toda la información anterior (las matrices que cruzan procesos de negocio con sistemas, las críticas y los cuellos de botella) debe consolidarse en un documento final.
 
@@ -411,7 +411,7 @@ Con este nivel de estructura, tienes la respuesta perfecta y blindada para tu ex
 
 Acomodate, porque vamos a desglosar los 8 pasos de la **Fase III: Elaboración del Plan de TI/SI** con un rigor de nivel universitario, pero traduciendo el lenguaje académico para que lo domines a la perfección en tu examen.
 
-**Paso III.1: Preparación del equipo y posibles nuevas áreas**
+#### **Paso III.1: Preparación del equipo y posibles nuevas áreas** {-}
 
 Antes de salir a relevar qué necesita la empresa, hay que preparar el terreno.
 
@@ -419,7 +419,7 @@ Antes de salir a relevar qué necesita la empresa, hay que preparar el terreno.
 
 - **Reestructuración de Áreas:** Se utiliza la información recopilada en la Fase II para reflexionar: ¿Sigue sirviendo dividir a la empresa como lo hicimos al principio? Si se detectaron puntos débiles muy graves en un sector particular, puede que convenga crear una "nueva área de análisis" específica para estudiarla más a fondo.
 
-**Pasos III.2 y III.3: Relevamiento y descripción de necesidades**
+#### **Pasos III.2 y III.3: Relevamiento y descripción de necesidades** {-}
 
 *(El autor los ejecuta casi en simultáneo en su explicación).* Aquí el equipo vuelve a salir a la cancha a entrevistar a los usuarios, pero esta vez la pregunta no es "¿qué usas hoy?", sino **"¿qué información necesitas para hacer bien tu trabajo y que hoy no tienes?"**. Para hacer esto con rigor, el autor exige tres metodologías o enfoques de trabajo:
 
@@ -429,7 +429,7 @@ Antes de salir a relevar qué necesita la empresa, hay que preparar el terreno.
 
 3. **Identificación "al vuelo":** Mientras el usuario habla, el analista ya debe ir imaginando las *entidades de datos* y los *procesos lógicos* que harán falta para generar esa información.
 
-**Paso III.4: Integración (El trabajo de gabinete)**
+#### **Paso III.4: Integración (El trabajo de gabinete)** {-}
 
 Este es el paso más técnico e intelectual de la fase. El equipo vuelve a la oficina con una montaña de necesidades inconexas y debe organizarlas para descubrir la **estructura global del futuro Sistema de Información (SI)**. Para estructurar este "rompecabezas", el autor da metodologías y consejos muy precisos que debes saber:
 
@@ -441,7 +441,7 @@ Este es el paso más técnico e intelectual de la fase. El equipo vuelve a la of
 
 - **Sistemas Aislados e Intervalos de Decisión:** Si un sistema no interactúa con el resto, se lo cataloga como "aislado" (suele ocurrir con tecnologías operativas de línea). Si una necesidad es muy vaga, probablemente estemos ante un "intervalo de decisión" que no se puede automatizar del todo y requerirá un sistema de apoyo especializado.
 
-**Paso III.5: Validación de la estructura del SI emergente**
+#### **Paso III.5: Validación de la estructura del SI emergente** {-}
 
 Ese "mapa" o estructura de sistemas nuevos que el equipo inventó en el paso anterior no se aprueba solo. Debe someterse a un proceso de validación oficial en dos rondas:
 
@@ -449,11 +449,11 @@ Ese "mapa" o estructura de sistemas nuevos que el equipo inventó en el paso ant
 
 2. **Reunión del Comité de TI/SI en pleno:** Para que la alta dirección le dé el carácter de "oficial" a la nueva estructura.
 
-**Paso III.6: Informe de la estructura del SI**
+#### **Paso III.6: Informe de la estructura del SI** {-}
 
 Una vez que se acordó la arquitectura tecnológica, los procesos y las estructuras de datos, se elabora un informe consolidado. Este documento marca el puente para empezar a evaluar cuántos recursos de programación y dinero costará construirlo.
 
-**Paso III.7: Propuestas alternativas (Los Escenarios)**
+#### **Paso III.7: Propuestas alternativas (Los Escenarios)** {-}
 
 ¡Atención aquí porque es clave para el examen! Nunca se puede construir absolutamente todo lo que los usuarios pidieron, porque los recursos (dinero y tiempo) no alcanzan. La metodología dicta que el departamento de Informática debe "empaquetar" las soluciones y presentar **3 o 4 propuestas alternativas (escenarios)** para que la dirección elija. ¿Cómo se filtran y arman estas alternativas? Cruzando dos tipos de criterios:
 
@@ -461,7 +461,7 @@ Una vez que se acordó la arquitectura tecnológica, los procesos y las estructu
 
 - **Criterios Estratégicos (El Negocio):** Aquí entra a jugar la "columna" de la famosa matriz. La Dirección dicta qué priorizar: ¿Queremos un escenario que mejore la productividad, uno que dé resultados a corto plazo, o uno que priorice la atención al cliente?.
 
-**Paso III.8: Elaboración y aprobación del plan definitivo**
+#### **Paso III.8: Elaboración y aprobación del plan definitivo** {-}
 
 El Comité de TI/SI (la alta dirección) se reúne en sesión plenaria para analizar esos 3 o 4 escenarios y elegir el definitivo para los próximos 3 a 5 años.
 
@@ -485,17 +485,17 @@ Vamos a desglosar esta última etapa, sus entregables y luego haremos el cierre 
 
 Una vez que el Comité de TI/SI eligió el escenario ganador en la fase anterior, el plan vuelve a las oficinas de Informática para que lo conviertan en cronogramas reales. El índice del texto nos marca tres pasos fundamentales:
 
-**Paso IV.1: Descripción detallada del Plan acordado y Calendario del primer año**
+#### **Paso IV.1: Descripción detallada del Plan acordado y Calendario del primer año** {-}
 
 - **¿Qué se hace?** El Director Operativo del Proyecto (DOP) toma ese gran plan a 3-5 años y lo "desmenuza" en una lista de proyectos informáticos concretos y manejables.
 
 - Se establece un **calendario detallado y estricto exclusivamente para el primer año** de vigencia del Plan. (Los años 2, 3 y 4 quedan en un cronograma más general, porque la tecnología cambia rápido).
 
-**Paso IV.2: Inclusión de proyectos en el presupuesto**
+#### **Paso IV.2: Inclusión de proyectos en el presupuesto** {-}
 
 - **¿Qué se hace?** Se proponen y asignan los recursos exactos. El DOP calcula cuántas horas de los programadores se van a necesitar, qué equipos de hardware hay que comprar y cuánto dinero costará ejecutar esos proyectos del primer año.
 
-**Paso IV.3: Plan de evaluación y revisión**
+#### **Paso IV.3: Plan de evaluación y revisión** {-}
 
 - **¿Qué se hace?** Se establecen las métricas para controlar que el proyecto avance según lo acordado a lo largo del año. Es importante destacar que el autor aclara que, aunque vimos las fases de forma secuencial, en la práctica siempre son necesarias **iteraciones** (es decir, ir y volver sobre los pasos si algo no cuadra).
 
@@ -627,7 +627,7 @@ A continuación, te presento una guía de estudio exhaustiva, estructurada y dis
 
 ## 1. La Matriz de la Cartera (Los 4 Cuadrantes) {-}
 
-La herramienta se grafica como una matriz de doble entrada de 2×2. Los cuadrantes se definen cruzando el impacto del sistema en la **estrategia futura del negocio** (eje vertical) frente al impacto en las **operaciones actuales** (eje horizontal).
+La herramienta se grafica como una matriz de $2 \times 2$ que clasifica las aplicaciones según su **horizonte temporal de contribución** (fila superior: éxito futuro; fila inferior: éxito actual) y su **grado de criticidad para el negocio** (columna izquierda: críticas; columna derecha: no críticas o en evaluación).
 
 Para que tu respuesta brille ante los profesores, **asocia siempre cada cuadrante con su equivalente en la clásica Matriz BCG (Boston Consulting Group)** y aplicalo al caso práctico de tu TP de Vialidad Provincial:
 
@@ -644,7 +644,7 @@ Una de las mayores trampas en las que caen las empresas es intentar gestionar to
 
 Para solucionar esto, **Gregory Parsons (1983)** identificó **seis estrategias genéricas** para vincular la gestión de TI con las necesidades del negocio. Ward y Bytheway demostraron que existe un **"encaje ideal"** entre las estrategias de Parsons y los cuadrantes de la cartera:
 
-![](../../../assets/Aclaraciones-Unidad-I_img_10.png){width=100%}
+![](../../../assets/u1i34.png)
 
 *(Nota: El "Mal Necesario" es una estrategia reactiva que suele adoptarse por error o negligencia, y genera graves desventajas competitivas).*
 
@@ -710,8 +710,6 @@ Si te preguntan dónde entra la Cartera de Aplicaciones dentro del proceso forma
 
 💡 **Consejo clave para tu examen:** En la defensa oral o escrita, usá este argumento diferenciador: *"La cartera de aplicaciones no es una receta estática de clasificación, sino una herramienta de aprendizaje organizativo y un vehículo de comunicación estructurado para que el área técnica de SI/TI y los gerentes de negocio acuerden de forma unificada el valor estratégico de la tecnología en la organización"*.
 
-🎧 Recordá que en tu panel de **Estudio** tenés disponible el **Resumen de Audio** que generamos anteriormente. Es un complemento ideal para repasar la interacción de la cartera con todo el Trabajo Práctico de Vialidad Provincial. ¿Querés que simulemos una pregunta típica de parcial sobre la relación entre el análisis de portafolio y los beneficios tangibles/intangibles de Robson?
-
 \newpage
 
 # Mapa integral de las estrategias en SI/TI {-}
@@ -720,7 +718,7 @@ En un examen de **Dirección Estratégica de SI/TI**, la palabra "estrategia" se
 
 A continuación, te presento el mapa estratégico definitivo que integra toda la materia:
 
-### Nivel 1: La distinción madre (Estrategia de SI vs. Estrategia de TI) {-}
+## Nivel 1: La distinción madre (Estrategia de SI vs. Estrategia de TI) {-}
 
 Es el concepto más importante de la materia. Los autores (Andreu, Edwards, Ward y Bytheway) insisten en que **no son lo mismo** y que confundirlas es la causa principal del fracaso tecnológico de las empresas.
 
@@ -732,7 +730,7 @@ Es el concepto más importante de la materia. Los autores (Andreu, Edwards, Ward
 | **Métrica de Éxito** | **Efectividad y Adecuación Estratégica** (¿Ayuda a cumplir los objetivos de la empresa?). | **Eficiencia Técnica y Costo** (¿Se instaló a tiempo, dentro del presupuesto y de forma estable?). |
 | **Ejemplo (Tu TP)** | Determinar que se necesita cruzar el inventario de rutas con mapas de accidentes para planificar obras. | Decidir usar servidores con base de datos PostgreSQL, extensión PostGIS y código Node.js. |
 
-### Nivel 2: Las Estrategias Genéricas de Gestión de SI/TI (McFarlan / Parsons) {-}
+## Nivel 2: Las Estrategias Genéricas de Gestión de SI/TI (McFarlan / Parsons) {-}
 
 Define **cómo debe administrar la organización su cartera de aplicaciones**. Parsons y Ward identificaron que, según el cuadrante de la cartera, se debe aplicar una estrategia de gestión diferente para evitar desvíos de recursos:
 
@@ -748,7 +746,15 @@ Define **cómo debe administrar la organización su cartera de aplicaciones**. P
 
 6. **Mal Necesario (Estrategia Defensiva/Inadecuada):** El sistema solo se usa si no hay alternativa o por obligación legal. Se cae en ella por negligencia o escasez extrema de recursos, degradando la moral y competitividad.
 
-### Nivel 3: El Alineamiento con las Estrategias Competitivas (Michael Porter) {-}
+> 💡 Sobre la oferta y la demanda...
+>
+> * En las estrategias orientadas a la Demanda (Planificación Centralizada e Hilo Conductor), el foco está en el negocio y las oportunidades: se gestiona **«qué información y qué sistemas necesitamos para triunfar en el futuro»**.
+>
+> * En las estrategias orientadas a la Oferta (Monopolio y Recurso Escaso), el foco está en la tecnología, los recursos y los costos: se gestiona **«cómo suministramos, controlamos y financiamos los sistemas para sostener eficientemente la operatoria actual»**.
+>
+> * El Mercado Libre opera en ambos planos de manera descentralizada: el usuario define su demanda y contrata libremente la oferta que mejor le convenga.
+
+## Nivel 3: El Alineamiento con las Estrategias Competitivas (Michael Porter) {-}
 
 Los sistemas de información deben estar directamente acoplados a la estrategia competitiva elegida por la unidad de negocio para posicionarse en su sector:
 
@@ -756,7 +762,7 @@ Los sistemas de información deben estar directamente acoplados a la estrategia 
 
 - **Si la empresa compite por Diferenciación:** Las inversiones en SI/TI se enfocan en **mejorar la calidad, la velocidad del servicio posventa y la personalización** para el cliente (foco en Efectividad), permitiendo cambiar las reglas del sector.
 
-### Nivel 4: Las Estrategias de Conversión o Transición Técnica (Kendall & Kendall) {-}
+## Nivel 4: Las Estrategias de Conversión o Transición Técnica (Kendall & Kendall) {-}
 
 Es el nivel más bajo (u operativo) y define **cómo pasar físicamente del sistema de información viejo al sistema de información nuevo** durante la etapa de implantación técnica:
 

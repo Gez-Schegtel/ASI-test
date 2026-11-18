@@ -16,7 +16,7 @@
 | Dominio | Ubicación Actual (`AS-IS`) | Ubicación Canónica (`TO-BE`) | Estado Actual |
 | :--- | :--- | :--- | :--- |
 | Protocolo rector | `GEMINI.md` | `GEMINI.md` | **Activo y actualizado** |
-| Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05, 06, 07, 08, 09 y 10 implementadas** + Guía de subida actualizada; Spec 03-A a la espera de material |
+| Estado vivo, guías y specs | `docs/STATUS.md`, `docs/GUIA_SUBIDA_APUNTES.md` + `docs/specs/` | `docs/` | **Specs 01, 02, 03-B, 04, 05, 06, 07, 08, 09, 10 y 11 implementadas** + Guía de subida actualizada; Spec 03-A a la espera de material |
 | Resguardo temporal | `legacy/` (`estilos/`, `script *`, `herramientas-2026/`, `enunciados-cuestionarios/`, `archivo-2025/`) | *(Se eliminará cuando el equipo dé el visto bueno final)* | **Resguardado** |
 | Apuntes y cuestionarios por Unidad | `content/unidades/` (`unidad-0/`, `unidad-1/`, `unidad-3/`, `unidad-6/`) | `content/unidades/<unidad-x>/` | **Organizado por Unidad (Unix standard) y normalizado** |
 | Trabajos prácticos y guías | `content/trabajo-practico/` (`parte-1/`, `parte-2/`) | `content/trabajo-practico/` | **Migrado y 100% en `.md` (Unix standard)** |
@@ -37,11 +37,11 @@
 
 * **Toolchain autocontenido (`toolchain/`)**:
 
-  * `toolchain/Dockerfile`: Imagen Docker (`ghcr.io/gez-schegtel/asi-toolchain`) basada en `ubuntu:24.04` con Pandoc, TeX Live (`LuaLaTeX`) y el caché global de fuentes de `luaotfload` (`/var/cache/texmf-var`) precalentado.
+  * `toolchain/Dockerfile`: Imagen Docker (`ghcr.io/gez-schegtel/asi-toolchain`) basada en `ubuntu:24.04` con Pandoc, TeX Live (`LuaLaTeX`), `poppler-utils` y el caché global de fuentes de `luaotfload` (`/var/cache/texmf-var`) precalentado.
 
   * `toolchain/bin/mdnorm`: Linter y normalizador en Bash + Perl con soporte `-y`, `-v` y `--check` (`-n`) para CI.
 
-  * `toolchain/bin/md2pdf`: Compilador unificado en Bash + Perl + Pandoc con soporte `--pdf`, `--epub` y `--all`, salida limpia a `build/`, resolución automática de `assets/` y normalización `NFKC` de letras matemáticas Unicode.
+  * `toolchain/bin/md2pdf`: Compilador unificado en Bash + Perl + Pandoc con soporte `--pdf`, `--epub`, `--all`, `--strict-pdf`, `--no-pdf-check`, salida limpia a `build/`, resolución automática de `assets/`, normalización `NFKC` de letras matemáticas Unicode y verificador automático de calidad PDF (log LuaLaTeX + geometría `pdftotext -bbox` / `pdfimages`).
 
   * `toolchain/bin/mkrelease`: Empaquetador y publicador atómico de GitHub Releases en Bash + Perl + `gh`, con generación de `.zip` por Unidad/Práctica, slugs ASCII para `.pdf`/`.epub` individuales, índice Markdown ordenado en tablas, actualización en el lugar (`--clobber`) de `apuntes-al-dia` (`Latest`) y soporte `--historical` para tags `v*`.
 
@@ -89,7 +89,9 @@
 
 9. **[09-gobernanza-ramas-pr-y-releases.md](specs/09-gobernanza-ramas-pr-y-releases.md)** — *Estado: **Implementada** (2026-11-14)*. Incorporación de `.github/CODEOWNERS` (`* @Gez-Schegtel`), mínimo privilegio por job, validación en CI de que los tags `v*` pertenezcan a `main` y *Repository Rulesets* activos en `Gez-Schegtel/ASI-test` para `main` y tags `v*`.
 
-10. **[10-matrices-y-tablas-cuadriculadas.md](specs/10-matrices-y-tablas-cuadriculadas.md)** — *Estado: **Implementada y Ampliada** (2026-11-15 / 2026-11-16)*. Filtro Lua `tablas-matriz.lua` (`<!-- matriz-2x2 -->`, `<!-- cuadricula -->` y modificadores `valign` / `hvalign` también en tablas `booktabs`), soporte de `colortbl` en `estilo.tex` y estilos `.matriz-2x2`/`.valign-*` en `estilo-epub.css`, junto con la migración a GFM en `Trabajo Práctico - Parte 1.md`.
+10. **[10-matrices-y-tablas-cuadriculadas.md](specs/10-matrices-y-tablas-cuadriculadas.md)** — *Estado: **Implementada y Corregida** (2026-11-15 / 2026-11-16)*. Filtro Lua `tablas-matriz.lua` (`<!-- matriz-2x2 -->`, `<!-- cuadricula -->` multipágina en `longtable` con anchos proporcionados y modificadores `valign` / `hvalign` también en tablas `booktabs`), soporte de `colortbl` en `estilo.tex` y estilos `.matriz-2x2`/`.valign-*` en `estilo-epub.css`, junto con la migración a GFM en `Trabajo Práctico - Parte 1.md`.
+
+11. **[11-control-calidad-pdf-y-tablas.md](specs/11-control-calidad-pdf-y-tablas.md)** — *Estado: **Implementada** (2026-11-16)*. Verificador automático de calidad PDF en `toolchain/bin/md2pdf` (`Overfull \vbox`, `Overfull \hbox > 12pt`, `Float too large`, `Missing character`, páginas en blanco e invasión de pie/márgenes vía `pdftotext -bbox`/`pdfimages`), paquete `poppler-utils` en `toolchain/Dockerfile`, banderas `--strict-pdf`/`--no-pdf-check`, resumen en GitHub Actions y reglas editoriales de tablas y verificación en `GEMINI.md` y `docs/GUIA_SUBIDA_APUNTES.md`.
 
 ---
 
@@ -136,6 +138,24 @@
 ---
 
 ## 5. Bitácora de Sesiones
+
+### `2026-11-16` — Corrección Estructural de `cuadricula` Multipágina, Resumen TPI Parte 1 y Control Automático de Calidad PDF (Spec 10 + Spec 11)
+
+* **Contexto**: Al compilar y revisar visualmente las guías de estudio con tablas extensas, se detectó una falla grave en `tablas-matriz.lua`: las tablas marcadas con `<!-- cuadricula -->` compilaban como `tabular` (irrompible entre páginas) y con ancho fijo igualitario sin importar guiones cortos, generando páginas en blanco y recortando tablas fuera del margen inferior del PDF sin error de salida. También se detectó `parfillskip=1em` en `scrartcl` causando avisos `Overfull \hbox` espurios en `\quote` y `tabular`, y falta de regla de control automático de calidad PDF.
+
+* **Acciones ejecutadas**:
+
+  * **Filtro Lua y plantilla LaTeX (`tablas-matriz.lua`, `estilo.tex`, Spec 10)**: Conversión de `<!-- cuadricula -->` de `tabular` a `longtable` con repetición automática de encabezados sombreados (`\endfirsthead` / `\endhead`), bandera `\ifasitablamatriz` en `estilo.tex`, cálculo automático de anchos proporcionados por contenido (con piso mínimo por longitud máxima de palabra) cuando no hay guiones diferenciados explícitos en Markdown GFM, ajuste `\parfillskip=0pt plus 1fil` en `\quote` y `matriz-2x2`, alineación de línea base en `minipage[t]` sin `\vspace*` inicial espurio, soporte completo de `[before=\raggedright]` en listas dentro de columnas centradas/derechas para `valign=top` y `booktabs`, soporte de las 27 combinaciones (`{matriz-2x2, cuadricula, tabla} × {top, middle, bottom} × {top, middle, bottom}`), y parche con `\@ifstar` en `estilo.tex` para `\paragraph*` / `\subparagraph*` (evitando entradas espurias `0.0.0.1. *` en el Índice y cuerpo cuando se usa `#### Título {-}` con `block-headings` de Pandoc).
+
+  * **Corrección del Índice en `Aclaraciones - Unidad I.md`**: Eliminación de las entradas fantasma `0.0.0.1. *` y `0.0.0.2. *` (vía `estilo.tex`) y ajuste de jerarquía de encabezados (`### Nivel 1..4` $\rightarrow$ `## Nivel 1..4`) bajo `# Mapa integral de las estrategias en SI/TI {-}`, compactando el Índice en 2 páginas exactas sin alterar la redacción.
+
+  * **Control Automático de Calidad PDF (`md2pdf`, `Dockerfile`, Spec 11)**: Incorporación de `verificar_calidad_pdf` en `toolchain/bin/md2pdf` (con `max_print_line=10000` para evitar cortes de línea a 79 columnas en el log LuaLaTeX, inspección de `Overfull \vbox`, `Overfull \hbox > 12pt`, `Float too large` y `Missing character`, más geometría `pdftotext -bbox` / `pdfimages` filtrando glifos bitmap pequeños como emojis de `136×128` para no enmascarar hojas en blanco) con banderas `--strict-pdf` y `--no-pdf-check`, resumen automático en `$GITHUB_STEP_SUMMARY` y `poppler-utils` en `toolchain/Dockerfile`.
+
+  * **Reglas editoriales (`GEMINI.md`, `docs/GUIA_SUBIDA_APUNTES.md`, `toolchain/README.md`)**: Regla explícita contra tablas gigantes de celdas altas y obligatoriedad de validar los PDF con `--strict-pdf` antes de cerrar tareas.
+
+  * **Corrección de `Explicación - Trabajo Práctico - Parte 1.md`**: Reestructuración con tablas solo donde aportan claridad (Sistemas Actuales, Cartera Actual, Las 8 Necesidades y Cartera Futura), corrección de sangrías y formato del análisis FODA (con viñetas de dos niveles en palabras sencillas), incorporación de las 3 preguntas de examen enlazadas (`1 -> 2 -> 3`: esquema sintético `Estrategia Empresarial -> Estrategia de SI -> Estrategia de TI` con la única Estrategia Organizacional de la Matriz de Necesidades, clasificación en Cartera de Aplicaciones y Estilo de Gestión de Andreu, Ricart y Valor, y tipo de inversión según el impacto buscado de Robson + relación 1 a 1 con los tipos de beneficios del TP) con 4 opciones de aplicación completas y depuración estricta para que contenga exclusivamente los conceptos y nombres presentes en `Trabajo Práctico - Parte 1.md` (sin Eras de la Información, Silk, McFarlan, Parsons, BCG, Parker ni preguntas teóricas externas).
+
+  * **Validación**: `mdnorm --check` limpio en todos los `.md`; compilación completa con `md2pdf --all --strict-pdf` de los 20 documentos publicables (cero avisos de calidad PDF) e inspección visual confirmada de `Explicación - Trabajo Práctico - Parte 1.pdf` (14 páginas, sin recortes ni hojas en blanco).
 
 ### `2026-11-16` — Control de Alineación Vertical en Tablas (`valign` / `hvalign`)
 

@@ -182,7 +182,8 @@
 %    incluso si son la única tabla del documento.
 % ------------------------------------------------------------------------------
 \usepackage{longtable,booktabs,calc,colortbl}
-\AddToHook{env/longtable/begin}{\renewcommand{\arraystretch}{1.5}}
+\newif\ifasitablamatriz
+\AddToHook{env/longtable/begin}{\ifasitablamatriz\else\renewcommand{\arraystretch}{1.5}\fi}
 
 
 % ------------------------------------------------------------------------------
@@ -208,7 +209,8 @@
   \begin{minipage}[t]{\dimexpr\linewidth-24pt\relax}%
   \setlength{\parskip}{0.5em}}%
   {\par\end{minipage}\end{lrbox}%
-  \par\noindent\hbox{%
+  \par{\setlength{\parfillskip}{0pt plus 1fil}%
+  \noindent\hbox{%
     {\color{barcolor}\vrule width 2.5pt
       height \dimexpr\ht\cuadrobox+6pt\relax
       depth \dimexpr\dp\cuadrobox+6pt\relax}%
@@ -216,8 +218,8 @@
      \colorbox{fondocolor}{\vrule width 0pt
       height \dimexpr\ht\cuadrobox+6pt\relax
       depth \dimexpr\dp\cuadrobox+6pt\relax
-      \hskip 10pt\usebox{\cuadrobox}\hskip 10pt}}}%
-  \par\addvspace{10pt}}
+      \hskip 10pt\usebox{\cuadrobox}\hskip 10pt}}}\par}%
+  \addvspace{10pt}}
 
 
 % ------------------------------------------------------------------------------
@@ -316,7 +318,8 @@
 
 
 % ------------------------------------------------------------------------------
-% 6) \needspace{altura}: evitar títulos solos al pie de la página
+% 6) \needspace{altura}: evitar títulos solos al pie de la página y arreglo
+%    de \paragraph* / \subparagraph* en la plantilla por defecto de Pandoc
 %
 %    Uso: en el .md, en una línea suelta justo antes de un título:
 %        \needspace{5cm}
@@ -324,11 +327,28 @@
 %    para que un título no quede abandonado al final con su texto en la página
 %    de abajo. Es la definición del paquete "needspace", copiada acá para no
 %    tener que cargar otro paquete. \providecommand la define solo si no existe.
+%
+%    Además, la plantilla LaTeX de Pandoc (con block-headings activo) redefine
+%    \paragraph y \subparagraph como \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+%    sin usar \@ifstar. Eso provoca que un título de nivel 4 o 5 sin numerar
+%    ("#### Título {-}" -> \paragraph*{Título}) tome el "*" como argumento #1 y
+%    ejecute \oldparagraph{*}, imprimiendo "0.0.0.1. *" en el cuerpo y en el
+%    Índice (TOC). Aquí se corrige usando \@ifstar para preservar la variante "*".
 % ------------------------------------------------------------------------------
 \makeatletter
 \providecommand{\needspace}[1]{\begingroup\setlength{\dimen@}{#1}%
   \vskip\z@\@plus\dimen@\penalty-100\vskip\z@\@plus-\dimen@
   \vskip\dimen@\penalty9999\vskip-\dimen@\vskip\z@skip\endgroup}
+\ifdefined\oldparagraph
+  \renewcommand{\paragraph}{\@ifstar{\@asiparagraphstar}{\@asiparagraph}}
+  \newcommand{\@asiparagraph}[1]{\oldparagraph{#1}\mbox{}}
+  \newcommand{\@asiparagraphstar}[1]{\oldparagraph*{#1}\mbox{}}
+\fi
+\ifdefined\oldsubparagraph
+  \renewcommand{\subparagraph}{\@ifstar{\@asisubparagraphstar}{\@asisubparagraph}}
+  \newcommand{\@asisubparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+  \newcommand{\@asisubparagraphstar}[1]{\oldsubparagraph*{#1}\mbox{}}
+\fi
 \makeatother
 
 

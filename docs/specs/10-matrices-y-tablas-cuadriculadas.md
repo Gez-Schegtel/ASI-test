@@ -1,6 +1,6 @@
 # Spec 10 — Matrices 2×2 y Cuadrículas con Bordes Completos (`tablas-matriz.lua`)
 
-* **Estado**: Implementada (2026-11-15)
+* **Estado**: Implementada y Corregida (2026-11-15 / 2026-11-16)
 
 * **Fecha**: 2026-11-15
 
@@ -36,11 +36,11 @@ Las matrices de 4 cuadrantes se escriben en **formato estándar GFM (*pipe table
 
 Se ejecuta inmediatamente después de `tablas-listas.lua` tanto en `pdf.yaml` como en `epub.yaml`:
 
-* **En PDF (`LaTeX`)**: Convierte la tabla 2×4 marcada con `<!-- matriz-2x2 -->` en un entorno `tabular` de dos columnas iguales (`0.5\linewidth` cada una) con bordes completos (`|` y `\hline`) en `barcolor`, sombreado `fondocolor` en ambas filas de títulos de cuadrante (filas 1 y 3), alineación horizontal respetando `:---` (`\raggedright`), `:---:` (`\centering`) y `---:` (`\raggedleft`), y alineación superior uniforme mediante `minipage[t]` (usando `colortbl` cargado desde `estilo.tex`).
+* **En PDF (`LaTeX`)**: Convierte la tabla 2×4 marcada con `<!-- matriz-2x2 -->` en un entorno `tabular` de dos columnas iguales (`0.5\linewidth` cada una) con bordes completos (`|` y `\hline`) en `barcolor`, sombreado `fondocolor` en ambas filas de títulos de cuadrante (filas 1 y 3), alineación horizontal respetando `:---` (`\raggedright`), `:---:` (`\centering`) y `---:` (`\raggedleft`), y alineación superior uniforme mediante `minipage[t]` (usando `colortbl` cargado desde `estilo.tex`). Se encapsula con `\parfillskip=0pt plus 1fil` para evitar falsos `Overfull \hbox` bajo `scrartcl` con `parskip=half`.
 
 * **En EPUB3 (`HTML/CSS`)**: Consume el comentario marcador, añade la clase `.matriz-2x2` a la tabla y aplica estilos dedicados en `estilo-epub.css` para sombrear y enmarcar los 4 cuadrantes de forma equivalente al PDF, respetando la alineación por columna (`:---`, `:---:`, `---:`) y manteniendo las listas `<ul>` alineadas a la izquierda.
 
-* *(Soporte general adicional)*: Admite también `<!-- cuadricula -->` sobre cualquier tabla NxM para dibujarla en PDF/EPUB con bordes completos en todas sus celdas y alineación horizontal por columna.
+* **Tablas `<!-- cuadricula -->` multipágina y anchos proporcionados (Corrección 2026-11-16)**: Toda tabla `<!-- cuadricula -->` (que puede superar una carilla de alto) compila en PDF dentro de un entorno **`longtable`** (nunca `tabular`), lo que permite saltos de página automáticos entre filas y repetición del encabezado sombreado (`\endfirsthead` / `\endhead`) sin recortar filas ni generar páginas en blanco previas. Además, `estilo.tex` incorpora `\newif\ifasitablamatriz` para respetar el `\arraystretch` propio de cada `valign`. Si la tabla no define anchos diferenciados explícitos mediante guiones proporcionales en el separador GFM, `compute_col_fractions` calcula fracciones balanceadas según el contenido real de cada columna (con piso mínimo) en lugar de forzar columnas idénticas que estrechan columnas largas y deforman las filas.
 
 ### 2.3. Control de Alineación Vertical (`valign` y `hvalign`)
 

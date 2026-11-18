@@ -64,6 +64,8 @@ find content -type f -name "*.md" -print0 | xargs -0 ./toolchain/bin/mdnorm --ch
 
 Toma uno o varios archivos `.md`, traduce en memoria la sintaxis de Obsidian (`![[...]]`, `|400`, `|derecha`, `[[wikilinks]]`, callouts `> [!NOTE]`, letras matemáticas Unicode) y genera los documentos preservando la carpeta de la Unidad o Práctica dentro de `build/` en la raíz del repositorio (la cual está ignorada en `.gitignore`).
 
+Además, tras compilar cada PDF ejecuta automáticamente un **control de calidad editorial** (`Spec 11`) que inspecciona el log de LuaLaTeX (`Overfull \vbox`, `Overfull \hbox > 12pt`, `Float too large`, `Missing character`) y la geometría del PDF generado mediante `poppler-utils` (`pdftotext -bbox` y `pdfimages -list`, cuando está disponible) para emitir avisos si existen páginas en blanco o contenido cortado/desbordado.
+
 ```bash
 # Generar PDF (por defecto en build/unidad-3/<nombre>.pdf)
 ./toolchain/bin/md2pdf -y "content/unidades/unidad-3/Unidad III - Subsistema de Aplicación.md"
@@ -71,8 +73,8 @@ Toma uno o varios archivos `.md`, traduce en memoria la sintaxis de Obsidian (`!
 # Generar EPUB3 (en build/unidad-3/<nombre>.epub)
 ./toolchain/bin/md2pdf -y --epub "content/unidades/unidad-3/Unidad III - Subsistema de Aplicación.md"
 
-# Generar PDF y EPUB3 simultáneamente de toda una Unidad (--all)
-./toolchain/bin/md2pdf -y --all "content/unidades/unidad-3/"*.md
+# Generar PDF y EPUB3 simultáneamente y exigir cero avisos de maquetación (--strict-pdf)
+./toolchain/bin/md2pdf -y --all --strict-pdf "content/unidades/unidad-3/"*.md
 
 # Especificar un archivo o carpeta de salida personalizada (-o / --output)
 ./toolchain/bin/md2pdf -y -o build/custom/ "content/unidades/unidad-6/"*.md
@@ -151,7 +153,7 @@ docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/workspace" -w /workspace \
 #### Opción B: Instalación nativa en Debian / Ubuntu
 
 ```bash
-sudo apt install bash perl pandoc \
+sudo apt install bash perl pandoc poppler-utils \
   texlive-luatex texlive-latex-recommended texlive-latex-extra \
   texlive-fonts-recommended texlive-lang-spanish \
   lmodern fonts-dejavu-core fonts-dejavu-mono fonts-noto-color-emoji
@@ -160,7 +162,7 @@ sudo apt install bash perl pandoc \
 #### Opción C: Instalación nativa en Arch Linux
 
 ```bash
-sudo pacman -S bash perl pandoc-cli \
+sudo pacman -S bash perl pandoc-cli poppler \
   texlive-luatex texlive-latexrecommended texlive-latexextra \
   texlive-fontsrecommended texlive-plaingeneric texlive-langspanish \
   otf-latin-modern ttf-dejavu noto-fonts-emoji

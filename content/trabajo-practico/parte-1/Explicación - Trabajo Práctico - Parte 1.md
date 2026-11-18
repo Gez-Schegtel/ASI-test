@@ -1,309 +1,416 @@
 ---
 title: "Aclaraciones del Trabajo Práctico Integrador"
-subtitle: "Parte 1"
+subtitle: "Parte 1 — Resumen Ágil para el Examen"
 author: Pollo, Denise, Juani, Chipancho, Lauti y Agustincincho
 date: \today
 documentclass: scrartcl
 classoption: numbers=enddot
 toc: true
-toc-depth: 4
+toc-depth: 2
 numbersections: true
-
 ---
 
 \newpage
 
-Este Trabajo Práctico (TP Nº1) aplica de punta a punta el **procedimiento de alineamiento estratégico de Andreu, Ricart y Valor (Fases I a IV)** sobre el caso real de la **Dirección de Vialidad Provincial del Chaco (DVP)**, integrando en el camino las herramientas de **Edwards, Ward y Bytheway** (FODA/entornos, cartera de aplicaciones y estrategias genéricas) y las de **Robson** (categorías de inversión y matriz de beneficios de Silk).
+> [!NOTE]
+> **¿De qué trata el TP1 en una frase?**: Aplica las **4 fases de alineamiento estratégico de Andreu, Ricart y Valor** a la **Dirección de Vialidad Provincial del Chaco (DVP)** para pasar de tener **11 sistemas aislados y planillas en papel** a un **plan de SI/TI a 12–18 meses**, definiendo su **Cartera de Aplicaciones**, **Estilos de Gestión**, **Tipos de Beneficios** y **Tipos de Inversiones (Robson)**.
 
-A continuación tenés una guía de estudio estructurada fase por fase para entender **qué se hizo, con qué teoría se justifica y cómo defender cada decisión en un examen o coloquio**:
+# Fase 1: Presentación y Compromiso del Equipo
 
----
+**Objetivo (Andreu, Ricart y Valor):** Asegurar que el Plan de TI/SI sea respaldado por toda la organización definiendo responsabilidades claras en tres niveles de compromiso.
 
-# Fase I: Presentación y Compromiso del Equipo
+- **¿Qué hace la DVP y cuáles son sus 4 Objetivos?:** Es el organismo público que planifica, construye, mantiene y administra la red vial provincial (rutas, caminos y pavimento urbano, por administración o licitación). Sus objetivos son:
 
-**Objetivo teórico (Andreu, Ricart y Valor):** Que la planificación de $SI/TI$ sea asumida como un proyecto estratégico de toda la organización (liderado por la alta dirección) y no como un problema técnico aislado del área de informática.
+  1. Asegurar la existencia y buen estado de los caminos (red nacional, provincial y urbana) para la circulación económica regional, la integración social y la vinculación entre provincias.
 
-* **Definición del negocio y rumbo estratégico:** Se establecen la misión operativa de la DVP (construir, conservar y administrar la red vial provincial) y sus **4 objetivos institucionales**, cuyo eje es optimizar el uso del Fondo Provincial de Vialidad y garantizar la conectividad regional en coordinación con municipios y organismos nacionales.
+  2. Asegurar que los recursos del **Fondo Vial de la provincia**, el patrimonio y la infraestructura se usen de manera óptima.
 
+  3. Proyectar la red provincial de caminos y los planes periódicos de obras e inversiones (elevados al Poder Ejecutivo).
 
-* **Relevamiento de la estructura orgánica:** Se identifican la máxima conducción (**Administrador General, Ing. Omar Canela**, y Subadministrador General), la conducción técnica (**Ingeniero Jefe**) y las **10 Direcciones** operativas y de soporte, destacando un dato estructural clave: el **Departamento de Informática depende directamente del Administrador General** (actuando como *staff* de la máxima autoridad, lo que facilita la alineación sin sesgos departamentales).
+  4. Coordinar actividades mediante convenios con la Dirección Nacional de Vialidad y otros organismos provinciales.
 
+- **Conducción y dato clave del organigrama:**
 
-* **Conformación de los tres grupos de trabajo (Fig. 5.7 de Andreu):**
+  - **Administrador y Subadministrador General:** Ejercen la administración y representación legal (designados por el Poder Ejecutivo por 4 años). **Dato clave del TP:** el **Departamento de Informática depende directamente del Administrador General (Ing. Omar Canela)**.
 
-1. **Comité de $TI/SI$ (Nivel estratégico):** Integrado por el Directorio de Vialidad, el Ingeniero Jefe, los Directores de las áreas funcionales y la dirección de Informática. Su rol es fijar prioridades estratégicas, comprometer recursos y aprobar el Plan definitivo.
+  - **Ingeniero Jefe:** Asiste al Administrador General en toda la faz técnica; proyecta los planes periódicos de obras y su orden de prioridad, dirige la marcha técnica de los trabajos, integra el Consejo Técnico y preside la Comisión Paritaria Provincial.
 
+- **Las 10 Direcciones y su función de negocio principal (en pocas palabras):**
 
-2. **Grupo Base (Nivel táctico y staff metodológico):** Integrado por el Directorio de Vialidad, el responsable de Informática, consultores externos (**ECOM CHACO**) y los jefes técnicos (Jefe de Sistemas y Jefe de Hardware y Comunicaciones). Asegura la consistencia metodológica, supervisa el día a día y facilita la negociación entre usuarios.
+  1. **Ingeniería Vial:** Planificación técnica y diseño de obras viales (estudios previos, topografía, cómputos métricos, presupuestos, pliegos de licitación y liberación de traza).
 
+  2. **Planificación Vial:** Definición de políticas viales y análisis del sistema en los 25 departamentos (evaluación ambiental, inventario vial, censos de tránsito, balanzas de peso/dimensiones, seguridad vial y **accidentología**).
 
-3. **Equipo de Trabajo (Nivel operativo):** Liderado en la práctica diaria por el **Director Operativo del Proyecto (DOP)** —rol asignado al Jefe de Sistemas—, acompañado por el Jefe de Hardware y Comunicaciones y los representantes clave (*Key Users*) de cada Dirección de negocio.
+  3. **Tecnología Vial:** Control de calidad de materiales (ensayos físicos, químicos y mecánicos de asfaltos, hormigones y suelos) y evaluación de pavimentos y fallas en terreno.
 
+  4. **Construcciones:** Ejecución y control contractual de obras por licitación (análisis de ofertas, inspección permanente, **certificados mensuales y finales de obra**, control de plazos y curva de inversiones).
 
+  5. **Conservación:** Mantenimiento continuo de rutas, caminos, puentes y alcantarillas (por administración con equipos propios, por **Consorcios Camineros** o por terceros) en Oficina Central, Área Metropolitana y **5 Delegaciones Zonales**.
 
+  6. **Vialidad Urbana:** Diseño, adecuación hidráulica, pliegos, ejecución y certificación de pavimento urbano, más mantenimiento edilicio.
 
+  7. **Logística y Mantenimiento:** Mantenimiento y reparación de la flota en el taller central (Resistencia) y talleres zonales, gestión de repuestos y **despacho y control de combustible**.
 
----
+  8. **Administración:** Sostén económico y control financiero (Ley 4.787: proyecto de presupuesto anual, compras/licitaciones, pagos, rendiciones de cuentas, sueldos y patrimonio).
 
-# Fase II: Descripción de la Situación Actual (*"¿Dónde estamos?"*)
+  9. **Secretaría General (RRHH):** Trámites administrativos, mesa de entradas, resoluciones/convenios y **gestión integral del personal** (asistencia, viáticos, ropa de trabajo, calificaciones de desempeño e higiene y seguridad).
 
-**Objetivo teórico:** Diagnosticar la empresa desde dos dimensiones —**el negocio** (funciones y procesos) y **los sistemas actuales**—, realizando una doble crítica: de utilidad para el negocio y técnica.
+  10. **Asuntos Jurídicos:** Sistematiza la información legal, emite dictámenes y lleva el seguimiento de **expedientes judiciales, amparos, expropiaciones y liberación de trazas** en las 5 delegaciones zonales.
 
-## Análisis de los 4 Entornos mediante Matriz FODA (Edwards, cap. 4)
+- **Los 3 Equipos de Trabajo (Andreu, Ricart y Valor):**
 
-* **Fortalezas (Interno):** No se parte de cero; existen 11 sistemas operativos con bases de datos activas, hay compromiso explícito de la alta dirección (Ing. Canela, Kutnich, Viola, Derka), buena cultura de adopción digital (éxito previo al eliminar el papel en *Viaticar* y *Calificaciones*) y alcance provincial a través de *GesTaller*.
+  1. **Comité de TI/SI (Dirección estratégica y aprobación del plan):** Ministerio de Infraestructura, Directorio de Vialidad, Ingeniero Jefe, Informática y todas las Direcciones de área.
 
+  2. **Grupo Base (Supervisión táctica y consistencia del proyecto):** Directorio de Vialidad, Informática, consultores externos (**ECOM-TICS**) y la **DOP** (Jefe de Sistemas y Jefe de Servidores y Comunicaciones).
 
-* **Debilidades (Interno):**
-
-* **Sistemas "Silos":** *TallerDLM*, *StockDVP* y *OrdenesDVP* funcionan como islas desconectadas que obligan a cruces manuales.
-
-
-* **Nula capacidad analítica (BI):** Los sistemas son meramente transaccionales (registran datos pero no generan reportes, alertas ni *dashboards* para decidir).
-
-
-* **Procesos críticos en papel:** El control de combustible (*SiCC*) se sigue anotando en planillas físicas manuales, con alto riesgo de error o desvío.
-
-
-* **Vacíos funcionales:** Falta de herramientas para denuncias viales ciudadanas y control de infracciones en balanzas.
-
-
-
-
-* **Oportunidades (Externo):** Disponibilidad de tecnología accesible de *Business Intelligence (BI)*, herramientas *Mobile* para trabajar en terreno en las 5 Delegaciones Zonales, sistemas de información geográfica (*GIS*), inteligencia artificial/*chatbots* y posibilidad de posicionar a la DVP como referente interministerial con *GesTaller*.
-
-
-* **Amenazas (Externo):** **Dependencia de proveedores (*Vendor Lock-in*)** en el sistema *Consorcio* (enlatado externo sin acceso al código fuente), riesgo patrimonial de fugas o robos de combustible/repuestos por falta de control en tiempo real, y restricciones presupuestarias estatales si no se demuestra rápido el retorno de inversión (ROI).
-
-
-
-## Dimensión de Negocio y Crítica de Sistemas Existentes
-
-Se define la **función de negocio principal** de cada una de las 10 Direcciones y se auditan los **10 sistemas actuales**, clasificándolos en la **Cartera de Aplicaciones Actuales (McFarlan / Edwards)** para diagnosticar cómo se están asignando hoy los recursos:
-
-| Cuadrante Actual | Sistemas Existentes Ubicados | Diagnóstico / Crítica en el TP |
-| --- | --- | --- |
-| **Clave para las operaciones** *(Depende el éxito actual)* | • **StockDVP** (inventario) \newline • **TallerDLM** (órdenes mecánicas) \newline • **OrdenesDVP** (compras/partidas) \newline • **Consorcio** (certificaciones) \newline • **GesTaller** (parque provincial) \newline • **SiCC** (cargas de combustible) | Cumplen con registrar la operación diaria, pero están fragmentados (silos), carecen de reportes analíticos, dependen de planillas manuales en papel (*SiCC*) o sufren bloqueo de proveedor sin código fuente (*Consorcio*). |
-| **De Apoyo** *(Valiosos pero no críticos)* | • **Viaticar** (viáticos) \newline • **RopasDVP** (indumentaria) \newline • **RRHH** (personal y licencias) \newline • **Calificaciones** (desempeño) \newline • **LexDoctor** (juicios/amparos) | Resuelven bien las tareas administrativas y legales locales (destacándose *Calificaciones* y *LexDoctor* por digitalizar circuitos antes manuales), pero los sistemas de personal no están integrados en un legajo único ni analizan gastos. |
-| **Estratégicos / Alto Potencial** | *(Vacíos en los sistemas actuales; solo figuran las propuestas futuras)* | **Diagnóstico central de la Fase II:** Todos los recursos históricos se concentraron en sistemas transaccionales aislados (operativos y de apoyo), dejando desatendidos el soporte estratégico y la innovación. |
+  3. **Equipo de Trabajo (Labor operativa y análisis diario):** Integrado por la **DOP** (Jefe de Sistemas + Jefe de Servidores y Comunicaciones) y los **Representantes** de cada Dirección de negocio.
 
 ---
 
-# Fase III: Elaboración del Plan de $SI/TI$ (*"¿A dónde queremos ir y cómo?"*)
+# Fase 2: Situación Actual de Vialidad Provincial Chaco
 
-**Objetivo teórico:** Cruzar la estrategia del negocio con los procesos de cada área mediante la **Matriz de Necesidades (o de Alineamiento Estratégico)** para definir la **Estrategia de SI (El Qué: la demanda de información)** y traducirla en la **Estrategia de TI (El Cómo: la oferta tecnológica)**.
+**Diagnóstico general:** La DVP tiene **11 sistemas** en marcha que sostienen la operatoria diaria, pero funcionan de manera **aislada (sin integración)**, casi **sin explotación analítica de datos** para tomar decisiones, y con **procesos críticos todavía en papel** (como el combustible).
 
-## Las 8 Estrategias de $SI/TI$ Derivadas de la Matriz
+## Análisis FODA
 
-A partir de las necesidades no cubiertas detectadas en la Fase II, el grupo formuló **8 líneas de acción**:
+- **FORTALEZAS (Factores Internos Positivos):**
 
-| Nº | Eje / Área de Negocio | Estrategia de SI (*El Qué se necesita*) | Estrategia de TI (*El Cómo se implementa*) |
-| --- | --- | --- | --- |
-| **1** | **Control de Gestión Institucional** *(Alta Dirección / Administración)* | Información consolidada y en tiempo real sobre ejecución presupuestaria, flota y RR. HH. para decisiones estratégicas. | **DVP-BI:** Implementar un *Data Warehouse* que extraiga datos de todas las áreas y genere *Dashboards* y KPIs. |
-| **2** | **Planificación y Análisis Territorial** *(Ingeniería, Planificación y Tecnología Vial)* | Visión georreferenciada del estado físico de la red vial, puntos críticos de accidentes y reportes ciudadanos de fallas. | **GeoVial (GIS):** Sistema de Información Geográfica interactivo con mapeo de inventario vial, accidentología y denuncias. |
-| **3** | **Gestión Misional y Soberanía Tecnológica** *(Construcciones y Conservación)* | Trazabilidad exacta del avance físico vs. financiero de obras y dominio interno de certificaciones de consorcios. | **ERP Vial Integral (In-House):** Desarrollo propio evolutivo para licitaciones, certificaciones y consorcios, eliminando el *vendor lock-in*. |
-| **4** | **Control de Recursos en Terreno** *(Logística y Mantenimiento)* | Control exacto, transparente y en el momento de qué vehículo y operario carga combustible y nivel de tanques en las 5 zonas. | **SiCC Móvil:** App móvil para validar cargas *in situ* (eliminando el papel) con motor de alertas de consumos atípicos. |
-| **5** | **Trazabilidad del Gasto Operativo** *(Logística y Administración)* | Visión unificada de cadena de suministros y costos históricos de flota cruzados al instante con partidas presupuestarias. | **Interoperabilidad Logística (APIs):** Integrar mediante APIs *TallerDLM*, *StockDVP* y *OrdenesDVP*, eliminando los silos. |
-| **6** | **Visión Integral del Capital Humano** *(Secretaría General / RR. HH.)* | Perfil unificado de cada agente (asistencia, calificaciones, indumentaria y viáticos) para gestionar el talento. | **Legajo Digital Único (Visión 360°):** Integrar por APIs los sistemas *RRHH*, *Calificaciones*, *Viaticar* y *RopasDVP*. |
-| **7** | **Control de Calidad** *(Dirección de Tecnología Vial)* | Base técnica centralizada e histórica de ensayos de materiales para exigir garantías de obra a contratistas. | **LabVial:** Base de datos centralizada para resguardo digital de ensayos de laboratorio (reemplazando cuadernos/PDF sueltos). |
-| **8** | **Retención Legal** *(Dirección de Asuntos Jurídicos)* | Seguimiento estricto de plazos procesales, juicios, amparos y expropiaciones en las 5 delegaciones para evitar sanciones. | **Retención de LexDoctor:** Renovar y mantener licencias del paquete estándar legal para no distraer programadores del *ERP*. |
+  - **Sistemas y bases de datos preexistentes:** No parte de cero; ya funcionan sistemas clave (*Viaticar, RopasDVP, TallerDLM, StockDVP, OrdenesDVP*, etc.) que registran la operatoria diaria.
+
+  - **Proactividad y visión de la alta dirección:** Compromiso del Administrador General (**Ing. Omar Canela**) y los directores (**Kutnich, Viola y Derka**) para impulsar la eficiencia, transparencia y tecnología.
+
+  - **Aceptación del cambio:** Éxito comprobado al digitalizar procesos que antes eran en papel (*Calificaciones* y *Viaticar*).
+
+  - **Capacidad de alcance provincial:** El sistema *GesTaller* ya registra vehículos de distintas reparticiones públicas, posicionando a la DVP como referente técnico en la provincia.
+
+- **DEBILIDADES (Factores Internos Negativos):**
+
+  - **Sistemas «Silos» (Aislamiento de la información):** Logística (*TallerDLM*), Stock (*StockDVP*) y Presupuesto (*OrdenesDVP*) funcionan como islas desconectadas y obligan a hacer cruces manuales.
+
+  - **Carencia de herramientas analíticas (BI):** Los sistemas solo sirven para cargar datos operativos; faltan tableros de control (*dashboards*), alertas y reportes históricos para que los directores tomen decisiones.
+
+  - **Procesos críticos manuales en papel:** El control de combustible (*SiCC*) se sigue basando en planillas físicas completadas a mano, generando demoras y riesgo de errores.
+
+  - **Falta de reportes de control de gestión financiero:** Desconexión entre los sistemas informáticos y el control de inventario, sumado a la falta de centralización administrativa.
+
+  - **Deficiencias para la interacción ciudadana y control operativo:** Falta un mapa vial interactivo para que los vecinos denuncien el estado de rutas y puentes, y falta un sistema para registrar infracciones en el sector de balanzas.
+
+- **OPORTUNIDADES (Factores Externos o a Futuro Positivos):**
+
+  - **Implementación de Inteligencia de Negocios (BI):** Explotar los datos ya guardados para predecir fallas de máquinas y optimizar rutas.
+
+  - **Herramientas para trabajo en terreno (*Mobile*):** Usar aplicaciones móviles para descentralizar y digitalizar las 5 Delegaciones Zonales y la carga de combustible *in situ*.
+
+  - **Integración Interinstitucional:** Aprovechar *GesTaller* para brindar estadísticas a otros Ministerios sobre el mantenimiento del parque automotor provincial.
+
+  - **Integración de sistemas actuales** en una arquitectura unificada.
+
+  - **Participación ciudadana como fuente de información:** Crear un mapa vial interactivo donde los habitantes reporten y georreferencien el estado de rutas y puentes con fotos o videos en tiempo real.
+
+  - **Digitalización de procesos manuales** (ej. combustible).
+
+  - **Incorporación de tecnologías emergentes:** Asistentes con inteligencia artificial, *chatbots* y sistemas avanzados de georreferenciación.
+
+- **AMENAZAS (Factores Externos Negativos):**
+
+  - **Dependencia de proveedores externos (*Vendor Lock-in*):** El sistema *Consorcio* es cerrado y tercerizado. Sin acceso al código fuente, la DVP queda rehén de los costos, tiempos y voluntad del proveedor para hacer mejoras o extraer datos de certificaciones de obras.
+
+  - **Inconsistencia y pérdida de datos (Riesgo de control):** Si no se moderniza rápido el combustible (*SiCC*) o el cruce Taller–Stock, hay alto riesgo de fugas de recursos, robos o uso ineficiente de fondos públicos.
+
+  - **Limitaciones presupuestarias:** Los proyectos de TI en el Estado pueden sufrir recortes o retrasos si no demuestran rápido su Retorno de Inversión (**ROI**) ahorrando en repuestos y viáticos.
+
+## Los 11 Sistemas de Información Existentes
+
+<!-- cuadricula -->
+
+| Sistema Actual | ¿Qué hace hoy? | Limitación / Diagnóstico en el TP |
+| :--- | :--- | :--- |
+| **1. Viaticar** | Solicitudes de viáticos y sus rendiciones. | Cumple lo operativo, pero no analiza gastos. |
+| **2. RopasDVP** | Pedidos de indumentaria laboral del personal. | Sin herramientas de análisis sobre gastos. |
+| **3. TallerDLM** | Pedidos de insumos y órdenes de trabajo mecánico. | Sin reportes de rendimiento ni costos asociados. |
+| **4. StockDVP** | Movimientos de stock (cubiertas, repuestos, aceites y envíos a zonas). | Solo registra operaciones; no explota la información. |
+| **5. OrdenesDVP** | Órdenes de provisión y de compra; administra partidas por dirección. | Escasa capacidad analítica y aislado de Taller y Stock. |
+| **6. SiCC** | Cargas de combustible y control de tanques en sede central y zonas. | **Usa planillas que se completan a mano en papel**; no explota datos. |
+| **7. GesTaller** | Constataciones y servicios mecánicos de vehículos de toda la provincia. | Clave en registración, pero limitado al plano operativo. |
+| **8. RRHH** | Legajos, cargos, inasistencias, licencias y certificados médicos. | Central para personal, pero desconectado de los otros sistemas de RRHH. |
+| **9. Calificaciones** | Evaluación digital del desempeño del personal (puntaje para ascensos). | Reemplazó con éxito al papel, pero no está integrado en un legajo único. |
+| **10. Consorcio** | Certificaciones de obras y contabilidad de Consorcios Camineros. | **Tercerizado y cerrado sin código fuente** (*vendor lock-in*). |
+| **11. LexDoctor** | Procesos judiciales/extrajudiciales, plazos, audiencias y cálculo de tasas. | Reemplazó al papel y es insumo clave para decisiones y auditoría legal. |
+
+## Cartera de Aplicaciones Actuales (según el TP)
+
+En el cierre de la Fase 2, el TP ubica los sistemas actuales y las oportunidades detectadas en los 4 cuadrantes:
+
+<!-- matriz-2x2 valign=middle -->
+
+| **Estrategia organizacional** | **Alto Potencial** |
+| :---: | :---: |
+| • Mapa Vial Interactivo • Inteligencia de Negocios (BI) y Dashboards • GesTaller (Integración Interinstitucional) | • Asistentes de Inteligencia Artificial y Chatbots • Herramientas Mobile (Trabajo en terreno) |
+| **Clave para las operaciones** | **Apoyo** |
+| • StockDVP • TallerDLM • OrdenesDVP • Consorcio • GesTaller • SiCC | • Viaticar • RopasDVP • RRHH • Calificaciones • LexDoctor |
+
+- **Próximo paso en Clave para las operaciones:** Integrar *StockDVP*, *TallerDLM* y *OrdenesDVP* para evitar cruces manuales y duplicidad, y eliminar el papel en *SiCC* para un control sólido del combustible.
+
+- **Próximo paso en Estrategia organizacional:** Evolucionar *GesTaller* para compartir información con otros ministerios, posicionando a la DVP como referente.
 
 ---
 
-## Clasificación en la Cadena de Valor (Andreu, Ricart y Valor - Cap. 2)
+# Fase 3: Elaboración del Plan SI/TI
 
-El TP distingue correctamente qué sistemas pertenecen a la infraestructura transversal y cuáles son locales a un eslabón:
+**Estrategia Organizacional (Cabecera de la Matriz de Necesidades del TP):** *"Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial."*
 
-* **Sistema de Información «Básico» (Transversales / Infraestructura de la empresa):** Atraviesan múltiples direcciones y manejan información que pertenece a la DVP globalmente: **ERP Vial Integral**, **DVP-BI**, **OrdenesDVP** y el módulo central de **RRHH**.
+## Las 8 Necesidades y su Alineación (`Estrategia de SI` y `Estrategia de TI`)
 
+<!-- cuadricula -->
 
-* **Subsistemas Circunscritos (Sistemas de Nicho):** Limitados a resolver volúmenes de información operativa específica de una actividad concreta con alta independencia: **SiCC Móvil**, **GeoVial (GIS)**, **GesTaller**, **LexDoctor**, **Viaticar**, **LabVial** y **RopasDVP**.
+| Eje y Área | Necesidad de Información (Resumen) | Estrategia de SI (*El Qué*) | Estrategia de TI (*El Cómo / Aplicación*) |
+| :--- | :--- | :--- | :--- |
+| **1. Control de Gestión Institucional** *(Alta Dirección)* | Ver indicadores simultáneos de ejecución presupuestaria de todas las áreas y cruzar costos de RRHH, flota y logística con el saldo presupuestario. | Facilitar decisiones estratégicas de la Alta Gerencia con acceso a datos consolidados y en tiempo real sobre presupuesto y costos operativos. | **DVP-BI:** Solución de Inteligencia de Negocios con un **Data Warehouse** centralizado que genere **Dashboards** y **KPIs** en tiempo real. |
+| **2. Planificación y Análisis Territorial** *(Ingeniería, Planificación y Tecnología Vial)* | Conocer con precisión geográfica el estado físico de rutas, los puntos críticos de accidentes de tránsito y los reportes ciudadanos de fallas. | Disponer de una visión integral y georreferenciada del territorio que cruce el inventario vial con los índices de accidentología para priorizar obras. | **GeoVial (GIS):** Entorno geográfico interactivo que integre capas dinámicas, mapeo del inventario físico y módulos de accidentología. |
+| **3. Gestión Misional y Soberanía Tecnológica** *(Ingeniería, Construcciones y Conservación)* | Contrastar con exactitud el avance físico real de cada obra vs. su avance financiero, y tener el historial auditable de certificaciones y consorcios con dominio interno de los datos. | Disponer de una plataforma unificada y **soberanía tecnológica** para informatizar, estandarizar y auditar ingeniería, obras y conservación, asegurando la trazabilidad financiera de las certificaciones. | **ERP Vial Integral propio (In-House):** Desarrollo evolutivo propio para eliminar la dependencia de terceros y centralizar licitaciones, certificación de obras y Consorcios. |
+| **4. Control de Recursos en Terreno** *(Logística — Combustible)* | Saber en el acto qué vehículo, qué operario y cuánto combustible consumió *in situ*, y el stock real de los tanques en las 5 delegaciones zonales. | Optimizar el control operativo en terreno y la transparencia en insumos críticos, eliminando la incertidumbre de las planillas manuales. | **SiCC Móvil:** App móvil para reemplazar el papel, con registro y validación digital *in situ* de cada carga y alertas en vivo ante consumos atípicos. |
+| **5. Trazabilidad del Gasto Operativo** *(Logística y Administración)* | Ver al instante el stock en depósitos, el costo histórico de mantener cada máquina (repuestos/insumos) y su cruce con la partida presupuestaria. | Disponer de una visión unificada de la cadena de suministros y costos operativos con trazabilidad automática de los gastos institucionales. | **Interoperabilidad por APIs (Logística):** Conectar mediante **APIs** los sistemas **TallerDLM**, **StockDVP** y **OrdenesDVP**, erradicando los silos. |
+| **6. Visión Integral del Capital Humano** *(Secretaría General / RRHH)* | Tener un perfil único de cada agente que consolide asistencia, calificaciones, ropa entregada y viáticos. | Contar con una perspectiva integral y centralizada del desempeño e historial de cada agente para facilitar la gestión del talento. | **Legajo Digital Único (Visión 360°):** Ecosistema de **APIs** que unifique **RRHH**, **Calificaciones**, **Viaticar** y **RopasDVP**. |
+| **7. Control de Calidad** *(Tecnología Vial)* | Registro centralizado, auditable e histórico de los ensayos físicos, químicos y mecánicos de materiales de cada obra. | Disponer de una base de conocimiento técnico auditable que asegure la calidad constructiva y respalde el reclamo legal de garantías a contratistas. | **LabVial:** Base de datos centralizada para registrar y resguardar todos los resultados de laboratorio, eliminando cuadernos o PDFs aislados. |
+| **8. Retención Legal** *(Asuntos Jurídicos)* | Conocer el estado procesal y vencimientos de plazos de expedientes, amparos y expropiaciones en las 5 zonas. | Asegurar el seguimiento estricto de los plazos legales para mitigar el riesgo de sanciones, juicios o pérdidas patrimoniales para el Estado. | **Retención y Mantenimiento de LexDoctor:** Renovar licencias del estándar legal nacional para no desgastar recursos y enfocar a los programadores en el *Core* (el **ERP**). |
 
+## Tipos de Sistemas según la Cadena de Valor (Modelo de Andreu, Ricart y Valor)
 
+- **Subsistemas circunscritos a actividades concretas (Sistemas de Nicho):** Gestionan información específica y transaccional de forma independiente para resolver tareas puntuales de un área: **SiCC Móvil**, **GeoVial (GIS)**, **GesTaller**, **LexDoctor**, **Viaticar**, **LabVial** y **RopasDVP**.
+
+- **Sistema de Información Básico (Sistemas Transversales e Infraestructura):** Son el cimiento tecnológico que coordina a múltiples direcciones mediante bases de datos integradas: **ERP Vial Integral (In-House)**, **DVP-BI**, **OrdenesDVP** y **RRHH**.
+
+## Valor de la Inversión: Los 3 Tipos de Beneficios (Relación 1 a 1 por Nivel)
+
+> [!TIP]
+> **Regla 1 a 1 de la cátedra (Nivel $\leftrightarrow$ Beneficio Genérico):**
+>
+> - **Nivel Operativo $\longleftrightarrow$ Eficiencia** *(hacer lo mismo más rápido y gastando menos — tangible / justificación «dura»)*.
+>
+> - **Nivel Táctico $\longleftrightarrow$ Efectividad** *(tomar mejores decisiones gerenciales y mejorar el RoA — cualitativo / justificación «blanda»)*.
+>
+> - **Nivel Estratégico $\longleftrightarrow$ Avance Estratégico o Competitividad** *(transformar el organismo y cumplir la misión a largo plazo — intangible / justificado por «acto de fe»)*.
+
+1. **Nivel Operativo $\longleftrightarrow$ Beneficios de Eficiencia:**
+
+   - *Características:* Son estrictamente **tangibles** y se justifican mediante técnicas **"duras"** enfocadas en el **desplazamiento de costos** (eliminar un gasto actual reemplazándolo por tecnología) y la **evitación de costos** futuros.
+
+   - *En el TP:*
+
+     - **SiCC Móvil:** Ahorro neto de **USD 18.000 anuales** en papelería, impresión y distribución física (*desplazamiento de costos*) y **reducción del 45 % en el tiempo de carga**, liberando **120 horas-hombre mensuales**.
+
+     - **Sistemas logísticos integrados:** Reducción del **40 % en el tiempo de ciclo (*time-to-repair*)** en la entrega de repuestos y **15 % menos de stock ocioso**, evitando inmovilizar **USD 25.000** en el primer año (*evitación de costos*).
+
+     - **ERP Vial Integral (en su faz operativa):** Reduce el circuito de aprobación de certificaciones de contratistas de **45 días a 12 días** (*aceleración del valor*) y evita pagar **USD 35.000 anuales** en intereses por mora (*evitación de costos*).
+
+     - **LabVial:** **Evitación de costos del 8 %** en bacheo y reparación prematura al exigir en término las garantías de obra a las contratistas con ensayos auditables.
+
+2. **Nivel Táctico $\longleftrightarrow$ Beneficios de Efectividad:**
+
+   - *Características:* Se perciben en **mandos medios y gerencias de departamento**, con foco cualitativo orientado a optimizar el **Rendimiento sobre los Activos (RoA)**. Su justificación es **"blanda"**, asociada a mejorar la toma de decisiones.
+
+   - *En el TP:*
+
+     - **Sistemas logísticos y financieros integrados:** Mejor control presupuestario y auditoría de repuestos, aumentando la disponibilidad operativa de las máquinas en ruta (**mayor rendimiento sobre el activo físico**).
+
+     - **DVP-BI (Tableros y Data Warehouse):** Actúa como un **Sistema de Soporte a las Decisiones (DSS)** que permite a los directores monitorear desvíos del Fondo Provincial de Vialidad en tiempo real y corregir partidas proactivamente.
+
+     - **Legajo Digital Único:** Permite decidir promociones y ascensos basados en el **mérito real**, subiendo la motivación, reduciendo el favoritismo subjetivo y fomentando el *"sentido de propiedad"*.
+
+3. **Nivel Estratégico $\longleftrightarrow$ Beneficios de Avance Estratégico (o Competitividad):**
+
+   - *Características:* Impactan en la **alta dirección (nivel institucional)**, orientados al crecimiento y competitividad. Son **intangibles y de largo plazo**, y se justifican mediante un **"acto de fe"**.
+
+   - *En el TP:*
+
+     - **ERP Vial Integral In-House:** **Reconfigura la cadena de valor y el poder de negociación** frente a las empresas contratistas, rompiendo asimetrías de información en las certificaciones y auditando con base científica costos y plazos.
+
+     - **GeoVial (GIS DVP):** Transforma a la DVP de un ente reactivo (reparador de baches) a un planificador territorial estratégico, cruzando el inventario de calzadas con la accidentología para alinearse con el **Factor Crítico de Éxito (FCE)** de reducir la mortalidad vial.
+
+## Cartera de Aplicaciones Futuras y Estilos de Gestión de TI (Andreu, Ricart y Valor)
+
+<!-- cuadricula -->
+
+| Cuadrante de la Cartera | Estrategia de Gestión (Andreu, Ricart y Valor) | Aplicaciones Propuestas en el TP |
+| :--- | :--- | :--- |
+| **1. Estratégicos** *(Aseguran el cumplimiento de la misión institucional a futuro — Alto impacto en la estrategia futura)* | **PLANIFICACIÓN CENTRALIZADA:** Informática trabaja codo a codo con la Alta Dirección, controlando estrictamente las inversiones para asegurar que cumplan los objetivos institucionales. | • **ERP Vial Integral (In-House):** Plataforma propia para centralizar y tener soberanía tecnológica en certificaciones, consorcios y licitaciones. • **DVP-BI (Data Warehouse y Tableros):** Monitoreo en tiempo real del Fondo Vial y soporte a decisiones estratégicas. |
+| **2. De Alto Potencial** *(Innovaciones tecnológicas que pueden transformar la operación)* | **HILO CONDUCTOR:** El departamento de Sistemas actúa como guía y facilitador, dando libertad descentralizada a los ingenieros para que innoven sin asfixiarlos con burocracia. | • **GeoVial (GIS DVP):** Entorno geográfico avanzado que integra el inventario vial con el análisis geoespacial de índices de accidentología. |
+| **3. Clave para las Operaciones** *(De ellos depende el funcionamiento diario de Vialidad — Alto impacto en la operación actual)* | **MONOPOLIO:** Informática ejerce un control absoluto y centralizado sobre estos sistemas para garantizar estabilidad, seguridad y evitar que la operatoria diaria se paralice. | • **Sistemas Logísticos Integrados** (*TallerDLM* + *StockDVP*) • **OrdenesDVP** • **GesTaller** • **SiCC Móvil** • **LabVial** |
+| **4. De Apoyo** *(Mejoran la eficiencia administrativa, pero no son el Core del negocio)* | **RECURSO ESCASO:** Se invierte lo mínimo e indispensable para mantener la eficiencia administrativa operando bien, priorizando el dinero hacia el *Core* del negocio. | • **Legajo Digital Único** (*RRHH, Calificaciones, Viaticar y RopasDVP*) • **LexDoctor** (solución de umbral para plazos legales, amparos y expropiaciones). |
+
+## Tipos de Inversiones (Según las Categorías Puras de Robson)
+
+1. **Inversiones de Valor Operacional (Eficiencia Transaccional):**
+
+   - *Fundamentación:* Proyectos orientados a la productividad operativa con **retornos a corto plazo**, enfocados en **reducir costos** y optimizar tareas administrativas recurrentes.
+
+   - *Aplicaciones:* **SiCC Móvil**, **Sistemas logísticos integrados** (*TallerDLM, StockDVP, OrdenesDVP*), **Legajo Digital Único** y **LabVial**.
+
+2. **Inversiones de Valor Estratégico (Misión e Innovación):**
+
+   - *Fundamentación:* Iniciativas destinadas a fortalecer el **cumplimiento de la misión institucional a largo plazo**, con beneficios directos pero complejos de cuantificar económicamente en etapas iniciales.
+
+   - *Aplicaciones:* **ERP Vial Integral (In-House)**, **GeoVial (GIS DVP)** y **DVP-BI (Analítica Gerencial)**.
+
+3. **Inversiones de Umbral (Operatividad Obligatoria):**
+
+   - *Fundamentación:* Desembolsos ineludibles para la supervivencia operativa del organismo y el cumplimiento de marcos normativos, mitigando riesgos legales y patrimoniales.
+
+   - *Aplicación:* **LexDoctor**.
+
+4. **Inversiones de Infraestructura (Cimiento Tecnológico):**
+
+   - *Fundamentación:* Inversiones a **mediano plazo** que habilitan el desarrollo de sistemas futuros creando una arquitectura base robusta ("cableado" lógico institucional).
+
+   - *Aplicación:* **Arquitectura de Interoperabilidad (APIs)**.
 
 ---
 
-## Cartera de Aplicaciones Futuras y Estrategias Genéricas (Edwards - Cap. 6)
+# Fase 4: Programación de Actividades
 
-Para evitar la trampa de gestionar todo con una única regla universal, se ubica cada proyecto en la matriz de McFarlan y se le asigna su **estrategia genérica de gestión (Parsons)**:
+Tras la validación de las Direcciones de Construcciones y de Conservación, el **Comité de TI/SI** aprueba el **Sistema Integrado Misional (ERP Vial In-House + SIG GeoVial)** para asegurar **soberanía tecnológica**, **dato único y auditable** (Curva de Inversión automática) y **planificación territorial basada en datos**.
 
-1. **Estratégicas $\rightarrow$ Planificación Centralizada (orientada a la demanda del negocio, alta dirección implicada):**
+- **Paso IV.1 — Calendario del Primer Año (12 meses) y Mediano Plazo (18 meses):**
 
-* *Aplicaciones:* **ERP Vial Integral (In-House)** y **DVP-BI (Data Warehouse y Tableros)**. Informática trabaja junto al Directorio porque de ellas depende el éxito estratégico futuro y la soberanía sobre los datos misionales.
+  - **Hito 1 (Mes 1 al 4) — Mapa Base e Inventario Vial:** Lanzamiento operativo del *Mapa Interactivo GeoVial*.
 
+  - **Hito 2 (Mes 5 al 10) — Gestión de Obras y Certificaciones:** Despliegue del *Módulo de Construcciones (ERP)* para el cálculo automático del avance físico-financiero y certificaciones.
 
+  - **Hito 3 (Mes 11 al 12) — Integración Espacial y Tablero Gerencial:** Vinculación de la base del *ERP* con *GeoVial* y armado de *DVP-BI* (Tableros de Control) para la Alta Dirección.
 
+  - **Hito 4 (Mes 13 al 18) — Consorcios Camineros y Despliegue en Terreno:** Módulo administrativo de Consorcios Camineros y capacitaciones presenciales en las **5 Delegaciones Zonales**.
 
-2. **De Alto Potencial $\rightarrow$ Hilo Conductor (orientada a la demanda impulsada por la innovación tecnológica):**
+- **Paso IV.2 — Inclusión en el Presupuesto (Asignación de Recursos del 1.º Año):**
 
-* *Aplicación:* **GeoVial (GIS DVP)**. Permite experimentar e innovar cruzando mapas con accidentología y reportes ciudadanos, dándoles flexibilidad a los ingenieros sin asfixiarlos con burocracia.
+  - **A. Recursos Humanos:** **1 Intermediario Técnico (Analista Funcional / DOP)** (1.920 hs-hombre/año, 100 %), **1 Programador Senior (Full-Stack)** (1.920 hs-hombre/año, 100 %) y **Usuarios Clave (*Key Users*)** de ingeniería (240 hs-hombre/año, 5 hs/semana para relevar y validar).
 
+  - **B. Recursos Tecnológicos:** Software base *Open Source* (`PostgreSQL`/`PostGIS`, `Node.js`) para suprimir costos de licencias comerciales; **2 servidores de alto rendimiento** (Servidor de App/BD y Servidor GIS) y **2 estaciones de trabajo (*Workstations*)** de desarrollo.
 
+  - **C. Recursos Financieros:** Costo salarial/honorarios del Analista y Programador por 12 meses + compra de los 2 servidores y 2 workstations + **15 % de fondo de contingencia**.
 
+- **Paso IV.3 — Plan de Evaluación y Revisión (Control):**
 
-3. **Clave para las Operaciones $\rightarrow$ Monopolio (orientada al control central de la oferta para evitar riesgos operativos):**
+  1. **Validación iterativa de Prototipos (*Mockups*):** El Analista Funcional valida las pantallas con los directores y usuarios clave antes de programar.
 
-* *Aplicaciones:* **Sistemas Logísticos Integrados (*TallerDLM + StockDVP*)**, **OrdenesDVP**, **GesTaller**, **SiCC Móvil** y **LabVial**. Informática ejerce control estricto como proveedor único para asegurar estabilidad, integridad de datos y que la operatoria diaria no se detenga.
-
-
-
-
-4. **De Apoyo $\rightarrow$ Recurso Escaso (orientada a la oferta con restricción presupuestaria y justificación económica):**
-
-* *Aplicaciones:* **Legajo Digital Único (*RRHH + Calificaciones + Viaticar + RopasDVP*)** y **LexDoctor**. Se invierte lo mínimo indispensable (integración liviana por APIs o pago de licencia anual estándar) para liberar fondos y programadores hacia el *Core* del negocio (el ERP).
-
-
-
-
+  2. **Revisiones de Hito y Control de Desviaciones:** Al cerrar cada hito, la DOP presenta un informe al Comité de TI/SI evaluando dos métricas: **cumplimiento del plazo** y **ejecución del presupuesto**.
 
 ---
 
-## Valor de la Información, Beneficios e Inversiones (Robson - Cap. 7)
+# Las 3 Preguntas del Examen Enlazadas (1 $\rightarrow$ 2 $\rightarrow$ 3)
 
-El TP justifica el plan cruzando dos modelos fundamentales del capítulo 7 de Robson:
+> [!IMPORTANT]
+> **Aclaración clave sobre la Estrategia Empresarial en el TP:**
+> En el trabajo práctico original **hay una sola Estrategia Empresarial** para todo el caso: como Vialidad es un organismo público, en la cabecera de la **Matriz de Necesidades** (Fase 3) figura bajo el nombre de **Estrategia Organizacional**:
+>
+> *"Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial."*
+>
+> Eso significa que **el bloque 1 (`Estrategia Empresarial`) es siempre exactamente esa misma frase**, sin importar qué aplicación elijas desarrollar en los bloques 2 (`Estrategia de SI`) y 3 (`Estrategia de TI`).
 
-**1. Matriz de Beneficios Genéricos (Modelo de Silk y las 3 Eras de la Información):**
+![](../../../assets/u1i13.png){width=26%}
 
-* **Eficiencia (Nivel Operacional – Era $E1$: Automatizar – Técnica de justificación "Dura" / Tangibles):** Se mide con ahorros financieros cuantificables usando conceptos de la Economía de la Información (Parker y Benson):
+## Cuadro Resumen de las 4 Opciones Enlazadas (Machete Rápido)
 
+<!-- cuadricula -->
 
-* *Desplazamiento de costos y ahorro de tiempo (*SiCC Móvil*):* Ahorra **USD 18.000/año** en papel/impresión/traslado y reduce un **45 %** el tiempo de carga (**120 horas-hombre/mes** liberadas).
-
-
-* *Reducción de ciclo y evitación de costos (*Sistemas logísticos integrados*):* Baja un **40 %** el *time-to-repair* y reduce un **15 %** el stock ocioso, evitando inmovilizar **USD 25.000** el primer año.
-
-
-* *Aceleración del valor y evitación de mora (*ERP Vial Integral*):* Reduce la aprobación de certificados de obra de **45 a 12 días**, evitando pagar **USD 35.000/año** en intereses por mora a contratistas.
-
-
-* *Evitación de costos por control de calidad (*LabVial*):* Evita un **8 %** de gastos en bacheo prematuro al poder ejecutar legalmente las garantías de obra con ensayos auditables.
-
-
-
-
-* **Efectividad (Nivel Táctico – Era $E2$: Informar – Técnica de justificación "Blanda" / Mayor RoA):** Mejora la toma de decisiones de los directores intermedios y el rendimiento de los activos:
-
-
-* Mayor disponibilidad física de maquinaria vial gracias a la integración logística.
-
-
-* *DVP-BI* funciona como un **DSS (Sistema de Soporte a las Decisiones)** para corregir desvíos del Fondo Vial a tiempo.
-
-
-* *Legajo Digital Único* permite ascensos objetivos por mérito real, mejorando la motivación.
-
-
-
-
-* **Avance Estratégico (Nivel Estratégico – Era $E3$: Transformar – Justificación por "Acto de fe" / Intangibles de largo plazo):**
-
-* *Reconfiguración de la cadena de valor (*ERP Vial In-House*):* Rompe la asimetría de información y cambia el poder de negociación frente a las empresas constructoras contratistas.
-
-
-* *Transformación del rol institucional (*GeoVial GIS*):* Pasa de reparar baches de forma reactiva a planificar preventivamente según el Factor Crítico de Éxito (FCE) de reducir la mortalidad en rutas.
-
-
-
-
-
-**2. Estilos de Inversión (Categorías puras de Robson):**
-
-* **Según el impacto deseado:**
-
-* *Valor Operacional (corto plazo, hacer mejor lo que ya se hace):* *SiCC Móvil*, *Sistemas logísticos integrados*, *Legajo Digital Único* y *LabVial*.
-
-
-* *Valor Estratégico (largo plazo, crecimiento/transformación):* *ERP Vial Integral*, *GeoVial (GIS)* y *DVP-BI*.
-
-
-
-
-* **Según la necesidad de inversión:**
-
-* *Inversión de Umbral (obligatoria para operar y cumplir normas sin quedar fuera de regla):* Licencias de **LexDoctor**.
-
-
-* *Inversión de Infraestructura (mediano plazo, genera capacidad instalada/cimientos para otros sistemas):* **Arquitectura de Interoperabilidad basada en APIs**.
-
-
-
-
+| Opción a elegir | 1. Esquema Sintético (`Estrategia Empresarial` $\rightarrow$ `SI` $\rightarrow$ `TI`) | 2. Ubicación en Cartera y Estilo de Gestión | 3. Tipo de Inversión y Beneficio 1 a 1 |
+| :--- | :--- | :--- | :--- |
+| **Opción 1: ERP Vial Integral (In-House)** *(Nivel Estratégico)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Plataforma unificada con soberanía tecnológica para auditar obras y certificaciones. $\rightarrow$ **TI (El Cómo):** Desarrollar el **ERP Vial Integral (In-House)**. | **Estratégico** *(alto impacto en estrategia futura)* — Gestión: **Planificación Centralizada** (Informatiza el *Core* de obras y elimina la dependencia de *Consorcio*). | **Inversión de Valor Estratégico** (largo plazo). **Relación 1 a 1:** Nivel **Estratégico** $\rightarrow$ **Avance Estratégico o Competitividad** (reconfigura el poder de negociación frente a contratistas, justificado por «acto de fe»). |
+| **Opción 2: GeoVial (GIS DVP)** *(Nivel Estratégico)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Visión integral y georreferenciada que cruce inventario vial con índices de accidentología. $\rightarrow$ **TI (El Cómo):** Implementar **GeoVial (GIS)**. | **De Alto Potencial** *(innovación que puede transformar la operación)* — Gestión: **Hilo Conductor** (Sistemas guía dando libertad técnica para innovar). | **Inversión de Valor Estratégico** (largo plazo). **Relación 1 a 1:** Nivel **Estratégico** $\rightarrow$ **Avance Estratégico o Competitividad** (pasa de reparar baches reactivamente a planificar según el **FCE** de reducir muertes viales). |
+| **Opción 3: SiCC Móvil** *(Nivel Operativo)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Optimizar el control en terreno y transparencia en despachos de combustible sin papel. $\rightarrow$ **TI (El Cómo):** Implementar la app **SiCC Móvil** con validación *in situ* y alertas. | **Clave para las Operaciones** *(de él depende el funcionamiento diario)* — Gestión: **Monopolio** (control centralizado de Informática para que no se paralice la flota). | **Inversión de Valor Operacional** (corto plazo). **Relación 1 a 1:** Nivel **Operativo** $\rightarrow$ **Eficiencia** tangible (ahorra **USD 18.000/año** en papel y baja **45 %** el tiempo = **120 hs-hombre/mes**). |
+| **Opción 4: DVP-BI (Tableros)** *(Nivel Táctico / Directivo)* | **Empresarial (única del TP):** Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial. $\rightarrow$ **SI (El Qué):** Acceso a datos consolidados y en tiempo real de ejecución presupuestaria y costos operativos. $\rightarrow$ **TI (El Cómo):** Implementar **DVP-BI** (*Data Warehouse* + *Dashboards* y *KPIs*). | **Estratégico** *(alto impacto en estrategia futura)* — Gestión: **Planificación Centralizada** (Informática y Alta Dirección controlan juntos la inversión). | **Inversión de Valor Estratégico** (largo plazo). **Relación 1 a 1 en Nivel Táctico:** genera **Efectividad** (actúa como **DSS** con justificación «blanda» para detectar desvíos del Fondo Vial en vivo y cuidar el **RoA**). |
 
 ---
 
-# Fase IV: Programación de Actividades (*"Ejecución y Control a Corto Plazo"*)
+## Opción 1 (Recomendada — Nivel Estratégico): «ERP Vial Integral (In-House)»
 
-**Objetivo teórico:** Es una fase eminentemente técnica liderada por el **DOP (Director Operativo del Proyecto)** y aprobada por el Comité de $TI/SI$, donde el Plan de $SI/TI$ se traduce en un calendario anual, un presupuesto y mecanismos de control.
+1. **Esquema sintético de alineamiento (Edwards et al.):**
 
-* **Proyecto priorizado para iniciar:** Tras validar con las Direcciones de Construcciones y Conservación, el Comité de $TI/SI$ aprueba ejecutar el **Sistema Integrado Misional (ERP Vial In-House + SIG GeoVial + DVP-BI)** bajo un enfoque incremental para mitigar riesgos:
+   - **Estrategia Empresarial (Estrategia Organizacional de la Matriz de Necesidades):** *"Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial."*
 
+   - $\updownarrow$ **Estrategia de SI (El Qué — Punto 3 del Listado de Necesidades):** Disponer de una plataforma de gestión unificada y soberanía tecnológica que permita informatizar, estandarizar y auditar los procesos misionales de ingeniería, obras y conservación, garantizando la trazabilidad financiera de las certificaciones de obra.
 
-* **Paso IV.1 – Calendario del Primer Año (12 meses) y proyección a 18 meses:**
+   - $\updownarrow$ **Estrategia de TI (El Cómo — Aplicación resultante):** Desarrollar de forma evolutiva un **ERP Vial Integral propio (In-House)** para eliminar la dependencia tecnológica de terceros y centralizar la operación de las Direcciones en módulos específicos para la gestión de licitaciones, certificación de obras y administración de Consorcios.
 
-* *Hito 1 (Meses 1 a 4):* Lanzamiento del Mapa Base e Inventario Vial (**GeoVial**).
+2. **Clasificación y fundamentación en la Cartera de Aplicaciones:**
 
+   - **Ubicación:** Cuadrante de aplicaciones **Estratégicas** (alto impacto en la estrategia futura).
 
-* *Hito 2 (Meses 5 a 10):* Despliegue del Módulo de Construcciones del **ERP** (certificaciones y avance físico-financiero).
+   - **Fundamentación:** Asegura el cumplimiento de la misión institucional a futuro sobre el *Core* del negocio (las obras viales). Actualmente la DVP sufre dependencia de proveedores (*vendor lock-in*) con el sistema tercerizado *Consorcio* al no tener acceso al código fuente; desarrollar el **ERP Vial In-House** le devuelve la soberanía tecnológica y la trazabilidad del avance físico-financiero. Según **Andreu, Ricart y Valor**, su estilo de gestión es la **Planificación Centralizada**, donde Informática trabaja codo a codo con la Alta Dirección controlando estrictamente la inversión para asegurar que cumpla los objetivos institucionales.
 
+3. **Tipo de inversión de acuerdo con el impacto buscado:**
 
-* *Hito 3 (Meses 11 a 12):* Integración espacial (*ERP + GeoVial*) y tableros gerenciales (**DVP-BI**).
+   - **Clasificación:** Es una **Inversión de Valor Estratégico (Misión e Innovación)** según las categorías puras de **Robson**.
 
-
-* *Hito 4 (Mediano plazo, Meses 13 a 18):* Módulo de Consorcios Camineros y capacitación presencial en las 5 Delegaciones Zonales.
-
-
-
-
-* **Paso IV.2 – Presupuesto y Asignación de Recursos (Los 3 recursos de Chiavenato aplicados a TI):**
-
-* *Recursos Humanos:* 1 Analista Funcional / DOP (1.920 hs-hombre anuales, dedicación 100 %), 1 Programador Senior Full-Stack (1.920 hs-hombre anuales, 100 %) e ingenieros *Key Users* de las direcciones (240 hs-hombre anuales, 5 hs/semana para validación).
-
-
-* *Recursos Tecnológicos (Plan de HW y SW de base):* Software base *Open Source* (`PostgreSQL`/`PostGIS`, `Node.js`) para costo cero de licencias y soberanía tecnológica; compra/asignación de **2 servidores de alto rendimiento** (App/BD y Servidor GIS) y **2 Workstations** de desarrollo.
-
-
-* *Recursos Financieros:* Honorarios del equipo por 12 meses + capital para hardware + **15 % de fondo de contingencia** ante imprevistos.
-
-
-
-
-* **Paso IV.3 – Plan de Evaluación y Revisión (Mecanismos de Control):**
-
-* *Control preventivo/iterativo:* Validación de prototipos visuales (*Mockups*) con los usuarios clave antes de programar cada módulo.
-
-
-* *Control por hitos:* Al cierre de cada uno de los 4 hitos, el DOP presenta al Comité de $TI/SI$ un informe midiendo dos variables duras: **cumplimiento de plazos** y **ejecución presupuestaria**.
-
-
-
-
-
-
+   - **Fundamentación (Relación 1 a 1: Nivel Estratégico $\longleftrightarrow$ Avance Estratégico o Competitividad):** Es una iniciativa destinada a fortalecer el cumplimiento de la misión institucional a **largo plazo**, cuyos beneficios son intangibles y complejos de cuantificar económicamente al inicio, justificándose por un **«acto de fe»**. En la relación 1 a 1 por nivel, al ser de **Nivel Estratégico** busca un beneficio de **Avance Estratégico o Competitividad**: permite recuperar el control total del ciclo de obra pública, reconfigurando la cadena de valor y el poder de negociación frente a las empresas contratistas externas al romper las asimetrías de información en las certificaciones de obra y auditar con base científica costos y plazos.
 
 ---
 
-# 💡 Tres preguntas típicas de defensa oral sobre este TP (y cómo responderlas)
+## Opción 2 (Nivel Estratégico): «GeoVial (GIS DVP)»
 
-1. ***"¿Por qué decidieron desarrollar el ERP Vial de forma interna (In-House) en vez de comprar un enlatado, pero en Asuntos Jurídicos mantuvieron el enlatado LexDoctor?"***
+1. **Esquema sintético de alineamiento (Edwards et al.):**
 
-* *Respuesta:* Por su posición en la **cartera de aplicaciones**. La gestión de obras, certificaciones y consorcios es el *Core* misional de Vialidad (aplicación **estratégica**); hoy sufren *vendor lock-in* con el sistema externo *Consorcio* porque no tienen el código fuente. Desarrollar el ERP *In-House* bajo *Planificación Centralizada* les devuelve soberanía tecnológica. En cambio, Asuntos Jurídicos usa una aplicación **de apoyo** (inversión **de umbral**); como no da ventaja competitiva sino que cumple normas legales estándar, bajo la estrategia de *Recurso Escaso* conviene pagar la licencia de *LexDoctor* y no gastar horas de programación propias que hacen falta en el ERP.
+   - **Estrategia Empresarial (Estrategia Organizacional de la Matriz de Necesidades):** *"Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial."*
 
+   - $\updownarrow$ **Estrategia de SI (El Qué — Punto 2 del Listado de Necesidades):** Disponer de una visión integral y georreferenciada del territorio provincial que permita analizar la relación entre el estado del inventario vial y los índices de accidentología, facilitando la planificación estratégica de intervenciones y la toma de decisiones basada en datos geográficos precisos y actualizados.
 
+   - $\updownarrow$ **Estrategia de TI (El Cómo — Aplicación resultante):** Implementar el sistema **GeoVial (GIS)** como un entorno geográfico avanzado que centralice la visualización y el análisis espacial de la red vial integrando capas dinámicas, mapeo del inventario físico y módulos de análisis de accidentología.
 
+2. **Clasificación y fundamentación en la Cartera de Aplicaciones:**
 
-2. ***"¿Por qué en la Cartera de la Fase II ponen a GesTaller y OrdenesDVP en 'Clave para las operaciones', si en la Cadena de Valor dicen que OrdenesDVP es un 'SI Básico' y GesTaller es un 'Subsistema Circunscrito'?"***
+   - **Ubicación:** Cuadrante de aplicaciones **De Alto Potencial**.
 
-* *Respuesta:* Porque son dos clasificaciones con criterios distintos. **Andreu, Ricart y Valor** clasifican según el **alcance en la cadena de valor**: *OrdenesDVP* es *SI Básico* porque atraviesa como infraestructura financiera a todas las direcciones, mientras que *GesTaller* es *circunscrito* porque se limita a la actividad específica del taller mecánico. En cambio, **McFarlan/Edwards** clasifican según la **contribución al éxito del negocio**: ambos son *Clave para las operaciones* porque si hoy se cae las órdenes de compra o la gestión del taller, la operatoria diaria de Vialidad se frena.
+   - **Fundamentación:** Representa una **innovación tecnológica** (georreferenciación + análisis espacial de accidentes y reclamos) que puede transformar la operación y el modo en que Vialidad planifica sus obras. Según **Andreu, Ricart y Valor**, su estrategia de gestión es el **Hilo Conductor**, donde el Departamento de Sistemas actúa como guía y facilitador dando libertad descentralizada a los ingenieros viales para innovar sin asfixiarlos con burocracia.
 
+3. **Tipo de inversión de acuerdo con el impacto buscado:**
 
+   - **Clasificación:** Es una **Inversión de Valor Estratégico (Misión e Innovación)** según las categorías puras de **Robson**.
 
+   - **Fundamentación (Relación 1 a 1: Nivel Estratégico $\longleftrightarrow$ Avance Estratégico o Competitividad):** Fortalece el cumplimiento de la misión institucional a **largo plazo** priorizando obras mediante análisis geoespacial. Por la relación 1 a 1 del **Nivel Estratégico**, genera un beneficio de **Avance Estratégico o Competitividad** (intangible y de largo plazo, justificado por **«acto de fe»**): transforma a la DVP de un organismo meramente reactivo (reparador de baches) a un actor estratégico de planificación territorial, alineando la tecnología con el **Factor Crítico de Éxito (FCE)** de reducir la mortalidad vial antes de pavimentar.
 
-3. ***"¿Dónde se ve reflejado el enfoque sociotécnico de Tavistock (Chiavenato) en este TP?"***
+---
 
-* *Respuesta:* En que la modernización no se plantea solo como comprar servidores o programar código (**subsistema técnico**), sino que transforma los procesos de toma de decisiones, control y auditoría del Directorio (**subsistema gerencial**) e involucra activamente a las personas (**subsistema social**) mediante la participación de los *Key Users* en el Equipo de Trabajo, la validación de *Mockups*, las capacitaciones en las 5 Delegaciones Zonales (Hito 4) y el *Legajo Digital Único* para motivar al personal con ascensos por mérito.
+## Opción 3 (Nivel Operativo): «SiCC Móvil»
 
+1. **Esquema sintético de alineamiento (Edwards et al.):**
 
+   - **Estrategia Empresarial (Estrategia Organizacional de la Matriz de Necesidades):** *"Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial."*
 
+   - $\updownarrow$ **Estrategia de SI (El Qué — Punto 4 del Listado de Necesidades):** Optimizar el control operativo en terreno y la transparencia en el uso de insumos críticos, eliminando la incertidumbre de los registros manuales para garantizar un seguimiento estricto de los despachos de combustible.
 
+   - $\updownarrow$ **Estrategia de TI (El Cómo — Aplicación resultante):** Implementar la aplicación móvil **"SiCC Móvil"** para reemplazar el circuito de papel, permitiendo el registro digital y la validación *in situ* de cada carga e integrando un motor de alertas que detecte consumos atípicos en tiempo real.
 
-¿Querés que armemos un resumen tipo "machete de una carilla" con la línea conductora del TP para tener a mano, o preferís repasar alguna fase en particular?
+2. **Clasificación y fundamentación en la Cartera de Aplicaciones:**
+
+   - **Ubicación:** Cuadrante de aplicaciones **Clave para las Operaciones** (alto impacto en la operación actual).
+
+   - **Fundamentación:** De este sistema depende el **funcionamiento diario de Vialidad**: el combustible es un insumo crítico para que las máquinas y camiones trabajen en las rutas, y la carga en planillas manuales de papel genera demoras, errores y riesgo de fugas de recursos públicos. Según **Andreu, Ricart y Valor**, se gestiona bajo la estrategia de **Monopolio**, donde Informática ejerce un control absoluto y centralizado para garantizar su estabilidad, seguridad e integridad de datos sin que la operatoria diaria se paralice.
+
+3. **Tipo de inversión de acuerdo con el impacto buscado:**
+
+   - **Clasificación:** Es una **Inversión de Valor Operacional (Eficiencia Transaccional)** según las categorías puras de **Robson**.
+
+   - **Fundamentación (Relación 1 a 1: Nivel Operativo $\longleftrightarrow$ Eficiencia):** Es un proyecto orientado a la productividad operativa con **retornos a corto plazo**, enfocado en la **reducción de costos** y en optimizar tareas administrativas recurrentes erradicando errores de carga manual y desvíos de fondos. Por la relación 1 a 1 del **Nivel Operativo**, genera un beneficio de **Eficiencia** de carácter estrictamente **tangible** y con **justificación «dura»**: logra un **desplazamiento de costos** directos con un ahorro neto estimado de **USD 18.000 anuales** en papelería, impresión y distribución física, y una **reducción del 45 % en el tiempo de procesamiento y carga**, liberando **120 horas-hombre mensuales** del personal técnico en terreno.
+
+---
+
+## Opción 4 (Nivel Táctico / Directivo): «DVP-BI (Data Warehouse y Tableros)»
+
+1. **Esquema sintético de alineamiento (Edwards et al.):**
+
+   - **Estrategia Empresarial (Estrategia Organizacional de la Matriz de Necesidades):** *"Garantizar el uso eficiente del fondo provincial de vialidad y optimizar la planificación, construcción y mantenimiento de la red vial."*
+
+   - $\updownarrow$ **Estrategia de SI (El Qué — Punto 1 del Listado de Necesidades):** Facilitar la toma de decisiones estratégicas de la Alta Gerencia mediante el acceso a información consolidada y en tiempo real sobre la ejecución presupuestaria y costos operativos, garantizando el uso eficiente de los recursos provinciales.
+
+   - $\updownarrow$ **Estrategia de TI (El Cómo — Aplicación resultante):** Implementar una solución de Inteligencia de Negocios (**DVP-BI**) basada en un **Data Warehouse** que centralice la extracción de datos de todas las áreas para la generación de **Dashboards** y **KPIs** en tiempo real.
+
+2. **Clasificación y fundamentación en la Cartera de Aplicaciones:**
+
+   - **Ubicación:** Cuadrante de aplicaciones **Estratégicas** (alto impacto en la estrategia futura).
+
+   - **Fundamentación:** Hoy los sistemas existentes de la DVP solo registran transacciones aisladas sin explotar la información. **DVP-BI** es estratégica porque asegura el cumplimiento de la misión institucional a futuro dándole a la Alta Dirección el monitoreo en tiempo real del Fondo Vial y el soporte para tomar decisiones. Según **Andreu, Ricart y Valor**, se gestiona mediante **Planificación Centralizada**, donde Informática y el Directorio coordinan y controlan directamente la inversión.
+
+3. **Tipo de inversión de acuerdo con el impacto buscado:**
+
+   - **Clasificación:** Es una **Inversión de Valor Estratégico (Misión e Innovación)** según las categorías puras de **Robson**.
+
+   - **Fundamentación (Relación 1 a 1 en Nivel Táctico $\longleftrightarrow$ Efectividad):** Apunta al **largo plazo** para lograr la transición de Vialidad hacia una gestión proactiva basada en datos. Por la relación 1 a 1 del **Nivel Táctico** (mandos medios y directores de área), su beneficio genérico en el TP es la **Efectividad** (de foco cualitativo y **justificación «blanda»**, orientada a optimizar el **Rendimiento sobre los Activos, RoA**): funciona como un **Sistema de Soporte a las Decisiones (DSS)** que entrega información gerencial oportuna, precisa y concisa para monitorear desvíos del Fondo Provincial de Vialidad en tiempo real y corregir las partidas presupuestarias de forma proactiva.

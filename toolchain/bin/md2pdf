@@ -26,6 +26,8 @@
 #   toolchain/bin/md2pdf -y content/unidades/*.md (Convierte varios sin preguntar)
 #   toolchain/bin/md2pdf -o salida.pdf archivo.md (Guarda en una ruta o carpeta específica)
 #   toolchain/bin/md2pdf -i ~/fotos archivo.md    (Agrega carpeta extra de imágenes)
+#   toolchain/bin/md2pdf --strict-pdf archivo.md  (Falla si hay avisos de maquetación PDF)
+#   toolchain/bin/md2pdf --no-pdf-check ...       (Omite la verificación posterior del PDF)
 #
 # SINTAXIS TRADUCIDA AUTOMÁTICAMENTE (MOTOR PERL):
 #   - Imágenes de Obsidian: ![[foto.png]], ![[foto.png|400]], ![[foto.png|derecha|300]]
@@ -46,22 +48,27 @@ PDF_DEFAULTS="$TOOLCHAIN_DIR/pandoc/defaults/pdf.yaml"
 EPUB_DEFAULTS="$TOOLCHAIN_DIR/pandoc/defaults/epub.yaml"
 DEFAULT_BUILD_DIR="$REPO_ROOT/build"
 export OSFONTDIR="{$TOOLCHAIN_DIR/pandoc/fonts,/usr/share/fonts,/usr/local/share/fonts}"
+export max_print_line=10000
 
 # --- Opciones -----------------------------------------------------------------
-uso="Uso: md2pdf [-y|--yes] [--pdf] [--epub] [--all] [-o salida] [-i carpeta_imágenes] [archivo.md ...]"
+uso="Uso: md2pdf [-y|--yes] [--pdf] [--epub] [--all] [--strict-pdf] [--no-pdf-check] [-o salida] [-i carpeta_imágenes] [archivo.md ...]"
 opcion_y=0
 gen_pdf=0
 gen_epub=0
+pdf_check=1
+strict_pdf=0
 out_custom=""
 carpetas_imagenes=()
 args=()
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    -y|--yes)  opcion_y=1; shift ;;
-    --pdf)     gen_pdf=1; shift ;;
-    --epub)    gen_epub=1; shift ;;
-    --all)     gen_pdf=1; gen_epub=1; shift ;;
+    -y|--yes)        opcion_y=1; shift ;;
+    --pdf)           gen_pdf=1; shift ;;
+    --epub)          gen_epub=1; shift ;;
+    --all)           gen_pdf=1; gen_epub=1; shift ;;
+    --strict-pdf)    strict_pdf=1; shift ;;
+    --no-pdf-check)  pdf_check=0; shift ;;
     -o|--output)
       [[ $# -ge 2 ]] || { echo "❌ Falta el argumento para $1. $uso" >&2; exit 1; }
       out_custom="$2"; shift 2 ;;
@@ -76,7 +83,7 @@ while [[ $# -gt 0 ]]; do
       [[ -d "$carp" ]] || { echo "❌ La carpeta de imágenes '$carp' no existe." >&2; exit 1; }
       carpetas_imagenes+=("$(cd "$carp" && pwd -P)"); shift ;;
     -h|--help)
-      sed -n '4,37p' "$0" | sed 's/^# \{0,1\}//'
+      sed -n '4,39p' "$0" | sed 's/^# \{0,1\}//'
       exit 0 ;;
     --) shift; while [[ $# -gt 0 ]]; do args+=("$1"); shift; done ;;
     -*)
@@ -405,10 +412,137 @@ while (my $linea = <STDIN>) {
 }
 PERL
 
-# --- 5. Ejecutar pandoc para cada archivo -------------------------------------
+# --- 5. Verificador automático de calidad PDF (Spec 11) -----------------------
+read -r -d '' VERIFICAR_PDF <<'PERL' || true
+use strict; use warnings; use utf8;
+use Encode qw(decode);
+binmode(STDOUT, ":encoding(UTF-8)");
+binmode(STDERR, ":encoding(UTF-8)");
+
+my ($archivo, $pdf, $log_path, $bbox_xml, $img_list) = map { defined $_ ? decode("UTF-8", $_) : $_ } @ARGV;
+my @avisos;
+my @criticos;
+
+# 1. Revisar log de Pandoc/LuaLaTeX
+if (open(my $fh, "<:encoding(UTF-8)", $log_path)) {
+  my ($vbox_n, $vbox_max) = (0, 0);
+  my ($hbox_n, $hbox_max) = (0, 0);
+  my ($missing_n, $float_n, $res_n) = (0, 0, 0);
+  my $sample_missing = "";
+  while (my $l = <$fh>) {
+    if ($l =~ /Overfull \\vbox \(([\d.]+)pt too high\)/) {
+      $vbox_n++;
+      $vbox_max = $1 if $1 > $vbox_max;
+    } elsif ($l =~ /Overfull \\hbox \(([\d.]+)pt too wide\)/) {
+      if ($1 > 12.0) {
+        $hbox_n++;
+        $hbox_max = $1 if $1 > $hbox_max;
+      }
+    } elsif ($l =~ /Missing character: (.+)/) {
+      $missing_n++;
+      $sample_missing = $1 if $sample_missing eq "";
+    } elsif ($l =~ /Float too large for page by ([\d.]+)pt/) {
+      $float_n++;
+    } elsif ($l =~ /\[WARNING\]\s+Could not (?:fetch resource|find image)/i) {
+      $res_n++;
+    }
+  }
+  close($fh);
+  push @criticos, sprintf("LaTeX Overfull \\vbox (%d ocurrencia(s), máx %.1fpt): caja/tabla más alta que la hoja (riesgo de filas recortadas).", $vbox_n, $vbox_max) if $vbox_n;
+  push @criticos, sprintf("LaTeX Float too large (%d ocurrencia(s)): figura supera el alto de página.", $float_n) if $float_n;
+  push @avisos, sprintf("LaTeX Overfull \\hbox > 12pt (%d ocurrencia(s), máx %.1fpt): contenido o código sobresale del margen derecho.", $hbox_n, $hbox_max) if $hbox_n;
+  push @avisos, sprintf("Missing character (%d ocurrencia(s), ej. '%s'): glifo sin fuente de respaldo.", $missing_n, $sample_missing) if $missing_n;
+  push @criticos, sprintf("Pandoc no pudo cargar %d recurso(s)/imagen(es) durante la compilación.", $res_n) if $res_n;
+}
+
+# 2. Revisar geometría real y páginas en blanco si pdftotext -bbox está disponible
+my %has_img;
+if (defined $img_list && -s $img_list && open(my $ih, "<:encoding(UTF-8)", $img_list)) {
+  while (my $l = <$ih>) {
+    if ($l =~ /^\s*(\d+)\s+\d+\s+image\s+(\d+)\s+(\d+)\b/) {
+      $has_img{$1} = 1 if ($2 >= 200 || $3 >= 200);
+    }
+  }
+  close($ih);
+}
+
+if (defined $bbox_xml && -s $bbox_xml && open(my $bh, "<:encoding(UTF-8)", $bbox_xml)) {
+  local $/ = undef;
+  my $xml = <$bh>;
+  close($bh);
+  my $pnum = 0;
+  my (@blank_pages, @bot_pages, @lat_pages);
+  while ($xml =~ m{<page\s+width="([\d.]+)"\s+height="([\d.]+)">(.*?)</page>}gs) {
+    $pnum++;
+    my ($W, $H, $body) = ($1 + 0, $2 + 0, $3);
+    my ($non_digit, $total, $bot_bad, $lat_bad) = (0, 0, 0, 0);
+    while ($body =~ m{<word\s+xMin="(-?[\d.]+)"\s+yMin="(-?[\d.]+)"\s+xMax="(-?[\d.]+)"\s+yMax="(-?[\d.]+)">([^<]*)</word>}g) {
+      my ($x0, $y0, $x1, $y1, $txt) = ($1 + 0, $2 + 0, $3 + 0, $4 + 0, $5);
+      $total++;
+      $non_digit++ unless $txt =~ /^\d+$/;
+      my $is_footer_num = ($txt =~ /^\d{1,4}$/ && $y0 > $H - 35 && $x0 >= $W * 0.38 && $x1 <= $W * 0.62);
+      if (!$is_footer_num && $y1 > $H - 30) {
+        $bot_bad = $y1 if $y1 > $bot_bad;
+      }
+      if ($x1 > $W - 26 || $x0 < 26) {
+        $lat_bad = 1;
+      }
+    }
+    if ($non_digit == 0 && !$has_img{$pnum}) {
+      push @blank_pages, "p.$pnum";
+    }
+    push @bot_pages, sprintf("p.%d (y=%.1f/%.1f)", $pnum, $bot_bad, $H) if $bot_bad;
+    push @lat_pages, "p.$pnum" if $lat_bad;
+  }
+  push @criticos, "Página(s) en blanco o solo con número de página: " . join(", ", @blank_pages) if @blank_pages;
+  push @criticos, "Invasión del pie/borde inferior (contenido probablemente cortado): " . join(", ", @bot_pages) if @bot_pages;
+  push @avisos, "Desborde lateral extremo fuera de márgenes: " . join(", ", @lat_pages) if @lat_pages;
+}
+
+if (@criticos || @avisos) {
+  print STDERR "⚠️  AVISO DE CALIDAD PDF ($archivo -> $pdf):\n";
+  for my $m (@criticos) { print STDERR "   ❌ [CRÍTICO] $m\n"; }
+  for my $m (@avisos)   { print STDERR "   ⚠️  [AVISO]   $m\n"; }
+  exit(@criticos ? 2 : 1);
+}
+exit 0;
+PERL
+
+verificar_calidad_pdf() {
+  local archivo="$1" salida_pdf="$2" log_pandoc="$3"
+  (( pdf_check )) || return 0
+  local bbox_tmp="" img_tmp="" reporte="" rc=0
+  if command -v pdftotext >/dev/null 2>&1; then
+    bbox_tmp="$(mktemp --suffix=.xml)"
+    pdftotext -bbox "$salida_pdf" "$bbox_tmp" 2>/dev/null || true
+  fi
+  if command -v pdfimages >/dev/null 2>&1; then
+    img_tmp="$(mktemp --suffix=.txt)"
+    pdfimages -list "$salida_pdf" > "$img_tmp" 2>/dev/null || true
+  fi
+  reporte="$(perl -CSD -e "$VERIFICAR_PDF" "$archivo" "$salida_pdf" "$log_pandoc" "$bbox_tmp" "$img_tmp" 2>&1)" || rc=$?
+  rm -f -- "${bbox_tmp:+"$bbox_tmp"}" "${img_tmp:+"$img_tmp"}"
+  if (( rc != 0 )); then
+    printf '%s\n' "$reporte" >&2
+    avisos_calidad+=("$archivo")
+    if [[ -n "${GITHUB_STEP_SUMMARY:-}" ]]; then
+      {
+        echo "### ⚠️ Aviso de Calidad PDF: \`$archivo\`"
+        echo '```text'
+        printf '%s\n' "$reporte"
+        echo '```'
+      } >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+    fi
+  fi
+  return "$rc"
+}
+
+# --- 6. Ejecutar pandoc para cada archivo -------------------------------------
 fallidos=()
+avisos_calidad=()
 temporal=""
-trap 'rm -f -- "${temporal:+"$temporal"}"' EXIT
+log_pandoc=""
+trap 'rm -f -- "${temporal:+"$temporal"}" "${log_pandoc:+"$log_pandoc"}"' EXIT
 trap 'echo; echo "Cancelado."; exit 130' INT TERM HUP
 
 imagenes_nl="$(printf '%s\n' "${carpetas_imagenes[@]}")"
@@ -419,6 +553,7 @@ for archivo in "${archivos[@]}"; do
   nombre_base="$(basename "${archivo%.*}")"
   entrada="$archivo"
   temporal=""
+  log_pandoc=""
 
   # Un .md que no está en UTF-8 no se traduce para evitar corromper caracteres
   if ! iconv -f UTF-8 -t UTF-8 -- "$archivo" >/dev/null 2>&1; then
@@ -454,13 +589,23 @@ for archivo in "${archivos[@]}"; do
   if (( gen_pdf )); then
     salida_pdf="$(calcular_salida "$archivo" pdf)"
     mkdir -p "$(dirname "$salida_pdf")"
-    if pandoc --defaults="$PDF_DEFAULTS" "${extra_meta[@]}" \
-         --resource-path="$resource_path" --output="$salida_pdf" -- "$entrada"; then
+    log_pandoc="$(mktemp --suffix=.log)"
+    if pandoc --verbose --defaults="$PDF_DEFAULTS" "${extra_meta[@]}" \
+         --resource-path="$resource_path" --output="$salida_pdf" -- "$entrada" 2>"$log_pandoc"; then
       echo "✔ PDF generado:  $salida_pdf"
+      calidad_rc=0
+      verificar_calidad_pdf "$archivo" "$salida_pdf" "$log_pandoc" || calidad_rc=$?
+      if (( strict_pdf && calidad_rc != 0 )); then
+        echo "❌ Rechazado por --strict-pdf debido a avisos de maquetación: $salida_pdf" >&2
+        fallidos+=("$archivo (PDF calidad)")
+      fi
     else
+      cat "$log_pandoc" >&2
       echo "❌ Error al convertir a PDF: $archivo" >&2
       fallidos+=("$archivo (PDF)")
     fi
+    rm -f "$log_pandoc"
+    log_pandoc=""
   fi
 
   if (( gen_epub )); then
@@ -481,6 +626,9 @@ for archivo in "${archivos[@]}"; do
   fi
 done
 
+if (( ${#avisos_calidad[@]} > 0 )); then
+  echo "⚠️ Se detectaron avisos de calidad PDF en ${#avisos_calidad[@]} archivo(s): $(IFS=', '; echo "${avisos_calidad[*]}")" >&2
+fi
 if (( ${#fallidos[@]} > 0 )); then
   echo "⚠️ No se pudieron convertir ${#fallidos[@]} objetivo(s): $(IFS=', '; echo "${fallidos[*]}")" >&2
   exit 1

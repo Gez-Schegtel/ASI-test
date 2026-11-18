@@ -77,11 +77,15 @@ Para garantizar compatibilidad simultánea entre Obsidian y el motor Pandoc/LuaL
 
   * Nunca usar strings Base64 gigantes dentro de los `.md`.
 
-* **Tablas**: Estrictamente en formato GFM (GitHub Flavored Markdown). No partir filas con tags HTML `<br>` si se puede evitar; para listas dentro de celdas usar viñetas `•`. Para matrices 2×2 de 4 cuadrantes, cuadrículas con bordes completos o control de alineación vertical, anteponer `<!-- matriz-2x2 -->`, `<!-- cuadricula -->` o `valign=top|middle|bottom` / `hvalign=...` (procesado por `toolchain/pandoc/filters/tablas-matriz.lua`).
+* **Tablas**: Estrictamente en formato GFM (GitHub Flavored Markdown). Usar tablas **únicamente cuando la estructura tabular aporte claridad real**; evitar tablas gigantes con celdas de varios párrafos o listas extensas cuya altura se acerque a una carilla completa (para contenido denso usar subtítulos y listas jerárquicas). No partir filas con tags HTML `<br>` si se puede evitar; para listas dentro de celdas usar viñetas `•`. Para matrices 2×2 de 4 cuadrantes, cuadrículas multipágina (`longtable`) con bordes completos o control de alineación vertical, anteponer `<!-- matriz-2x2 -->`, `<!-- cuadricula -->` o `valign=top|middle|bottom` / `hvalign=...` (procesado por `toolchain/pandoc/filters/tablas-matriz.lua`).
 
 * **Codificación y caracteres**: Texto en UTF-8 con normalización NFC. Evitar emojis en encabezados `#` para prevenir roturas en el motor LaTeX (o verificar que Noto Color Emoji esté activo).
 
-* **Linter obligatorio**: Antes de dar por finalizada la edición de un apunte, ejecutar `toolchain/bin/mdnorm <archivo.md>` para corregir sangrías, delimitadores matemáticos y espaciados.
+* **Linter y control de calidad PDF obligatorios**:
+
+  1. Antes de dar por finalizada la edición de un apunte, ejecutar `toolchain/bin/mdnorm <archivo.md>` para corregir sangrías, delimitadores matemáticos y espaciados.
+
+  2. Compilar con `toolchain/bin/md2pdf --strict-pdf <archivo.md>` y verificar que **no existan avisos de calidad PDF** (`Overfull \vbox`, páginas en blanco o solo con número de página, invasión de pie/bordes, `Overfull \hbox > 12pt`, `Float too large` o `Missing character`). Si `md2pdf` emite cualquier aviso, debe diagnosticarse y resolverse (por ejemplo, dividiendo o reestructurando tablas gigantes e inspeccionando las páginas renderizadas) antes de cerrar o commitear.
 
 ---
 
@@ -105,7 +109,7 @@ Cuando se trabaje en tareas dentro de este repositorio, el agente debe seguir es
 
 3. **Ejecutar tareas de tooling y automatización**:
 
-   * Probar cambios ejecutando el linter localmente (`toolchain/bin/mdnorm`).
+   * Probar cambios ejecutando el linter localmente (`toolchain/bin/mdnorm`) y la compilación estricta (`toolchain/bin/md2pdf --strict-pdf`), inspeccionando visualmente los PDF afectados cuando haya cambios en tablas, diagramas o plantillas.
 
    * Verificar que las rutas de `pandoc` pasen `--data-dir` o `--defaults` relativos a la raíz del repositorio.
 

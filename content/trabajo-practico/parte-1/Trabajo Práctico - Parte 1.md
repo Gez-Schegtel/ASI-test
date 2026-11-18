@@ -626,7 +626,7 @@ Habiendo culminado la Fase III con la evaluación de los escenarios propuestos y
 
 El presente apartado tiene carácter operativo y vinculante. Su objetivo es descender la estrategia aprobada a un marco de ejecución real, definiendo la asignación de recursos, el cronograma detallado y los mecanismos de control que guiarán a la Dirección Operativa del Proyecto (DOP).
 
-### Paso IV.1: Descripción detallada del Plan acordado y Calendario del primer año
+## Paso IV.1: Descripción detallada del Plan acordado y Calendario del primer año
 
 El plan estratégico se ha estructurado en una cartera de proyectos informáticos concretos y ejecutables. Se prioriza esta solución integral debido a su impacto directo en el *Core Business* de la DVP, cuyos objetivos centrales son: garantizar la **soberanía tecnológica** (eliminando la dependencia de sistemas tercerizados), establecer un **dato único y auditable** (automatizando la Curva de Inversión) y habilitar una **planificación territorial basada en datos**.
 
@@ -644,7 +644,7 @@ Para mitigar los riesgos asociados a implementaciones de gran escala, se adopta 
 
 - **Hito 4 - Consorcios Camineros y Despliegue en Terreno:** Desarrollo del circuito administrativo para los Consorcios Camineros y ejecución de capacitaciones presenciales en las 5 Delegaciones Zonales, consolidando la adopción del sistema a nivel provincial.
 
-### Paso IV.2: Inclusión de proyectos en el presupuesto (Asignación de Recursos)
+## Paso IV.2: Inclusión de proyectos en el presupuesto (Asignación de Recursos)
 
 Para asegurar la viabilidad de la ejecución durante el primer año, se determinan y asignan los recursos exactos que deberán ser contemplados en el presupuesto anual de la institución:
 
@@ -674,7 +674,7 @@ El presupuesto asignado al primer año consolidará:
 
 3. Un fondo de contingencia del 15% para absorber posibles desviaciones operativas o técnicas.
 
-### Paso IV.3: Plan de evaluación y revisión
+## Paso IV.3: Plan de evaluación y revisión
 
 Atendiendo a la naturaleza dinámica de los proyectos tecnológicos y a la necesidad de realizar iteraciones metodológicas para ajustar el sistema a las realidades del negocio, se establecen los siguientes mecanismos de control:
 
@@ -682,7 +682,7 @@ Atendiendo a la naturaleza dinámica de los proyectos tecnológicos y a la neces
 
 2. **Revisiones de Hito y Control de Desviaciones:** Al concluir cada uno de los hitos establecidos en el cronograma, la Dirección Operativa del Proyecto presentará un informe de estado ante el Comité de TI/SI. Se evaluarán dos métricas de control: cumplimiento del plazo estipulado y ejecución del presupuesto asignado, permitiendo la aplicación de acciones correctivas inmediatas.
 
-### Entregables Finales del Procedimiento de Alineamiento
+## Entregables Finales del Procedimiento de Alineamiento
 
 Con la formalización de esta fase, la Dirección de Vialidad Provincial consolida el procedimiento de alineamiento estratégico, obteniendo los siguientes resultados concretos:
 

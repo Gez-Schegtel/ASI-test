@@ -217,7 +217,7 @@ Usá los callouts estándar de Obsidian/GitHub. En el PDF y en el EPUB se transf
 
 ### Tablas, Matrices 2×2 y Alineación (`tablas-matriz.lua`)
 
-Usá siempre tablas estándar de Markdown (**GFM**), dejando **una línea en blanco antes y después** de la tabla y evitando etiquetas `<br>` adentro de las celdas (`mdnorm` las limpia). Si necesitás viñetas dentro de una celda, separalas con `•` (`• Ítem 1 • Ítem 2`).
+Usá siempre tablas estándar de Markdown (**GFM**) **solo cuando el formato de tabla realmente ayude a comparar datos**: evitá armar tablas gigantes con celdas de varios párrafos o listas larguísimas que superen el alto de una hoja (en esos casos, usá subtítulos y listas jerárquicas). Dejá **una línea en blanco antes y después** de cada tabla y evitá etiquetas `<br>` adentro de las celdas (`mdnorm` las limpia). Si necesitás viñetas dentro de una celda, separalas con `•` (`• Ítem 1 • Ítem 2`).
 
 1. **Alineación horizontal (nativa en Markdown GFM)**:
    Controlá columna por columna en la fila separadora con `:---` (izquierda), `:---:` (centro) o `---:` (derecha). Funciona en tablas comunes, cuadrículas y matrices 2×2.
@@ -227,7 +227,7 @@ Usá siempre tablas estándar de Markdown (**GFM**), dejando **una línea en bla
 
    * **`<!-- matriz-2x2 -->`**: Tabla de 2 columnas × 4 filas donde las filas 1 y 3 son títulos sombreados de cuadrantes (ej. Matriz de McFarlan).
 
-   * **`<!-- cuadricula -->`**: Cualquier tabla NxM con todos los bordes verticales/horizontales y encabezado sombreado.
+   * **`<!-- cuadricula -->`**: Cualquier tabla NxM con todos los bordes verticales/horizontales y encabezado sombreado (en PDF usa `longtable`, se parte entre páginas repitiendo el encabezado y calcula anchos proporcionados según el contenido).
 
    * **`valign=top|middle|bottom`** *(aliases en español: `arriba`, `medio`/`centro`, `abajo`)*: alineación vertical de toda la tabla (**por defecto `top`**). Funciona tanto en matrices/cuadrículas como en tablas `booktabs` comunes (`<!-- valign=middle -->`).
 
@@ -274,23 +274,23 @@ Antes de hacer `git add` y `git commit`, **ejecutá siempre `mdnorm`** sobre los
 
 *(Solo requiere tener `bash` y `perl`, que vienen instalados por defecto en cualquier distro Linux).*
 
-### Opcional: Previsualizar el PDF y EPUB en tu computadora
+### Opcional: Previsualizar el PDF y EPUB en tu computadora (Control de Calidad)
 
-No es obligatorio compilar localmente (GitHub Actions lo hace solo al pushear), pero si querés revisar cómo queda paginado el PDF antes de subirlo:
+No es obligatorio compilar localmente (GitHub Actions lo hace solo al pushear y avisa si algún PDF tiene problemas), pero si querés revisar cómo queda paginado el PDF antes de subirlo y detectar automáticamente desbordes o páginas en blanco:
 
 * **Con Docker (sin instalar LaTeX en tu PC)**:
   ```bash
   docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/workspace" -w /workspace \
     ghcr.io/gez-schegtel/asi-toolchain:latest \
-    ./toolchain/bin/md2pdf -y --all "content/unidades/unidad-2/"*.md
+    ./toolchain/bin/md2pdf -y --all --strict-pdf "content/unidades/unidad-2/"*.md
   ```
 
 * **De forma nativa (si tenés Pandoc y TeX Live instalados)**:
   ```bash
-  ./toolchain/bin/md2pdf -y --all "content/unidades/unidad-2/"*.md
+  ./toolchain/bin/md2pdf -y --all --strict-pdf "content/unidades/unidad-2/"*.md
   ```
 
-Los archivos generados aparecerán en `build/unidad-2/` (esa carpeta está ignorada en `.gitignore`, por lo que nunca se subirá por error a Git).
+`md2pdf` analiza el log de LuaLaTeX (`Overfull \vbox`, `Overfull \hbox > 12pt`, `Missing character`) y, si está `poppler-utils` (`pdftotext`/`pdfimages`), también inspecciona el PDF generado para avisar ante páginas en blanco o contenido que invade el pie/bordes de la página. Con `--strict-pdf`, falla si aparece cualquiera de estos avisos. Los archivos generados aparecerán en `build/unidad-2/` (esa carpeta está ignorada en `.gitignore`, por lo que nunca se subirá por error a Git).
 
 ---
 

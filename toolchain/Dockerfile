@@ -38,6 +38,7 @@ RUN apt-get -o Acquire::ForceIPv4=true -o Acquire::Retries=5 -o Acquire::http::T
       lmodern \
       pandoc \
       perl \
+      poppler-utils \
       texlive-fonts-recommended \
       texlive-lang-spanish \
       texlive-latex-extra \
